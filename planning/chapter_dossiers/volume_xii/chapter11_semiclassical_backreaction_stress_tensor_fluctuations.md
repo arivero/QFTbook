@@ -88,9 +88,10 @@ fluctuation data required for controlled backreaction.
   operator-valued distribution and records its finite curvature ambiguity.
 - Defines the gravitational EFT action, records the curvature-squared Euler
   tensors \(H^{(1)}\) and \(H^{(2)}\) in the metric-variation convention fixed
-  earlier in Volume XII, and gives the local variational calculation and trace
-  checks in four dimensions without presenting the duplicated formula block as
-  a new theorem.
+  earlier in Volume XII, gives the local variational calculation and trace
+  checks in four dimensions, and fixes the Ricci-squared derivative signs by
+  the Palatini/Weyl convention rather than by self-contraction of the displayed
+  formula.
 - Links the semiclassical Einstein equation to the Volume XII control-level
   classification and to the chapter's observable-output chain: all
   backreaction statements here are conditional semiclassical control until the
@@ -244,8 +245,10 @@ fluctuation data required for controlled backreaction.
 ## Calculation Checks
 
 - `calculation-checks/semiclassical_backreaction_checks.py`: verifies the
-  four-dimensional traces of \(H^{(1)}\) and \(H^{(2)}\), the KMS
-  fluctuation-dissipation factor, positivity of a finite noise covariance,
+  four-dimensional traces of \(H^{(1)}\) and \(H^{(2)}\), the Ricci-squared
+  \(H^{(2)}\) Weyl-variation sign, a conformally flat derivative fixture that
+  rejects the old derivative sign pattern, the KMS fluctuation-dissipation
+  factor, positivity of a finite noise covariance,
   the Einstein-Langevin pushforward covariance identity, large-`N_sp`
   semiclassical scaling of finite mean source, `1/N_sp` source-noise and metric
   covariance, and `1/N_sp^2` third connected metric-source cumulant with
@@ -258,13 +261,13 @@ fluctuation data required for controlled backreaction.
   counterterms and signed negative-density norm bounds, its retained response
   bound, the retained `lambda phi^4` potential-noise kernel with the
   connected Wick-four covariance using the full separated two-point function,
-	  disconnected-subtraction, dropped-mixed-term, same-state Wick-coordinate,
-	  smooth-remainder-only, and premature-real-part negative controls, quadratic
-	  coupling scaling, positivity of the retained noise matrix, its
-	  metric-covariance trace bound, the typed linearized diffeomorphism Ward
-	  check with nonzero separated response divergence, one-point/contact
-	  cancellation, pure-gauge Lie-stress response, and full-Hessian gauge-null
-	  negative controls, the retained Ward-diagnostic projector for
+  disconnected-subtraction, dropped-mixed-term, same-state Wick-coordinate,
+  smooth-remainder-only, and premature-real-part negative controls, quadratic
+  coupling scaling, positivity of the retained noise matrix, its
+  metric-covariance trace bound, the typed linearized diffeomorphism Ward
+  check with nonzero separated response divergence, one-point/contact
+  cancellation, pure-gauge Lie-stress response, and full-Hessian gauge-null
+  negative controls, the retained Ward-diagnostic projector for
   interacting source/noise coordinates with wrong-sign, transverse-ambiguity,
   projection-versus-physical-completion, projected-partial-noise versus
   full-noise, and unprojected-longitudinal-noise negative controls, the finite
@@ -274,16 +277,15 @@ fluctuation data required for controlled backreaction.
   full
   retained interacting stress-tensor/noise package with component
   cross-covariances, finite composite-operator-mixing cross terms, and a
-	  c-number connected-noise negative control that can still pass the Ward test,
-	  plus a Ward-clean local-contact negative control that destroys positivity,
-	  the homogeneous FLRW interacting closure with correction pressure,
-	  Friedmann/Raychaudhuri compatibility, Ward-clean stress noise,
-	  derivative-consistent dot-density covariance, and potential-only
-	  source/noise negative controls,
-	  the closed-time-path influence-package test tying mean source,
-	  contact-corrected retarded response, and connected noise to equal-branch
-	  normalization, retarded support, typed Ward identities, positivity, and
-	  KMS/FDT compatibility, the small-gain
+  c-number connected-noise negative control that can still pass the Ward test,
+  plus a Ward-clean local-contact negative control that destroys positivity,
+  the homogeneous FLRW interacting closure with correction pressure,
+  Friedmann/Raychaudhuri compatibility, Ward-clean stress noise,
+  derivative-consistent dot-density covariance, and potential-only source/noise
+  negative controls, the closed-time-path influence-package test tying mean
+  source, contact-corrected retarded response, and connected noise to
+  equal-branch normalization, retarded support, typed Ward identities,
+  positivity, and KMS/FDT compatibility, the small-gain
   feedback inverse for the full retained backreaction operator,
   Ward-clean source/noise inputs, mean-response and noise-amplification
   bounds, residual missing-noise trace propagation, and singular-feedback,
@@ -502,3 +504,13 @@ curvature, microscopic, and EFT scales.
   derivative-consistent coordinate.  The paired finite check includes a
   nonzero-background negative control where naive response transversality fails
   but the contact-corrected Ward identity and full-Hessian gauge identity hold.
+- 2026-06-08 issue #921 Ricci-squared sign pass: corrected the
+  \(H^{(2)}_{\mu\nu}\) derivative signs for the inverse-metric variation of
+  the half-normalized Ricci-squared gravitational action.  The chapter now has
+  \(g^{\mu\nu}H^{(2)}_{\mu\nu}=+2\Box R\) and records the matching Weyl
+  variation of the un-halved action.  The paired finite check no longer merely
+  contracts the displayed tensor: it tests the Weyl coefficient and a
+  non-Einstein conformally flat derivative fixture, both of which reject the
+  old sign pattern.  Downstream uses of the \(\beta H^{(2)}\) term were audited
+  as coordinate-level scheme-transport and response inputs using the corrected
+  convention.

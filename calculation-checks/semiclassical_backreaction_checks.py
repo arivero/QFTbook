@@ -3,7 +3,8 @@
 
 These checks verify algebraic identities that are easy to lose by a sign or
 normalization: traces of the curvature-squared Euler tensors in four
-dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
+dimensions, the Ricci-squared Weyl variation and conformally flat derivative
+fixture, the KMS fluctuation-dissipation factor, positivity of the noise
 covariance, finite response-window metric fluctuation bounds, the first-order
 large-species scaling of mean backreaction versus metric fluctuations, the
 large-species scaling of retained stress-source cumulants, the
@@ -37,7 +38,8 @@ higher-derivative equation.
 
 Evidence contract.
 Target claims: the finite algebra and response-window subclaims in Volume
-XII Chapter 11, including curvature-squared trace normalizations,
+XII Chapter 11, including curvature-squared trace normalizations, the
+Ricci-squared H^(2) derivative signs in the inverse-metric variation convention,
 fluctuation-dissipation factors, noise-covariance positivity, retained
 metric-response bounds, the large-N_sp species scaling of the rescaled mean
 source, source-noise covariance, and higher connected stress-source cumulants,
@@ -72,7 +74,9 @@ chart-exit/tail controlled signal-to-noise inequality, the observable-chain
 boundary data that must be present before a retained metric observable is
 claimed, and the low-energy root
 selected by reduction of order.
-Independent construction: the checks recompute traces, KMS factors,
+Independent construction: the checks recompute traces, Ricci-squared Weyl
+variation coefficients, a non-Einstein conformally flat derivative fixture,
+KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
@@ -99,7 +103,8 @@ Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
 coordinates, positive finite noise matrices, full-rank finite Ward maps, and the
 chapter's convention E_grav = <T_ren>.
-Negative controls: singular retained response matrices, wrong Wick
+Negative controls: old Ricci-squared Euler-tensor derivative signs, singular
+retained response matrices, wrong Wick
 contraction factors, omitted local-Wick-renormalization quadratic terms, wrong
 cosmological-coordinate signs, erased independent quartic/stress-tensor finite
 counterterms, signed negative density norm bounds, dropped connected
@@ -182,6 +187,8 @@ from fractions import Fraction
 
 
 Matrix = tuple[tuple[Fraction, ...], ...]
+MultiIndex = tuple[int, ...]
+Polynomial = dict[MultiIndex, Fraction]
 
 
 def assert_close(
@@ -287,6 +294,69 @@ def quadratic_form(matrix: Matrix, column: Matrix) -> Fraction:
     return matmul(matmul(transpose(column), matrix), column)[0][0]
 
 
+def poly_derivative(poly: Polynomial, axis: int) -> Polynomial:
+    result: Polynomial = {}
+    for powers, coefficient in poly.items():
+        power = powers[axis]
+        if power == 0:
+            continue
+        new_powers = list(powers)
+        new_powers[axis] -= 1
+        new_key = tuple(new_powers)
+        result[new_key] = result.get(new_key, Fraction(0)) + coefficient * power
+    return {
+        powers: coefficient
+        for powers, coefficient in result.items()
+        if coefficient
+    }
+
+
+def poly_derivative_multi(poly: Polynomial, axes: tuple[int, ...]) -> Polynomial:
+    result = poly
+    for axis in axes:
+        result = poly_derivative(result, axis)
+    return result
+
+
+def poly_add(*polys: Polynomial) -> Polynomial:
+    result: Polynomial = {}
+    for poly in polys:
+        for powers, coefficient in poly.items():
+            result[powers] = result.get(powers, Fraction(0)) + coefficient
+    return {
+        powers: coefficient
+        for powers, coefficient in result.items()
+        if coefficient
+    }
+
+
+def poly_scale(poly: Polynomial, scalar: Fraction) -> Polynomial:
+    return {
+        powers: scalar * coefficient
+        for powers, coefficient in poly.items()
+        if scalar * coefficient
+    }
+
+
+def poly_laplacian(poly: Polynomial, dimension: int) -> Polynomial:
+    return poly_add(
+        *(
+            poly_derivative_multi(poly, (axis, axis))
+            for axis in range(dimension)
+        )
+    )
+
+
+def poly_value(poly: Polynomial, point: tuple[Fraction, ...]) -> Fraction:
+    total = Fraction(0)
+    for powers, coefficient in poly.items():
+        monomial = coefficient
+        for value, power in zip(point, powers):
+            monomial *= value ** power
+        total += monomial
+    return total
+
+
 def check_curvature_squared_traces() -> None:
     dimension = 4
 
@@ -297,11 +367,118 @@ def check_curvature_squared_traces() -> None:
     assert_close(box_r_coeff, 6.0, "H1 trace Box R coefficient")
 
     # H^(2) = 2 R_mrns R^rs - 1/2 g_mn Ric^2
-    #       + nabla_m nabla_n R - Box R_mn - 1/2 g_mn Box R.
+    #       - nabla_m nabla_n R + Box R_mn + 1/2 g_mn Box R.
     ricci2_coeff = 2 - dimension / 2
-    box_r_coeff_h2 = 1 - 1 - dimension / 2
+    box_r_coeff_h2 = -1 + 1 + dimension / 2
     assert_close(ricci2_coeff, 0.0, "Ricci^2 trace algebra in D=4")
-    assert_close(box_r_coeff_h2, -2.0, "H2 trace Box R coefficient")
+    assert_close(box_r_coeff_h2, 2.0, "H2 trace Box R coefficient")
+
+    # For the un-halved action int sqrt(g) Ric^2, a Weyl variation
+    # delta g^{mn} = -2 sigma g^{mn} gives -4 int sigma Box R.
+    h2_trace_box_r_coeff = Fraction(2)
+    full_ricci_square_weyl_coeff = -2 * h2_trace_box_r_coeff
+    assert_equal(
+        "full Ricci-squared Weyl-variation coefficient",
+        full_ricci_square_weyl_coeff,
+        Fraction(-4),
+    )
+    old_sign_trace_coeff = 1 - 1 - dimension / 2
+    if -2 * Fraction(old_sign_trace_coeff) == full_ricci_square_weyl_coeff:
+        raise AssertionError(
+            "negative control failed: old H2 signs passed Weyl variation"
+        )
+
+    # Linearized conformally flat fixture: g_mn = exp(2 sigma) delta_mn.
+    # To first order in sigma, R_mn = -2 d_m d_n sigma - delta_mn Lap sigma
+    # and R = -6 Lap sigma.  Algebraic curvature-squared terms are higher
+    # order, so this isolates the derivative signs of H^(2).
+    sigma: Polynomial = {
+        (4, 0, 0, 0): Fraction(2),
+        (2, 2, 0, 0): Fraction(3),
+        (0, 1, 3, 0): Fraction(5),
+        (0, 0, 2, 2): Fraction(7),
+        (0, 0, 0, 4): Fraction(11),
+    }
+    point = (Fraction(1), Fraction(2), Fraction(-1), Fraction(1))
+    lap_sigma = poly_laplacian(sigma, dimension)
+    lap2_sigma = poly_laplacian(lap_sigma, dimension)
+    scalar_curvature_linear = poly_scale(lap_sigma, Fraction(-6))
+
+    ricci_linear: tuple[tuple[Polynomial, ...], ...] = tuple(
+        tuple(
+            poly_add(
+                poly_scale(poly_derivative_multi(sigma, (row, col)), Fraction(-2)),
+                poly_scale(lap_sigma, Fraction(-1) if row == col else Fraction(0)),
+            )
+            for col in range(dimension)
+        )
+        for row in range(dimension)
+    )
+    corrected_h2_linear: Matrix = tuple(
+        tuple(
+            poly_value(
+                poly_add(
+                    poly_scale(
+                        poly_derivative_multi(scalar_curvature_linear, (row, col)),
+                        Fraction(-1),
+                    ),
+                    poly_laplacian(ricci_linear[row][col], dimension),
+                    poly_scale(
+                        poly_laplacian(scalar_curvature_linear, dimension),
+                        Fraction(1, 2) if row == col else Fraction(0),
+                    ),
+                ),
+                point,
+            )
+            for col in range(dimension)
+        )
+        for row in range(dimension)
+    )
+    expected_conformal_h2: Matrix = tuple(
+        tuple(
+            poly_value(
+                poly_add(
+                    poly_scale(
+                        poly_derivative_multi(lap_sigma, (row, col)),
+                        Fraction(4),
+                    ),
+                    poly_scale(
+                        lap2_sigma,
+                        Fraction(-4) if row == col else Fraction(0),
+                    ),
+                ),
+                point,
+            )
+            for col in range(dimension)
+        )
+        for row in range(dimension)
+    )
+    assert_equal(
+        "linear conformally flat H2 derivative fixture",
+        corrected_h2_linear,
+        expected_conformal_h2,
+    )
+    old_sign_h2_linear = tuple(
+        tuple(-entry for entry in row)
+        for row in corrected_h2_linear
+    )
+    if old_sign_h2_linear == expected_conformal_h2:
+        raise AssertionError(
+            "negative control failed: old H2 signs passed conformal fixture"
+        )
+    trace_h2_linear = sum(
+        corrected_h2_linear[index][index]
+        for index in range(dimension)
+    )
+    expected_trace_linear = 2 * poly_value(
+        poly_laplacian(scalar_curvature_linear, dimension),
+        point,
+    )
+    assert_equal(
+        "linear conformally flat H2 trace fixture",
+        trace_h2_linear,
+        expected_trace_linear,
+    )
 
 
 def check_kms_fluctuation_dissipation() -> None:

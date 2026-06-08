@@ -216,11 +216,11 @@ curvature-squared Euler tensors in
   &=
   2R_{\mu\rho\nu\sigma}R^{\rho\sigma}
   -\frac12g_{\mu\nu}R_{\rho\sigma}R^{\rho\sigma}
-  +
+  -
   \nabla_\mu\nabla_\nu R
-  -
+  +
   \Box R_{\mu\nu}
-  -
+  +
   \frac12g_{\mu\nu}\Box R .
 \end{aligned}
   \label{eq:semiclassical-H-tensors}
@@ -265,10 +265,19 @@ For \(\frac12\int\sqrt{|g|}R_{\rho\sigma}R^{\rho\sigma}\), use
 convert \(\delta g_{\mu\nu}\) to
 \(-g_{\mu\rho}g_{\nu\sigma}\delta g^{\rho\sigma}\), integrate derivatives
 off \(\delta g^{\mu\nu}\), and commute derivatives on \(R_{\mu\nu}\).  The
-commutator terms combine into
-\(2R_{\mu\rho\nu\sigma}R^{\rho\sigma}\), while the derivative terms combine
-as displayed in the second line of
-\eqref{eq:semiclassical-H-tensors}.
+minus sign in this conversion is what fixes the derivative signs.  In the
+half-normalized action the integrated Palatini term contributes
+\[
+  -\nabla_\mu\nabla_\nu R+\Box R_{\mu\nu}
+  +\frac12g_{\mu\nu}\Box R
+\]
+to \(H^{(2)}_{\mu\nu}\).  The commutator terms combine with the explicit
+metric variation of \(R^{\rho\sigma}\) into
+\(2R_{\mu\rho\nu\sigma}R^{\rho\sigma}\), giving the second line of
+\eqref{eq:semiclassical-H-tensors}.  The opposite derivative signs would be
+the variation of neither the displayed half-normalized action nor the
+full \(\int\sqrt{|g|}R_{\rho\sigma}R^{\rho\sigma}\) action in the
+\(g^{\mu\nu}\)-variation convention.
 
 The tensors \(H^{(1)}\) and \(H^{(2)}\) are conserved.  This follows without
 component calculation: each is the Euler tensor of a diffeomorphism-invariant
@@ -277,12 +286,21 @@ functional replacing \(W\).  Their traces in \(D=4\) are
 \begin{equation}
   g^{\mu\nu}H^{(1)}_{\mu\nu}=6\Box R,
   \qquad
-  g^{\mu\nu}H^{(2)}_{\mu\nu}=-2\Box R,
+  g^{\mu\nu}H^{(2)}_{\mu\nu}=2\Box R,
   \label{eq:semiclassical-H-traces}
 \end{equation}
 using the convention in \eqref{eq:semiclassical-H-tensors}.  These traces
 are total derivatives, as required by the constant-Weyl-scale invariance of
-the curvature-squared actions in four dimensions.
+the curvature-squared actions in four dimensions.  For the un-halved Ricci
+squared action, the Weyl variation
+\(\delta g^{\mu\nu}=-2\sigma g^{\mu\nu}\) gives
+\[
+  \delta_\sigma
+  \int\sqrt{|g|}\,R_{\rho\sigma}R^{\rho\sigma}
+  =
+  -4\int\sqrt{|g|}\,\sigma\Box R
+\]
+after integrating by parts, which is the same sign check.
 
 \section{Semiclassical Einstein Equation}
 

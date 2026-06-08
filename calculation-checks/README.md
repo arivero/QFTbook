@@ -2902,8 +2902,10 @@ Current checks:
   massive-model string tension for integer probe charge.
 - `semiclassical_backreaction_checks.py`: finite checks for the semiclassical
   backreaction chapter, including four-dimensional traces of the
-  curvature-squared Euler tensors, the KMS fluctuation-dissipation factor,
-  positivity of a finite noise covariance, the Einstein--Langevin
+  curvature-squared Euler tensors, the Ricci-squared \(H^{(2)}\) Weyl-variation
+  sign and a conformally flat derivative fixture rejecting the old sign pattern,
+  the KMS fluctuation-dissipation factor, positivity of a finite noise covariance,
+  the Einstein--Langevin
   pushforward covariance identity \(GNG^T\), exact retained-sector
   mean-response and noise trace bounds for the finite response-window
   diagnostic, the finite stress/gravity scheme-transport identity for
