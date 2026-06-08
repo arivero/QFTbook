@@ -1,10 +1,26 @@
 #!/usr/bin/env python3
 """Finite checks for Lieb-Robinson and spectral-flow algebra.
 
-The checks cover the finite-regulator locality machinery in Volume IX,
-Chapter 7: overlap-chain counting for the path-count Lieb-Robinson estimate,
-the elementary exponential tail bound, finite two-level spectral-flow
-transport, and the time-window split behind quasi-local generator tails.
+Evidence contract.
+Target claims: the finite-regulator locality machinery in Volume IX,
+Chapter 7, the quasi-local spectral-flow mechanism behind gapped phase
+equivalence, and the exclusion of continuity-only phase criteria.
+Independent construction: explicit overlap-chain counting on a finite line,
+the factorial-to-exponential tail inequality, two-level projection transport,
+the time-window split for quasi-local generator tails, and finite model
+diagnostics with continuous correlators or free energy but failed uniform
+stability.
+Imported assumptions: finite-dimensional local Hilbert spaces, the chapter's
+filter convention for quasi-adiabatic continuation, and the use of these
+finite checks as arithmetic companions to the imported thermodynamic
+automorphic-equivalence theorem.
+Negative controls: a mass parameter tending to zero keeps each fixed-distance
+correlator continuous while losing every positive gap lower bound and sending
+the correlation length to infinity; a value-only topology on a critical free
+energy misses a divergent susceptibility.
+Scope boundary: these checks do not prove the infinite-volume
+Lieb-Robinson/spectral-flow theorem, establish a continuum gauge-theory phase
+equivalence, or classify gapless universality classes.
 """
 
 from __future__ import annotations
@@ -190,6 +206,20 @@ def filter_tail(beta: float, threshold: float) -> float:
     return math.exp(-beta * threshold)
 
 
+def massive_correlator(mass: float, distance: float) -> float:
+    return math.exp(-mass * distance)
+
+
+def critical_free_energy(parameter: float) -> float:
+    if parameter == 0.0:
+        return 0.0
+    return parameter * parameter * math.log(parameter * parameter)
+
+
+def critical_susceptibility(parameter: float) -> float:
+    return 2.0 * math.log(parameter * parameter) + 6.0
+
+
 def check_quasilocal_tail_split() -> None:
     beta = 1.3
     velocity = 2.0
@@ -210,11 +240,56 @@ def check_quasilocal_tail_split() -> None:
         )
 
 
+def check_uniform_gap_is_not_pointwise_continuity() -> None:
+    distances = [1.0, 2.0, 5.0, 10.0]
+    small_mass = 1.0e-4
+
+    for distance in distances:
+        massless_value = massive_correlator(0.0, distance)
+        nearby_value = massive_correlator(small_mass, distance)
+        assert_true(
+            abs(nearby_value - massless_value) < 2.0e-3,
+            "finite-distance correlators can be continuous at a gap closing",
+        )
+
+    gaps_along_path = [1.0 / n for n in range(1, 200)] + [0.0]
+    assert_true(min(gaps_along_path) == 0.0, "critical path loses a positive gap lower bound")
+    assert_true(
+        not all(gap >= 0.05 for gap in gaps_along_path),
+        "continuity-only criterion incorrectly supplied a uniform gap",
+    )
+
+    correlation_lengths = [1.0 / gap for gap in gaps_along_path if gap > 0.0]
+    assert_true(
+        correlation_lengths[-1] > 100.0 * correlation_lengths[0],
+        "closing gap produces an unbounded correlation-length sequence",
+    )
+
+
+def check_weak_topology_ignores_susceptibility_divergence() -> None:
+    parameters = [10.0 ** (-k) for k in range(1, 8)]
+    values = [abs(critical_free_energy(parameter)) for parameter in parameters]
+    susceptibilities = [abs(critical_susceptibility(parameter)) for parameter in parameters]
+
+    assert_true(values[-1] < values[0], "critical free energy can remain continuous")
+    assert_true(values[-1] < 1.0e-10, "weak value topology sees the critical point as close")
+    assert_true(
+        susceptibilities[-1] > 3.0 * susceptibilities[0],
+        "derivative-sensitive diagnostics detect the critical singularity",
+    )
+    assert_true(
+        abs(critical_free_energy(parameters[-1]) - critical_free_energy(0.0)) < 1.0e-10,
+        "value-only pseudometric misses the derivative singularity",
+    )
+
+
 def main() -> None:
     check_overlap_path_count()
     check_exponential_tail_bound()
     check_two_level_spectral_flow()
     check_quasilocal_tail_split()
+    check_uniform_gap_is_not_pointwise_continuity()
+    check_weak_topology_ignores_susceptibility_divergence()
     print("Finite lattice locality and spectral-flow checks passed.")
 
 

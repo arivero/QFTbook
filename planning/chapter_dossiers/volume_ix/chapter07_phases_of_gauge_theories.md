@@ -26,6 +26,12 @@ and topological sectors fit together.
   finite \(\mathbb Z_2\) model, gauge-invariant observable algebra, expansion
   variables, and diagnostic limitations; the constants, polymer convergence,
   and infinite-volume analyticity are marked as imported theorem input.
+- `SRC-EXTERNAL-GAPPED-AUTOMORPHIC-EQUIVALENCE`:
+  Bachmann--Michalakis--Nachtergaele--Sims are used for the theorem-boundary
+  statement that uniformly gapped local Hamiltonian paths yield quasi-local
+  spectral-flow automorphisms implementing equivalence of gapped ground-state
+  phases.  The chapter derives only the finite locality/spectral-flow
+  mechanism and treats thermodynamic convergence as imported theorem input.
 - `SRC-EXTERNAL-GAUGE-HIGGS-DIAGNOSTICS`: Fredenhagen--Marcu and
   Caudy--Greensite are used for charged-state/remnant-symmetry diagnostic
   context around the local analytic theorem.
@@ -36,6 +42,11 @@ and topological sectors fit together.
 - `A_obs`: declared quasi-local observable system.
 - `omega`: thermodynamic-limit state on `A_obs`.
 - `P`: parameter domain of couplings and topological terms.
+- `alpha_{1<-0}`: quasi-local spectral-flow automorphism transporting the
+  declared observable algebra and ground-state sector along a uniformly gapped
+  local path.
+- `gamma`: volume-uniform positive gap lower bound in the gapped phase
+  equivalence criterion.
 - `Phi(Z)`, `I_Lambda`, `J_*`, `N_*`: finite interaction terms, nonzero
   interaction supports, interaction strength, and overlap degree in the
   finite-regulator locality section.
@@ -95,11 +106,21 @@ and topological sectors fit together.
 
 ## Claim Ledger
 
-- Defines a phase only after specifying regulator class, parameter domain,
-  observable system, limit prescription, and comparison topology.
-- Defines phases as connected regions over which thermodynamic-limit states,
-  local spectra, correlators, extended operators, symmetry realization, and
-  topological sectors extend continuously.
+- Defines a phase problem only after specifying regulator class, parameter
+  domain, observable system, limit prescription, fixed symmetry/global-form/
+  boundary conventions, and a stability criterion; comparison topology is
+  auxiliary data for transported observables.
+- Replaces continuity-only phase equivalence by a regulated gapped criterion:
+  same phase requires a local Hamiltonian path with uniform locality bounds,
+  fixed symmetry/global-form/boundary data, a volume-uniform positive gap above
+  the declared ground-state band, controlled thermodynamic limits, and a
+  quasi-local spectral-flow automorphism transporting the observable algebras
+  and ground-state sectors.
+- Separates phase boundaries and gapless universality: a boundary includes
+  loss of the uniform gap, divergent correlation length, failed limit, changed
+  declared data, or failed automorphism even when pointwise observables remain
+  continuous; gapless regimes require separately declared stable IR data and no
+  general automorphic equivalence theorem is assumed.
 - Proves a finite path-count Lieb--Robinson bound from the commutator
   expansion, with explicit dependence on interaction strength, overlap degree,
   interaction-boundary size, and overlap-chain distance.
@@ -187,7 +208,10 @@ and topological sectors fit together.
 - `calculation-checks/lattice_locality_flow_checks.py` verifies overlap-chain
   counting for the finite path-count Lieb--Robinson estimate, the
   factorial-to-exponential tail bound, two-level spectral-flow transport, and
-  the time-window split behind quasi-local generator tails.
+  the time-window split behind quasi-local generator tails.  It also includes
+  negative controls showing that fixed-distance correlators can remain
+  continuous while a gap closes and that a value-only comparison topology can
+  miss a divergent susceptibility.
 - `calculation-checks/toric_code_logical_operator_checks.py` verifies the
   finite one-form laboratory: star/plaquette commutation, stabilizer
   redundancies, ground-space dimension, logical line anticommutation,
@@ -234,3 +258,8 @@ screening quotient, condensate subgroup, and topological sector.
   theorem-boundary quotation, polymer-domain mechanism map, representation and
   observable limitations, primary references, and
   `gauge_higgs_fradkin_shenker_checks.py`.
+- 2026-06-08 issue #881 pass: replaced the opening continuity-only phase
+  definition with a uniform gapped-path/quasi-local-automorphism criterion,
+  separated phase boundaries from gapless universality, added the
+  Bachmann--Michalakis--Nachtergaele--Sims theorem boundary, and added
+  continuity-only negative controls to `lattice_locality_flow_checks.py`.
