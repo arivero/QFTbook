@@ -88,6 +88,17 @@ component, or a specified family of extremal states.  A Hamiltonian phase datum
 consists of this state carrier together with the finite-volume band, boundary
 conditions, selector, and limiting procedure that choose it.
 
+If \(P_n(p)\) is an arbitrary isolated band, then
+\(\mathcal S_p^{\rm band}\) is only a band-supported limit set.  It is a
+ground-state set only under the bottom-band hypothesis: for finite-volume
+ground energies \(E_n(p)=\inf\sigma(H_n(p))\) there are
+\(\delta_n\downarrow0\) and \(\gamma>0\), independent of \(n\), such that the
+chosen projection is supported in
+\([E_n(p),E_n(p)+\delta_n]\) and the rest of the spectrum lies above
+\(E_n(p)+\delta_n+\gamma\).  An isolated excited band can be transported by
+finite spectral flow, but its weak-star limits are not ground states merely
+because the band is isolated.
+
 The words naming subsets are not interchangeable.  A face
 \(F\subseteq\mathcal S_p^{\rm band}\) is a convex subset such that
 \(\lambda\omega_1+(1-\lambda)\omega_2\in F\), \(0<\lambda<1\), forces
@@ -126,22 +137,26 @@ finite-volume sequence \(\Lambda_n\), with Hamiltonians
 \(H_n(s)=\sum_X\Phi_{n,s}(X)\), such that:
 \begin{enumerate}
 \item the interaction range, interaction norm, overlap degree, and the
-  corresponding bounds for \(\partial_s\Phi_{n,s}\) are uniform in \(n\) and
-  \(s\), or more generally the interactions and their \(s\)-derivatives obey
-  the common summability and exhaustion hypotheses of
+  corresponding support-cardinality bounds for \(\partial_s\Phi_{n,s}\) are
+  uniform in \(n\) and \(s\), or more generally the interactions and their
+  support-weighted \(s\)-derivatives obey the common summability and
+  exhaustion hypotheses of
   Definition~\ref{def:uniform-summable-interaction-hypotheses};
 \item the path is sufficiently regular in \(s\) in that interaction norm, with
   an admissible quasi-adiabatic filter, to apply the spectral-flow theorem;
 \item the declared symmetry, global form, anomaly counterterms, boundary
   convention, quasi-local observable algebra, and typed phase-data slots are
   fixed along the path;
-\item a declared ground-state band projection \(P_n(s)\), with spectral subset
-  \(\sigma^{\mathrm{band}}_n(s)\subset\sigma(H_n(s))\), is separated from the
-  rest of the finite-volume spectrum by a volume-uniform gap
+\item a declared finite-volume spectral projection \(P_n(s)\), with spectral
+  subset \(\sigma^{\mathrm{band}}_n(s)\subset\sigma(H_n(s))\), is separated
+  from the rest of the finite-volume spectrum by a volume-uniform gap
   \[
     \operatorname{dist}\bigl(\sigma^{\mathrm{band}}_n(s),
     \sigma(H_n(s))\setminus\sigma^{\mathrm{band}}_n(s)\bigr)\ge \gamma>0 ;
   \]
+  when the path is used as a ground-state phase path, this projection is the
+  bottom band and satisfies the \(\delta_n\downarrow0\) ground-band condition
+  stated in Definition~\ref{def:hamiltonian-phase-carrier};
 \item the thermodynamic limit of the quasi-local observable system, the
   finite-volume band-selected state sets \(\mathcal S_s^{\rm band}\), any
   selected state carriers \(\mathfrak T_s\), any representation or sector
@@ -159,16 +174,16 @@ images of one another.
 \label{thm:gapped-path-automorphic-equivalence-imported}
 For a gapped regulated phase path satisfying the hypotheses of
 Definition~\ref{def:gapped-regulated-phase-equivalence}, the
-Bachmann--Michalakis--Nachtergaele--Sims automorphic-equivalence theorem
-\cite{BachmannMichalakisNachtergaeleSims2012Automorphic} supplies a
-spectral-flow cocycle whose thermodynamic limit is a quasi-local
-automorphism
+Bachmann--Michalakis--Nachtergaele--Sims thermodynamic spectral-flow theorem,
+specifically Theorem 5.4 of
+\cite{BachmannMichalakisNachtergaeleSims2012Automorphic}, supplies a
+spectral-flow cocycle whose thermodynamic limit is a quasi-local automorphism
 \[
   \alpha_{1\leftarrow0}:\mathcal A_{\mathrm{obs}}(p_0)
   \longrightarrow \mathcal A_{\mathrm{obs}}(p_1)
 \]
 of the quasi-local observable algebra.  The induced dual map transports the
-full band-selected infinite-volume ground-state set:
+full weak-star limit set supported on the declared band:
 \[
   \mathcal S_{p_1}^{\rm band}
   =
@@ -178,15 +193,23 @@ full band-selected infinite-volume ground-state set:
     \omega\in\mathcal S_{p_0}^{\rm band}
   \bigr\}.
 \]
-This is the BMNS setwise conclusion.  It does not transport an independently
-chosen face, branch, boundary-selected set, or representation class unless a
-separate selector theorem or definition supplies that covariance.  It also does
-not say that all states inside the transported set are phases of one another.
-If the path, observable system, and quasi-adiabatic generator are equivariant
-for a fixed declared symmetry or global-form action, the automorphism
-intertwines that action.  Symmetry may carry an extremal branch to another
-branch in the same orbit, but equivariant transport does not merge inequivalent
-coexisting phase faces.
+This is the BMNS setwise conclusion for the declared spectral interval.  When
+the declared interval is the bottom band
+\([E_n(s),E_n(s)+\delta_n]\), with \(\delta_n\to0\) and a uniform gap above it,
+the transported set is the ground-state set used in the ground-state phase
+formulation, matching Definition 5.1 and Theorem 5.4 of
+\cite{NachtergaeleSimsYoung2019QuasiLocality}.  For a merely isolated excited
+band the same finite projection algebra may transport band-supported states,
+but the word ``ground'' is not available without the bottom-band hypothesis.
+The theorem does not transport an independently chosen face, branch,
+boundary-selected set, or representation class unless a separate selector
+theorem or definition supplies that covariance.  It also does not say that all
+states inside the transported set are phases of one another.  If the path,
+observable system, and quasi-adiabatic generator are equivariant for a fixed
+declared symmetry or global-form action, the automorphism intertwines that
+action.  Symmetry may carry an extremal branch to another branch in the same
+orbit, but equivariant transport does not merge inequivalent coexisting phase
+faces.
 \end{theorem}
 
 \begin{proposition}[Selected state carriers require a covariant selector]
@@ -559,7 +582,8 @@ graph with growing overlap degree can erase the uniform light cone.
 \begin{definition}[Uniform summable interaction hypotheses]
 \label{def:uniform-summable-interaction-hypotheses}
 Let \(\Gamma\) be the infinite metric lattice underlying the exhaustion
-\(\Lambda_n\nearrow\Gamma\).  A positive nonincreasing weight
+\(\Lambda_n\nearrow\Gamma\), with the uniform metric growth needed for the
+summable \(F\)-function estimates below.  A positive nonincreasing weight
 \(\mathfrak F:[0,\infty)\to(0,\infty)\) is an interaction weight when
 \[
   \|\mathfrak F\|_1
@@ -587,6 +611,18 @@ On-site terms are included by \(x=y\), or equivalently controlled by a separate
 uniform one-site bound; they change local energies but do not propagate
 commutators between disjoint regions without multi-site terms.
 
+For a differentiable interaction path define the support-weighted derivative
+\[
+  (\partial_1\Phi_{n,s})(Z)
+  :=
+  |Z|\,\partial_s\Phi_{n,s}(Z).
+\]
+This is the derivative norm that appears in the spectral-flow theorem: BMNS
+write \(\partial\Phi_X(s)=|X|\Phi'_X(s)\), and the NSY spectral-flow
+assumption bounds
+\(\sum_{X\ni x,y}(\|\Phi(X,s)\|+|X|\,\|\Phi'(X,s)\|)\) by an \(F\)-function
+kernel.
+
 An exhausting Hamiltonian path satisfies the uniform summable locality
 hypotheses when, for some exponentially weighted
 \(\mathfrak F_a(r)=e^{-ar}\mathfrak F(r)\) with \(a>0\),
@@ -595,20 +631,31 @@ hypotheses when, for some exponentially weighted
   \bigl(
     \|\Phi_{n,s}\|_{\mathfrak F_a}
     +
-    \|\partial_s\Phi_{n,s}\|_{\mathfrak F_a}
+    \|\partial_1\Phi_{n,s}\|_{\mathfrak F_a}
   \bigr)<\infty,
 \]
 the local Hilbert-space dimensions and the metric growth entering
 \(\|\mathfrak F\|_1,C_{\mathfrak F}\) are uniform, and the finite-volume
-interactions and their \(s\)-derivatives converge on every fixed local region
-with boundary terms receding in this same norm.  Equivalently, for each fixed
-finite \(X\), the norm-weighted contribution of all interaction terms that can
-influence \(X\) only through the boundary of \(\Lambda_n\) tends to zero as
-the boundary recedes.  The gapped-path theorem also requires a volume-uniform
-spectral gap above the declared band and an admissible real odd
-quasi-adiabatic filter \(F_\gamma\) whose Fourier transform equals
-\(\ii/\omega\) outside the gap and whose time tail is summable against the
-Lieb--Robinson light-cone leakage.
+interactions and their support-weighted \(s\)-derivatives converge locally in
+this same norm.  Concretely, for each fixed finite \(X\) and each fixed
+neighborhood radius \(R\), the restrictions of
+\(\Phi_{n,s}\) and \(\partial_1\Phi_{n,s}\) to the \(R\)-neighborhood of \(X\)
+are Cauchy uniformly in \(s\), and the norm-weighted contribution of all
+terms that can influence \(X\) only through the boundary of \(\Lambda_n\)
+tends to zero as the boundary recedes.  A bound on
+\(\|\partial_s\Phi_{n,s}\|_{\mathfrak F_a}\) is equivalent only in a
+finite-range setting with uniformly bounded support cardinality
+\(|Z|\le K\), where
+\(\|\partial_1\Phi_{n,s}\|_{\mathfrak F_a}\le
+K\|\partial_s\Phi_{n,s}\|_{\mathfrak F_a}\).  Without such a cardinality
+bound, the unweighted derivative norm is not the theorem hypothesis.
+
+The gapped-path theorem also requires a volume-uniform spectral gap above the
+declared band, and the ground-state phase version requires the declared band
+to be the bottom band with \(\delta_n\downarrow0\).  Finally one needs an
+admissible real odd quasi-adiabatic filter \(F_\gamma\) whose Fourier
+transform equals \(\ii/\omega\) outside the gap and whose time tail is
+summable against the Lieb--Robinson light-cone leakage.
 \end{definition}
 
 The finite-range bounded-degree setting of
@@ -616,10 +663,11 @@ Theorem~\ref{thm:finite-path-count-lieb-robinson-bound} is the elementary
 special case of this \(F\)-function formalism.  The thermodynamic
 automorphism used in
 Theorem~\ref{thm:gapped-path-automorphic-equivalence-imported} is the
-Bachmann--Michalakis--Nachtergaele--Sims spectral-flow theorem under such
-uniform hypotheses \cite{BachmannMichalakisNachtergaeleSims2012Automorphic},
-with the Lieb--Robinson kernel and quasi-local map framework as in
-Nachtergaele--Sims and Nachtergaele--Sims--Young
+BMNS Theorem 5.4 under such uniform hypotheses
+\cite{BachmannMichalakisNachtergaeleSims2012Automorphic}, with the
+support-weighted interaction and local \(F\)-norm convergence framework stated
+explicitly in NSY Assumption 4.12, Theorem 4.14, Definition 5.1, and Theorem
+5.4
 \cite{NachtergaeleSims2006LiebRobinsonClustering,
 NachtergaeleSimsYoung2019QuasiLocality}.  The displayed finite estimate is
 one mechanism input; it is not by itself the infinite-volume Cauchy theorem.
@@ -822,12 +870,19 @@ interaction estimate
   \sup_{\Lambda,s}\|\Psi_{\Lambda,s}\|_{\widetilde{\mathfrak F}}
   \le
   C_{\gamma,\mathfrak F}
-  \sup_{\Lambda,s}\|\partial_s\Phi_{\Lambda,s}\|_{\mathfrak F_a}
+  \sup_{\Lambda,s}\|\partial_1\Phi_{\Lambda,s}\|_{\mathfrak F_a}
 \]
 for a summable weight \(\widetilde{\mathfrak F}\) determined by the
 Lieb--Robinson rate and the filter tail.  This is the finite calculation behind
 the statement that the quasi-adiabatic generator is itself a uniformly
 quasi-local interaction.
+
+The support factor is essential.  In the shell decomposition a derivative term
+with support \(X\) is counted through every pair of sites it can connect; BMNS
+and NSY absorb this bookkeeping by estimating
+\(|X|\|\partial_s\Phi(X,s)\|\).  An unweighted derivative norm controls the
+right-hand side only when all nonzero derivative supports have uniformly
+bounded cardinality.
 
 Let \(\alpha_s^{(n)}\) be the finite-volume flow generated by
 \(\Psi_{\Lambda_n,s}\).  For a fixed local observable \(A\in\mathcal A_X\) and
@@ -843,15 +898,16 @@ an estimate of the form
     \sum_{r\ge R}\widetilde{\mathfrak F}(r)
   \right),
 \]
-uniformly for \(s\in[0,1]\).  Here \(\varepsilon_{m,n}(X,R)\) measures the
-local difference of the two finite-volume interactions and boundary
-conventions inside the \(R\)-neighborhood of \(X\).  The exhaustion hypothesis
-in Definition~\ref{def:uniform-summable-interaction-hypotheses} sends
+uniformly for \(s\in[0,1]\).  Here \(\varepsilon_{m,n}(X,R)\) measures, inside
+the \(R\)-neighborhood of \(X\), local differences in the interactions, in the
+support-weighted derivatives, and in the boundary conventions.  The local
+\(F\)-norm convergence hypothesis in
+Definition~\ref{def:uniform-summable-interaction-hypotheses} sends
 \(\varepsilon_{m,n}(X,R)\) to zero for fixed \(R\), while the summability of
 \(\widetilde{\mathfrak F}\) sends the tail to zero as \(R\to\infty\).  Thus the
-finite-volume spectral flows are Cauchy on every local observable, and the same
-estimate gives independence of the exhaustion or boundary convention whenever
-their local differences vanish in this norm.
+finite-volume spectral flows are Cauchy on every local observable, and the
+same estimate gives independence of the exhaustion or boundary convention
+whenever their local differences vanish in this norm.
 
 The finite estimates just displayed are the local mechanism and Cauchy
 bookkeeping used by the imported automorphic-equivalence theorem.  In an

@@ -8,19 +8,22 @@ equivalence, and the exclusion of continuity-only phase criteria.
 Independent construction: explicit adjacent-overlap-chain counting on a finite
 line, a negative control for the invalid growing-support recursion, the
 factorial-to-exponential tail inequality, an exact nearest-neighbor Pauli-chain
-commutator comparison, two-level projection transport, the time-window split
-for quasi-local generator tails, a finite Cauchy-tail arithmetic check for
-receding boundaries, and finite model diagnostics with continuous correlators
-or free energy but failed uniform stability.  A growing-support negative
-control separates pointwise convergence on every fixed local algebra from
-transport of boundary/logical/extended observable sequences.  A
+commutator comparison, a support-weighted derivative negative control,
+two-level projection transport, an isolated-excited-band control, the
+time-window split for quasi-local generator tails, a finite Cauchy-tail
+arithmetic check for receding boundaries, and finite model diagnostics with
+continuous correlators or free energy but failed uniform stability.  A
+growing-support negative control separates pointwise convergence on every
+fixed local algebra from transport of boundary/logical/extended observable
+sequences.  A
 symmetry-breaking finite-band example separates a bare parameter value from the
 selected ground-state set or phase face and checks that selected-face transport
 needs a covariant selector.
 Imported assumptions: finite-dimensional local Hilbert spaces, the chapter's
 filter convention for quasi-adiabatic continuation, and the use of these
 finite checks as arithmetic companions to the imported thermodynamic
-automorphic-equivalence theorem.
+automorphic-equivalence theorem.  The spectral-flow theorem uses the BMNS/NSY
+support-weighted derivative norm, not merely an unweighted derivative norm.
 Negative controls: a mass parameter tending to zero keeps each fixed-distance
 correlator continuous while losing every positive gap lower bound and sending
 the correlation length to infinity; a value-only topology on a critical free
@@ -30,7 +33,8 @@ grows with the volume has no controlled transported limit; a gapped
 finite-volume ground band can contain two extremal branches, so the parameter
 value alone does not select a phase carrier; the full ground-state set can be
 transported while a noncovariantly chosen endpoint face is not the image of the
-initial face.
+initial face; an isolated excited band can be transported by finite spectral
+flow without becoming a ground-state set.
 Scope boundary: these checks do not prove the infinite-volume
 Lieb-Robinson/spectral-flow theorem, establish a continuum gauge-theory phase
 equivalence, or classify gapless universality classes.
@@ -195,6 +199,50 @@ def check_growing_support_recursion_is_not_path_count() -> None:
     )
 
 
+def check_support_weighted_derivative_required() -> None:
+    """Unbounded supports can defeat the unweighted derivative norm.
+
+    All terms below contain the same pair of sites, so the F-kernel denominator
+    is fixed.  The unweighted derivative contributions sum like 1/L^2, while
+    the BMNS/NSY support-weighted derivative contributions sum like 1/L.
+    """
+
+    def unweighted_partial(max_support_size: int) -> float:
+        return sum(1.0 / (support_size**2) for support_size in range(2, max_support_size + 1))
+
+    def support_weighted_partial(max_support_size: int) -> float:
+        return sum(
+            support_size * (1.0 / (support_size**2))
+            for support_size in range(2, max_support_size + 1)
+        )
+
+    unweighted_16 = unweighted_partial(16)
+    unweighted_4096 = unweighted_partial(4096)
+    weighted_16 = support_weighted_partial(16)
+    weighted_4096 = support_weighted_partial(4096)
+
+    assert_true(
+        unweighted_4096 < 0.65,
+        "unweighted derivative contribution stays bounded for 1/L^2 amplitudes",
+    )
+    assert_true(
+        weighted_4096 > 3.0 * weighted_16,
+        "support-weighted derivative contribution keeps growing like the harmonic series",
+    )
+
+    bounded_cardinality = 5
+    bounded_terms = [1.0 / (support_size**2) for support_size in range(2, bounded_cardinality + 1)]
+    bounded_unweighted = sum(bounded_terms)
+    bounded_weighted = sum(
+        support_size * amplitude
+        for support_size, amplitude in zip(range(2, bounded_cardinality + 1), bounded_terms)
+    )
+    assert_true(
+        bounded_weighted <= bounded_cardinality * bounded_unweighted,
+        "uniform support cardinality makes weighted and unweighted derivative norms equivalent",
+    )
+
+
 def tail_sum(a: float, distance: int, terms: int = 80) -> float:
     return sum((a**n) / math.factorial(n) for n in range(distance, terms))
 
@@ -320,6 +368,54 @@ def check_two_level_spectral_flow() -> None:
         k_generator = commutator(dp, p)
         rhs_k = commutator(k_generator, p)
         assert_close(frobenius_norm(matadd(dp, rhs_k, 1, -1)), 0.0, "projection commutator generator transports the band")
+
+
+def check_isolated_excited_band_is_not_ground_state_set() -> None:
+    """Projection transport for an excited band does not make it a ground band."""
+
+    h0 = np.diag([0.0, 2.0, 5.0]).astype(complex)
+    p_excited_0 = np.diag([0.0, 1.0, 0.0]).astype(complex)
+    theta = 0.37
+    rotation = np.array(
+        [
+            [1.0, 0.0, 0.0],
+            [0.0, math.cos(theta), -math.sin(theta)],
+            [0.0, math.sin(theta), math.cos(theta)],
+        ],
+        dtype=complex,
+    )
+
+    h1 = rotation @ h0 @ rotation.conj().T
+    p_excited_1 = rotation @ p_excited_0 @ rotation.conj().T
+    transported_projection = rotation @ p_excited_0 @ rotation.conj().T
+
+    assert_close(
+        np.linalg.norm(p_excited_1 @ p_excited_1 - p_excited_1, ord="fro"),
+        0.0,
+        "rotated excited band is still a projection",
+    )
+    assert_close(
+        np.linalg.norm(p_excited_1 - transported_projection, ord="fro"),
+        0.0,
+        "finite unitary transports the isolated excited-band projection",
+    )
+    assert_close(
+        np.linalg.norm(h1 @ p_excited_1 - p_excited_1 @ h1, ord="fro"),
+        0.0,
+        "transported excited projection is a spectral projection",
+    )
+
+    excited_state = rotation @ np.array([0.0, 1.0, 0.0], dtype=complex)
+    excited_energy = float(np.real(np.vdot(excited_state, h1 @ excited_state)))
+    ground_energy = float(np.min(np.linalg.eigvalsh(h1)))
+    upper_gap = 5.0 - 2.0
+    lower_gap = 2.0 - 0.0
+
+    assert_true(lower_gap > 0.0 and upper_gap > 0.0, "the excited band is isolated")
+    assert_true(
+        excited_energy > ground_energy + 1.0,
+        "a transported isolated excited-band state is not a ground state",
+    )
 
 
 def exponential_filter_abs(beta: float, t: float) -> float:
@@ -585,9 +681,11 @@ def check_parameter_value_does_not_select_coexisting_phase_face() -> None:
 def main() -> None:
     check_overlap_path_count()
     check_growing_support_recursion_is_not_path_count()
+    check_support_weighted_derivative_required()
     check_exponential_tail_bound()
     check_nearest_neighbor_commutator_bound()
     check_two_level_spectral_flow()
+    check_isolated_excited_band_is_not_ground_state_set()
     check_quasilocal_tail_split()
     check_receding_boundary_cauchy_tail_bound()
     check_uniform_gap_is_not_pointwise_continuity()

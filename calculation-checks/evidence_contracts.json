@@ -151,7 +151,9 @@
         "finite spectral-flow algebra remains separate from thermodynamic automorphic theorem",
         "finite Lieb-Robinson count uses adjacent support-kernel paths, not growing clusters",
         "thermodynamic spectral flow requires uniform summable interaction and Cauchy hypotheses",
+        "support-weighted interaction derivative is required for spectral-flow theorem",
         "fixed-local automorphic convergence does not transport growing-support extended data",
+        "isolated excited bands transport as band-supported states, not ground states",
         "gapped parameter value does not select a unique ground-state phase face",
         "selected ground-state faces require a spectral-flow-covariant selector"
       ]

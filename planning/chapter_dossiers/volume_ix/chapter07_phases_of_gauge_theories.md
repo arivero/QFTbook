@@ -30,15 +30,19 @@ and topological sectors fit together.
   Bachmann--Michalakis--Nachtergaele--Sims are used for the theorem-boundary
   statement that uniformly gapped local Hamiltonian paths yield quasi-local
   spectral-flow automorphisms transporting the full band-selected weak-star
-  compact ground-state set setwise.  Selected faces or branches require a
-  separate spectral-flow-covariant selector theorem or definition.  The chapter
-  derives only the finite locality/spectral-flow mechanism and treats
-  thermodynamic convergence as imported theorem input; it does not identify all
-  states in a coexisting ground-state set with one another.
+  limit set setwise (BMNS Theorem 5.4).  This set is a ground-state set only
+  when the declared spectral interval is the bottom band with
+  \(\delta_n\to0\) and a uniform gap above it, as in NSY Definition 5.1 and
+  Theorem 5.4.  Selected faces or branches require a separate
+  spectral-flow-covariant selector theorem or definition.  The chapter derives
+  only the finite locality/spectral-flow mechanism and treats thermodynamic
+  convergence as imported theorem input; it does not identify all states in a
+  coexisting ground-state set with one another.
 - `SRC-EXTERNAL-LR-QUASILOCALITY`: Nachtergaele--Sims and
   Nachtergaele--Sims--Young supply the interaction-kernel, summable
-  \(F\)-function, quasi-local map, and spectral-flow automorphism framework used
-  to state the uniform thermodynamic hypotheses.  The chapter owns the finite
+  \(F\)-function, support-weighted derivative, quasi-local map, local
+  \(F\)-norm convergence, and spectral-flow automorphism framework used to state
+  the uniform thermodynamic hypotheses.  The chapter owns the finite
   support-path proof and finite shell-tail mechanism, while the full
   infinite-volume Cauchy theorem remains cited theorem input.
 - `SRC-EXTERNAL-GAUGE-HIGGS-DIAGNOSTICS`: Fredenhagen--Marcu and
@@ -56,10 +60,11 @@ and topological sectors fit together.
   state set, selected state carrier subset, and separate representation/sector
   carrier.
 - `alpha_{1<-0}`: quasi-local spectral-flow automorphism transporting the
-  declared observable algebra and full band-selected ground-state set setwise;
-  selected faces require a covariant selector before they can be transported.
-  It is the output of the imported automorphic-equivalence theorem, not a
-  hypothesis in the gapped path definition.
+  declared observable algebra and full band-selected state set setwise; this is
+  a ground-state set only under the bottom-band hypothesis.  Selected faces
+  require a covariant selector before they can be transported.  It is the
+  output of the imported automorphic-equivalence theorem, not a hypothesis in
+  the gapped path definition.
 - `O_L`, `X_L`: increasing extended-operator family and its growing support,
   used only after a carrier topology and uniform estimates are declared.
 - `gamma`: volume-uniform positive gap lower bound in the gapped phase
@@ -140,13 +145,17 @@ and topological sectors fit together.
   criterion on selected Hamiltonian phase carriers, not bare parameter values:
   same phase requires a local Hamiltonian path with uniform locality bounds,
   sufficient \(s\)-regularity, fixed symmetry/global-form/boundary data, a
-  volume-uniform positive gap above the declared ground-state band, full
+  volume-uniform positive gap above the declared spectral band, the
+  support-weighted derivative and local \(F\)-norm convergence hypotheses, full
   band-selected weak-star compact state-set data, any selected state-carrier
   selector, any separate representation/sector carrier, and controlled
   thermodynamic/Cauchy hypotheses.  The quasi-local spectral-flow automorphism
   transporting the observable algebras and full band-selected state set is the
-  output of the imported automorphic-equivalence theorem; coexisting faces at
-  one Hamiltonian are transported only after a covariant selector is supplied.
+  output of the imported automorphic-equivalence theorem; it is a ground-state
+  phase statement only for a bottom band
+  \([E_n,E_n+\delta_n]\), \(\delta_n\to0\), with a uniform gap above it.
+  Coexisting faces at one Hamiltonian are transported only after a covariant
+  selector is supplied.
 - Types extended phase diagnostics before transporting them: fixed finite
   loops are local-algebra elements; increasing loop/surface nets require a
   topology on renormalized asymptotics and uniform estimates; charged/disorder
@@ -167,7 +176,8 @@ and topological sectors fit together.
   overlap-chain distance.  The metric light-cone version follows when support
   diameters are uniformly bounded.
 - Defines the uniform summable interaction norm, convolution constant, filter
-  tail condition, receding-boundary/exhaustion condition, and gap hypothesis
+  tail condition, support-weighted derivative norm, local \(F\)-norm
+  convergence and receding-boundary/exhaustion condition, and gap hypothesis
   needed before the finite locality estimate can be imported into the
   thermodynamic spectral-flow theorem.
 - Derives finite isolated-band spectral transport from the projection identity
@@ -255,16 +265,18 @@ and topological sectors fit together.
   overlap-chain counting for the finite path-count Lieb--Robinson estimate, a
   negative control showing why the growing-support recursion is not a path
   count, the factorial-to-exponential tail bound, an exact nearest-neighbor
-  Pauli-chain commutator comparison, two-level spectral-flow transport, the
-  time-window split behind quasi-local generator tails, and a receding-boundary
-  Cauchy-tail arithmetic check.  It also includes negative controls showing
-  that fixed-distance correlators can remain continuous while a gap closes and
-  that a value-only comparison topology can miss a divergent susceptibility,
-  plus a growing-support negative control in which automorphisms converge on
-  every fixed local algebra but fail to transport a boundary/logical observable
-  sequence, and an explicit finite Ising Hamiltonian selector check where the
-  full two-branch ground-state band transports setwise but plus/minus selected
-  faces transport only for a covariant boundary selector.
+  Pauli-chain commutator comparison, a support-weighted derivative negative
+  control, two-level spectral-flow transport, an isolated excited-band
+  transport control, the time-window split behind quasi-local generator tails,
+  and a receding-boundary Cauchy-tail arithmetic check.  It also includes
+  negative controls showing that fixed-distance correlators can remain
+  continuous while a gap closes and that a value-only comparison topology can
+  miss a divergent susceptibility, plus a growing-support negative control in
+  which automorphisms converge on every fixed local algebra but fail to
+  transport a boundary/logical observable sequence, and an explicit finite
+  Ising Hamiltonian selector check where the full two-branch ground-state band
+  transports setwise but plus/minus selected faces transport only for a
+  covariant boundary selector.
 - `calculation-checks/toric_code_logical_operator_checks.py` verifies the
   finite one-form laboratory: star/plaquette commutation, stabilizer
   redundancies, ground-space dimension, logical line anticommutation,
@@ -346,3 +358,12 @@ screening quotient, condensate subgroup, and topological sector.
   thermodynamic theorem.  The companion check now includes an invalid-recursion
   negative control, exact nearest-neighbor Pauli-chain commutator comparison,
   and receding-boundary Cauchy-tail arithmetic check.
+- 2026-06-08 issue #957 pass: matched the spectral-flow theorem boundary to
+  the exact support-weighted derivative and bottom-band hypotheses.  The chapter
+  now distinguishes arbitrary isolated band-supported limit sets from
+  ground-state sets, cites BMNS Theorem 5.4 and NSY Definition 5.1/Theorem 5.4
+  at the theorem boundary, and requires local \(F\)-norm convergence for both
+  interactions and support-weighted derivatives.  The companion check now
+  includes an unbounded-support negative control where unweighted derivative
+  sums stay bounded but support-weighted sums grow, plus a finite isolated
+  excited-band transport example that remains above the ground state.
