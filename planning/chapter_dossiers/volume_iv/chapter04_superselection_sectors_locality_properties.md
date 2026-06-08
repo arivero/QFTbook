@@ -1,4 +1,5 @@
 # Volume IV Chapter 04 — Superselection Sectors and Locality Properties
+Source-File: monograph/tex/volumes/volume_iv/chapter04_superselection_sectors_and_locality_properties.tex
 
 ## Source Position
 

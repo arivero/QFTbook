@@ -118,7 +118,8 @@ enforced audit is:
 
 The current machine-readable layer is therefore deliberately small:
 
-- chapter dossier heading audit through `tools/audit_chapter_dossiers.sh`;
+- chapter dossier heading and manifest-to-`Source-File` bijection audit
+  through `tools/audit_chapter_dossiers.sh`;
 - dependency control in `planning/13_development_dependency_map.md`;
 - reader-facing TeX phrase audit through `tools/audit_monograph_text.sh`;
 - build and log audit through `tools/build_monograph.sh`.

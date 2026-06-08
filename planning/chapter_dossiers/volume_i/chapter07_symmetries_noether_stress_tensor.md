@@ -1,4 +1,5 @@
 # Volume I, Chapter 7 Dossier: Symmetries, Noether Currents, and Stress Tensors
+Source-File: monograph/tex/volumes/volume_i/chapter07_symmetries_noether_theorem_and_stress_tensors.tex
 
 ## Status
 

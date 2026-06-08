@@ -7,6 +7,9 @@ Every mature chapter requires a dossier before reader-facing drafting.
 The dossier must contain:
 
 - working title and volume;
+- exact compiled source key, recorded as
+  `Source-File: monograph/tex/volumes/.../chapter....tex` immediately after
+  the dossier title;
 - logical role in the source spine;
 - primary source anchors;
 - comparison sources;

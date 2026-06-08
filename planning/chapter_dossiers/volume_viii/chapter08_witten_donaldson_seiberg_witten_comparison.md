@@ -1,4 +1,5 @@
 # Chapter 08: Witten-Donaldson Theory And The Seiberg-Witten Comparison
+Source-File: monograph/tex/volumes/volume_viii/chapter08_witten_donaldson_seiberg_witten_comparison.tex
 
 ## Source Position
 

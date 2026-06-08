@@ -1,4 +1,5 @@
 # Volume VI, Chapter 1 Dossier: Factorized Scattering And Integrability
+Source-File: monograph/tex/volumes/volume_vi/chapter01_factorized_scattering_and_integrability.tex
 
 ## Logical Role
 

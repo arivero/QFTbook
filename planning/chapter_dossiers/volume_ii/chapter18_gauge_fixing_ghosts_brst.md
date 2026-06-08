@@ -1,4 +1,5 @@
 # Volume II, Gauge Fixing, Ghosts, and BRST Cohomology Dossier
+Source-File: monograph/tex/volumes/volume_ii/chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex
 
 ## Source Position
 

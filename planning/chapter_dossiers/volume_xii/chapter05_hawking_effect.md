@@ -1,4 +1,5 @@
 # Volume XII, Chapter 5 Dossier: The Hawking Effect
+Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
 
 ## Logical Role
 

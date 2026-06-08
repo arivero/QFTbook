@@ -1,4 +1,5 @@
 # Volume III, Chapter 9 Dossier: Operator Product Expansion
+Source-File: monograph/tex/volumes/volume_iii/chapter09_operator_product_expansion.tex
 
 ## Logical Role
 

@@ -1,4 +1,5 @@
 # Volume III, Chapter 5 Dossier: Conformal Charges And Ward Identities
+Source-File: monograph/tex/volumes/volume_iii/chapter05_conformal_charges_and_ward_identities.tex
 
 ## Logical Role
 

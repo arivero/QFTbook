@@ -1,4 +1,5 @@
 # Volume IV, Jets, Infrared-Safe Observables, And Hadronization Dossier
+Source-File: monograph/tex/volumes/volume_ii/chapter19b_jets_ir_safe_observables_and_hadronization.tex
 
 ## Logical Role
 

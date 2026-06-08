@@ -1,4 +1,5 @@
 # Volume VI, Chapter 5 Dossier: Thermodynamic Bethe Ansatz
+Source-File: monograph/tex/volumes/volume_vi/chapter05_thermodynamic_bethe_ansatz.tex
 
 ## Logical Role
 

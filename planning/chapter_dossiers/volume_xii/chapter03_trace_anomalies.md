@@ -1,4 +1,5 @@
 # Volume XII, Chapter 3 Dossier: Trace Anomalies And Background Variations
+Source-File: monograph/tex/volumes/volume_xii/chapter03_trace_anomalies.tex
 
 ## Logical Role
 

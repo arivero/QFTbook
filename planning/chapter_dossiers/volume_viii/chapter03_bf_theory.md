@@ -1,4 +1,5 @@
 # Volume VIII, Chapter 3 Dossier: BF Theory
+Source-File: monograph/tex/volumes/volume_viii/chapter03_bf_theory.tex
 
 ## Logical Role
 

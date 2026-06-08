@@ -1,4 +1,5 @@
 # Volume XI, Chapter 3 Dossier: Lattice Reflection Positivity
+Source-File: monograph/tex/volumes/volume_xi/chapter03_lattice_reflection_positivity.tex
 
 ## Logical Role
 

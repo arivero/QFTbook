@@ -1,4 +1,5 @@
 # Volume II, Solitons and Collective Quantization Dossier
+Source-File: monograph/tex/volumes/volume_ii/chapter17c_solitons_collective_quantization.tex
 
 ## Source Position
 

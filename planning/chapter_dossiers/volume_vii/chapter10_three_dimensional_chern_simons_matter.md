@@ -1,4 +1,5 @@
 # Chapter 10: Three-Dimensional Chern-Simons-Matter Theories
+Source-File: monograph/tex/volumes/volume_vii/chapter10_three_dimensional_chern_simons_matter.tex
 
 ## Source Position
 

@@ -1,4 +1,5 @@
 # Volume I, Chapter 16a Dossier: Spinor and Gamma-Matrix Conventions
+Source-File: monograph/tex/volumes/volume_i/chapter16a_spinor_conventions.tex
 
 ## Source Placement
 

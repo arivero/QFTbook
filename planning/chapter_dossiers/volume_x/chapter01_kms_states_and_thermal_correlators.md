@@ -1,4 +1,5 @@
 # Volume X, Chapter 1 Dossier: KMS States And Thermal Correlators
+Source-File: monograph/tex/volumes/volume_x/chapter01_kms_states_and_thermal_correlators.tex
 
 ## Logical Role
 

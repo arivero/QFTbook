@@ -1,4 +1,5 @@
 # Chapter 05: Haag--Ruelle Theory And Mathematical Scattering
+Source-File: monograph/tex/volumes/volume_iv/chapter05_haag_ruelle_and_mathematical_scattering.tex
 
 ## Source Position
 

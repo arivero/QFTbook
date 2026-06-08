@@ -1,4 +1,5 @@
 # Volume VI, Chapter 4B Dossier: Nested Bethe Ansatz and Matrix Bethe--Yang Equations
+Source-File: monograph/tex/volumes/volume_vi/chapter04b_nested_bethe_ansatz_matrix_bethe_yang.tex
 
 ## Logical Role
 

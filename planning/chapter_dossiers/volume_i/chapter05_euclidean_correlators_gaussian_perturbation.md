@@ -1,4 +1,5 @@
 # Volume I, Chapter 5 Dossier: Euclidean Correlators, Gaussian Integrals, and Quantum-Mechanical Perturbation Theory
+Source-File: monograph/tex/volumes/volume_i/chapter05_euclidean_correlation_functions_and_gaussian_perturbation_theory.tex
 
 ## Status
 

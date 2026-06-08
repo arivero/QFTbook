@@ -1,4 +1,5 @@
 # Volume III, Chapter 3 Dossier: Stress Tensor, Weyl Structure, And Improvement
+Source-File: monograph/tex/volumes/volume_iii/chapter03_stress_tensor_weyl_structure_and_improvement.tex
 
 ## Logical Role
 

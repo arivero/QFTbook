@@ -1,4 +1,5 @@
 # Volume I, Chapter 20 Dossier: QED Renormalization and Electromagnetic Form Factors
+Source-File: monograph/tex/volumes/volume_i/chapter20_qed_renormalization_and_electromagnetic_form_factors.tex
 
 Status: revised, source-audited, and formalized on 2026-05-27.
 

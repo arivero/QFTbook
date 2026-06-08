@@ -1,4 +1,5 @@
 # Volume I, Chapter 10 Dossier: Perturbative Green Functions
+Source-File: monograph/tex/volumes/volume_i/chapter10_perturbative_green_functions_and_feynman_graphs.tex
 
 ## Source Placement
 

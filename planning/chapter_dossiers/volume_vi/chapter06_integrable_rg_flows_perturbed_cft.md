@@ -1,4 +1,5 @@
 # Chapter 06: Integrable RG Flows And Perturbed Two-Dimensional CFT
+Source-File: monograph/tex/volumes/volume_vi/chapter06_integrable_rg_flows_perturbed_cft.tex
 
 ## Source Position
 

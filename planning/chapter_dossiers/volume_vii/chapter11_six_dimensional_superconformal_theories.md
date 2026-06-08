@@ -1,4 +1,5 @@
 # Chapter 11: Six-Dimensional Superconformal Theories
+Source-File: monograph/tex/volumes/volume_vii/chapter11_six_dimensional_superconformal_theories.tex
 
 ## Source Position
 

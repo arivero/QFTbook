@@ -1,4 +1,5 @@
 # Volume II, Chapter 3 Dossier: Bound States from Exchange Amplitudes
+Source-File: monograph/tex/volumes/volume_ii/chapter03_bound_states_from_exchange_amplitudes.tex
 
 ## Source Placement
 

@@ -1,4 +1,5 @@
 # Volume II, Chapter 13 Dossier: Renormalized Operators And Minimal Subtraction
+Source-File: monograph/tex/volumes/volume_ii/chapter12_renormalized_operators_and_minimal_subtraction.tex
 
 ## Source Position
 

@@ -1,4 +1,5 @@
 # Chapter 07: Phases Of Gauge Theories
+Source-File: monograph/tex/volumes/volume_ix/chapter07_phases_of_gauge_theories.tex
 
 ## Source Position
 

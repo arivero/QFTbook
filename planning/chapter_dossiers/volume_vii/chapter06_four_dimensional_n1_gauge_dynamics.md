@@ -1,4 +1,5 @@
 # Chapter 06: Four-Dimensional N=1 Gauge Dynamics
+Source-File: monograph/tex/volumes/volume_vii/chapter06_four_dimensional_n1_gauge_dynamics.tex
 
 ## Source Position
 

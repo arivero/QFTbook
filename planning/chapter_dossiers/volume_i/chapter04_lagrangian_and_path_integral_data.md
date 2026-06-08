@@ -1,4 +1,5 @@
 # Volume I, Chapter 4 Dossier: Hamiltonian Evolution And Time-Sliced Path Integrals
+Source-File: monograph/tex/volumes/volume_i/chapter04_hamiltonian_evolution_and_time_sliced_path_integrals.tex
 
 ## Status
 

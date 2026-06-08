@@ -1,4 +1,5 @@
 # Volume VIII, Chapter 2 Dossier: Bordism Functoriality And Extended TQFT
+Source-File: monograph/tex/volumes/volume_viii/chapter02_bordism_functoriality_extended_tqft.tex
 
 ## Logical Role
 

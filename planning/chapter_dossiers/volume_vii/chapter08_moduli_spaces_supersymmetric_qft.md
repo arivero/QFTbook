@@ -1,4 +1,5 @@
 # Chapter 08: Moduli Spaces In Supersymmetric Quantum Field Theory
+Source-File: monograph/tex/volumes/volume_vii/chapter08_moduli_spaces_supersymmetric_qft.tex
 
 ## Source Position
 

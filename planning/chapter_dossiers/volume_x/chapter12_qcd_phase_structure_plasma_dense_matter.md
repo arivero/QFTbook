@@ -1,4 +1,5 @@
 # Chapter 12: QCD Phase Structure, Plasma, and Dense Matter
+Source-File: monograph/tex/volumes/volume_x/chapter12_qcd_phase_structure_plasma_dense_matter.tex
 
 ## Source Position
 

@@ -1,4 +1,5 @@
 # Volume I, Chapter 2 Dossier: Relativistic Quantum Mechanics And Local Operator Structure
+Source-File: monograph/tex/volumes/volume_i/chapter02_quantum_mechanics_relativity_and_locality.tex
 
 ## Status
 

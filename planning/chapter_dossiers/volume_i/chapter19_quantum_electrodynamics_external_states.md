@@ -1,4 +1,5 @@
 # Volume I, Chapter 19 Dossier: Quantum Electrodynamics and External States
+Source-File: monograph/tex/volumes/volume_i/chapter19_quantum_electrodynamics_and_external_states.tex
 
 Status: revised and source-audited on 2026-05-22; formalized and
 calculation-check companion added on 2026-05-27.

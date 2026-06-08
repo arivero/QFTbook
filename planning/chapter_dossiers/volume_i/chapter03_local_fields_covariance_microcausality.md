@@ -1,4 +1,5 @@
 # Volume I, Chapter 3 Dossier: Local Fields, Covariance, And Microcausality
+Source-File: monograph/tex/volumes/volume_i/chapter03_local_field_operators_poincare_covariance_and_microcausality.tex
 
 ## Status
 

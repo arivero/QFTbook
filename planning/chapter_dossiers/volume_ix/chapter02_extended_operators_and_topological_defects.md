@@ -1,4 +1,5 @@
 # Volume IX, Chapter 2 Dossier: Extended Operators And Topological Defects
+Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_topological_defects.tex
 
 ## Logical Role
 

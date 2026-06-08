@@ -1,4 +1,5 @@
 # Volume I, Chapter 9 Dossier: Kallen-Lehmann Spectral Representation
+Source-File: monograph/tex/volumes/volume_i/chapter09_kallen_lehmann_spectral_representation_and_particle_content.tex
 
 ## Status
 

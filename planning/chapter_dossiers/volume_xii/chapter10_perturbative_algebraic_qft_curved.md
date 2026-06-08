@@ -1,4 +1,5 @@
 # Chapter 10: Perturbative Algebraic QFT On Curved Backgrounds
+Source-File: monograph/tex/volumes/volume_xii/chapter10_perturbative_algebraic_qft_curved.tex
 
 ## Source Position
 

@@ -1,4 +1,5 @@
 # Volume XII, Chapter 4 Dossier: The Unruh Effect and Wedge Modular Theory
+Source-File: monograph/tex/volumes/volume_xii/chapter04_unruh_effect_modular_theory.tex
 
 ## Logical Role
 

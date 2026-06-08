@@ -1,4 +1,5 @@
 # Volume III, Chapter 10 Dossier: Light-Ray Operators And Energy Correlators
+Source-File: monograph/tex/volumes/volume_iii/chapter10_light_ray_operators_and_energy_correlators.tex
 
 ## Logical Role
 

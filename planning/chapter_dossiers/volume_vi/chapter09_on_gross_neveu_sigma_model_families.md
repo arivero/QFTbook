@@ -1,4 +1,5 @@
 # Chapter 09: `O(N)`, Gross-Neveu, And Sigma-Model Families
+Source-File: monograph/tex/volumes/volume_vi/chapter09_on_gross_neveu_sigma_model_families.tex
 
 ## Source Position
 

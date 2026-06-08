@@ -1,4 +1,5 @@
 # Volume VII, Chapter 3 Dossier: Supersymmetric Gauge Theory
+Source-File: monograph/tex/volumes/volume_vii/chapter03_supersymmetric_gauge_theory.tex
 
 ## Logical Role
 

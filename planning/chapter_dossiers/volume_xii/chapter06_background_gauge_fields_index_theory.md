@@ -1,4 +1,5 @@
 # Chapter 06: Background Gauge Fields And Index Theory
+Source-File: monograph/tex/volumes/volume_xii/chapter06_background_gauge_fields_index_theory.tex
 
 ## Source Position
 

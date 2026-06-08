@@ -1,4 +1,5 @@
 # Chapter 07: Mirror-Channel TBA And Finite-Size Effects
+Source-File: monograph/tex/volumes/volume_vi/chapter07_mirror_channel_tba_finite_size_wrapping.tex
 
 ## Source Position
 

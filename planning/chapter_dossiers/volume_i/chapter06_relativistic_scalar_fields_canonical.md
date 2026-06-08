@@ -1,4 +1,5 @@
 # Volume I, Chapter 6 Dossier: Relativistic Scalar Fields and Canonical Quantization
+Source-File: monograph/tex/volumes/volume_i/chapter06_relativistic_scalar_fields_and_canonical_quantization.tex
 
 ## Status
 

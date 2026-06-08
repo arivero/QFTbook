@@ -1,4 +1,5 @@
 # Volume I, Chapter 8 Dossier: Scalar Path Integrals and Green Functions
+Source-File: monograph/tex/volumes/volume_i/chapter08_scalar_path_integrals_and_euclidean_green_functions.tex
 
 ## Status
 

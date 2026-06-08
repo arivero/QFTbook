@@ -1,4 +1,5 @@
 # Volume XI, Chapter 1 Dossier: Constructive Status And Routes
+Source-File: monograph/tex/volumes/volume_xi/chapter01_constructive_status_and_routes.tex
 
 ## Logical Role
 

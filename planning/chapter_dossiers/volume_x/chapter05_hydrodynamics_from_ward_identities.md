@@ -1,4 +1,5 @@
 # Volume X, Chapter 5 Dossier: Hydrodynamics from Ward Identities
+Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_identities.tex
 
 ## Logical Role
 

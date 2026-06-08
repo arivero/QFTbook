@@ -1,4 +1,5 @@
 # Volume II, Chapter 8 Dossier: Infrared Divergences And Inclusive QED
+Source-File: monograph/tex/volumes/volume_ii/chapter22_infrared_divergences_and_inclusive_qed.tex
 
 ## Source Position
 

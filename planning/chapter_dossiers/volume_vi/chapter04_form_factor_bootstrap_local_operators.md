@@ -1,4 +1,5 @@
 # Volume VI, Chapter 4 Dossier: Form-Factor Bootstrap and Local Operators
+Source-File: monograph/tex/volumes/volume_vi/chapter04_form_factor_bootstrap_local_operators.tex
 
 ## Logical Role
 

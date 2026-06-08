@@ -1,4 +1,5 @@
 # Volume XI, Chapter 4 Dossier: Continuum Limits and Scaling Windows
+Source-File: monograph/tex/volumes/volume_xi/chapter04_continuum_limits_scaling_windows.tex
 
 ## Logical Role
 

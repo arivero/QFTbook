@@ -1,4 +1,5 @@
 # Volume VII, Chapter 2 Dossier: Superspace, Superfields, And Local Actions
+Source-File: monograph/tex/volumes/volume_vii/chapter02_superspace_superfields_local_actions.tex
 
 ## Logical Role
 

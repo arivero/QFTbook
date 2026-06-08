@@ -1,4 +1,5 @@
 # Volume III, Chapter 4 Dossier: Radial Quantization And State--Operator Correspondence
+Source-File: monograph/tex/volumes/volume_iii/chapter04_radial_quantization_and_state_operator_correspondence.tex
 
 ## Logical Role
 

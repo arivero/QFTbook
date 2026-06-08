@@ -1,4 +1,5 @@
 # Volume VI, Chapter 2 Dossier: Two-Dimensional Scattering Analyticity And Bootstrap Data
+Source-File: monograph/tex/volumes/volume_vi/chapter02_two_dimensional_scattering_analyticity_bootstrap.tex
 
 ## Logical Role
 

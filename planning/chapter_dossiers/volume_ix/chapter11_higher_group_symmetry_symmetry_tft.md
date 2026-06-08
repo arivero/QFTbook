@@ -1,4 +1,5 @@
 # Chapter 11: Higher-Group Symmetry And Symmetry TQFT
+Source-File: monograph/tex/volumes/volume_ix/chapter11_higher_group_symmetry_symmetry_tft.tex
 
 ## Source Position
 

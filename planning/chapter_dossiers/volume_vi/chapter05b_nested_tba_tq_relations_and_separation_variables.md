@@ -1,4 +1,5 @@
 # Volume VI, Chapter 5B Dossier: Nested TBA, Baxter Relations, and Separation Variables
+Source-File: monograph/tex/volumes/volume_vi/chapter05b_nested_tba_tq_relations_and_separation_variables.tex
 
 ## Logical Role
 

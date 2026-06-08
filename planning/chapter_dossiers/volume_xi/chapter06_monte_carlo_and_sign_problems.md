@@ -1,4 +1,5 @@
 # Chapter 06: Monte Carlo Methods And Sign Problems
+Source-File: monograph/tex/volumes/volume_xi/chapter06_monte_carlo_and_sign_problems.tex
 
 ## Source Position
 

@@ -1,4 +1,5 @@
 # Volume II, Chapter 1 Dossier: Local Data, Spectral Measures, and Green Functions
+Source-File: monograph/tex/volumes/volume_ii/chapter01_local_qft_spectral_data_and_path_integrals_revisited.tex
 
 ## Source Placement
 

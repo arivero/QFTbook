@@ -1,4 +1,5 @@
 # Volume II, Schwinger Model Dossier
+Source-File: monograph/tex/volumes/volume_ii/chapter20b_schwinger_model_two_dimensional_qed.tex
 
 ## Source Position
 

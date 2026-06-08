@@ -1,4 +1,5 @@
 # Volume III, Chapter 7 Dossier: Unitarity Bounds And Short Multiplets
+Source-File: monograph/tex/volumes/volume_iii/chapter07_unitarity_bounds_and_short_multiplets.tex
 
 ## Logical Role
 

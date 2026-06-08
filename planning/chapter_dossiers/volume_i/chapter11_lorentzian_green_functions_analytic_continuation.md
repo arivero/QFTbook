@@ -1,4 +1,5 @@
 # Volume I, Chapter 11 Dossier: Lorentzian Green Functions and Analytic Continuation
+Source-File: monograph/tex/volumes/volume_i/chapter11_lorentzian_green_functions_and_analytic_continuation.tex
 
 ## Source Placement
 

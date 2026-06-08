@@ -1,4 +1,5 @@
 # Volume II Chapter: Standard Model Hybrid Definition
+Source-File: monograph/tex/volumes/volume_ii/chapter19c_standard_model_hybrid_definition.tex
 
 ## Scope
 

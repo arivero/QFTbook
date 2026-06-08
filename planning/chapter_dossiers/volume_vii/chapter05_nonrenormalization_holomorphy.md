@@ -1,4 +1,5 @@
 # Volume VII, Chapter 5 Dossier: Nonrenormalization and Holomorphy
+Source-File: monograph/tex/volumes/volume_vii/chapter05_nonrenormalization_holomorphy.tex
 
 ## Logical Role
 

@@ -1,4 +1,5 @@
 # Volume IX, Chapter 5 Dossier: Discrete Theta Terms
+Source-File: monograph/tex/volumes/volume_ix/chapter05_discrete_theta_terms.tex
 
 ## Logical Role
 

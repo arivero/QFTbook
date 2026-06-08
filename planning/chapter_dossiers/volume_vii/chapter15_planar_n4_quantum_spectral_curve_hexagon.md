@@ -1,4 +1,5 @@
 # Chapter 15: Quantum Spectral Curve and Hexagon Form Factors
+Source-File: monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex
 
 ## Source Position
 

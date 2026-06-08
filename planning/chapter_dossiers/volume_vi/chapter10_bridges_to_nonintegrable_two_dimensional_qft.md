@@ -1,4 +1,5 @@
 # Chapter 10: Bridges To Nonintegrable Two-Dimensional QFT And CFT
+Source-File: monograph/tex/volumes/volume_vi/chapter10_bridges_to_nonintegrable_two_dimensional_qft.tex
 
 ## Source Position
 

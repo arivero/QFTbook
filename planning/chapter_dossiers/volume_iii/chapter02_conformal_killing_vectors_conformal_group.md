@@ -1,4 +1,5 @@
 # Volume III, Chapter 2 Dossier: Conformal Killing Vectors And The Conformal Group
+Source-File: monograph/tex/volumes/volume_iii/chapter02_conformal_killing_vectors_and_the_conformal_group.tex
 
 ## Logical Role
 

@@ -1,4 +1,5 @@
 # Volume XII, Chapter 1 Dossier: Locally Covariant QFT And Hadamard States
+Source-File: monograph/tex/volumes/volume_xii/chapter01_locally_covariant_qft_and_hadamard_states.tex
 
 ## Logical Role
 

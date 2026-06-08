@@ -1,4 +1,5 @@
 # Chapter 07: Rigorous Renormalization Group
+Source-File: monograph/tex/volumes/volume_xi/chapter07_rigorous_renormalization_group.tex
 
 ## Source Position
 

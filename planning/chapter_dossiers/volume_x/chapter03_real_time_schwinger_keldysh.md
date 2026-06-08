@@ -1,4 +1,5 @@
 # Volume X, Chapter 3 Dossier: Real-Time Schwinger--Keldysh Formalism
+Source-File: monograph/tex/volumes/volume_x/chapter03_real_time_schwinger_keldysh.tex
 
 ## Source Position
 

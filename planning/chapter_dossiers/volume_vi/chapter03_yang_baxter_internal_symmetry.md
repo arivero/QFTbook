@@ -1,4 +1,5 @@
 # Volume VI, Chapter 3 Dossier: Yang--Baxter Consistency And Internal Symmetry
+Source-File: monograph/tex/volumes/volume_vi/chapter03_yang_baxter_internal_symmetry.tex
 
 ## Logical Role
 

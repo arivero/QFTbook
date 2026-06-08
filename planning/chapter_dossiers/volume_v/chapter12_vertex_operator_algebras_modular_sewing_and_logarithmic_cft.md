@@ -1,4 +1,5 @@
 # Chapter 12: Vertex Operator Algebras, Modular Sewing, and Logarithmic CFT
+Source-File: monograph/tex/volumes/volume_v/chapter12_vertex_operator_algebras_modular_sewing_and_logarithmic_cft.tex
 
 ## Source Position
 

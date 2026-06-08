@@ -1,4 +1,5 @@
 # Chapter 08: Relation Between Lattice And Continuum Local QFT
+Source-File: monograph/tex/volumes/volume_xi/chapter08_lattice_to_continuum_local_qft.tex
 
 ## Source Position
 

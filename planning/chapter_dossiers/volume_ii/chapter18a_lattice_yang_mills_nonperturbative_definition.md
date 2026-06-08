@@ -1,4 +1,5 @@
 # Volume II, Lattice Yang-Mills as a Nonperturbative Formulation Dossier
+Source-File: monograph/tex/volumes/volume_ii/chapter17b_lattice_yang_mills_nonperturbative_definition.tex
 
 ## Source Position
 

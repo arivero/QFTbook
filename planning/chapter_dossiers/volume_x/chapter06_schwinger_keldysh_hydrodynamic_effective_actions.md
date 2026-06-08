@@ -1,4 +1,5 @@
 # Chapter 06: Schwinger-Keldysh Hydrodynamic Effective Actions
+Source-File: monograph/tex/volumes/volume_x/chapter06_schwinger_keldysh_hydrodynamic_effective_actions.tex
 
 ## Source Position
 

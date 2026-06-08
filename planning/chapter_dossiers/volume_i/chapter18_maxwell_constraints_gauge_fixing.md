@@ -1,4 +1,5 @@
 # Volume I, Chapter 18 Dossier: Maxwell Theory, Constraints, and Gauge Fixing
+Source-File: monograph/tex/volumes/volume_i/chapter18_maxwell_theory_constraints_and_gauge_fixing.tex
 
 Status: rewritten and source-audited on 2026-05-22.
 

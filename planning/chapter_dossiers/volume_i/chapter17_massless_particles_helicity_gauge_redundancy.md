@@ -1,4 +1,5 @@
 # Volume I, Chapter 17 Dossier: Massless Particles, Helicity, and Gauge Redundancy
+Source-File: monograph/tex/volumes/volume_i/chapter17_massless_particles_helicity_and_gauge_redundancy.tex
 
 ## Source Placement
 

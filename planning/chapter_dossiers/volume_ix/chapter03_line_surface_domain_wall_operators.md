@@ -1,4 +1,5 @@
 # Volume IX, Chapter 3 Dossier: Line, Surface, And Domain-Wall Operators
+Source-File: monograph/tex/volumes/volume_ix/chapter03_line_surface_domain_wall_operators.tex
 
 ## Logical Role
 

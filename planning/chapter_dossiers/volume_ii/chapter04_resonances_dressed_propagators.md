@@ -1,4 +1,5 @@
 # Volume II, Chapter 4 Dossier: Resonances and Dressed Propagators
+Source-File: monograph/tex/volumes/volume_ii/chapter04_unstable_particles_self_energies_and_resonances.tex
 
 ## Scope
 

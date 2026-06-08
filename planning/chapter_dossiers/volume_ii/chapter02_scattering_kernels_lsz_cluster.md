@@ -1,4 +1,5 @@
 # Volume II, Chapter 2 Dossier: Scattering Kernels, LSZ, and Cluster Decomposition
+Source-File: monograph/tex/volumes/volume_ii/chapter02_the_s_matrix_and_lsz_revisited.tex
 
 ## Source Placement
 

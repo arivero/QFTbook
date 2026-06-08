@@ -1,4 +1,5 @@
 # Chapter 07: Eta Invariants and Global Anomalies
+Source-File: monograph/tex/volumes/volume_xii/chapter07_eta_invariants_global_anomalies.tex
 
 ## Source Position
 

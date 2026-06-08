@@ -1,4 +1,5 @@
 # Chapter 07: Thermal Gauge Theory And Screening
+Source-File: monograph/tex/volumes/volume_x/chapter07_thermal_gauge_theory_screening.tex
 
 ## Source Position
 

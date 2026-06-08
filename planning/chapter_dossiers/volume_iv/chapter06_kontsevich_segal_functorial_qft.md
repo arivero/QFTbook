@@ -1,4 +1,5 @@
 # Chapter 06: Kontsevich--Segal Functorial Quantum Field Theory
+Source-File: monograph/tex/volumes/volume_iv/chapter06_kontsevich_segal_functorial_qft.tex
 
 ## Source Position
 

@@ -1,4 +1,5 @@
 # Chapter 06: Anomaly Inflow And Invertible Field Theories
+Source-File: monograph/tex/volumes/volume_ix/chapter06_anomaly_inflow_invertible_field_theories.tex
 
 ## Source Position
 

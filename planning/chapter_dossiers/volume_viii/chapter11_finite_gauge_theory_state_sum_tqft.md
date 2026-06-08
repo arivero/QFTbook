@@ -1,4 +1,5 @@
 # Chapter 11: Finite Gauge Theory and State-Sum TQFT
+Source-File: monograph/tex/volumes/volume_viii/chapter11_finite_gauge_theory_state_sum_tqft.tex
 
 ## Source Position
 

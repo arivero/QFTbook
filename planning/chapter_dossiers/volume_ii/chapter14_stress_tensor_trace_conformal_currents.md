@@ -1,4 +1,5 @@
 # Volume II, Chapter 14 Dossier: Stress Tensor Trace And Conformal Currents
+Source-File: monograph/tex/volumes/volume_ii/chapter13_stress_tensor_trace_scale_invariance_and_conformal_currents.tex
 
 ## Source Position
 

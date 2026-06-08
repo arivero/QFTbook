@@ -1,4 +1,5 @@
 # Chapter 09: Boundaries, Defects, And Categories In Topological QFT
+Source-File: monograph/tex/volumes/volume_viii/chapter09_boundaries_defects_and_categories.tex
 
 ## Source Position
 

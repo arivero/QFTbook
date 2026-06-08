@@ -1,4 +1,5 @@
 # Volume VIII, Chapter 4 Dossier: Chern--Simons Theory
+Source-File: monograph/tex/volumes/volume_viii/chapter04_chern_simons_theory.tex
 
 ## Logical Role
 

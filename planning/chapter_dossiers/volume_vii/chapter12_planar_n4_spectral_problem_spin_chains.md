@@ -1,4 +1,5 @@
 # Chapter 12: Planar N=4 Supersymmetric Yang-Mills as a Spectral Problem
+Source-File: monograph/tex/volumes/volume_vii/chapter12_planar_n4_spectral_problem_spin_chains.tex
 
 ## Source Position
 

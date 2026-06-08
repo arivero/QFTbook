@@ -1,4 +1,5 @@
 # Chapter 13: All-Loop Asymptotic Bethe Ansatz
+Source-File: monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex
 
 ## Source Position
 

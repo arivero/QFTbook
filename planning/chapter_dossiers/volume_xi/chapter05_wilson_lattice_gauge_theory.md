@@ -1,4 +1,5 @@
 # Volume XI, Chapter 5 Dossier: Wilson Lattice Gauge Theory
+Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theory.tex
 
 ## Logical Role
 

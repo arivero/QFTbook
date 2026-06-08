@@ -1,4 +1,5 @@
 # Volume III Chapter: EFTs Without Poincare-Invariant UV Completion
+Source-File: monograph/tex/volumes/volume_ii/chapter15b_efts_without_poincare_uv_completion.tex
 
 ## Scope
 

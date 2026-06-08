@@ -1,4 +1,5 @@
 # Volume X, Chapter 4 Dossier: Spectral Functions, Kubo Formulae, and Transport
+Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_transport.tex
 
 ## Logical Role
 

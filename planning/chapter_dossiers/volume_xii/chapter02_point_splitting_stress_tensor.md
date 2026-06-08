@@ -1,4 +1,5 @@
 # Volume XII, Chapter 2 Dossier: Point Splitting And Stress Tensor Renormalization
+Source-File: monograph/tex/volumes/volume_xii/chapter02_point_splitting_stress_tensor.tex
 
 ## Logical Role
 

@@ -1,4 +1,5 @@
 # Volume II, Global Anomalies, Spontaneous Symmetry Breaking, And Pions Dossier
+Source-File: monograph/tex/volumes/volume_ii/chapter21_global_anomalies_spontaneous_symmetry_breaking_and_pions.tex
 
 ## Source Position
 

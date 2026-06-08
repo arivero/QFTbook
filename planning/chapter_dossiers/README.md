@@ -10,6 +10,8 @@ do not infer compiled placement from a dossier path alone.
 | `volume_i/` | `monograph/tex/volumes/volume_i/` | Chapters drawn into compiled Volumes I, II, and IV |
 | `volume_ii/` | `monograph/tex/volumes/volume_ii/` | Chapters drawn into compiled Volumes II, III, and IV |
 | `volume_iii/` | `monograph/tex/volumes/volume_iii/` | Chapters drawn into compiled Volume V, the CFT volume |
+| `volume_iv/` | `monograph/tex/volumes/volume_iv/` | Chapters drawn into compiled Volumes I and II |
+| `volume_v/` | `monograph/tex/volumes/volume_v/` | Later compiled Volume V CFT chapters |
 | `volume_vi/` | `monograph/tex/volumes/volume_vi/` | Compiled Volume VI, integrable QFT |
 | `volume_vii/` | `monograph/tex/volumes/volume_vii/` | Compiled Volume VII, supersymmetric QFT |
 | `volume_viii/` | `monograph/tex/volumes/volume_viii/` | Compiled Volume VIII, topological and cohomological QFT |
@@ -33,11 +35,15 @@ manifest reordering.  The known collision in `volume_ii/` is:
 | `chapter18_classical_yang_mills_matter.md` | Historical source-order dossier for classical Yang-Mills theory and matter, following Wilsonian effective actions in the 253b sequence |
 | `chapter18_gauge_fixing_ghosts_brst.md` | Dossier keyed to the current on-disk chapter file `monograph/tex/volumes/volume_ii/chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex` |
 
-Use the dossier heading, the `Source Position` block, and the current manifest
-files to identify the intended chapter; do not use the numeric filename prefix
-alone as a database key.
+Each dossier must include exactly one machine-readable line immediately after
+its title:
 
-Some source chapters under `monograph/tex/volumes/volume_iv/` are included in
-compiled Volumes I and II.  A dedicated `planning/chapter_dossiers/volume_iv/`
-directory has not yet been created; until it is, their planning status is
-tracked through the manifest-level planning files.
+```text
+Source-File: monograph/tex/volumes/.../chapter....tex
+```
+
+Use this `Source-File` key, the `Source Position` block, and the current
+manifest files to identify the intended chapter; do not use the numeric
+filename prefix alone as a database key.  `tools/audit_chapter_dossiers.sh`
+parses all compiled `volume_*_current.tex` manifests and requires a bijection
+between compiled chapter inputs and dossier source keys.

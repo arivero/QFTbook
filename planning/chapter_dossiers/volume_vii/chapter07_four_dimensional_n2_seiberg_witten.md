@@ -1,4 +1,5 @@
 # Chapter 07: Four-Dimensional N=2 Gauge Dynamics And Seiberg-Witten Theory
+Source-File: monograph/tex/volumes/volume_vii/chapter07_four_dimensional_n2_seiberg_witten.tex
 
 ## Source Position
 

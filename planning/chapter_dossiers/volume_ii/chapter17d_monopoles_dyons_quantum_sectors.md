@@ -1,4 +1,5 @@
 # Volume II, Monopoles, Dyons, and Quantum Sectors Dossier
+Source-File: monograph/tex/volumes/volume_ii/chapter17d_monopoles_dyons_quantum_sectors.tex
 
 ## Source Position
 

@@ -1,4 +1,5 @@
 # Volume VII, Chapter 1 Dossier: Supersymmetry Algebras And Representations
+Source-File: monograph/tex/volumes/volume_vii/chapter01_supersymmetry_algebras_and_representations.tex
 
 ## Logical Role
 

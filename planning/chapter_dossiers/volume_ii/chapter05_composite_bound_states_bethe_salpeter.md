@@ -1,4 +1,5 @@
 # Volume II, Chapter 5 Dossier: Composite Bound States and Bethe--Salpeter Amplitudes
+Source-File: monograph/tex/volumes/volume_ii/chapter05_composite_bound_states_and_bethe_salpeter_amplitudes.tex
 
 ## Scope
 

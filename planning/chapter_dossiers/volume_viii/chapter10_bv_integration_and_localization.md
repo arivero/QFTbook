@@ -1,4 +1,5 @@
 # Chapter 10: BV Integration And Finite-Dimensional Localization
+Source-File: monograph/tex/volumes/volume_viii/chapter10_bv_integration_and_localization.tex
 
 ## Logical Role
 

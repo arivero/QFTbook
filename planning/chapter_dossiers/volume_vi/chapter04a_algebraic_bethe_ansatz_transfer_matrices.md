@@ -1,4 +1,5 @@
 # Volume VI, Chapter 4A Dossier: Algebraic Bethe Ansatz and Transfer Matrices
+Source-File: monograph/tex/volumes/volume_vi/chapter04a_algebraic_bethe_ansatz_transfer_matrices.tex
 
 ## Logical Role
 

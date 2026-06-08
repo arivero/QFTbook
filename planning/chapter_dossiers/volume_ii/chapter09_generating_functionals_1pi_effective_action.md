@@ -1,4 +1,5 @@
 # Volume II, Chapter 9 Dossier: Generating Functionals And The 1PI Effective Action
+Source-File: monograph/tex/volumes/volume_ii/chapter23_generating_functionals_and_the_one_particle_irreducible_effective_action.tex
 
 ## Source Position
 

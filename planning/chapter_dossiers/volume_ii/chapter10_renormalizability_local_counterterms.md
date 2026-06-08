@@ -1,4 +1,5 @@
 # Volume II, Chapter 10 Dossier: Renormalizability And Local Counterterms
+Source-File: monograph/tex/volumes/volume_ii/chapter08_renormalizability_and_local_counterterms.tex
 
 ## Source Position
 

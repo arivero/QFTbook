@@ -1,4 +1,5 @@
 # Volume IX, Chapter 1 Dossier: Global Forms And Higher-Form Symmetry
+Source-File: monograph/tex/volumes/volume_ix/chapter01_global_forms_and_higher_form_symmetry.tex
 
 ## Logical Role
 

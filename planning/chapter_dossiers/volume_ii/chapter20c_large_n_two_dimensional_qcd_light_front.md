@@ -1,4 +1,5 @@
 # Volume II, Large-N Two-Dimensional QCD And Light-Front Bound States Dossier
+Source-File: monograph/tex/volumes/volume_ii/chapter20c_large_n_two_dimensional_qcd_light_front.tex
 
 ## Logical Role
 

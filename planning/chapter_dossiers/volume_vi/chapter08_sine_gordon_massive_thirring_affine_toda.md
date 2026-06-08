@@ -1,4 +1,5 @@
 # Chapter 08: Sine-Gordon, Massive Thirring, And Affine Toda Theories
+Source-File: monograph/tex/volumes/volume_vi/chapter08_sine_gordon_massive_thirring_affine_toda.tex
 
 ## Source Position
 

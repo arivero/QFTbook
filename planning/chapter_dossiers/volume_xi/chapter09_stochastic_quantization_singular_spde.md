@@ -1,4 +1,5 @@
 # Chapter 09: Stochastic Quantization And Singular SPDE
+Source-File: monograph/tex/volumes/volume_xi/chapter09_stochastic_quantization_singular_spde.tex
 
 ## Source Position
 

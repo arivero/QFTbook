@@ -1,4 +1,5 @@
 # Chapter 10: Duality Defects, Gauging, And Orbifold Data
+Source-File: monograph/tex/volumes/volume_ix/chapter10_duality_defects_and_gauging.tex
 
 ## Source Position
 

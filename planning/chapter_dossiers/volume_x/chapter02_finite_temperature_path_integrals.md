@@ -1,4 +1,5 @@
 # Volume X, Chapter 2 Dossier: Finite-Temperature Path Integrals
+Source-File: monograph/tex/volumes/volume_x/chapter02_finite_temperature_path_integrals.tex
 
 ## Source Position
 

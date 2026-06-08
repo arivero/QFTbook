@@ -1,4 +1,5 @@
 # Volume IV Chapter 03 — Algebraic QFT, Local Nets, and States
+Source-File: monograph/tex/volumes/volume_iv/chapter03_algebraic_qft_local_nets_and_states.tex
 
 ## Source Position
 

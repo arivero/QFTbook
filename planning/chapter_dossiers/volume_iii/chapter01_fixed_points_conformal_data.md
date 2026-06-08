@@ -1,4 +1,5 @@
 # Volume III, Chapter 1 Dossier: Fixed Points And Conformal Data
+Source-File: monograph/tex/volumes/volume_iii/chapter01_fixed_points_and_conformal_data.tex
 
 ## Logical Role
 

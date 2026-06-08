@@ -1,4 +1,5 @@
 # Volume I, Chapter 12 Dossier: Haag--Ruelle Scattering Theory
+Source-File: monograph/tex/volumes/volume_i/chapter12_haag_ruelle_scattering_theory.tex
 
 ## Source Placement
 

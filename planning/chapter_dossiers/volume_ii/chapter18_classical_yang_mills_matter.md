@@ -1,4 +1,5 @@
 # Volume II, Chapter 18 Dossier: Classical Yang-Mills Theory And Matter
+Source-File: monograph/tex/volumes/volume_ii/chapter17_yang_mills_theory_and_matter_fields.tex
 
 ## Source Position
 

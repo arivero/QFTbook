@@ -1,4 +1,5 @@
 # Chapter 08: Kinetic Theory As A Controlled Limit
+Source-File: monograph/tex/volumes/volume_x/chapter08_kinetic_theory_controlled_limit.tex
 
 ## Source Position
 

@@ -1,4 +1,5 @@
 # Volume VII, Chapter 16 Dossier: Supersymmetric Localization On Compact Manifolds
+Source-File: monograph/tex/volumes/volume_vii/chapter16_supersymmetric_localization_compact_manifolds.tex
 
 ## Logical Role
 

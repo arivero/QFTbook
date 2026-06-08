@@ -1,4 +1,5 @@
 # Volume III, Chapter 6 Dossier: Primary Operators And Finite Transformations
+Source-File: monograph/tex/volumes/volume_iii/chapter06_primary_operators_and_finite_transformations.tex
 
 ## Logical Role
 

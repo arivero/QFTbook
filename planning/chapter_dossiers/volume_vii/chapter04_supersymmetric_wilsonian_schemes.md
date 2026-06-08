@@ -1,4 +1,5 @@
 # Volume VII, Chapter 4 Dossier: Supersymmetric Wilsonian Schemes
+Source-File: monograph/tex/volumes/volume_vii/chapter04_supersymmetric_wilsonian_schemes.tex
 
 ## Logical Role
 

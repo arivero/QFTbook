@@ -1,4 +1,5 @@
 # Volume VIII, Chapter 1 Dossier: Metric Independence And Cohomological Observables
+Source-File: monograph/tex/volumes/volume_viii/chapter01_metric_independence_and_cohomological_observables.tex
 
 ## Logical Role
 

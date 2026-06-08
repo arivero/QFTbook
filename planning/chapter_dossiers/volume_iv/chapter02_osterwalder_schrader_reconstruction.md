@@ -1,4 +1,5 @@
 # Chapter 02: Osterwalder--Schrader Reconstruction
+Source-File: monograph/tex/volumes/volume_iv/chapter02_osterwalder_schrader_reconstruction.tex
 
 ## Source Position
 

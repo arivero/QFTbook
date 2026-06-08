@@ -1,4 +1,5 @@
 # Chapter 11: Lattice Fermions And Chiral Symmetry
+Source-File: monograph/tex/volumes/volume_xi/chapter11_lattice_fermions_chiral_symmetry.tex
 
 ## Source Position
 

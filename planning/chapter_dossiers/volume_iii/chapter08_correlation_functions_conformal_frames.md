@@ -1,4 +1,5 @@
 # Volume III, Chapter 8 Dossier: Correlation Functions And Conformal Frames
+Source-File: monograph/tex/volumes/volume_iii/chapter08_correlation_functions_and_conformal_frames.tex
 
 ## Logical Role
 

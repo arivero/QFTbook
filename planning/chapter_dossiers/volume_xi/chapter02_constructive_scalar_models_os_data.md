@@ -1,4 +1,5 @@
 # Volume XI, Chapter 2 Dossier: Constructive Scalar Models And OS Data
+Source-File: monograph/tex/volumes/volume_xi/chapter02_constructive_scalar_models_os_data.tex
 
 ## Logical Role
 

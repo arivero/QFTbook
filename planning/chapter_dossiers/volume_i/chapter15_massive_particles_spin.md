@@ -1,4 +1,5 @@
 # Volume I, Chapter 15 Dossier: Massive Particles and Spin
+Source-File: monograph/tex/volumes/volume_i/chapter15_massive_particles_with_spin.tex
 
 ## Source Placement
 

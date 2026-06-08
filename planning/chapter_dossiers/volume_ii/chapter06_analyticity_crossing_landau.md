@@ -1,4 +1,5 @@
 # Volume II, Chapter 6 Dossier: Analyticity, Crossing, and Landau Singularities
+Source-File: monograph/tex/volumes/volume_ii/chapter06_analyticity_crossing_and_landau_singularities.tex
 
 ## Scope
 

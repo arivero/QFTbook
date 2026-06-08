@@ -1,4 +1,5 @@
 # Chapter 09: Categorical Symmetry And Defect Fusion
+Source-File: monograph/tex/volumes/volume_ix/chapter09_categorical_symmetry_and_defect_fusion.tex
 
 ## Source Position
 

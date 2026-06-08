@@ -1,4 +1,5 @@
 # Volume IX, Chapter 4 Dossier: Confinement, Screening, and Oblique Confinement
+Source-File: monograph/tex/volumes/volume_ix/chapter04_confinement_screening_oblique_confinement.tex
 
 ## Logical Role
 

@@ -1,4 +1,5 @@
 # Volume I, Chapter 13 Dossier: LSZ Reduction
+Source-File: monograph/tex/volumes/volume_i/chapter13_lsz_reduction_and_the_s_matrix.tex
 
 ## Source Placement
 
