@@ -500,29 +500,45 @@ The embedding is isometric and preserves background scalar data, so
 \]
 Therefore \(\chi_*\) maps \(P_MC_c^\infty(M)\) into
 \(P_NC_c^\infty(N)\), giving a map on quotients.  Causal convexity gives
-compatibility of causal propagators:
+compatibility of causal propagators after restriction to the embedded
+spacetime:
 \begin{equation}
-  E_N\chi_*f=\chi_*E_Mf .
+  \chi^*E_N^{\rm ret}\chi_*f=E_M^{\rm ret}f,\qquad
+  \chi^*E_N^{\rm adv}\chi_*f=E_M^{\rm adv}f,\qquad
+  \chi^*E_N\chi_*f=E_Mf .
   \label{eq:causal-propagator-embedding-compatibility}
 \end{equation}
-Indeed, both sides solve \(P_Nu=\chi_*f\) in \(\chi(M)\), both vanish outside
-the same retarded-minus-advanced causal support determined by
-\(\chi(\operatorname{supp}f)\), and uniqueness of retarded and advanced
-solutions gives equality.  The volume form is preserved by \(\chi\), hence
-\[
+This is deliberately not a global zero-extension identity on \(N\).  The
+retarded or advanced solution \(E_N^{\rm ret/adv}\chi_*f\) can propagate to
+points of \(N\setminus\chi(M)\), and the zero extension of
+\(E_M^{\rm ret/adv}f\) across the boundary of the open image is generally not
+smooth.  What causal convexity supplies is enough: if \(x\in\chi(M)\), then
+every causal curve in \(N\) from \(\chi(\operatorname{supp}f)\) to \(x\)
+stays inside \(\chi(M)\).  The restricted function
+\(\chi^*E_N^{\rm ret/adv}\chi_*f\) is therefore the retarded or advanced
+solution on \(M\) with source \(f\), and uniqueness of Green solutions on
+globally hyperbolic \(M\) gives
+\eqref{eq:causal-propagator-embedding-compatibility}.  The volume form is
+preserved by \(\chi\), and the support of \(\chi_*f\) lies inside
+\(\chi(M)\), hence
+\begin{align*}
   \sigma_N([\chi_*f]_N,[\chi_*h]_N)
-  =
-  \int_N \chi_*f\,E_N\chi_*h\,\dd\operatorname{vol}_h
-  =
+  &=
+  \int_N \chi_*f\,E_N\chi_*h\,\dd\operatorname{vol}_h \\
+  &=
+  \int_M f\,\chi^*E_N\chi_*h\,\dd\operatorname{vol}_g \\
+  &=
   \int_M f\,E_Mh\,\dd\operatorname{vol}_g
   =
   \sigma_M([f]_M,[h]_M).
-\]
+\end{align*}
 The universal property of the CCR algebra then gives a
 \(\ast\)-homomorphism preserving the defining commutator.  Injectivity
 follows from injectivity of the induced symplectic map; if
 \([\chi_*f]_N=0\), then \(E_N\chi_*f=0\), so
-\(\chi_*E_Mf=0\), hence \(E_Mf=0\) and \([f]_M=0\) by
+\(\chi^*E_N\chi_*f=0\).  By
+\eqref{eq:causal-propagator-embedding-compatibility}, \(E_Mf=0\), and
+\([f]_M=0\) by
 Lemma~\ref{lem:kg-causal-propagator-kernel}.
 \end{proof}
 
@@ -687,15 +703,16 @@ singularity.  Changing \(\mu\) changes the subtraction by
 \]
 which is smooth near the diagonal because \(V\) is smooth.
 
-\begin{remark}[State-independent singular part]
-\label{rem:hadamard-state-independent-subtraction}
+\begin{proposition}[State-independent singular part]
+\label{prop:hadamard-state-independent-subtraction}
 Let \(\omega\) and \(\omega'\) be Hadamard quasifree states for the same
 operator \(P_M\) on the same globally hyperbolic spacetime.  Then
 \[
   \omega_2-\omega'_2\in C^\infty(M\times M).
 \]
-\end{remark}
+\end{proposition}
 
+\begin{proof}
 On each convex normal neighborhood, Definition~\ref{def:hadamard-quasifree-state}
 gives
 \[
@@ -709,8 +726,25 @@ after taking the distributional boundary value.  The same
 \[
   \omega_2-\omega'_2=W_\omega-W_{\omega'}
 \]
-is smooth on that neighborhood.  Smoothness is local on \(M\times M\), so the
-difference is smooth globally.
+is smooth on \(U\times U\).  This proves smoothness on a neighborhood of the
+diagonal in \(M\times M\).  It does not by itself prove smoothness at an
+arbitrary far-separated pair \((x,y)\), because sets of the form \(U\times U\)
+with \(U\) convex normal need not contain both points.
+
+The global step uses the local-to-global Hadamard theorem.  In the form used
+here, if \(P_M\) is normally hyperbolic on a globally hyperbolic spacetime and
+a quasifree two-point distribution is a positive-type bisolution with the
+CCR antisymmetric part, then the local Hadamard form in convex normal
+neighborhoods is equivalent to the global microlocal Hadamard wavefront
+condition of Chapter~\ref{ch:curved-microlocal-spectrum-condition}.  The
+proof is the propagation-of-singularities theorem applied in the two
+variables: possible singular covectors of a bisolution propagate along the
+null bicharacteristic flow, and the local Hadamard form fixes the only
+allowed propagated singular relation.  A standard corollary is that two
+Hadamard two-point functions for the same operator have a smooth difference.
+Applying this corollary to \(\omega_2\) and \(\omega'_2\) gives the displayed
+global smoothness.
+\end{proof}
 
 \section{Microlocal Form And Wick Products}
 
@@ -734,7 +768,7 @@ For a Hadamard state, define the Wick square by point splitting:
   \left(\phi(x)\phi(y)-H_{\epsilon,\mu}(x,y)\mathbf 1\right)
   \dd\operatorname{vol}_g(x).
 \]
-Remark~\ref{rem:hadamard-state-independent-subtraction} implies that
+Proposition~\ref{prop:hadamard-state-independent-subtraction} implies that
 the subtraction removes the state-independent singularity.  The remaining
 freedom is finite and local.  In four dimensions,
 \[

@@ -1,13 +1,34 @@
 #!/usr/bin/env python3
 r"""Exact finite linear checks for the locally covariant KG construction.
 
-The Volume XII locally covariant QFT chapter constructs the free scalar
-CCR algebra from the quotient C_c^\infty(M) / P C_c^\infty(M) and the
-causal-propagator pairing.  This script checks the corresponding finite
-linear-algebra identities: descent of the antisymmetric form to a quotient,
-vanishing of equation-of-motion generators, preservation under embeddings,
-and the distinction between Cauchy and non-Cauchy morphisms at the quotient
-level.
+Evidence contract.
+Target claims: the Volume XII locally covariant QFT chapter constructs the
+free scalar CCR algebra from the quotient
+``C_c^\infty(M) / P C_c^\infty(M)``, descends the causal-propagator pairing to
+that quotient, proves functoriality under causally convex embeddings by
+restriction of Green solutions, proves the Cauchy time-slice property at the
+quotient level, and invokes the local-to-global Hadamard theorem rather than a
+diagonal-cover argument for global smoothness of Hadamard-state differences.
+Independent construction: finite antisymmetric matrices for quotient descent,
+explicit inclusion/restriction matrices distinguishing ``R E_N I = E_M`` from
+the false global identity ``E_N I = I E_M``, rational 1+1-dimensional
+Minkowski diamond reachability checks, and a finite diagonal-neighborhood
+cover diagnostic.
+Imported assumptions: existence and uniqueness of retarded/advanced Green
+operators on globally hyperbolic spacetimes, the kernel identity
+``ker E = P C_c^\infty``, causal convexity of admissible embeddings, and the
+propagation-of-singularities/local-to-global Hadamard theorem.
+Negative controls: equation-of-motion generators do not survive in the CCR
+commutator, non-Cauchy embeddings are not treated as quotient surjections, a
+global Green solution is not identified with the zero extension of the
+subspacetime solution, a retarded solution from a source inside a causally
+convex diamond is allowed to leave the diamond, and sets ``U x U`` near the
+diagonal are not accepted as a cover of arbitrary far-separated pairs in
+``M x M``.
+Scope boundary: these checks are finite diagnostics for the functorial and
+local-to-global logic.  They do not prove the analytic Green-operator
+theorems, construct Hadamard states, or replace the microlocal propagation
+theorem used in the chapter.
 """
 
 from __future__ import annotations
@@ -160,6 +181,105 @@ def check_embedding_preserves_symplectic_form() -> None:
         raise AssertionError("non-Cauchy inclusion should not be quotient-surjective")
 
 
+def check_restriction_identity_not_global_zero_extension() -> None:
+    e_source = matrix(
+        [
+            [0, 1],
+            [-1, 0],
+        ]
+    )
+    e_target = matrix(
+        [
+            [0, 1, -2, 0],
+            [-1, 0, 3, 0],
+            [2, -3, 0, 1],
+            [0, 0, -1, 0],
+        ]
+    )
+    inclusion = matrix(
+        [
+            [1, 0],
+            [0, 1],
+            [0, 0],
+            [0, 0],
+        ]
+    )
+    restriction = matrix(
+        [
+            [1, 0, 0, 0],
+            [0, 1, 0, 0],
+        ]
+    )
+
+    restricted_target_solution = mat_mul(restriction, mat_mul(e_target, inclusion))
+    assert_equal("restricted causal propagator", restricted_target_solution, e_source)
+
+    global_target_solution = mat_mul(e_target, inclusion)
+    zero_extended_source_solution = mat_mul(inclusion, e_source)
+    if global_target_solution == zero_extended_source_solution:
+        raise AssertionError("false global zero-extension identity was accepted")
+
+    sample_source = vector([1, -1])
+    target_vector = mat_vec(global_target_solution, sample_source)
+    zero_extension_vector = mat_vec(zero_extended_source_solution, sample_source)
+    assert_equal("restriction of target vector", target_vector[:2], zero_extension_vector[:2])
+    if target_vector[2:] == zero_extension_vector[2:]:
+        raise AssertionError("target Green solution did not leave the embedded image")
+
+
+Point = tuple[Fraction, Fraction]
+
+
+def in_minkowski_diamond(point: Point, radius: Fraction) -> bool:
+    t, x = point
+    return abs(t) + abs(x) < radius
+
+
+def in_chronological_closure_future(source: Point, target: Point) -> bool:
+    dt = target[0] - source[0]
+    dx = target[1] - source[1]
+    return dt >= 0 and dt >= abs(dx)
+
+
+def check_global_retarded_solution_leaves_causal_diamond() -> None:
+    radius = Fraction(1, 1)
+    source = (Fraction(0), Fraction(0))
+    outside_future_point = (Fraction(3, 2), Fraction(0))
+    inside_approach = (Fraction(9, 10), Fraction(0))
+    outside_approach = (Fraction(11, 10), Fraction(0))
+
+    if not in_minkowski_diamond(source, radius):
+        raise AssertionError("source should lie inside the causal diamond")
+    if in_minkowski_diamond(outside_future_point, radius):
+        raise AssertionError("future sample should lie outside the causal diamond")
+    if not in_chronological_closure_future(source, outside_future_point):
+        raise AssertionError("future sample should be in the global retarded support")
+
+    # In 1+1 dimensions the massless retarded fundamental solution is nonzero
+    # throughout the future light cone.  Thus a source inside the diamond has
+    # a global retarded solution outside the diamond.
+    if not in_chronological_closure_future(source, inside_approach):
+        raise AssertionError("inside approach point should see the retarded source")
+    if not in_chronological_closure_future(source, outside_approach):
+        raise AssertionError("outside approach point should also see the retarded source")
+    if in_minkowski_diamond(outside_approach, radius):
+        raise AssertionError("outside approach point should be beyond the open image")
+
+
+def check_diagonal_neighborhood_products_do_not_cover_far_pairs() -> None:
+    convex_normal_radius = Fraction(1, 1)
+    near_pair = (Fraction(0), Fraction(1, 2))
+    far_pair = (Fraction(0), Fraction(3, 1))
+
+    def can_fit_in_one_coordinate_ball(pair: tuple[Fraction, Fraction]) -> bool:
+        return abs(pair[1] - pair[0]) < 2 * convex_normal_radius
+
+    if not can_fit_in_one_coordinate_ball(near_pair):
+        raise AssertionError("near diagonal pair should fit in one U x U chart")
+    if can_fit_in_one_coordinate_ball(far_pair):
+        raise AssertionError("far-separated pair was incorrectly covered by diagonal U x U charts")
+
+
 def check_cauchy_embedding_is_quotient_isomorphism() -> None:
     e_source = matrix(
         [
@@ -200,6 +320,9 @@ def check_cauchy_embedding_is_quotient_isomorphism() -> None:
 def main() -> None:
     check_quotient_descent()
     check_embedding_preserves_symplectic_form()
+    check_restriction_identity_not_global_zero_extension()
+    check_global_retarded_solution_leaves_causal_diamond()
+    check_diagonal_neighborhood_products_do_not_cover_far_pairs()
     check_cauchy_embedding_is_quotient_isomorphism()
     print("All locally covariant KG finite-linear checks passed.")
 

@@ -2553,8 +2553,12 @@ Current checks:
   the Volume XII locally covariant Klein--Gordon construction, including
   descent of the causal-propagator pairing to the equation-of-motion
   quotient, vanishing of equation generators in the CCR commutator,
-  symplectic preservation under embeddings, and the quotient-level
-  distinction between Cauchy and non-Cauchy morphisms.
+  symplectic preservation under embeddings, the restriction identity for
+  causal propagators without the false global zero-extension identity, a
+  rational Minkowski-diamond retarded-support negative control, the
+  quotient-level distinction between Cauchy and non-Cauchy morphisms, and the
+  diagonal-neighborhood product-cover diagnostic used in the Hadamard
+  local-to-global repair.
 - `qcd_string_luscher_checks.py`: exact rational checks for the QCD-string
   effective-string section, including the open and closed transverse-scalar
   Casimir coefficients \(-1/24\) and \(-1/6\), the displayed

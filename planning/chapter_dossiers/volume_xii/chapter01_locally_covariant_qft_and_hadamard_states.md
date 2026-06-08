@@ -43,16 +43,20 @@
   `sigma_M([f],[h])=int f E_M h`, and the CCR algebra.
 - Proves the causal-propagator kernel identity
   `ker E_M = P_M C_c^\infty(M)`.
-- Proves functoriality under causally convex isometric embeddings and proves
-  the time-slice property for Cauchy morphisms by an explicit cutoff between
-  Cauchy surfaces.
+- Proves functoriality under causally convex isometric embeddings using the
+  restriction identities
+  \(\chi^*E_N^{\rm ret/adv}\chi_*=E_M^{\rm ret/adv}\), not a global
+  zero-extension identity, and proves the time-slice property for Cauchy
+  morphisms by an explicit cutoff between Cauchy surfaces.
 - Defines quasifree states, their two-point distributions, positivity,
   equation of motion, and CCR antisymmetric part.
 - Defines the local four-dimensional Hadamard parametrix, including Synge's
   world function, the \(i\epsilon\) boundary prescription, \(U=\Delta^{1/2}\),
   and the recursively determined \(V\)-coefficient.
 - Proves that the difference of two Hadamard two-point functions for the
-  same Klein--Gordon operator is smooth.
+  same Klein--Gordon operator is smooth by combining local parametrix
+  cancellation near the diagonal with the local-to-global
+  propagation-of-singularities theorem.
 - Connects the local Hadamard form to the microlocal Hadamard wavefront set,
   Wick square subtraction, and the local curvature freedom of the stress
   tensor.
@@ -87,12 +91,15 @@
    only through the quotient by the equation of motion.
 4. The causal-propagator pairing descends to a nondegenerate symplectic form
    on the quotient.
-5. Causally convex embeddings preserve the causal propagator and hence the
-   CCR commutator.
+5. Causally convex embeddings preserve the causal propagator after
+   restriction to the embedded spacetime:
+   \(\chi^*E_N^{\rm ret/adv}\chi_*=E_M^{\rm ret/adv}\).  The global target
+   Green solution need not equal the zero extension of the source solution.
 6. Cauchy morphisms induce isomorphisms because every compactly supported
    source is equivalent in the quotient to one supported in the Cauchy image.
-7. Hadamard states have a state-independent singular part; differences of
-   Hadamard two-point functions are smooth.
+7. Hadamard states have a state-independent singular part near the diagonal;
+   global smoothness of differences of Hadamard two-point functions uses the
+   bisolution property and the local-to-global Hadamard theorem.
 8. Wick powers and the stress tensor require a locally covariant subtraction
    and retain finite local curvature-coordinate freedom.
 9. The volume's curved-spacetime claims are organized by control level: free
@@ -112,8 +119,10 @@
 - `calculation-checks/locally_covariant_kg_checks.py` verifies the finite
   quotient algebra behind the CCR construction: descent of the
   causal-propagator form, vanishing of equation-of-motion generators,
-  symplectic preservation under embeddings, and the quotient distinction
-  between Cauchy and non-Cauchy embeddings.
+  symplectic preservation under embeddings, restriction-versus-zero-extension
+  functoriality, the Minkowski-diamond retarded-support negative control, the
+  quotient distinction between Cauchy and non-Cauchy embeddings, and the
+  diagonal-neighborhood product-cover negative control.
 
 ## Remaining Deepening Targets
 
@@ -152,3 +161,8 @@
   based on unrestricted microcausal functionals.  Microcausality is recorded
   as the pairing test; equicausal or explicit polynomial/local domains carry
   the Peierls/star/time-slice closure claim.
+- 2026-06-08 issue #902 pass: corrected two globalization errors by replacing
+  the false causal-propagator zero-extension identity with the restriction
+  identity used by the symplectic pairing and injectivity proof, and by
+  replacing the diagonal-neighborhood Hadamard smoothness argument with an
+  explicit local-to-global propagation-of-singularities theorem boundary.

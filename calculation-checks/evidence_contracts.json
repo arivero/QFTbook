@@ -135,6 +135,17 @@
       "risk_class": "relativistic hydrodynamics causality"
     },
     {
+      "path": "locally_covariant_kg_checks.py",
+      "risk_class": "locally covariant KG functoriality and Hadamard globalization",
+      "convention_tags": [
+        "causal propagator functoriality is restriction not zero extension",
+        "retarded solution may leave causally convex open image",
+        "quotient injectivity uses pullback of target causal solution",
+        "diagonal U times U charts do not cover far-separated pairs",
+        "Hadamard smooth-difference claim uses local-to-global propagation theorem"
+      ]
+    },
+    {
       "path": "finite_temperature_path_integral_checks.py",
       "risk_class": "thermal Euclidean spectral reconstruction",
       "convention_tags": [
