@@ -74,11 +74,15 @@ The measure-normalized distribution is
 \(\widehat\rho_{AB}:=\rho^{\rm comm}_{AB}/(2\pi)\).\\[0.4em]
 Retarded commutator kernel &
 \(G^{R,\rm comm}_{AB}(t)=-\ii\theta(t)
-\langle[A(t),B(0)]\rangle_\beta\), and, up to real contact polynomials,
-\(G^{R,\rm comm}_{AB}(z)=
-\int_{\mathbb R}d\omega\,\widehat\rho_{AB}(\omega)/(z-\omega)\) for
-\(\operatorname{Im}z>0\).  Hence
-\(\rho^{\rm comm}_{AB}=-2\,\operatorname{Im}G^{R,\rm comm}_{AB}(\omega+\ii0)\).\\[0.4em]
+\langle[A(t),B(0)]\rangle_\beta\).  Its Fourier-domain holomorphic transform is,
+up to real contact polynomials,
+\(G^{R,\rm comm,F}_{AB}(\zeta)=
+\int_{\mathbb R}d\omega\,\widehat\rho_{AB}(\omega)/(\zeta-\omega)\) for
+\(\operatorname{Im}\zeta>0\).  The Laplace transform is
+\(G^{R,\rm comm,L}_{AB}(s)=\int_0^\infty dt\,e^{-st}
+G^{R,\rm comm}_{AB}(t)=G^{R,\rm comm,F}_{AB}(\ii s)\) for
+\(\operatorname{Re}s>0\).  Hence
+\(\rho^{\rm comm}_{AB}=-2\,\operatorname{Im}G^{R,\rm comm,F}_{AB}(\omega+\ii0)\).\\[0.4em]
 Source response &
 For \(H=H_0-h_BB\),
 \(\delta\langle A\rangle=K^R_{AB}*h_B\) with
@@ -93,7 +97,7 @@ For nonzero bosonic Matsubara frequency,
 \(G_E(i\omega_n)=
 \int_{\mathbb R}d\omega\,\widehat\rho_{AB}(\omega)/
 (\omega-i\omega_n)\), so with this retarded sign
-\(G_E(i\omega_n)=-G^{R,\rm comm}_{AB}(i\omega_n)\).  A
+\(G_E(i\omega_n)=-G^{R,\rm comm,F}_{AB}(i\omega_n)\).  A
 positive-frequency Euclidean kernel written with
 \(\rho^{\rm comm}\) carries the measure \(d\omega/(2\pi)\).
 \end{tabular}
@@ -604,16 +608,28 @@ summand, while \(\sigma^{{\rm diss},\rm reg}\) is the locally integrable part
 used in the finite dc limit.  Figure~\ref{fig:kubo-order-of-limits} records
 this order-of-limits prescription.
 
-\begin{proposition}[Static-dynamical Drude split]
+\begin{proposition}[Static, Abel, and adiabatic Drude kernels]
 \label{prop:kubo-zero-mode-drude-normalization}
-Fix a finite-volume regulator with a uniform vector-potential source coupled
-to the total current,
+Fix a finite-volume regulator with a uniform bond-phase vector-potential source
+\(A_i\) coupled to the total current
 \[
-  H(A)=H(0)-A_iI_i+O(A^2),
+  H(A)=H(0)-A_iI^A_i+O(A^2),
 \]
-and include the response contact \(C^{\rm resp}_{ij}\) in the full current
-derivative.  Separate the equilibrium static conductivity kernel
+and include the response contact \(C^{\rm resp}_{ij,V}\) in the full current
+derivative.  If the same torus is parametrized by the total twist
+\(\phi_i=L_iA_i\), then
+\[
+  I^\phi_i=L_i^{-1}I^A_i,\qquad
+  \partial_{A_i}\partial_{A_j}
+  =
+  L_iL_j\,\partial_{\phi_i}\partial_{\phi_j}.
+\]
+The formulae below use \(I_i:=I_i^A\) and the corresponding volume \(V\).
+
+Separate first the isothermal equilibrium static kernel
 \begin{equation}
+  \mathcal K^{\rm iso}_{ij,V}
+  \equiv
   \mathcal K^{\rm eq}_{ij,V}
   :=
   -\left.
@@ -622,36 +638,115 @@ derivative.  Separate the equilibrium static conductivity kernel
   \right|_{A=0},
   \label{eq:kubo-equilibrium-static-conductivity-kernel}
 \end{equation}
-where the Gibbs state is re-equilibrated for the Hamiltonian \(H(A)\), from
-the dynamical retarded vector-potential kernel
+where the Gibbs state is re-equilibrated for the Hamiltonian \(H(A)\).  If
+\(H(A)\) has analytic finite-volume eigenbranches \(E_a(A)\) at \(A=0\), with
+\(p_a=Z^{-1}e^{-\beta E_a(0)}\), this is the free-energy curvature
 \begin{equation}
-  K^{\rm dyn}_{ij,V}(z)
-  :=
-  \frac1V\left(
-    G^{R,\rm comm}_{I_iI_j,V}(z)-C^{\rm resp}_{ij,V}
-  \right),
-  \qquad \operatorname{Re}z>0 ,
-  \label{eq:kubo-dynamical-vector-potential-kernel}
+  \mathcal K^{\rm iso}_{ij,V}
+  =
+  \frac1V\sum_a p_a\,\partial_{A_i}\partial_{A_j}E_a
+  -
+  \frac{\beta}{V}
+  {\rm Cov}_p\bigl(\partial_{A_i}E_a,\partial_{A_j}E_a\bigr).
+  \label{eq:kubo-isothermal-twist-curvature-spectral}
 \end{equation}
-where the initial state is the \(A=0\) Gibbs state.  No pure-gauge assumption
-is made in this identity: \(\mathcal K^{\rm eq}\) may vanish, may be a
-finite-size twist curvature, or may contain a separately declared stiffness
+The adiabatic finite-size twist curvature with the same initial populations is
+the different object
+\begin{equation}
+  \mathcal K^{\rm ad}_{ij,V}[p]
+  =
+  \frac1V\sum_a p_a\,\partial_{A_i}\partial_{A_j}E_a .
+  \label{eq:kubo-adiabatic-kohn-curvature-spectral}
+\end{equation}
+Thus the isothermal and adiabatic curvatures coincide only after separate
+hypotheses have removed the population-derivative covariance term and have
+fixed an analytic branch convention through degeneracies and level crossings.
+
+Now define the noncontact retarded current kernel in two analytic domains:
+\begin{align}
+  G^{R,\rm comm,F}_{I_iI_j,V}(\zeta)
+  &=
+  \sum_{a,b}
+  \frac{(p_a-p_b)(I_i)_{ab}(I_j)_{ba}}
+       {\zeta-(E_b-E_a)},
+  \qquad \operatorname{Im}\zeta>0,
+  \label{eq:kubo-finite-retarded-fourier-current}\\
+  G^{R,\rm comm,L}_{I_iI_j,V}(s)
+  &=
+  \int_0^\infty dt\,e^{-st}
+  G^{R,\rm comm}_{I_iI_j,V}(t)
+  =
+  G^{R,\rm comm,F}_{I_iI_j,V}(\ii s),
+  \qquad \operatorname{Re}s>0 .
+  \label{eq:kubo-finite-retarded-laplace-current}
+\end{align}
+For \(\operatorname{Im}\zeta>0\) and \(\operatorname{Re}s>0\), respectively,
+the dynamical vector-potential conductivity kernels are
+\begin{align}
+  K^{\rm dyn,F}_{ij,V}(\zeta)
+  &:=
+  \frac1V\left(
+    G^{R,\rm comm,F}_{I_iI_j,V}(\zeta)-C^{\rm resp}_{ij,V}
+  \right),
+  \label{eq:kubo-dynamical-vector-potential-fourier-kernel}\\
+  K^{\rm dyn,L}_{ij,V}(s)
+  &:=
+  \frac1V\left(
+    G^{R,\rm comm,L}_{I_iI_j,V}(s)-C^{\rm resp}_{ij,V}
+  \right).
+  \label{eq:kubo-dynamical-vector-potential-laplace-kernel}
+\end{align}
+The Abel boundary kernel is independently defined by
+\begin{equation}
+  K^{\rm dyn,Abel}_{ij,V}(\epsilon)
+  :=
+  K^{\rm dyn,L}_{ij,V}(\epsilon)
+  =
+  K^{\rm dyn,F}_{ij,V}(\ii\epsilon),
+  \qquad \epsilon>0.
+  \label{eq:kubo-dynamical-abel-kernel-definition}
+\end{equation}
+The point \(\zeta=\epsilon\) in the Fourier upper half-plane is not the Abel
+electric-field point; the Abel point is \(\zeta=\ii\epsilon\).  No pure-gauge
+assumption is made here: \(\mathcal K^{\rm iso}\) may vanish, may differ from
+an adiabatic Kohn curvature, or may contain a separately declared stiffness
 sector, depending on topology and boundary conditions.
 
 Let \(E_j(t)=E_j e^{\epsilon t}\) be an Abel-switched electric field observed
 at \(t=0\), and choose \(A_j(t)\) with \(E_j=-\dot A_j\) and
-\(A_j(-\infty)=0\).  The Abel electric-field experiment computes the
-finite-size mismatch between the dynamical vector-potential boundary value and
-the re-equilibrated static kernel:
+\(A_j(-\infty)=0\), namely
+\[
+  A_j(t)=-\epsilon^{-1}E_j e^{\epsilon t}.
+\]
+Define \(\sigma^{(\epsilon)}_{ij,V}\) from the excess of the dynamical current
+over the re-equilibrated isothermal current at the same final value \(A(0)\):
+\[
+  \frac{\delta\langle I_i(0)\rangle_{\rm dyn}}{V}
+  -
+  \frac{\delta\langle I_i(A(0))\rangle_{\rm iso}}{V}
+  =
+  \sigma^{(\epsilon)}_{ij,V}E_j .
+\]
+Since
+\[
+  \frac{\delta\langle I_i(0)\rangle_{\rm dyn}}{V}
+  =
+  \epsilon^{-1}K^{\rm dyn,Abel}_{ij,V}(\epsilon)E_j,
+  \qquad
+  \frac{\delta\langle I_i(A(0))\rangle_{\rm iso}}{V}
+  =
+  \epsilon^{-1}\mathcal K^{\rm iso}_{ij,V}E_j,
+\]
+one derives, rather than defines,
 \begin{equation}
   K^{\rm dyn,Abel}_{ij,V}(\epsilon)
   -
-  \mathcal K^{\rm eq}_{ij,V}
-  :=
+  \mathcal K^{\rm iso}_{ij,V}
+  =
   \epsilon\,\sigma^{(\epsilon)}_{ij,V}.
   \label{eq:kubo-abel-vector-potential-mismatch-definition}
 \end{equation}
-In a route where \(\mathcal K^{\rm eq}_{ij,V}=0\), this reduces to the common
+In a route where \(\mathcal K^{\rm iso}_{ij,V}=0\), this reduces to the common
 pure-gauge notation \(K^{\rm dyn,Abel}=\epsilon\sigma^{(\epsilon)}\).
 With the
 Kubo--Mori product
@@ -670,7 +765,8 @@ zero-Liouville subspace,
 \]
 finite-volume linear response gives the electric-field response
 \begin{equation}
-  \frac{\delta\langle I_i(0)\rangle}{V}
+  \frac{\delta\langle I_i(0)\rangle_{\rm dyn}
+        -\delta\langle I_i(A(0))\rangle_{\rm iso}}{V}
   =
   \sigma^{(\epsilon)}_{ij,V}E_j,
   \qquad
@@ -694,7 +790,7 @@ then
   \lim_{\epsilon\downarrow0}
   \left(
     K^{\rm dyn,Abel,diss}_{ij,V}(\epsilon)
-    -\mathcal K^{\rm eq,diss}_{ij,V}
+    -\mathcal K^{\rm iso,diss}_{ij,V}
   \right)
   =
   \lim_{\epsilon\downarrow0}
@@ -709,7 +805,7 @@ dynamical Abel boundary value splits as
   \lim_{\epsilon\downarrow0}
   K^{\rm dyn,Abel,diss}_{ij,V}(\epsilon)
   =
-  \mathcal K^{\rm eq,diss}_{ij,V}
+  \mathcal K^{\rm iso,diss}_{ij,V}
   +
   \beta A^{(0)}_{ij,V}.
 \]
@@ -735,6 +831,21 @@ standard finite-volume boundary condition has a nonzero \(A^{(0)}_{ij,V}\).
 \end{proposition}
 
 \begin{proof}
+The formulae
+\eqref{eq:kubo-isothermal-twist-curvature-spectral} and
+\eqref{eq:kubo-adiabatic-kohn-curvature-spectral} follow by differentiating,
+respectively, the Gibbs free energy and the fixed-population eigenvalue
+average.  The second derivative of the Gibbs weights supplies the covariance
+term in the isothermal curvature; it is absent from the adiabatic Kohn
+curvature.
+
+The equality
+\(G^{R,\rm comm,L}(s)=G^{R,\rm comm,F}(\ii s)\) is the Fourier convention:
+for a retarded kernel,
+\(e^{\ii(\ii s)t}=e^{-st}\) on \(t>0\).  Thus the Abel kernel is the boundary
+value at \(\zeta=\ii\epsilon\), with the same contact term used in the
+vector-potential source derivative.
+
 The finite-volume KMS identity gives
 \[
   \ii\langle[\bar I_i(t),\bar I_j(0)]\rangle_\beta
@@ -742,16 +853,14 @@ The finite-volume KMS identity gives
   -\beta\,\partial_t
   (\bar I_i(t),\bar I_j)_{\beta,{\rm KM}} .
 \]
-The source-response kernel for \(A_j\) is this commutator kernel plus the
-local response contact.  Integrating by parts against \(A_j(t-\tau)\)
-produces a boundary/contact contribution to the full equilibrium source
-derivative equal to \(-\mathcal K^{\rm eq}_{ij,V}\) with the sign convention
-of \eqref{eq:kubo-equilibrium-static-conductivity-kernel}.  Passing to the
-conductivity kernel \(K^{\rm cond}=-\mathcal K^{\rm full}\) gives the
-\(+\mathcal K^{\rm eq}_{ij,V}\) term in
-\eqref{eq:kubo-static-dynamic-zero-mode-mismatch}.  The dynamical Abel
-experiment instead holds the initial state fixed and uses
-\(E_j=-\dot A_j\), leaving
+The source-response kernel for \(A_j\) is this commutator kernel plus the local
+response contact.  Integrating by parts against
+\(A_j(t-\tau)=-\epsilon^{-1}E_j e^{\epsilon(t-\tau)}\) keeps two terms: the
+endpoint/contact term equal to the re-equilibrated isothermal derivative
+\(\mathcal K^{\rm iso}_{ij,V}\), with the sign convention of
+\eqref{eq:kubo-equilibrium-static-conductivity-kernel}, and the electric-field
+term proportional to \(\dot A=-E\).  Subtracting the isothermal current at the
+same final \(A(0)\) leaves
 \eqref{eq:kubo-abel-source-response-conductivity} for the electric-field
 response.  The zero-Liouville component of \(C^{\rm KM}_{ij,V}(t)\) is the
 constant matrix \(A^{(0)}_{ij,V}\), because on \(\ker[H,\cdot]\) the
@@ -772,11 +881,15 @@ Proposition~\ref{prop:kubo-zero-mode-drude-normalization} has distinct
 nonempty regulator routes.
 \begin{enumerate}
 \item In a periodic system, a uniform vector potential is a holonomy or twist.
-  The finite static curvature \(\mathcal K^{\rm eq}_{V}\) is not assumed to
-  vanish; it is the setting of Kohn-type twist stiffness and finite-size
-  Drude response.  A normal ballistic Drude atom, a superfluid or Meissner
-  stiffness, and a reactive Hall or magnetization term are separate
-  low-frequency objects and must be named before comparing limits.
+  The isothermal free-energy curvature \(\mathcal K^{\rm iso}_{V}\) is not
+  assumed to vanish, and it is not automatically the adiabatic Kohn curvature
+  \(\mathcal K^{\rm ad}_{V}\).  A Kohn finite-size route uses a declared
+  branch or fixed-population adiabatic curvature, with the bond-phase or total
+  twist normalization fixed before taking limits.  A normal ballistic Drude
+  atom, an isothermal free-energy curvature, an adiabatic stiffness, a
+  superfluid or Meissner stiffness, and a reactive Hall or magnetization term
+  are separate low-frequency objects and must be named before comparing
+  limits.
 \item In an open finite system with a position operator \(X_j\) and current
   \(I_j=\ii[H,X_j]\), the exact finite-volume zero-Liouville current
   projection vanishes:
@@ -792,10 +905,11 @@ nonempty regulator routes.
   Hermitian dissipative conductivity measure for local current densities,
   with contacts, stiffness sectors, and boundary artifacts separated, and only
   then takes the zero-frequency distributional limit.  Agreement with a
-  periodic twist route or an open spectral-collapse route is an additional
-  comparison theorem: it requires common current normalization, tightness of
-  low-frequency spectral weight, and control of the order of limits
-  \(V\to\infty\), \(\epsilon\downarrow0\), and \(\omega\downarrow0\).
+  periodic adiabatic-twist route or an open spectral-collapse route is an
+  additional comparison theorem: it requires common current normalization,
+  tightness of low-frequency spectral weight, and control of the order of
+  limits \(V\to\infty\), \(\epsilon\downarrow0\), and
+  \(\omega\downarrow0\).
 \end{enumerate}
 \end{proposition}
 
@@ -820,16 +934,22 @@ fixed finite-volume zero atom remains absent.
 For contractible open-boundary vector-potential sources one may have the
 isothermal pure-gauge cancellation
 \begin{equation}
-  \mathcal K^{\rm eq}_{ij,V}=0 ,
+  \mathcal K^{\rm iso}_{ij,V}
+  \equiv
+  \mathcal K^{\rm eq}_{ij,V}
+  =
+  0 ,
   \label{eq:kubo-equilibrium-static-puregauge-cancellation}
 \end{equation}
 but then Proposition~\ref{prop:kubo-boundary-condition-drude-routes} shows
 that the finite exact zero-mode atom is not the generic open-boundary route
-to a bulk Drude weight.  Conversely, on a periodic torus the twist route can
-have finite exact zero-mode response, but \(\mathcal K^{\rm eq}_{ij,V}\) is a
-holonomy curvature rather than a contractible pure-gauge cancellation.  The
-two routes can agree only after the thermodynamic comparison hypotheses have
-been proved.
+to a bulk Drude weight.  Conversely, on a periodic torus the adiabatic twist
+route can have finite exact zero-mode response, but
+\(\mathcal K^{\rm iso}_{ij,V}\) is a holonomy free-energy curvature rather than
+a contractible pure-gauge cancellation, and it agrees with the adiabatic
+curvature only under the hypotheses stated in
+Proposition~\ref{prop:kubo-zero-mode-drude-normalization}.  The routes can
+agree only after the thermodynamic comparison hypotheses have been proved.
 
 The finite Mazur matrix \(A^{(0)}_{ij,V}\) and the thermodynamic Drude atom
 are connected only after the zero-mode source-response limit is supplied.  If

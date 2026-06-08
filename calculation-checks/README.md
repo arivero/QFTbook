@@ -3693,9 +3693,14 @@ Current checks:
   control showing that the commutator spectral density can vanish while the
   symmetrized zero atom is nonzero, an explicit tight-binding comparison
   separating the periodic twist route from the open-boundary spectral-collapse
-  route to a Drude weight, a finite oscillatory negative control where Cesaro
-  and Abel averages isolate the zero-frequency component but the pointwise
-  long-time limit does not exist, a polynomial ultraviolet-tail negative
+  route to a Drude weight, a Fourier/Laplace analytic-domain check showing
+  that the Abel point is the Fourier point \(i\epsilon\) rather than real
+  \(\epsilon\), a switched-source endpoint/contact check deriving
+  \(K^{\rm dyn,Abel}-K^{\rm iso}=\epsilon\sigma^{(\epsilon)}\), an
+  isothermal-versus-adiabatic twist-curvature check, a bond-phase versus total
+  twist normalization check, a finite oscillatory negative control where
+  Cesaro and Abel averages isolate the zero-frequency component but the
+  pointwise long-time limit does not exist, a polynomial ultraviolet-tail negative
   control showing why the Drude extraction is filtered or regulated, a
   cutoff-positivity contract rejecting sign-changing, complex, or overlarge
   filters under the

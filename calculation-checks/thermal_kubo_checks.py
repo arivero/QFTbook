@@ -5,7 +5,10 @@ Evidence contract.
 Target claims: Volume X, Chapter 4 uses one retarded/source-response sign
 ledger, separates commutator spectral data from full source derivatives, and
 keeps the response-contact sign consistent when translating to the
-conductivity kernel.
+conductivity kernel.  It also separates Fourier upper-half-plane retarded
+variables from Laplace/Abel variables, derives the Abel static-dynamical
+mismatch from the switched vector-potential source, and distinguishes
+isothermal twist curvature from adiabatic Kohn curvature.
 Independent construction: two-level Lehmann weights, finite retarded pole
 models, a minimally coupled charged oscillator with a diamagnetic contact
 term, finite Mazur projection algebra, and a two-dimensional Mori-Zwanzig
@@ -13,11 +16,12 @@ Schur-complement model.  The conductivity-sector checks separate Hermitian
 dissipation from a real antisymmetric Hall block.  The Mazur/Drude checks use
 an Abel-switched source response for the zero-Liouville current covariance,
 an H=0 conserved-current negative control, an explicit tight-binding
-periodic-twist/open-boundary comparison, a finite oscillatory negative
-control, and a polynomial ultraviolet-tail control to separate source-derived
-Drude residues and filtered Cesaro/Abel zero-frequency projections from
-unproved commutator-FDT, pointwise, static-equilibrium, unfiltered continuum,
-or sign-changing-filter positivity claims.
+periodic-twist/open-boundary comparison, an isothermal-versus-adiabatic twist
+curvature comparison, a finite oscillatory negative control, and a polynomial
+ultraviolet-tail control to separate source-derived Drude residues and filtered
+Cesaro/Abel zero-frequency projections from unproved commutator-FDT,
+pointwise, static-equilibrium, unfiltered continuum, wrong analytic-domain, or
+sign-changing-filter positivity claims.
 Imported assumptions: the thermal KMS condition, finite-volume linear
 response, and the interpretation of real local source contacts as contact
 terms outside the nonzero-frequency commutator spectral measure.
@@ -35,7 +39,10 @@ dominated convergence; sign-changing or complex compact filters are rejected
 when the proof claims a positive filtered measure.  The open-boundary
 finite-size Drude atom is not accepted as the periodic twist/Kohn route: the
 former vanishes at every finite size in the tight-binding check while regular
-peaks collapse toward zero with increasing size.
+peaks collapse toward zero with increasing size.  Evaluating the Fourier
+retarded transform at real epsilon, substituting isothermal curvature for
+adiabatic curvature, or dropping the switched-source endpoint/contact is also
+rejected.
 Scope boundary: these checks do not prove hydrodynamic closure, continuum
 limit exchange, or Euclidean analytic-continuation stability.
 """
@@ -280,6 +287,158 @@ def check_diamagnetic_contact_response_convention() -> None:
         "conductivity kernel imaginary part is nonlocal spectral part",
         conductivity_kernel.imag,
         nonlocal_kernel.imag,
+    )
+
+
+def check_fourier_laplace_abel_domain_relation() -> None:
+    """The Abel point is the Fourier transform at zeta=i*epsilon."""
+
+    gamma = 0.7
+    contact = -0.23
+
+    def retarded_fourier(zeta: complex) -> complex:
+        # Integral_0^infty exp(i*zeta*t) exp(-gamma*t) dt.
+        return 1.0 / (gamma - 1j * zeta)
+
+    def retarded_laplace(s_value: float) -> complex:
+        return 1.0 / (gamma + s_value)
+
+    for epsilon in (0.4, 0.2, 0.05):
+        laplace_kernel = retarded_laplace(epsilon) - contact
+        fourier_abel_kernel = retarded_fourier(1j * epsilon) - contact
+        wrong_real_frequency_kernel = retarded_fourier(epsilon) - contact
+
+        assert_close(
+            "Laplace Abel equals Fourier at i epsilon",
+            fourier_abel_kernel.real,
+            laplace_kernel.real,
+        )
+        assert_close("Laplace Abel imaginary part", fourier_abel_kernel.imag, 0.0)
+        if abs(wrong_real_frequency_kernel - laplace_kernel) < 1.0e-6:
+            raise AssertionError("Fourier kernel evaluated at real epsilon was accepted as the Abel kernel")
+
+
+def check_switched_source_endpoint_and_contact_are_load_bearing() -> None:
+    """The Abel mismatch is derived by subtracting the final static endpoint."""
+
+    epsilon = 0.2
+    electric_field = 0.6
+    isothermal_static_kernel = 0.42
+    noncontact_laplace_kernel = 0.73
+    response_contact = -0.11
+    dynamic_abel_kernel = noncontact_laplace_kernel - response_contact
+
+    final_vector_potential = -electric_field / epsilon
+    dynamic_current_density = -dynamic_abel_kernel * final_vector_potential
+    isothermal_current_density = -isothermal_static_kernel * final_vector_potential
+    sigma_epsilon = (dynamic_current_density - isothermal_current_density) / electric_field
+
+    assert_close(
+        "switched source derives Abel mismatch",
+        epsilon * sigma_epsilon,
+        dynamic_abel_kernel - isothermal_static_kernel,
+    )
+
+    without_endpoint_subtraction = dynamic_current_density / electric_field
+    wrong_without_endpoint = epsilon * without_endpoint_subtraction
+    expected_mismatch = dynamic_abel_kernel - isothermal_static_kernel
+    if abs(wrong_without_endpoint - expected_mismatch) < 1.0e-12:
+        raise AssertionError("integration-by-parts endpoint was silently dropped")
+
+    contact_omitted_dynamic_kernel = noncontact_laplace_kernel
+    if abs(
+        (contact_omitted_dynamic_kernel - isothermal_static_kernel)
+        - (dynamic_abel_kernel - isothermal_static_kernel)
+    ) < 1.0e-12:
+        raise AssertionError("source contact omission did not change the Abel mismatch")
+
+
+def check_isothermal_not_adiabatic_twist_curvature() -> None:
+    """Finite-temperature Gibbs curvature includes population derivatives."""
+
+    beta = 0.6
+    level_curvature = 3.0
+    current_slope = 1.1
+    volume = 5.0
+    probabilities = [0.5, 0.5]
+    energy_slopes = [current_slope, -current_slope]
+    energy_curvatures = [level_curvature, level_curvature]
+
+    mean_slope = sum(
+        weight * slope
+        for weight, slope in zip(probabilities, energy_slopes, strict=True)
+    )
+    slope_covariance = sum(
+        weight * (slope - mean_slope) ** 2
+        for weight, slope in zip(probabilities, energy_slopes, strict=True)
+    )
+    adiabatic_curvature = sum(
+        weight * curvature
+        for weight, curvature in zip(probabilities, energy_curvatures, strict=True)
+    ) / volume
+    isothermal_curvature = adiabatic_curvature - beta * slope_covariance / volume
+
+    assert isothermal_curvature < adiabatic_curvature
+    assert_close(
+        "isothermal curvature differs by diagonal-current covariance",
+        adiabatic_curvature - isothermal_curvature,
+        beta * slope_covariance / volume,
+    )
+    if abs(isothermal_curvature - adiabatic_curvature) < 1.0e-12:
+        raise AssertionError("isothermal curvature was substituted for adiabatic Kohn curvature")
+
+
+def check_bond_phase_total_twist_normalization() -> None:
+    """Uniform bond phase A and total twist phi=L*A have different conjugates."""
+
+    length = 8
+    hopping = 1.0
+
+    def energy_from_total_twist(mode: int, phi: float) -> float:
+        momentum = 2.0 * math.pi * mode / length + phi / length
+        return -2.0 * hopping * math.cos(momentum)
+
+    def energy_from_bond_phase(mode: int, bond_phase: float) -> float:
+        return energy_from_total_twist(mode, length * bond_phase)
+
+    def current_total_twist(mode: int, phi: float) -> float:
+        momentum = 2.0 * math.pi * mode / length + phi / length
+        return -(2.0 * hopping / length) * math.sin(momentum)
+
+    def current_bond_phase(mode: int, bond_phase: float) -> float:
+        momentum = 2.0 * math.pi * mode / length + bond_phase
+        return -2.0 * hopping * math.sin(momentum)
+
+    mode = 1
+    phi = 0.13
+    bond_phase = phi / length
+    assert_close(
+        "bond phase and total twist parametrize the same finite spectrum",
+        energy_from_bond_phase(mode, bond_phase),
+        energy_from_total_twist(mode, phi),
+    )
+    assert_close(
+        "bond-phase current is L times total-twist current",
+        current_bond_phase(mode, bond_phase),
+        length * current_total_twist(mode, phi),
+    )
+
+    step = 1.0e-4
+    curvature_phi = (
+        energy_from_total_twist(mode, step)
+        - 2.0 * energy_from_total_twist(mode, 0.0)
+        + energy_from_total_twist(mode, -step)
+    ) / (step * step)
+    curvature_bond = (
+        energy_from_bond_phase(mode, step)
+        - 2.0 * energy_from_bond_phase(mode, 0.0)
+        + energy_from_bond_phase(mode, -step)
+    ) / (step * step)
+    assert_close(
+        "bond-phase curvature carries L squared relative to total twist",
+        curvature_bond,
+        length * length * curvature_phi,
+        tol=1.0e-6,
     )
 
 
@@ -766,6 +925,10 @@ def main() -> None:
     check_hall_block_is_not_positive_dissipative_measure()
     check_vector_potential_response_sign()
     check_diamagnetic_contact_response_convention()
+    check_fourier_laplace_abel_domain_relation()
+    check_switched_source_endpoint_and_contact_are_load_bearing()
+    check_isothermal_not_adiabatic_twist_curvature()
+    check_bond_phase_total_twist_normalization()
     check_mazur_projection_and_drude_weight()
     check_commutator_fdt_loses_exact_zero_mode()
     check_periodic_twist_and_open_boundary_drude_routes()

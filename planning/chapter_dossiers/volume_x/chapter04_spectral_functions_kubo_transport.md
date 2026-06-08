@@ -43,14 +43,19 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 - Thermodynamic Drude weight defined as the coefficient of the
   zero-frequency atom in the Hermitian dissipative conductivity measure; its
   normalization \(D=\beta A^{(0)}\) is derived from the mismatch between the
-  equilibrium static vector-potential derivative and the dynamical Abel
-  retarded kernel, not by setting the same zero-frequency kernel to zero or by
+  isothermal equilibrium static vector-potential derivative and the
+  independently defined dynamical Abel retarded kernel
+  \(K^{\rm dyn,F}(i\epsilon)=K^{\rm dyn,L}(\epsilon)\), not by defining the
+  mismatch tautologically, setting the same zero-frequency kernel to zero, or
   dividing the commutator spectral density by \(\omega\).
   The finite source-response identity is separated from boundary-condition
   routes: periodic uniform vector potentials are holonomy/twist sources, open
   finite systems with \(I=\ii[H,X]\) have no exact zero-Liouville current atom,
   and open-boundary Drude weights, when present, arise from finite-frequency
   spectral weight collapsing toward zero with volume.
+  Isothermal Gibbs/free-energy curvature and adiabatic Kohn curvature are
+  separately named and related only after fixed-population/no-covariance and
+  no-level-crossing hypotheses are supplied.
   The static pure-gauge cancellation is restricted to contractible uniform
   sources with no background holonomy sector and no superfluid/superconducting
   stiffness response.
@@ -85,6 +90,7 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 | --- | --- |
 | \(\rho_\beta\) | KMS state at inverse temperature \(\beta\) |
 | \(G^{R,\mathrm{comm}}_{AB}\), \(G^R_{AB}\) | commutator-retarded correlator; the shorter form is used in the chapter once the convention table is declared |
+| \(G^{R,\rm comm,F}_{AB}(\zeta)\), \(G^{R,\rm comm,L}_{AB}(s)\) | Fourier upper-half-plane and Laplace retarded transforms, related by \(G^L(s)=G^F(\ii s)\); the Abel point is \(\zeta=\ii\epsilon\), not real \(\epsilon\) |
 | \(K^R_{AB}\) | source-response kernel for \(H=H_0-h_BB\), equal to \(-G^{R,\mathrm{comm}}_{AB}\) |
 | \(\rho^{\rm comm}_{AB}\), \(\rho_{AB}\) | commutator spectral density with \(\rho=-2\operatorname{Im}G^R\); the shorter form is used after the table |
 | \(\widehat\rho_{AB}\) | measure-normalized spectral distribution \(\rho^{\rm comm}_{AB}/(2\pi)\) |
@@ -92,9 +98,11 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 | \(\mathcal K^{\rm full}_{AB}\) | full source derivative \(\delta\langle A\rangle/\delta h_B=-G^{R,\rm comm}_{AB}+C^{\rm resp}_{AB}\) |
 | \(K^{\rm cond}_{ij}\) | transverse conductivity kernel defined by \(\langle J_i\rangle=-K^{\rm cond}_{ij}A_j\), equal to \(G^{R,\rm comm}_{J_iJ_j}-C^{\rm resp}_{ij}\) |
 | \(C^{\rm resp}_{AB}\) | local contact contribution to the full source-response derivative |
-| \(\mathcal K^{\rm eq}_{ij,V}\) | equilibrium/isothermal static conductivity kernel obtained by varying the time-independent vector-potential source and the Gibbs state together |
-| \(K^{\rm dyn}_{ij,V}(z)\), \(K^{\rm dyn,Abel}_{ij,V}(\epsilon)\) | dynamical retarded vector-potential kernel with the initial state fixed, and its Abel electric-field boundary kernel \(\epsilon\sigma^{(\epsilon)}\) |
-| \(I_i\), \(\bar I_i\) | total current and connected total current in finite volume |
+| \(\mathcal K^{\rm iso}_{ij,V}\equiv\mathcal K^{\rm eq}_{ij,V}\) | equilibrium/isothermal static conductivity kernel obtained by varying the time-independent vector-potential source and the Gibbs state together |
+| \(\mathcal K^{\rm ad}_{ij,V}[p]\) | adiabatic Kohn/twist curvature with fixed finite-volume branch populations |
+| \(K^{\rm dyn,F}_{ij,V}(\zeta)\), \(K^{\rm dyn,L}_{ij,V}(s)\), \(K^{\rm dyn,Abel}_{ij,V}(\epsilon)\) | dynamical retarded vector-potential kernels with the initial state fixed, with \(K^{\rm dyn,Abel}(\epsilon)=K^{\rm dyn,F}(\ii\epsilon)=K^{\rm dyn,L}(\epsilon)\) before subtracting \(\mathcal K^{\rm iso}\) |
+| \(A_i\), \(\phi_i=L_iA_i\) | uniform bond phase and total twist; their conjugate currents and curvatures differ by \(L_i\) factors |
+| \(I_i\), \(I^A_i\), \(I^\phi_i\), \(\bar I_i\) | total current conjugate to the declared source, with \(I^\phi_i=L_i^{-1}I^A_i\), and connected total current in finite volume |
 | \(C_{ij,V}(t)\) | finite-volume connected symmetrized current autocorrelation |
 | \(Q_a\), \(C_{ab}\), \(v_{ia}\) | conserved operators, symmetrized covariance, and current-charge overlap |
 | \(A^{(0)}_{ij,V}\) | finite-volume Cesaro projection onto the zero-Liouvillian current sector |
@@ -147,13 +155,17 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 8. Conserved charges with nonzero current overlap give a positive
    finite-volume zero-Liouvillian Cesaro projection bounded by the Mazur
    matrix.  Identifying its thermodynamic limit with a Drude atom requires
-   the zero-mode source-response construction: an equilibrium static
-   vector-potential derivative, a distinct dynamical retarded/Abel kernel, the
-   identity that their zero-mode mismatch is \(\beta A^{(0)}\), and convergence
-   of the resulting residues into the Hermitian dissipative conductivity
-   measure.  This construction is not a boundary-condition theorem by itself:
-   periodic twists may carry finite Kohn-type curvature because the source is a
-   holonomy, while open finite systems with \(I=\ii[H,X]\) have
+   the zero-mode source-response construction: an isothermal equilibrium static
+   vector-potential derivative, independently defined Fourier and Laplace
+   dynamical retarded kernels with Abel point \(K^{\rm dyn,F}(\ii\epsilon)\),
+   the integration-by-parts/source-contact derivation of
+   \(K^{\rm dyn,Abel}-\mathcal K^{\rm iso}=\epsilon\sigma^{(\epsilon)}\), and
+   convergence of the resulting residues into the Hermitian dissipative
+   conductivity measure.  This construction is not a boundary-condition theorem
+   by itself: periodic twists may carry finite adiabatic Kohn curvature because
+   the source is a holonomy, but that curvature is distinct from the isothermal
+   Gibbs/free-energy curvature unless fixed-population, branch, and covariance
+   hypotheses identify them.  Open finite systems with \(I=\ii[H,X]\) have
    \(P_0 I=0\) and any thermodynamic Drude weight must be recovered through
    spectral collapse or a separate bulk-measure comparison theorem.  The
    pure-gauge static cancellation applies only for contractible uniform sources
@@ -212,7 +224,13 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   tight-binding comparison in which a periodic twist has nonzero zero-mode
   covariance and nonzero static twist curvature, while an open finite chain
   realizes \(I=\ii[H,X]\), has vanishing exact zero-frequency current atom, and
-  has its lowest current-carrying transition move toward zero with length; an oscillatory
+  has its lowest current-carrying transition move toward zero with length; a
+  Fourier/Laplace domain check rejecting evaluation of the Fourier transform at
+  real \(\epsilon\) instead of \(\ii\epsilon\); a switched-source
+  endpoint/contact check deriving
+  \(K^{\rm dyn,Abel}-\mathcal K^{\rm iso}=\epsilon\sigma^{(\epsilon)}\); an
+  isothermal-versus-adiabatic twist-curvature negative control; a bond-phase
+  versus total-twist normalization check; an oscillatory
   \(C(t)=C_0+\cos\Omega t\) negative control where Cesaro and Abel averages
   isolate \(C_0\) but no pointwise long-time limit exists; a
   polynomial ultraviolet-tail negative control showing why the Drude
@@ -317,3 +335,13 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   Drude weights must come from spectral collapse or a bulk comparison theorem.
   The companion check is now an explicit tight-binding periodic/open
   comparison instead of a conserved-current self-confirmation.
+- 2026-06-08 issue #955 pass: defined independent Fourier and Laplace retarded
+  vector-potential kernels and set
+  \(K^{\rm dyn,Abel}(\epsilon)=K^{\rm dyn,F}(\ii\epsilon)=K^{\rm dyn,L}(\epsilon)\)
+  before deriving its mismatch with the isothermal kernel.  The switched-source
+  derivation now keeps the endpoint and contact terms, and finite spectral
+  formulae separate isothermal Gibbs/free-energy curvature from adiabatic Kohn
+  curvature with the bond-phase/total-twist normalization stated explicitly.
+  New adversarial checks reject real-\(\epsilon\) Fourier evaluation,
+  endpoint/contact omission, isothermal-for-adiabatic substitution, and lost
+  twist normalization.
