@@ -8,15 +8,15 @@ Target claims:
   conventions, de Sitter index arithmetic, Bogoliubov normalization and
   phase-sensitive annihilator transformations, detector positivity,
   finite adiabatic-order bookkeeping, produced-stress source coordinates,
-  pressure work, Friedmann response coefficients, compact spacetime
-  stress-noise smearing, retarded metric-noise pushforward, and a finite
-  backreaction-window budget.
+  pressure work, omitted-stress conservation defects, Friedmann response
+  coefficients, compact spacetime stress-noise smearing, retarded metric-noise
+  pushforward, and a finite backreaction-window budget.
 
 Independent construction:
 - The checks use finite mode sums, exact rational complex two-mode
   Bogoliubov matrices, direct coefficient comparison, retained FLRW
-  stress-source samples, and finite cell-averaged covariance matrices rather
-  than copying the prose formulae.
+  stress-source samples, adversarial omitted-stress decompositions, and finite
+  cell-averaged covariance matrices rather than copying the prose formulae.
 
 Imported assumptions:
 - The free scalar mode equation, adiabatic/asymptotic particle basis,
@@ -27,8 +27,9 @@ Negative controls:
 - Wrong scale-factor powers, missing pressure work, treating ongoing
   production as a conserved fluid, untransported scheme shifts, omitted
   tail/noise budgets, number-density-only sources, zero-particle source
-  shortcuts, curvature-as-zeroth-order WKB bookkeeping, finite-order
-  adiabatic/Hadamard conflation, pointlike spatial stress-noise evaluation,
+  shortcuts, using the diagonal identity as an omitted-stress residual,
+  curvature-as-zeroth-order WKB bookkeeping, finite-order adiabatic/Hadamard
+  conflation, pointlike spatial stress-noise evaluation,
   unnormalized whole-slice smearing, the old conjugated-alpha annihilator rule,
   and real-quench-only Bogoliubov tests are rejected.
 
@@ -463,6 +464,104 @@ def check_produced_stress_continuity_check() -> None:
     )
 
 
+def check_omitted_stress_conservation_defect() -> None:
+    d = 4
+    scale_factor = Fraction(2)
+    hubble = Fraction(1, 3)
+    modes = [
+        # degeneracy, comoving momentum k, conformal frequency Omega, n, dot n
+        (2, Fraction(3), Fraction(5), Fraction(7, 11), Fraction(1, 13)),
+        (1, Fraction(4), Fraction(6), Fraction(5, 17), -Fraction(1, 19)),
+    ]
+
+    rho_sum = sum(
+        Fraction(degeneracy) * omega * occupation
+        for degeneracy, _k, omega, occupation, _occupation_dot in modes
+    )
+    pressure_sum = sum(
+        Fraction(degeneracy) * k * k * occupation / ((d - 1) * omega)
+        for degeneracy, k, omega, occupation, _occupation_dot in modes
+    )
+    production_sum = sum(
+        Fraction(degeneracy) * omega * occupation_dot
+        for degeneracy, _k, omega, _occupation, occupation_dot in modes
+    )
+    omega_dot_sum = sum(
+        Fraction(degeneracy)
+        * hubble
+        * (omega - k * k / omega)
+        * occupation
+        for degeneracy, k, omega, occupation, _occupation_dot in modes
+    )
+
+    rho = rho_sum / (scale_factor ** d)
+    pressure = pressure_sum / (scale_factor ** d)
+    production_source = production_sum / (scale_factor ** d)
+    rho_dot = (
+        omega_dot_sum + production_sum
+    ) / (scale_factor ** d) - d * hubble * rho
+
+    old_diagonal_difference = (
+        rho_dot + (d - 1) * hubble * (rho + pressure) - production_source
+    )
+    assert_equal(
+        "old diagonal continuity difference is tautologically zero",
+        old_diagonal_difference,
+        Fraction(0),
+    )
+
+    coherence_rho = Fraction(1, 30)
+    coherence_pressure = Fraction(1, 45)
+    coherence_rho_dot = Fraction(1, 70)
+    coherence_divergence = coherence_rho_dot + (d - 1) * hubble * (
+        coherence_rho + coherence_pressure
+    )
+
+    basis_rho = Fraction(1, 40)
+    basis_pressure = Fraction(1, 120)
+    # Choose the basis-change channel so the full renormalized stress is
+    # conserved, while the omitted stress divergence remains nonzero.
+    basis_divergence = -production_source - coherence_divergence
+    basis_rho_dot = basis_divergence - (d - 1) * hubble * (
+        basis_rho + basis_pressure
+    )
+
+    missing_rho = coherence_rho + basis_rho
+    missing_pressure = coherence_pressure + basis_pressure
+    missing_rho_dot = coherence_rho_dot + basis_rho_dot
+    omitted_divergence_defect = missing_rho_dot + (d - 1) * hubble * (
+        missing_rho + missing_pressure
+    )
+    assert_equal(
+        "full stress minus diagonal stress is nonzero",
+        (missing_rho == 0 and missing_pressure == 0),
+        False,
+    )
+    assert_equal(
+        "omitted stress divergence cancels production in conserved full stress",
+        production_source + omitted_divergence_defect,
+        Fraction(0),
+    )
+    assert_equal(
+        "corrected omitted-stress defect detects discarded channels",
+        omitted_divergence_defect == Fraction(0),
+        False,
+    )
+
+    wrong_no_pressure_residual = rho_dot + (d - 1) * hubble * rho - production_source
+    assert_equal(
+        "dropping pressure fails the diagonal source equation",
+        wrong_no_pressure_residual == Fraction(0),
+        False,
+    )
+    wrong_no_source_residual = rho_dot + (d - 1) * hubble * (rho + pressure)
+    assert_equal(
+        "dropping production source fails during particle creation",
+        wrong_no_source_residual == Fraction(0),
+        False,
+    )
+
+
 def check_cosmological_backreaction_window() -> None:
     d = 4
     kappa_d = Fraction(3, 2)
@@ -501,41 +600,54 @@ def check_cosmological_backreaction_window() -> None:
         False,
     )
 
+    coherence_remainder = Fraction(1, 150)
+    basis_remainder = -Fraction(1, 300)
     vacuum_remainder = Fraction(1, 1000)
     geometric_remainder = -Fraction(1, 1000)
     tail_remainder = Fraction(1, 100)
+    missing_stress_density = (
+        coherence_remainder
+        + basis_remainder
+        + vacuum_remainder
+        + geometric_remainder
+        + tail_remainder
+    )
     gravitational_remainder = Fraction(1, 2000)
     full_delta_hubble_squared = (
-        friedmann_coefficient
-        * (produced_energy + vacuum_remainder + geometric_remainder + tail_remainder)
+        friedmann_coefficient * (produced_energy + missing_stress_density)
         + gravitational_remainder
     )
     error = abs(full_delta_hubble_squared - retained_delta_hubble_squared)
-    full_budget = (
+    density_budget = (
+        abs(coherence_remainder)
+        + abs(basis_remainder)
+        + abs(vacuum_remainder)
+        + abs(geometric_remainder)
+        + abs(tail_remainder)
+    )
+    full_budget = friedmann_coefficient * density_budget + abs(gravitational_remainder)
+    missing_coherence_basis_budget = (
         friedmann_coefficient
         * (abs(vacuum_remainder) + abs(geometric_remainder) + abs(tail_remainder))
         + abs(gravitational_remainder)
     )
-    missing_tail_budget = (
-        friedmann_coefficient * (abs(vacuum_remainder) + abs(geometric_remainder))
-        + abs(gravitational_remainder)
-    )
     assert_equal("backreaction remainder budget controls response", error <= full_budget, True)
-    assert_equal("omitting tail budget undercontrols response", error <= missing_tail_budget, False)
+    assert_equal(
+        "omitting coherence/basis budgets undercontrols response",
+        error <= missing_coherence_basis_budget,
+        False,
+    )
 
     hubble = Fraction(1, 3)
     production_source = Fraction(7, 80)
-    continuity_residual = Fraction(1, 700)
     produced_energy_dot = (
         production_source
         - (d - 1) * hubble * (produced_energy + produced_pressure)
-        + continuity_residual
     )
     retained_delta_hubble_squared_dot = friedmann_coefficient * produced_energy_dot
     drift_bound = friedmann_coefficient * (
         abs(production_source)
         + (d - 1) * abs(hubble) * (abs(produced_energy) + abs(produced_pressure))
-        + continuity_residual
     )
     assert_equal(
         "produced-source drift bound",
@@ -545,11 +657,51 @@ def check_cosmological_backreaction_window() -> None:
     missing_pressure_energy_dot = (
         production_source
         - (d - 1) * hubble * produced_energy
-        + continuity_residual
     )
     assert_equal(
         "omitting pressure changes Hubble-square drift",
         missing_pressure_energy_dot == produced_energy_dot,
+        False,
+    )
+
+    missing_stress_pressure = Fraction(1, 75)
+    omitted_divergence = -production_source
+    gravitational_response_dot = Fraction(1, 3000)
+    full_minus_retained_hubble_drift = (
+        friedmann_coefficient
+        * (
+            omitted_divergence
+            - (d - 1) * hubble * (missing_stress_density + missing_stress_pressure)
+        )
+        + gravitational_response_dot
+    )
+    drift_error_budget = (
+        friedmann_coefficient
+        * (
+            abs(omitted_divergence)
+            + (d - 1)
+            * abs(hubble)
+            * (density_budget + abs(missing_stress_pressure))
+        )
+        + abs(gravitational_response_dot)
+    )
+    no_divergence_budget = (
+        friedmann_coefficient
+        * (
+            (d - 1)
+            * abs(hubble)
+            * (density_budget + abs(missing_stress_pressure))
+        )
+        + abs(gravitational_response_dot)
+    )
+    assert_equal(
+        "omitted-stress divergence controls full-minus-retained drift",
+        abs(full_minus_retained_hubble_drift) <= drift_error_budget,
+        True,
+    )
+    assert_equal(
+        "tautological diagonal residual underbudgets omitted-stress drift",
+        abs(full_minus_retained_hubble_drift) <= no_divergence_budget,
         False,
     )
 
@@ -700,6 +852,7 @@ def main() -> None:
     check_detector_positive_type_finite_model()
     check_out_region_produced_stress_tensor()
     check_produced_stress_continuity_check()
+    check_omitted_stress_conservation_defect()
     check_cosmological_backreaction_window()
     check_spacetime_smeared_stress_noise_response()
     print("Cosmological particle-creation convention checks passed.")

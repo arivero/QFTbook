@@ -1445,10 +1445,15 @@ Current checks:
   coefficient.  The same companion checks the finite continuity identity
   \(\dot\rho+(d-1)H(\rho+P)=a^{-d}\int\Omega_k\dot n_k\), with negative
   controls against wrong pressure normalization, wrong scale-factor power, and
-  treating ongoing production as a conserved fluid.  It also checks the finite
-  FLRW produced-stress backreaction window: scheme transport of finite stress
-  shifts, explicit vacuum/geometric/tail/gravitational error budgets, Hubble
-  drift with pressure work, and the failure of number-density-only sources.  It
+  treating ongoing production as a conserved fluid.  It also checks that this
+  diagonal identity is not an omitted-stress residual: an adversarial
+  coherence/basis sample keeps the old diagonal difference exactly zero while
+  the full-minus-diagonal stress and its divergence are nonzero.  The finite
+  FLRW produced-stress backreaction window now checks scheme transport of finite
+  stress shifts, explicit coherence/basis/vacuum/geometric/tail stress
+  coordinate budgets, omitted-stress divergence control of the
+  full-minus-retained Hubble drift, pressure work, separate gravitational
+  response remainders, and the failure of number-density-only sources.  It
   also checks the spacetime-smeared stress-noise diagnostic: compact normalized
   spatial cells, time/volume scaling, pointlike-spatial and unnormalized
   whole-slice negative controls, and retarded covariance pushforward before a

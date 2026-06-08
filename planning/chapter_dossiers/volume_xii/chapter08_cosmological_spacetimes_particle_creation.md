@@ -36,13 +36,17 @@ space, not as a slogan about ambiguity.
 - `rho_beta`, `P_beta`, `Omega_k^+`, `a_+`: produced-particle energy
   density, pressure, out conformal frequency, and future static scale factor
   used in the stress-tensor/backreaction bridge.
-- `n_k(t)`, `S_n`, `E_cont`: time-dependent diagonal particle occupation,
-  production source \(a^{-d}\int\Omega_k\dot n_k\), and continuity residual
-  for using produced stress as a backreaction input.
-- `C_d`, `Delta H_ret^2`, `B_vac`, `B_geom`, `B_tail`, `B_H`,
-  `B_cont`, `F_{f,L}`, `s_L`, `N_{rho,L}[f]`, `G_ret^* ell_H`: homogeneous
-  FLRW response coefficient, retained produced Hubble-square coordinate,
-  stress/gravity remainder budgets, continuity budget, compact stress-noise
+- `n_k(t)`, `S_n`, `D_diag`: time-dependent diagonal particle occupation,
+  production source \(a^{-d}\int\Omega_k\dot n_k\), and the identically
+  vanishing diagonal identity difference.
+- `Delta T_miss`, `Delta rho_miss`, `Delta P_miss`, `C_miss`: full
+  renormalized stress minus the diagonal particle stress, its homogeneous
+  energy/pressure coordinates, and the omitted-stress divergence defect
+  \(\dot{\Delta\rho}_{miss}+(d-1)H(\Delta\rho_{miss}+\Delta P_{miss})\).
+- `C_d`, `Delta H_ret^2`, `B_rho`, `B_P`, `B_div`, `B_H`, `B_dotH`,
+  `F_{f,L}`, `s_L`, `N_{rho,L}[f]`, `G_ret^* ell_H`: homogeneous FLRW
+  response coefficient, retained produced Hubble-square coordinate,
+  stress-coordinate/divergence/gravity remainder budgets, compact stress-noise
   test tensor, normalized spatial profile, smeared stress covariance, and
   retarded metric-observable pullback for the backreaction diagnostic.
 
@@ -93,16 +97,26 @@ space, not as a slogan about ambiguity.
 - Records the homogeneous Friedmann response
   \(\delta H_t^2=2\kappa_d\delta\rho_\beta/((d-1)(d-2))\) as the retained
   source bridge from particle production to semiclassical backreaction.
-- Adds the finite continuity check
+- Adds the finite continuity identity
   \(\dot\rho_n+(d-1)H(\rho_n+P_n)=a^{-d}\int\Omega_k\dot n_k\), showing that
-  a time-dependent particle diagnostic becomes a backreaction source only
-  together with pressure work and the production term; an out region with
-  \(\dot n_k=0\) is the conserved produced-gas limit.
+  a time-dependent particle diagnostic carries pressure work and a production
+  source.  The chapter explicitly states that the resulting diagonal difference
+  \(D_{diag}\) is an algebraic zero and not a residual for omitted coherence,
+  basis, vacuum, geometric, or tail stress.
+- Adds the omitted-stress conservation defect.  In a fixed renormalization
+  scheme the full stress is decomposed as diagonal particle stress plus
+  coherence, basis-change, vacuum, geometric, and tail pieces.  The controlled
+  quantity is
+  \({\mathcal C}_{miss}=\dot{\Delta\rho}_{miss}
+  +(d-1)H(\Delta\rho_{miss}+\Delta P_{miss})\), with a declared time-window
+  smearing/norm, state class, adiabatic/subtraction order, regulator, and order
+  of limits.  If those estimates are absent, the comparison is a hypothesis or
+  proof obligation rather than a controlled residual.
 - Adds a finite FLRW produced-stress backreaction window:
   \(\Delta H_{\rm ret}^2=C_d\rho_n\) is admissible only after scheme transport,
-  stress/gravity/tail remainder budgets, continuity residuals, drift control,
-  and stress-noise bounds are declared.  The stress-noise diagnostic is a
-  compact spacetime test-tensor covariance
+  stress-coordinate budgets, omitted-stress divergence/pressure budgets, drift
+  control, separate retarded gravitational-response remainders, and stress-noise
+  bounds are declared.  The stress-noise diagnostic is a compact spacetime test-tensor covariance
   \(N(F_{f,L},F_{f,L})\), with normalized spatial averaging, explicit time-scale,
   spatial-scale, and volume dependence, Chapter 11 product-extension/Ward
   conventions, and retarded metric-response pushforward before comparison with a
@@ -124,12 +138,16 @@ space, not as a slogan about ambiguity.
   scale-factor power, the massless equation of state, and the Friedmann response
   coefficient, plus the time-dependent produced-stress continuity identity with
   negative controls against wrong pressure normalization, wrong scale-factor
-  power, and treating ongoing production as a conserved fluid.
+  power, and treating ongoing production as a conserved fluid.  It includes an
+  adversarial omitted-stress example in which the diagonal identity difference is
+  exactly zero while the full-minus-diagonal stress and its divergence are
+  nonzero.
   The same script now checks the finite backreaction-window budget, including
-  scheme transport, tail/gravity remainders, pressure-dependent Hubble drift,
-  number-density-only failures, compact spacetime stress-noise smearing,
-  pointlike/whole-slice negative controls, and retarded metric-noise
-  tolerances.
+  scheme transport, coherence/basis/vacuum/geometric/tail stress-coordinate
+  remainders, omitted-stress divergence control of the full-minus-retained
+  Hubble drift, pressure-dependent Hubble drift, number-density-only failures,
+  compact spacetime stress-noise smearing, pointlike/whole-slice negative
+  controls, and retarded metric-noise tolerances.
 - Related scripts: `calculation-checks/point_splitting_stress_checks.py` for
   de Sitter stress-tensor/anomaly arithmetic and
   `calculation-checks/hawking_bogoliubov_checks.py` for the black-hole
@@ -206,3 +224,12 @@ timelike detector worldline sampling the two-point function.
   four-dimensional stress-tensor coefficient match.  The companion now has a
   negative control that passes the selected fourth-order subtraction gate while
   failing a full smooth-difference/Hadamard gate.
+- 2026-06-08 issue #962 omitted-stress residual pass: ended the produced-stress
+  proposition at the exact diagonal identity and replaced the old tautological
+  continuity residual by a scheme-fixed full-minus-diagonal stress
+  decomposition.  The new controlled block tracks coherence, basis-change,
+  vacuum, geometric, and tail stress through \({\mathcal C}_{miss}\), with
+  explicit window/norm and order-of-limits requirements.  The backreaction
+  window now separates stress-coordinate error from retarded gravitational
+  response and propagates omitted-stress divergence into the Hubble-drift error
+  bound.
