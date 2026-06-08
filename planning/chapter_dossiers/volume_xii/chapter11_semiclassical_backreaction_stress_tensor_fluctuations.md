@@ -71,6 +71,9 @@ fluctuation data required for controlled backreaction.
   its linear and quadratic response in the same chart, its controlled
   remainder, and the observable mean shift after Einstein-Langevin metric
   fluctuations are included.
+- `H=h_*+Z`, `rho_h`, `E_h`, `r_X^{exit}`: the retained Gaussian metric
+  vector around the mean solution, its chart margin, chart-exit event, and the
+  out-of-chart observable budget needed before local Taylor control is averaged.
 
 ## Claim Ledger
 
@@ -207,10 +210,13 @@ fluctuation data required for controlled backreaction.
   now has to pass from the controlled mean metric and Einstein-Langevin
   covariance to a gauge-invariant retained observable `X`: the text keeps the
   linear response, quadratic deterministic response, fluctuation bias
-  `1/2 tr(Q^X C_h)`, observable covariance, and signal-to-noise test in the
-  same Ward-clean chart.  This prevents a small coordinate perturbation or a
-  partial projected covariance from being read as a resolved physical
-  semiclassical prediction.
+  `1/2 tr(Q^X C_h)`, observable covariance, Gaussian chart-exit probability,
+  out-of-chart tail/integrability budget, and signal-to-noise test in the same
+  Ward-clean chart.  This prevents a small coordinate perturbation, a local
+  Taylor remainder, or a partial projected covariance from being read as a
+  resolved physical semiclassical prediction.  Signal-to-noise is now a
+  self-averaging/detectability condition, not the validity condition for the
+  stochastic law.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -263,9 +269,11 @@ fluctuation data required for controlled backreaction.
   non-Lipschitz residuals with multiple fixed points, overlarge quadratic
   feedback, and linear-noise-only validity, the retained metric-observable
   output check that converts the mean metric and covariance to observable mean
-  shift, fluctuation bias, covariance, and signal-to-noise with negative
-  controls for gauge-variant coordinate probes, omitted fluctuation bias, and
-  partial-covariance undercounting, and the low-energy root selected
+  shift, fluctuation bias, covariance, Gaussian chart-exit/tail budgets, and
+  signal-to-noise with negative controls for gauge-variant coordinate probes,
+  omitted fluctuation bias, divergent out-of-chart remainders despite small
+  variance, partial-covariance undercounting, and confusing noise domination
+  with invalidity, and the low-energy root selected
   by reduction of order in a toy higher-derivative equation.
 
 ## Figure Ledger
@@ -436,11 +444,18 @@ curvature, microscopic, and EFT scales.
   locally covariant algebra/state/stress tensor through gravity coordinates,
   state transport, source/noise/response, mean metric/covariance, and retained
   observable output.  The paired finite check rejects the formal-equation-only,
-  mean-only, noise-without-metric-covariance, wrong-order, and no-signal-to-noise
-  shortcuts.
+  mean-only, noise-without-metric-covariance, wrong-order, and missing
+  validity/detectability shortcuts.
 - 2026-06-08 issue #729 printed-order pass: updated the source-position
   dossier and added an opening dependency map that names the upstream
   microlocal Hadamard state class, locally covariant algebra, pAQFT/free-field
   composite-stress prescription, point-splitting choices, and anomaly
   counterterm budget.  Backreaction remains conditional on joining those
   inputs to gravitational EFT coordinates and a response/noise window.
+- 2026-06-08 issue #924 chart-exit pass: repaired the retained
+  metric-observable output layer so local Taylor control is not averaged under
+  an unstopped Gaussian without an exit budget.  The chapter now states the
+  retained law `H=h_*+Z`, the chart margin and Gaussian exit bounds, the
+  stopped/global/conditional alternatives for out-of-chart remainders, and the
+  distinction between stochastic-law validity and signal-to-noise
+  self-averaging.

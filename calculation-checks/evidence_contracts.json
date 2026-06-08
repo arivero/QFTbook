@@ -400,7 +400,15 @@
     },
     {
       "path": "semiclassical_backreaction_checks.py",
-      "risk_class": "semiclassical backreaction"
+      "risk_class": "semiclassical backreaction",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "retained metric law is H=h_*+Z with covariance C_h",
+        "chart-exit probability enters observable mean and covariance budgets",
+        "out-of-chart observable remainders require integrability stopping or conditional-law control",
+        "signal-to-noise is self-averaging and detectability not stochastic-law validity",
+        "small Gaussian variance does not control rapidly growing nonlinear observable tails"
+      ]
     },
     {
       "path": "susy_2d_lg_glsm_checks.py",

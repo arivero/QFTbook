@@ -2954,10 +2954,12 @@ Current checks:
   feedback, and linear-noise-only validity, the retained metric-observable
   output check converting the mean metric and Einstein-Langevin covariance into
   an observable mean shift, quadratic fluctuation bias, covariance, and
-  signal-to-noise test with negative controls for gauge-variant coordinate
-  probes, omitted fluctuation bias, and partial-covariance undercounting, the
-  observable-chain boundary check rejecting formal-equation-only, mean-only,
-  noise-without-metric-covariance, wrong-order, and no-signal-to-noise
+  Gaussian chart-exit/tail-controlled signal-to-noise test with negative
+  controls for gauge-variant coordinate probes, omitted fluctuation bias,
+  divergent out-of-chart remainders despite small variance, and
+  partial-covariance undercounting, the observable-chain boundary check
+  rejecting formal-equation-only, mean-only, noise-without-metric-covariance,
+  wrong-order, missing chart-exit/tail, and false signal-to-noise-as-validity
   shortcuts, and the low-energy root selected by reduction of order in a toy
   higher-derivative equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for

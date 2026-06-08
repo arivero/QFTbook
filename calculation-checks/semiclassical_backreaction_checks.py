@@ -26,7 +26,8 @@ the small-gain stability and fluctuation-validity check for the linearized
 interacting backreaction operator, the finite nonlinear fixed-point chart for
 the retained semiclassical equation,
 the retained metric-observable output layer including fluctuation bias,
-observable covariance, and signal-to-noise tests, the observable-chain boundary
+observable covariance, chart-exit/tail budgets, and signal-to-noise tests, the
+observable-chain boundary
 separating a formal mean equation from a physical retained metric prediction,
 and the low-energy root selected by reduction of order in a toy
 higher-derivative equation.
@@ -59,8 +60,9 @@ backreaction operator, the finite nonlinear self-map/contraction and
 mean/noise-validity budgets, including residual size and residual Lipschitz
 controls, for a retained backreaction chart, the retained
 metric-observable mean shift, quadratic fluctuation bias, covariance, and
-signal-to-noise inequality, the observable-chain boundary data that must be
-present before a retained metric observable is claimed, and the low-energy root
+chart-exit/tail controlled signal-to-noise inequality, the observable-chain
+boundary data that must be present before a retained metric observable is
+claimed, and the low-energy root
 selected by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
@@ -78,7 +80,8 @@ species sums, 1/N_sp gravitational-coupling scaling, source-cumulant scaling,
 nonlinear fixed-point radii, residual size and residual Lipschitz
 budgets, state-transport Lipschitz constants, noise-validity inequalities, and
 metric-observable linear/quadratic forms and covariances, ordered
-observable-chain stages with their required side data, and toy roots
+observable-chain stages with their required side data, finite Gaussian
+chart-exit bounds, out-of-chart integrability gates, and toy roots
 directly from finite formulas rather than importing chapter display strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
@@ -114,7 +117,8 @@ quadratic nonlinear feedback, linear-noise-only validity estimates,
 omitted observable fluctuation bias, coordinate probes that do not annihilate
 pure-gauge directions, and partial metric covariances that undercount
 observable variance, formal-equation-only chains, mean-only chains, noise-only
-chains, wrong-order observable chains, and missing signal-to-noise data,
+chains, wrong-order observable chains, missing chart-exit/tail data, treating
+missing signal-to-noise as invalidity instead of loss of self-averaging,
 fixed-G_N large-species scaling, coherent N_sp^2 noise scaling, correlated
 species noise, and wrong higher-source-cumulant suppression estimates.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
@@ -126,6 +130,28 @@ stochastic hierarchy or higher-metric-cumulant response map, solve stochastic
 semiclassical equations, prove that a retained observable exists in the
 infinite-dimensional theory, or address nonperturbative quantum gravity
 dynamics.
+Primary derivation route: derive each retained response, covariance, Ward,
+fixed-point, observable, chart-exit, and reduction-of-order identity directly
+from finite matrices, finite Gaussian laws, Wick contraction coefficients, and
+exact rational inequalities.
+Independent verification route: compare the chapter formulas against explicit
+finite countermodels: singular response matrices, nonconserved sources,
+projected partial covariances, omitted residual variation, divergent
+out-of-chart Gaussian remainders, and noise-dominated but still valid
+observable laws.
+Convention dependencies: the gravitational equation convention is
+E_grav=<T_ren>; retained metric vectors use the same gauge/constraint
+reduction as the response operator; the observable Gaussian law is
+H=h_*+Z with covariance C_h; signal-to-noise means self-averaging or
+detectability, not stochastic-law validity.
+Domain and remainder assumptions: finite retained sectors, positive covariance
+matrices, chart radii, residual Lipschitz constants, Gaussian tail or stopping
+budgets, and declared bounds for omitted connected noise and higher observable
+remainders are supplied as hypotheses of the retained calculation.
+Remaining unproved or conditional: the checks do not prove the
+infinite-dimensional semiclassical Einstein-Langevin existence theorem,
+Hadamard-state propagation, global metric-chart persistence, interacting
+pAQFT stress-tensor construction, or non-Gaussian higher-cumulant closure.
 """
 
 from __future__ import annotations
@@ -1762,27 +1788,57 @@ def check_retained_metric_observable_output() -> None:
     q_norm_bound = Fraction(1)
     omitted_metric_covariance_trace = Fraction(1, 100)
     chart_remainder = Fraction(1, 100)
-    observable_tail = Fraction(1, 200)
+    observable_higher_tail = Fraction(1, 200)
+
+    chart_radius = Fraction(2)
+    certified_mean_norm_bound = Fraction(1, 2)
+    if squared_norm(h_mean) >= certified_mean_norm_bound * certified_mean_norm_bound:
+        raise AssertionError("test mean metric should fit inside the certified chart margin")
+    chart_margin = chart_radius - certified_mean_norm_bound
+    chart_exit_probability_bound = trace(metric_covariance) / (chart_margin * chart_margin)
+    assert_equal("observable Gaussian chart-exit Markov bound", chart_exit_probability_bound, Fraction(1, 27))
+
+    observable_sup_bound = Fraction(27, 200)
+    stopped_exit_bound = 2 * observable_sup_bound * chart_exit_probability_bound
+    assert_equal("observable stopped-process exit contribution", stopped_exit_bound, Fraction(1, 100))
+
     residual_mean_bound = (
         chart_remainder
         + Fraction(1, 2) * q_norm_bound * omitted_metric_covariance_trace
-        + observable_tail
+        + observable_higher_tail
+        + stopped_exit_bound
     )
-    assert_equal("observable residual mean bound", residual_mean_bound, Fraction(1, 50))
-    wrong_residual_mean_bound = chart_remainder + observable_tail
-    if residual_mean_bound - wrong_residual_mean_bound != Fraction(1, 200):
-        raise AssertionError("omitted metric-covariance trace should enter the mean residual")
+    assert_equal("observable residual mean bound", residual_mean_bound, Fraction(3, 100))
+    wrong_residual_mean_bound = chart_remainder + observable_higher_tail
+    if residual_mean_bound - wrong_residual_mean_bound != Fraction(3, 200):
+        raise AssertionError("covariance and chart-exit residuals should enter the mean bound")
     if wrong_residual_mean_bound >= residual_mean_bound:
-        raise AssertionError("negative control failed: covariance-tail residual was not needed")
+        raise AssertionError("negative control failed: covariance/chart-exit residual was not needed")
+
+    small_metric_variance = Fraction(1, 100)
+    fast_out_of_chart_growth = Fraction(100)
+    if 2 * fast_out_of_chart_growth * small_metric_variance < 1:
+        raise AssertionError("negative control setup should have divergent Gaussian square-exponential moment")
+    gentle_out_of_chart_growth = Fraction(10)
+    if 2 * gentle_out_of_chart_growth * small_metric_variance >= 1:
+        raise AssertionError("test integrable out-of-chart growth should pass the Gaussian moment gate")
 
     variance_x = quadratic_form(metric_covariance, ell_x)
     assert_equal("observable variance from metric covariance", variance_x, Fraction(3, 10))
     variance_quad_residual = Fraction(1, 100)
     variance_tail_residual = Fraction(1, 100)
-    variance_budget = variance_x + variance_quad_residual + variance_tail_residual
-    assert_equal("observable variance budget", variance_budget, Fraction(8, 25))
+    variance_exit_residual = Fraction(1, 50)
+    variance_budget = variance_x + variance_quad_residual + variance_tail_residual + variance_exit_residual
+    assert_equal("observable variance budget", variance_budget, Fraction(17, 50))
     if mean_shift * mean_shift <= variance_budget:
         raise AssertionError("test observable should be signal-dominated after noise is included")
+
+    noise_dominated_valid_budget = mean_shift * mean_shift + Fraction(1, 5)
+    law_has_exit_control = chart_exit_probability_bound < 1 and stopped_exit_bound > 0
+    if not law_has_exit_control:
+        raise AssertionError("observable law should have chart-exit control")
+    if mean_shift * mean_shift >= noise_dominated_valid_budget:
+        raise AssertionError("negative control setup should be noise dominated")
 
     partial_metric_covariance: Matrix = (
         (Fraction(1, 50), Fraction(0)),
@@ -1818,7 +1874,7 @@ def check_semiclassical_observable_chain_boundary() -> None:
             "renormalization_scheme",
             "response_window",
             "gauge_constraint_reduction",
-            "signal_to_noise",
+            "chart_exit_tail_control",
         }
     )
     ordering_edges = (
@@ -1829,7 +1885,7 @@ def check_semiclassical_observable_chain_boundary() -> None:
         ("mean_metric_covariance", "metric_observable"),
     )
 
-    def chain_passes(chain: tuple[str, ...], side_data: frozenset[str]) -> bool:
+    def valid_prediction_passes(chain: tuple[str, ...], side_data: frozenset[str]) -> bool:
         position = {stage: index for index, stage in enumerate(chain)}
         if not required_stages.issubset(position):
             return False
@@ -1837,18 +1893,24 @@ def check_semiclassical_observable_chain_boundary() -> None:
             return False
         return all(position[left] < position[right] for left, right in ordering_edges)
 
-    full_side_data = required_side_data | frozenset({"finite_residual_budgets"})
-    if not chain_passes(stages, full_side_data):
+    def self_averaging_passes(chain: tuple[str, ...], side_data: frozenset[str]) -> bool:
+        return valid_prediction_passes(chain, side_data) and "signal_to_noise" in side_data
+
+    full_side_data = required_side_data | frozenset({"finite_residual_budgets", "signal_to_noise"})
+    valid_side_data_without_snr = full_side_data - frozenset({"signal_to_noise"})
+    if not valid_prediction_passes(stages, valid_side_data_without_snr):
         raise AssertionError("complete observable chain should pass")
+    if not self_averaging_passes(stages, full_side_data):
+        raise AssertionError("signal-to-noise data should support self-averaging claim")
     assert_equal("observable-chain terminal stage", stages[-1], "metric_observable")
     assert_equal("observable-chain stage count", len(stages), 6)
 
     formal_equation_only = ("qft_state_stress", "gravity_coordinates")
-    if chain_passes(formal_equation_only, full_side_data):
+    if valid_prediction_passes(formal_equation_only, full_side_data):
         raise AssertionError("negative control failed: formal equation became prediction")
 
     mean_only_chain = stages[:-1]
-    if chain_passes(mean_only_chain, full_side_data):
+    if valid_prediction_passes(mean_only_chain, full_side_data):
         raise AssertionError("negative control failed: mean metric lacked observable output")
 
     noise_without_metric_chain = (
@@ -1858,7 +1920,7 @@ def check_semiclassical_observable_chain_boundary() -> None:
         "source_noise_response",
         "metric_observable",
     )
-    if chain_passes(noise_without_metric_chain, full_side_data):
+    if valid_prediction_passes(noise_without_metric_chain, full_side_data):
         raise AssertionError("negative control failed: noise skipped metric covariance")
 
     wrong_order_chain = (
@@ -1869,12 +1931,18 @@ def check_semiclassical_observable_chain_boundary() -> None:
         "source_noise_response",
         "mean_metric_covariance",
     )
-    if chain_passes(wrong_order_chain, full_side_data):
+    if valid_prediction_passes(wrong_order_chain, full_side_data):
         raise AssertionError("negative control failed: wrong-order observable chain passed")
 
+    missing_exit_tail_control = full_side_data - frozenset({"chart_exit_tail_control"})
+    if valid_prediction_passes(stages, missing_exit_tail_control):
+        raise AssertionError("negative control failed: observable omitted chart-exit/tail control")
+
     missing_signal_to_noise = full_side_data - frozenset({"signal_to_noise"})
-    if chain_passes(stages, missing_signal_to_noise):
-        raise AssertionError("negative control failed: observable omitted signal-to-noise")
+    if not valid_prediction_passes(stages, missing_signal_to_noise):
+        raise AssertionError("negative control failed: missing signal-to-noise invalidated the probability law")
+    if self_averaging_passes(stages, missing_signal_to_noise):
+        raise AssertionError("negative control failed: missing signal-to-noise still claimed self-averaging")
 
 
 def check_reduction_of_order_toy_model() -> None:

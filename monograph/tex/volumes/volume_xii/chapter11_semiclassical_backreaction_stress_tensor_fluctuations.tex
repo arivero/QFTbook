@@ -2252,6 +2252,47 @@ chart as the backreaction solution.  A coordinate component of \(h\) that has
 not survived the gauge and constraint reduction is not an observable output of
 the calculation.
 
+The stochastic average needs one more datum: the probability law whose
+expectation is being taken.  In the retained finite vector space write
+\begin{equation}
+  H=h_*+Z,
+  \qquad
+  Z\sim\mathcal N(0,\mathsf C_h),
+  \qquad
+  \rho_h=r_h-\lVert h_*\rVert>0,
+  \qquad
+  \mathcal E_h=\{H\notin B_h(r_h)\}.
+  \label{eq:semiclassical-observable-gaussian-law}
+\end{equation}
+Then \(\mathcal E_h\subset\{\lVert Z\rVert>\rho_h\}\), so the local Taylor
+bound in \eqref{eq:semiclassical-observable-chart} controls an unstopped
+expectation only after the chart-exit probability and the out-of-chart
+observable growth have also been supplied.  At the minimum,
+\begin{equation}
+  \mathbb P(\mathcal E_h)
+  \le
+  \frac{\operatorname{tr}\mathsf C_h}{\rho_h^2},
+  \label{eq:semiclassical-observable-markov-exit-bound}
+\end{equation}
+and, for the Euclidean retained norm, the sharper Gaussian tail
+\begin{equation}
+  \mathbb P\!\left(
+    \lVert Z\rVert^2
+    \ge
+    \operatorname{tr}\mathsf C_h
+    +2\sqrt{\lVert\mathsf C_h\rVert_{\rm HS}^2s}
+    +2\lVert\mathsf C_h\rVert_{\rm op}s
+  \right)
+  \le e^{-s}
+  \qquad(s>0)
+  \label{eq:semiclassical-observable-gaussian-exit-bound}
+\end{equation}
+can be used.  A valid observable statement must choose one of three exits from
+this problem: a global integrability bound on the out-of-chart remainder, a
+stopped or truncated Einstein--Langevin process with an explicit stopping
+error, or a conditional-on-chart prediction together with the displayed exit
+probability.
+
 Let \(h_*\) be the retained mean solution supplied by
 Controlled Approximation~\ref{ca:semiclassical-nonlinear-backreaction-chart}
 and let \(\mathsf C_h\) be the corresponding Einstein--Langevin metric
@@ -2276,13 +2317,22 @@ order, the mean observable shift is
   +
   \frac12\lVert Q^X\rVert\,r_N^{(h)}
   +
-  r_X^{\rm tail}.
+  r_X^{\rm higher}
+  +
+  r_X^{\rm exit}.
 \end{aligned}
   \label{eq:semiclassical-observable-mean-shift}
 \end{equation}
 Here \(r_N^{(h)}\) is the retained metric-covariance trace budget not already
-included in the displayed \(\mathsf C_h\), and \(r_X^{\rm tail}\) covers the
-discarded higher cumulants and higher metric powers.  The term
+included in the displayed \(\mathsf C_h\), \(r_X^{\rm higher}\) covers the
+discarded higher cumulants and higher metric powers inside the chart, and
+\(r_X^{\rm exit}\) bounds the out-of-chart contribution.  For a stopped
+process with \(|X|\le B_X\) on the compared stopped/unstopped laws one may take
+\(r_X^{\rm exit}\le 2B_X\mathbb P(\mathcal E_h)\).  For a global growth bound
+\(|R_X^{\rm out}(h)|\le G_X(h)\), one must instead supply
+\(\mathbb E[G_X(H)\mathbf1_{\mathcal E_h}]\).  Without one of these
+quantities the local number \(\epsilon_X\) is not an expectation bound,
+because a nondegenerate Gaussian has support outside \(B_h(r_h)\).  The term
 \(\frac12\operatorname{tr}(Q^X\mathsf C_h)\) is the fluctuation bias of the
 metric observable.  It is absent in a deterministic mean-only treatment, but
 it is a physical contribution whenever the Einstein--Langevin fluctuations
@@ -2297,12 +2347,17 @@ The leading observable covariance between two retained observables \(X,Y\) is
   R_{XY}^{\rm cov},
   \qquad
   |R_{XY}^{\rm cov}|
-  \le r_{XY}^{\rm quad}+r_{XY}^{\rm tail}.
+  \le r_{XY}^{\rm quad}+r_{XY}^{\rm higher}+r_{XY}^{\rm exit}.
   \label{eq:semiclassical-observable-covariance}
 \end{equation}
-Thus an evaporation rate, a cosmological expansion shift, or a Casimir
-backreaction correction is a resolved semiclassical prediction only after the
-observable signal is compared with its induced stress-noise uncertainty:
+The exit term is again part of the covariance budget, not an optional
+afterthought: a rare out-of-chart metric perturbation can dominate a nonlinear
+observable even when \(\operatorname{tr}\mathsf C_h\) is small.
+
+An evaporation rate, a cosmological expansion shift, or a Casimir
+backreaction correction is a self-averaging or directly detectable mean shift
+only after the observable signal is compared with its induced stress-noise
+uncertainty:
 \begin{equation}
   |\Delta_X^{\rm mean}|
   \gg
@@ -2313,13 +2368,16 @@ observable signal is compared with its induced stress-noise uncertainty:
   } .
   \label{eq:semiclassical-observable-signal-to-noise}
 \end{equation}
-If the inequality fails, the calculation may still define a fixed-background
-stress observable or a formal mean solution, but it has not produced a
-self-averaging semiclassical geometry for the retained observable.  If the
-noise used in \(\mathsf C_h\) is only a projected component covariance rather
-than the scheme-fixed interacting stress-tensor noise of
-\eqref{eq:semiclassical-full-interacting-package}, the signal-to-noise test is
-not the physical one.
+This inequality is not the validity criterion for the stochastic prediction.
+If the law, chart-exit, and integrability budgets above are controlled but the
+inequality fails, the calculation still predicts a probability distribution
+for \(X\); it is simply noise dominated, not self-averaging and not a clean
+measurement of the mean shift.  If the exit or integrability budget is missing,
+by contrast, the displayed expectation and covariance are not controlled at
+all.  If the noise used in \(\mathsf C_h\) is only a projected component
+covariance rather than the scheme-fixed interacting stress-tensor noise of
+\eqref{eq:semiclassical-full-interacting-package}, neither the probability law
+nor the signal-to-noise test is the physical one.
 \end{controlledapproximation}
 
 \section{Validity Conditions And Reduction Of Order}
@@ -2333,7 +2391,8 @@ controlled statement includes
   \text{ small compared with the gravitational EFT cutoff scales},\\
   N(f,f)^{1/2}
   \text{ small for the smeared observables used to test the metric},\\
-  \text{observable signal-to-noise controlled in the retained chart},\\
+  \text{observable chart-exit and tail budgets controlled},\\
+  \text{signal-to-noise controlled only when claiming a resolved mean shift},\\
   \text{state stability under the metric perturbations considered},\\
   \text{hyperbolic well-posedness after higher-curvature terms are treated}.
 \end{gathered}
