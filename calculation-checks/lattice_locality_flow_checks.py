@@ -9,7 +9,9 @@ Independent construction: explicit overlap-chain counting on a finite line,
 the factorial-to-exponential tail inequality, two-level projection transport,
 the time-window split for quasi-local generator tails, and finite model
 diagnostics with continuous correlators or free energy but failed uniform
-stability.
+stability.  A growing-support negative control separates pointwise convergence
+on every fixed local algebra from transport of boundary/logical/extended
+observable sequences.
 Imported assumptions: finite-dimensional local Hilbert spaces, the chapter's
 filter convention for quasi-adiabatic continuation, and the use of these
 finite checks as arithmetic companions to the imported thermodynamic
@@ -17,7 +19,9 @@ automorphic-equivalence theorem.
 Negative controls: a mass parameter tending to zero keeps each fixed-distance
 correlator continuous while losing every positive gap lower bound and sending
 the correlation length to infinity; a value-only topology on a critical free
-energy misses a divergent susceptibility.
+energy misses a divergent susceptibility; automorphisms can converge on every
+fixed local observable while a sequence whose support moves to the boundary or
+grows with the volume has no controlled transported limit.
 Scope boundary: these checks do not prove the infinite-volume
 Lieb-Robinson/spectral-flow theorem, establish a continuum gauge-theory phase
 equivalence, or classify gapless universality classes.
@@ -283,6 +287,47 @@ def check_weak_topology_ignores_susceptibility_divergence() -> None:
     )
 
 
+def check_fixed_local_convergence_does_not_transport_growing_support() -> None:
+    """Boundary flips are invisible locally but not on volume-dependent probes.
+
+    Think of conjugation by a Pauli Z on the last site of a finite chain.  It
+    fixes every X operator supported in a prescribed left interval once the
+    volume is large enough, while it sends the boundary X operator to -X.
+    Thus pointwise convergence on the quasi-local algebra near the origin does
+    not control a boundary/logical observable sequence.
+    """
+
+    fixed_support = {0, 1, 2}
+
+    def boundary_flip_error(length: int, support: set[int]) -> float:
+        return 2.0 if (length - 1) in support else 0.0
+
+    for length in range(6, 20):
+        assert_close(
+            boundary_flip_error(length, fixed_support),
+            0.0,
+            "boundary flip is invisible on every fixed local support",
+        )
+
+    moving_boundary_errors = [
+        boundary_flip_error(length, {length - 1})
+        for length in range(6, 20)
+    ]
+    assert_true(
+        all(error == 2.0 for error in moving_boundary_errors),
+        "moving boundary observable is not controlled by fixed-local convergence",
+    )
+
+    growing_string_errors = [
+        boundary_flip_error(length, set(range(length)))
+        for length in range(6, 20)
+    ]
+    assert_true(
+        all(error == 2.0 for error in growing_string_errors),
+        "growing-support string needs its own uniform transport estimate",
+    )
+
+
 def main() -> None:
     check_overlap_path_count()
     check_exponential_tail_bound()
@@ -290,6 +335,7 @@ def main() -> None:
     check_quasilocal_tail_split()
     check_uniform_gap_is_not_pointwise_continuity()
     check_weak_topology_ignores_susceptibility_divergence()
+    check_fixed_local_convergence_does_not_transport_growing_support()
     print("Finite lattice locality and spectral-flow checks passed.")
 
 

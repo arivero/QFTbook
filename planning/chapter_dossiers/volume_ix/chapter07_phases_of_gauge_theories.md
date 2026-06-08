@@ -43,8 +43,11 @@ and topological sectors fit together.
 - `omega`: thermodynamic-limit state on `A_obs`.
 - `P`: parameter domain of couplings and topological terms.
 - `alpha_{1<-0}`: quasi-local spectral-flow automorphism transporting the
-  declared observable algebra and ground-state sector along a uniformly gapped
-  local path.
+  declared observable algebra and ground-state sector; it is the output of the
+  imported automorphic-equivalence theorem, not a hypothesis in the gapped
+  path definition.
+- `O_L`, `X_L`: increasing extended-operator family and its growing support,
+  used only after a carrier topology and uniform estimates are declared.
 - `gamma`: volume-uniform positive gap lower bound in the gapped phase
   equivalence criterion.
 - `Phi(Z)`, `I_Lambda`, `J_*`, `N_*`: finite interaction terms, nonzero
@@ -110,12 +113,20 @@ and topological sectors fit together.
   domain, observable system, limit prescription, fixed symmetry/global-form/
   boundary conventions, and a stability criterion; comparison topology is
   auxiliary data for transported observables.
-- Replaces continuity-only phase equivalence by a regulated gapped criterion:
-  same phase requires a local Hamiltonian path with uniform locality bounds,
-  fixed symmetry/global-form/boundary data, a volume-uniform positive gap above
-  the declared ground-state band, controlled thermodynamic limits, and a
-  quasi-local spectral-flow automorphism transporting the observable algebras
-  and ground-state sectors.
+- Replaces continuity-only phase equivalence by a regulated gapped-path
+  criterion: same phase requires a local Hamiltonian path with uniform locality
+  bounds, sufficient \(s\)-regularity, fixed symmetry/global-form/boundary
+  data, a volume-uniform positive gap above the declared ground-state band, and
+  controlled thermodynamic/Cauchy hypotheses.  The quasi-local spectral-flow
+  automorphism transporting the observable algebras and ground-state sectors is
+  the output of the imported automorphic-equivalence theorem.
+- Types extended phase diagnostics before transporting them: fixed finite
+  loops are local-algebra elements; increasing loop/surface nets require a
+  topology on renormalized asymptotics and uniform estimates; charged/disorder
+  sectors need cone-localized, field-algebra, or boundary-category carriers;
+  logical operators depend on finite-volume topology and growing supports; and
+  boundary algebras or continuum-renormalized defects require separate limit
+  maps.
 - Separates phase boundaries and gapless universality: a boundary includes
   loss of the uniform gap, divergent correlation length, failed limit, changed
   declared data, or failed automorphism even when pointwise observables remain
@@ -211,7 +222,9 @@ and topological sectors fit together.
   the time-window split behind quasi-local generator tails.  It also includes
   negative controls showing that fixed-distance correlators can remain
   continuous while a gap closes and that a value-only comparison topology can
-  miss a divergent susceptibility.
+  miss a divergent susceptibility, plus a growing-support negative control in
+  which automorphisms converge on every fixed local algebra but fail to
+  transport a boundary/logical observable sequence.
 - `calculation-checks/toric_code_logical_operator_checks.py` verifies the
   finite one-form laboratory: star/plaquette commutation, stabilizer
   redundancies, ground-space dimension, logical line anticommutation,
@@ -263,3 +276,9 @@ screening quotient, condensate subgroup, and topological sector.
   separated phase boundaries from gapless universality, added the
   Bachmann--Michalakis--Nachtergaele--Sims theorem boundary, and added
   continuity-only negative controls to `lattice_locality_flow_checks.py`.
+- 2026-06-08 issue #951 pass: separated the gapped-path hypotheses from the
+  imported automorphic-equivalence theorem output, typed extended/topological
+  diagnostics by carrier and topology, downgraded the finite locality section
+  to mechanism support for the theorem boundary, and added a negative control
+  showing fixed-local convergence does not transport growing-support extended
+  data.

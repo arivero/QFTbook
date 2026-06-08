@@ -2156,7 +2156,10 @@ Current checks:
   two-level spectral-flow transport, and the time-window split behind
   quasi-local generator tails.  It also includes negative controls showing that
   fixed-distance correlator continuity can coexist with a closing gap and that
-  a value-only topology can miss a divergent susceptibility.
+  a value-only topology can miss a divergent susceptibility, together with a
+  growing-support negative control where finite-volume automorphisms converge
+  on every fixed local algebra but do not control a moving boundary or logical
+  observable sequence.
 - `toric_code_logical_operator_checks.py`: finite Pauli and chain-complex
   checks for the gauge-theory phases chapter, including star/plaquette
   commutation, global stabilizer redundancies, the four-dimensional torus

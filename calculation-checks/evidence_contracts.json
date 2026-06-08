@@ -145,10 +145,11 @@
       "path": "lattice_locality_flow_checks.py",
       "risk_class": "gapped phase equivalence and spectral-flow stability",
       "convention_tags": [
-        "same gapped phase requires a uniform spectral gap and quasi-local automorphism",
+        "gapped path requires uniform gap and locality; theorem outputs quasi-local automorphism",
         "pointwise finite-distance correlator continuity does not certify phase equivalence",
         "value-only comparison topology does not replace susceptibility control",
-        "finite spectral-flow algebra remains separate from thermodynamic automorphic theorem"
+        "finite spectral-flow algebra remains separate from thermodynamic automorphic theorem",
+        "fixed-local automorphic convergence does not transport growing-support extended data"
       ]
     },
     {
