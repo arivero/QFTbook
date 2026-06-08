@@ -128,10 +128,10 @@ finite-volume sequence \(\Lambda_n\), with Hamiltonians
 \item the interaction range, interaction norm, overlap degree, and the
   corresponding bounds for \(\partial_s\Phi_{n,s}\) are uniform in \(n\) and
   \(s\), or more generally the interactions and their \(s\)-derivatives obey
-  a common summability norm for which a uniform Lieb--Robinson theorem is
-  available;
-\item the path is sufficiently regular in \(s\) in that interaction norm to
-  apply the quasi-adiabatic spectral-flow theorem;
+  the common summability and exhaustion hypotheses of
+  Definition~\ref{def:uniform-summable-interaction-hypotheses};
+\item the path is sufficiently regular in \(s\) in that interaction norm, with
+  an admissible quasi-adiabatic filter, to apply the spectral-flow theorem;
 \item the declared symmetry, global form, anomaly counterterms, boundary
   convention, quasi-local observable algebra, and typed phase-data slots are
   fixed along the path;
@@ -380,13 +380,18 @@ Let
 \[
   \mathcal I_\Lambda=\{Z\subset\Lambda\mid \Phi(Z)\ne0\}.
 \]
-The finite overlap constants used below are
+If \(\mathcal I_\Lambda=\varnothing\), set \(J_*=N_*=0\).  Otherwise the
+finite overlap constants used below are
 \[
   J_*=\sup_{Z\in\mathcal I_\Lambda}\|\Phi(Z)\|,
   \qquad
   N_*=\sup_{Z\in\mathcal I_\Lambda}
   \#\{Z'\in\mathcal I_\Lambda\mid Z'\cap Z\ne\varnothing\}.
 \]
+The support \(Z\) itself is included in the count defining \(N_*\), so
+\(N_*\ge1\) whenever the interaction is nonzero.  On-site terms are included in
+\(\mathcal I_\Lambda\); they affect the overlap graph but by themselves do not
+connect disjoint metric components.
 For regions \(X,Y\subset\Lambda\), define \(d_\Phi(X,Y)\) to be the smallest
 integer \(n\ge1\) for which there are \(Z_1,\ldots,Z_n\in\mathcal I_\Lambda\)
 with
@@ -399,6 +404,8 @@ If no such chain exists, set \(d_\Phi(X,Y)=\infty\).  Also write
 \[
   \partial_\Phi X=\{Z\in\mathcal I_\Lambda\mid Z\cap X\ne\varnothing\}.
 \]
+In sums of the form \(\sum_{n\ge d_\Phi(X,Y)}\), the value
+\(d_\Phi(X,Y)=\infty\) means an empty sum.
 
 \begin{theorem}[Finite path-count Lieb--Robinson bound]
 \label{thm:finite-path-count-lieb-robinson-bound}
@@ -428,10 +435,32 @@ If the finite systems form an exhausting bounded-degree finite-range family,
 with \(J_*\), \(N_*\), and the conversion from \(d_\Phi\) to the metric
 distance bounded uniformly, this gives a uniform light cone for local
 observables in the thermodynamic sequence.
+More explicitly, if every nonzero support has metric diameter at most
+\(R_\Phi>0\), then
+\[
+  d_\Phi(X,Y)\ge
+  \left\lceil\frac{\operatorname{dist}(X,Y)}{R_\Phi}\right\rceil ,
+\]
+and \eqref{eq:finite-path-count-lr-exponential} implies
+\[
+  \|[\tau_t(A_X),B_Y]\|
+  \le
+  2\|A_X\|\,\|B_Y\|\,|\partial_\Phi X|\,
+  \exp\!\left\{-\frac{\mu}{R_\Phi}\operatorname{dist}(X,Y)
+  +2J_*N_*e^\mu |t|\right\}.
+\]
+Thus a family with uniform \(J_*,N_*,R_\Phi\) has, in this elementary estimate,
+a metric Lieb--Robinson velocity bounded by
+\[
+  v_\mu\le \frac{2J_*N_*R_\Phi e^\mu}{\mu}.
+\]
 \end{theorem}
 
 \begin{proof}
-For a finite region \(S\subset\Lambda\), set
+If \(\mathcal I_\Lambda=\varnothing\) or \(\partial_\Phi X=\varnothing\), the
+Hamiltonian terms all commute with \(A_X\), so the commutator is zero because
+\(X\cap Y=\varnothing\).  Assume henceforth that \(\mathcal I_\Lambda\ne
+\varnothing\).  For a finite region \(S\subset\Lambda\), set
 \[
   C_B(t,S)
   =
@@ -442,33 +471,76 @@ If \(S\cap Y\ne\varnothing\), then
 \[
   C_B(t,S)\le 2\|B_Y\|
 \]
-by \(\|[A,B_Y]\|\le2\|A\|\,\|B_Y\|\).  Suppose now that
-\(S\cap Y=\varnothing\).  Decompose the Hamiltonian as
+by \(\|[A,B_Y]\|\le2\|A\|\,\|B_Y\|\).  For the recursion, take
+\(A\in\mathcal A_S\).  Since terms disjoint from \(S\) commute with \(A\),
 \[
-  H_\Lambda=H_{S^c}^{\mathrm{far}}+
-  \sum_{Z\cap S\ne\varnothing}\Phi(Z),
+  \frac{\dd}{\dd t}\tau_t(A)
+  =
+  \ii\sum_{Z\cap S\ne\varnothing}
+  [\tau_t(\Phi(Z)),\tau_t(A)] .
 \]
-where \(H_{S^c}^{\mathrm{far}}\) is the sum of terms whose supports are
-disjoint from \(S\).  The terms in \(H_{S^c}^{\mathrm{far}}\) commute with
-the initial observable \(A\in\mathcal A_S\).  Applying Duhamel's formula to
-the perturbation by the remaining terms and using the unitary invariance of
-the operator norm gives
+For \(f_A(t)=[\tau_t(A),B_Y]\), Jacobi's identity gives
+\[
+  \dot f_A(t)
+  =
+  \ii\sum_{Z\cap S\ne\varnothing}
+  [\tau_t(\Phi(Z)),f_A(t)]
+  +
+  \ii\sum_{Z\cap S\ne\varnothing}
+  [[\tau_t(\Phi(Z)),B_Y],\tau_t(A)] .
+\]
+The first sum is a homogeneous commutator equation and therefore only rotates
+the norm.  Variation of constants and
+\(\|[C,\tau_t(A)]\|\le2\|C\|\,\|A\|\) give the support-kernel recursion
 \[
   C_B(t,S)
   \le
+  C_B(0,S)
+  +
   2\sum_{Z\cap S\ne\varnothing}\|\Phi(Z)\|
-  \int_0^{|t|} C_B(s,S\cup Z)\,\dd s .
+  \int_0^{|t|} C_B(u,Z)\,\dd u .
 \]
-The factor \(2\) is the elementary commutator estimate
-\(\|[\Phi(Z),A]\|\le2\|\Phi(Z)\|\,\|A\|\).  Iterating the inequality generates
-chains \(Z_1,\ldots,Z_n\) of overlapping interaction supports.  A chain can
-reach \(Y\) only when \(n\ge d_\Phi(X,Y)\).  The first step has at most
-\(|\partial_\Phi X|\) choices, and each later step has at most \(N_*\) choices.
-The interaction norms contribute at most \(J_*^n\), the commutator estimates
-contribute \(2^n\), and the ordered time simplex contributes
-\(|t|^n/n!\).  The final contact with \(Y\) contributes \(2\|B_Y\|\), yielding
-\eqref{eq:finite-path-count-lr-bound}, with \(N_*^n\) used as a harmless
-uniform upper bound for the chain count.  Finally,
+Here the next argument of \(C_B\) is the single interaction support \(Z\), not
+the growing cluster \(S\cup Z\).  This is the load-bearing reduction: after the
+first step the recursion is indexed by one interaction support.  Applying the
+same estimate with \(S=X\), where \(C_B(0,X)=0\), and then with
+\(S=Z\in\mathcal I_\Lambda\), where the possible initial contact with \(Y\) is
+kept, gives
+\[
+  C_B(t,Z)
+  \le
+  2\|B_Y\|\,\mathbf 1_{\{Z\cap Y\ne\varnothing\}}
+  +
+  2\sum_{\substack{Z'\in\mathcal I_\Lambda\\ Z'\cap Z\ne\varnothing}}
+  \|\Phi(Z')\|\int_0^{|t|} C_B(u,Z')\,\dd u .
+\]
+Iterating these two inequalities produces only adjacent support paths
+\[
+  Z_1\in\partial_\Phi X,\qquad
+  Z_i\cap Z_{i+1}\ne\varnothing,\qquad
+  Z_n\cap Y\ne\varnothing .
+\]
+The ordered integration variables form the simplex
+\(0\le u_n\le\cdots\le u_1\le |t|\), whose volume is \(|t|^n/n!\).  Hence
+\[
+  C_B(t,X)
+  \le
+  2\|B_Y\|
+  \sum_{n\ge1}
+  \frac{(2|t|)^n}{n!}
+  \sum_{\substack{
+    Z_1\in\partial_\Phi X,\; Z_n\cap Y\ne\varnothing\\
+    Z_i\cap Z_{i+1}\ne\varnothing\ (1\le i<n)}}
+  \prod_{i=1}^n\|\Phi(Z_i)\| .
+\]
+There are no such paths for \(n<d_\Phi(X,Y)\).  For \(n\ge1\), the first
+support has at most \(|\partial_\Phi X|\) choices and, because \(N_*\) includes
+self-overlap, each subsequent support has at most \(N_*\) choices.  Thus the
+number of length-\(n\) adjacent paths is bounded by
+\(|\partial_\Phi X|N_*^{n-1}\le|\partial_\Phi X|N_*^n\), while the product of
+norms is at most \(J_*^n\).  Multiplying by \(\|A_X\|\) gives
+\eqref{eq:finite-path-count-lr-bound}.  The estimate is zero when
+\(d_\Phi(X,Y)=\infty\), since the path sum is empty.  Finally,
 \[
   \sum_{n\ge d}\frac{a^n}{n!}
   \le
@@ -480,10 +552,77 @@ with \(a=2J_*N_*|t|\).  This proves
 \eqref{eq:finite-path-count-lr-exponential}.
 \end{proof}
 
-The estimate is finite and quantitative.  Its thermodynamic use requires the
-constants in the last sentence of the theorem.  A volume-dependent interaction
-norm or an interaction graph with growing overlap degree can erase the
-uniform light cone.
+The estimate is finite and quantitative.  Its thermodynamic use requires
+uniform locality data.  A volume-dependent interaction norm or an interaction
+graph with growing overlap degree can erase the uniform light cone.
+
+\begin{definition}[Uniform summable interaction hypotheses]
+\label{def:uniform-summable-interaction-hypotheses}
+Let \(\Gamma\) be the infinite metric lattice underlying the exhaustion
+\(\Lambda_n\nearrow\Gamma\).  A positive nonincreasing weight
+\(\mathfrak F:[0,\infty)\to(0,\infty)\) is an interaction weight when
+\[
+  \|\mathfrak F\|_1
+  :=
+  \sup_{x\in\Gamma}\sum_{y\in\Gamma}\mathfrak F(d(x,y))<\infty
+\]
+and when its convolution constant
+\[
+  C_{\mathfrak F}
+  :=
+  \sup_{x,y\in\Gamma}
+  \sum_{z\in\Gamma}
+  \frac{\mathfrak F(d(x,z))\mathfrak F(d(z,y))}
+       {\mathfrak F(d(x,y))}
+\]
+is finite.  For an interaction \(\Phi\), set
+\[
+  \|\Phi\|_{\mathfrak F}
+  :=
+  \sup_{x,y\in\Gamma}
+  \frac{1}{\mathfrak F(d(x,y))}
+  \sum_{\substack{Z\subset\Gamma\\ x,y\in Z}}\|\Phi(Z)\|.
+\]
+On-site terms are included by \(x=y\), or equivalently controlled by a separate
+uniform one-site bound; they change local energies but do not propagate
+commutators between disjoint regions without multi-site terms.
+
+An exhausting Hamiltonian path satisfies the uniform summable locality
+hypotheses when, for some exponentially weighted
+\(\mathfrak F_a(r)=e^{-ar}\mathfrak F(r)\) with \(a>0\),
+\[
+  \sup_{n,s}
+  \bigl(
+    \|\Phi_{n,s}\|_{\mathfrak F_a}
+    +
+    \|\partial_s\Phi_{n,s}\|_{\mathfrak F_a}
+  \bigr)<\infty,
+\]
+the local Hilbert-space dimensions and the metric growth entering
+\(\|\mathfrak F\|_1,C_{\mathfrak F}\) are uniform, and the finite-volume
+interactions and their \(s\)-derivatives converge on every fixed local region
+with boundary terms receding in this same norm.  Equivalently, for each fixed
+finite \(X\), the norm-weighted contribution of all interaction terms that can
+influence \(X\) only through the boundary of \(\Lambda_n\) tends to zero as
+the boundary recedes.  The gapped-path theorem also requires a volume-uniform
+spectral gap above the declared band and an admissible real odd
+quasi-adiabatic filter \(F_\gamma\) whose Fourier transform equals
+\(\ii/\omega\) outside the gap and whose time tail is summable against the
+Lieb--Robinson light-cone leakage.
+\end{definition}
+
+The finite-range bounded-degree setting of
+Theorem~\ref{thm:finite-path-count-lieb-robinson-bound} is the elementary
+special case of this \(F\)-function formalism.  The thermodynamic
+automorphism used in
+Theorem~\ref{thm:gapped-path-automorphic-equivalence-imported} is the
+Bachmann--Michalakis--Nachtergaele--Sims spectral-flow theorem under such
+uniform hypotheses \cite{BachmannMichalakisNachtergaeleSims2012Automorphic},
+with the Lieb--Robinson kernel and quasi-local map framework as in
+Nachtergaele--Sims and Nachtergaele--Sims--Young
+\cite{NachtergaeleSims2006LiebRobinsonClustering,
+NachtergaeleSimsYoung2019QuasiLocality}.  The displayed finite estimate is
+one mechanism input; it is not by itself the infinite-volume Cauchy theorem.
 
 \paragraph{Spectral transport before locality.}
 Let \(s\mapsto H_\Lambda(s)\) be a \(C^1\) finite-volume Hamiltonian path and
@@ -541,7 +680,8 @@ satisfies
   \widehat F_\gamma(\omega)=\frac{\ii}{\omega},
   \qquad |\omega|\ge\gamma,
 \]
-and whose decay is fast enough for the integrals below.  Let
+and whose tail satisfies the summability condition in
+Definition~\ref{def:uniform-summable-interaction-hypotheses}.  Let
 \[
   V_\Lambda(s)=\partial_sH_\Lambda(s)
 \]
@@ -588,8 +728,17 @@ Now assume the Hamiltonian path is local:
   V_\Lambda(s)=\sum_{X\subset\Lambda}V_X(s),
   \qquad V_X(s)\in\mathcal A_X,
 \]
-with a uniform interaction norm.  Let \(X_R\) be the \(R\)-neighborhood of
-\(X\), and let \(\mathbb E_{X_R}\) be the conditional expectation from
+with the uniform summability required in
+Definition~\ref{def:uniform-summable-interaction-hypotheses}.  Write
+\[
+  D_{\Lambda,X}(s)
+  =
+  \int_{\mathbb R}F_\gamma(t)\,
+  e^{\ii tH_\Lambda(s)}V_X(s)e^{-\ii tH_\Lambda(s)}\,\dd t
+\]
+for the contribution of \(V_X\) to \(D_\Lambda(s)\).  Let \(X_R\) be the
+\(R\)-neighborhood of \(X\), and let \(\mathbb E_{X_R}\) be the conditional
+expectation from
 \(\mathcal A_\Lambda\) onto \(\mathcal A_{X_R}\) obtained by normalized
 partial trace over the complement.  In finite dimension this conditional
 expectation can be written as Haar averaging over unitaries \(U\) supported in
@@ -637,14 +786,82 @@ spectral flow: the gap fixes the filter in frequency space, the filter tail
 controls long times, and the Lieb--Robinson estimate controls the spatial
 spread during the retained times.
 
-The finite estimates just displayed are the local input to the imported
-automorphic-equivalence theorem.  To obtain a quasi-local automorphism of the
-infinite-volume observable algebra one must still prove the uniform
-thermodynamic Cauchy estimates for the spectral-flow cocycle along the chosen
-exhaustion.  When those theorem hypotheses hold, the resulting automorphism
-is the regulated mathematical object that transports local phase data.  It is
-distinct from both physical time evolution and from an arbitrary
-finite-dimensional unitary interpolation of ground spaces.
+Define
+\[
+  g_\gamma(R)
+  =
+  e^{-\mu R/2}\int_{\mathbb R}|F_\gamma(t)|\,\dd t
+  +
+  2\int_{|t|>R/(2v)}|F_\gamma(t)|\,\dd t .
+\]
+For an admissible filter this tail is summable, after replacing the exponential
+weight by a slightly slower one if necessary.  The shell decomposition
+\[
+  \Psi_{\Lambda,X}^{(0)}=D_{\Lambda,X}^{(0)},\qquad
+  \Psi_{\Lambda,X}^{(R)}
+  =
+  D_{\Lambda,X}^{(R)}-D_{\Lambda,X}^{(R-1)}
+  \quad (R\ge1)
+\]
+writes the finite generator as
+\[
+  D_\Lambda(s)=\sum_{X,R}\Psi_{\Lambda,X}^{(R)}(s),
+  \qquad
+  \Psi_{\Lambda,X}^{(R)}(s)\in\mathcal A_{X_R},
+\]
+with
+\[
+  \|\Psi_{\Lambda,X}^{(R)}(s)\|
+  \le
+  2C_X\|V_X(s)\|\,g_\gamma(R-1)
+\]
+up to the harmless change of constants at \(R=0\).  Combining this shell tail
+with the convolution bound for \(\mathfrak F\) gives a volume-uniform
+interaction estimate
+\[
+  \sup_{\Lambda,s}\|\Psi_{\Lambda,s}\|_{\widetilde{\mathfrak F}}
+  \le
+  C_{\gamma,\mathfrak F}
+  \sup_{\Lambda,s}\|\partial_s\Phi_{\Lambda,s}\|_{\mathfrak F_a}
+\]
+for a summable weight \(\widetilde{\mathfrak F}\) determined by the
+Lieb--Robinson rate and the filter tail.  This is the finite calculation behind
+the statement that the quasi-adiabatic generator is itself a uniformly
+quasi-local interaction.
+
+Let \(\alpha_s^{(n)}\) be the finite-volume flow generated by
+\(\Psi_{\Lambda_n,s}\).  For a fixed local observable \(A\in\mathcal A_X\) and
+two sufficiently large volumes, Duhamel's formula for the two \(s\)-flows gives
+an estimate of the form
+\[
+  \|\alpha_s^{(n)}(A)-\alpha_s^{(m)}(A)\|
+  \le
+  C_A
+  \left(
+    \varepsilon_{m,n}(X,R)
+    +
+    \sum_{r\ge R}\widetilde{\mathfrak F}(r)
+  \right),
+\]
+uniformly for \(s\in[0,1]\).  Here \(\varepsilon_{m,n}(X,R)\) measures the
+local difference of the two finite-volume interactions and boundary
+conventions inside the \(R\)-neighborhood of \(X\).  The exhaustion hypothesis
+in Definition~\ref{def:uniform-summable-interaction-hypotheses} sends
+\(\varepsilon_{m,n}(X,R)\) to zero for fixed \(R\), while the summability of
+\(\widetilde{\mathfrak F}\) sends the tail to zero as \(R\to\infty\).  Thus the
+finite-volume spectral flows are Cauchy on every local observable, and the same
+estimate gives independence of the exhaustion or boundary convention whenever
+their local differences vanish in this norm.
+
+The finite estimates just displayed are the local mechanism and Cauchy
+bookkeeping used by the imported automorphic-equivalence theorem.  In an
+actual thermodynamic application one must verify the uniform hypotheses of
+Definition~\ref{def:uniform-summable-interaction-hypotheses}; the cited theorem
+then turns the finite-volume cocycles into a quasi-local automorphism of the
+infinite-volume observable algebra.  That automorphism is the regulated
+mathematical object that transports local phase data.  It is distinct from both
+physical time evolution and from an arbitrary finite-dimensional unitary
+interpolation of ground spaces.
 
 \section{Lieb--Schultz--Mattis--Oshikawa--Hastings Constraints}
 \label{sec:lsmoh-lattice-qft-constraints}

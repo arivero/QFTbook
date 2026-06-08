@@ -35,6 +35,12 @@ and topological sectors fit together.
   derives only the finite locality/spectral-flow mechanism and treats
   thermodynamic convergence as imported theorem input; it does not identify all
   states in a coexisting ground-state set with one another.
+- `SRC-EXTERNAL-LR-QUASILOCALITY`: Nachtergaele--Sims and
+  Nachtergaele--Sims--Young supply the interaction-kernel, summable
+  \(F\)-function, quasi-local map, and spectral-flow automorphism framework used
+  to state the uniform thermodynamic hypotheses.  The chapter owns the finite
+  support-path proof and finite shell-tail mechanism, while the full
+  infinite-volume Cauchy theorem remains cited theorem input.
 - `SRC-EXTERNAL-GAUGE-HIGGS-DIAGNOSTICS`: Fredenhagen--Marcu and
   Caudy--Greensite are used for charged-state/remnant-symmetry diagnostic
   context around the local analytic theorem.
@@ -60,12 +66,17 @@ and topological sectors fit together.
   equivalence criterion.
 - `Phi(Z)`, `I_Lambda`, `J_*`, `N_*`: finite interaction terms, nonzero
   interaction supports, interaction strength, and overlap degree in the
-  finite-regulator locality section.
+  finite-regulator locality section; `N_*` includes self-overlap.
 - `d_Phi(X,Y)`, `partial_Phi X`: interaction-overlap chain distance and
   interaction boundary of a finite region.
+- `frak F`, `||Phi||_{frak F}`, `C_{frak F}`: summable interaction weight,
+  interaction norm, and convolution constant used to state the uniform
+  thermodynamic Lieb--Robinson/spectral-flow hypotheses.
 - `P_Lambda(s)`, `K_Lambda(s)`, `D_Lambda(s)`: isolated-band projection,
   finite projection-commutator generator, and quasi-adiabatic generator along
   a gapped local Hamiltonian path.
+- `Psi_{Lambda,s}`, `tilde frak F`: shell-decomposed quasi-adiabatic generator
+  interaction and its summable tail weight.
 - `F_gamma`: real odd quasi-adiabatic filter with
   `hat F_gamma(omega)=i/omega` outside the spectral gap.
 - `nu=p/q`: rational filling per microscopic unit cell in the LSMOH section.
@@ -150,9 +161,15 @@ and topological sectors fit together.
   declared data, or failed automorphism even when pointwise observables remain
   continuous; gapless regimes require separately declared stable IR data and no
   general automorphic equivalence theorem is assumed.
-- Proves a finite path-count Lieb--Robinson bound from the commutator
-  expansion, with explicit dependence on interaction strength, overlap degree,
-  interaction-boundary size, and overlap-chain distance.
+- Proves a finite path-count Lieb--Robinson bound from a support-kernel
+  recursion, not a growing-cluster recursion, with explicit dependence on
+  interaction strength, overlap degree, interaction-boundary size, and
+  overlap-chain distance.  The metric light-cone version follows when support
+  diameters are uniformly bounded.
+- Defines the uniform summable interaction norm, convolution constant, filter
+  tail condition, receding-boundary/exhaustion condition, and gap hypothesis
+  needed before the finite locality estimate can be imported into the
+  thermodynamic spectral-flow theorem.
 - Derives finite isolated-band spectral transport from the projection identity
   `P^2=P`, then identifies the missing locality estimate in the global
   projection generator.
@@ -234,18 +251,20 @@ and topological sectors fit together.
   as half filling, fractional-filling obstruction arithmetic, and negative
   controls for integer filling, enlarged cells, gapless exits, and
   topological-sector absorption.
-- `calculation-checks/lattice_locality_flow_checks.py` verifies overlap-chain
-  counting for the finite path-count Lieb--Robinson estimate, the
-  factorial-to-exponential tail bound, two-level spectral-flow transport, and
-  the time-window split behind quasi-local generator tails.  It also includes
-  negative controls showing that fixed-distance correlators can remain
-  continuous while a gap closes and that a value-only comparison topology can
-  miss a divergent susceptibility, plus a growing-support negative control in
-  which automorphisms converge on every fixed local algebra but fail to
-  transport a boundary/logical observable sequence, and an explicit finite
-  Ising Hamiltonian selector check where the full two-branch ground-state band
-  transports setwise but plus/minus selected faces transport only for a
-  covariant boundary selector.
+- `calculation-checks/lattice_locality_flow_checks.py` verifies adjacent
+  overlap-chain counting for the finite path-count Lieb--Robinson estimate, a
+  negative control showing why the growing-support recursion is not a path
+  count, the factorial-to-exponential tail bound, an exact nearest-neighbor
+  Pauli-chain commutator comparison, two-level spectral-flow transport, the
+  time-window split behind quasi-local generator tails, and a receding-boundary
+  Cauchy-tail arithmetic check.  It also includes negative controls showing
+  that fixed-distance correlators can remain continuous while a gap closes and
+  that a value-only comparison topology can miss a divergent susceptibility,
+  plus a growing-support negative control in which automorphisms converge on
+  every fixed local algebra but fail to transport a boundary/logical observable
+  sequence, and an explicit finite Ising Hamiltonian selector check where the
+  full two-branch ground-state band transports setwise but plus/minus selected
+  faces transport only for a covariant boundary selector.
 - `calculation-checks/toric_code_logical_operator_checks.py` verifies the
   finite one-form laboratory: star/plaquette commutation, stabilizer
   redundancies, ground-space dimension, logical line anticommutation,
@@ -318,3 +337,12 @@ screening quotient, condensate subgroup, and topological sector.
   finite Hamiltonian ground band, boundary-selected plus/minus faces, covariant
   plus-to-minus transport under spin flip, and a noncovariant endpoint negative
   control.
+- 2026-06-08 issue #874 pass: repaired the finite Lieb--Robinson proof by
+  replacing the growing-support recursion with a single-support kernel
+  recursion and adjacent-path count, specified zero-interaction/disconnected
+  cases and the metric-distance conversion, added the uniform \(F\)-function
+  interaction/exhaustion/filter hypotheses, and recorded the shell-tail and
+  Cauchy estimates that bridge finite quasi-adiabatic generators to the imported
+  thermodynamic theorem.  The companion check now includes an invalid-recursion
+  negative control, exact nearest-neighbor Pauli-chain commutator comparison,
+  and receding-boundary Cauchy-tail arithmetic check.

@@ -5,15 +5,18 @@ Evidence contract.
 Target claims: the finite-regulator locality machinery in Volume IX,
 Chapter 7, the quasi-local spectral-flow mechanism behind gapped phase
 equivalence, and the exclusion of continuity-only phase criteria.
-Independent construction: explicit overlap-chain counting on a finite line,
-the factorial-to-exponential tail inequality, two-level projection transport,
-the time-window split for quasi-local generator tails, and finite model
-diagnostics with continuous correlators or free energy but failed uniform
-stability.  A growing-support negative control separates pointwise convergence
-on every fixed local algebra from transport of boundary/logical/extended
-observable sequences.  A symmetry-breaking finite-band example separates a
-bare parameter value from the selected ground-state set or phase face and
-checks that selected-face transport needs a covariant selector.
+Independent construction: explicit adjacent-overlap-chain counting on a finite
+line, a negative control for the invalid growing-support recursion, the
+factorial-to-exponential tail inequality, an exact nearest-neighbor Pauli-chain
+commutator comparison, two-level projection transport, the time-window split
+for quasi-local generator tails, a finite Cauchy-tail arithmetic check for
+receding boundaries, and finite model diagnostics with continuous correlators
+or free energy but failed uniform stability.  A growing-support negative
+control separates pointwise convergence on every fixed local algebra from
+transport of boundary/logical/extended observable sequences.  A
+symmetry-breaking finite-band example separates a bare parameter value from the
+selected ground-state set or phase face and checks that selected-face transport
+needs a covariant selector.
 Imported assumptions: finite-dimensional local Hilbert spaces, the chapter's
 filter convention for quasi-adiabatic continuation, and the use of these
 finite checks as arithmetic companions to the imported thermodynamic
@@ -39,6 +42,8 @@ from check_utils import assert_close as _assert_close
 
 import itertools
 import math
+
+import numpy as np
 
 
 Matrix = list[list[complex]]
@@ -152,6 +157,44 @@ def check_overlap_path_count() -> None:
             )
 
 
+def check_growing_support_recursion_is_not_path_count() -> None:
+    """The old S-union-Z recursion permits jumps that are not adjacent paths."""
+
+    supports = [
+        frozenset((0, 1)),
+        frozenset((3, 4)),
+        frozenset((1, 2)),
+    ]
+    x_region = {0, 3}
+    first_idx = 0
+    second_idx = 1
+
+    grown_support = x_region | set(supports[first_idx])
+    growing_recursion_choices = [
+        idx
+        for idx, support in enumerate(supports)
+        if support & grown_support
+    ]
+    adjacent_choices = [
+        idx
+        for idx, support in enumerate(supports)
+        if support & supports[first_idx]
+    ]
+
+    assert_true(
+        second_idx in growing_recursion_choices,
+        "S-union-Z recursion can choose an interaction touching an earlier component",
+    )
+    assert_true(
+        second_idx not in adjacent_choices,
+        "that same interaction is not adjacent to the most recent support",
+    )
+    assert_true(
+        len(growing_recursion_choices) > len(adjacent_choices),
+        "growing-support recursion has a larger branching count than adjacent paths",
+    )
+
+
 def tail_sum(a: float, distance: int, terms: int = 80) -> float:
     return sum((a**n) / math.factorial(n) for n in range(distance, terms))
 
@@ -163,6 +206,76 @@ def check_exponential_tail_bound() -> None:
                 lhs = tail_sum(a, distance)
                 rhs = math.exp(-mu * distance + a * math.exp(mu))
                 assert_true(lhs <= rhs * (1 + 1e-12), "factorial tail obeys exponential LR bound")
+
+
+PAULI_X = np.array([[0, 1], [1, 0]], dtype=complex)
+PAULI_Y = np.array([[0, -1j], [1j, 0]], dtype=complex)
+PAULI_Z = np.array([[1, 0], [0, -1]], dtype=complex)
+IDENTITY_2 = np.eye(2, dtype=complex)
+
+
+def kron_all(factors: list[np.ndarray]) -> np.ndarray:
+    result = np.array([[1]], dtype=complex)
+    for factor in factors:
+        result = np.kron(result, factor)
+    return result
+
+
+def site_operator(length: int, site: int, operator: np.ndarray) -> np.ndarray:
+    return kron_all([
+        operator if idx == site else IDENTITY_2
+        for idx in range(length)
+    ])
+
+
+def nearest_neighbor_heisenberg_chain(length: int, coupling: float = 1.0) -> np.ndarray:
+    dim = 2**length
+    hamiltonian = np.zeros((dim, dim), dtype=complex)
+    for site in range(length - 1):
+        for pauli in [PAULI_X, PAULI_Y, PAULI_Z]:
+            factors = [IDENTITY_2 for _ in range(length)]
+            factors[site] = pauli
+            factors[site + 1] = pauli
+            hamiltonian += coupling * kron_all(factors)
+    return hamiltonian
+
+
+def hermitian_time_evolution_unitary(hamiltonian: np.ndarray, time: float) -> np.ndarray:
+    eigenvalues, eigenvectors = np.linalg.eigh(hamiltonian)
+    phases = np.exp(1j * time * eigenvalues)
+    return (eigenvectors * phases) @ eigenvectors.conj().T
+
+
+def check_nearest_neighbor_commutator_bound() -> None:
+    """Compare the path-count LR bound with exact finite-chain evolution."""
+
+    coupling = 1.0
+    interaction_norm_bound = 3.0 * coupling
+    uniform_overlap_degree = 3
+    for length in [3, 4, 5]:
+        hamiltonian = nearest_neighbor_heisenberg_chain(length, coupling)
+        observable_a = site_operator(length, 0, PAULI_Z)
+        observable_b = site_operator(length, length - 1, PAULI_Z)
+        distance = length - 1
+        for time in [0.01, 0.03, 0.05]:
+            unitary = hermitian_time_evolution_unitary(hamiltonian, time)
+            evolved_a = unitary @ observable_a @ unitary.conj().T
+            exact_commutator_norm = np.linalg.norm(
+                evolved_a @ observable_b - observable_b @ evolved_a,
+                ord=2,
+            )
+            lr_bound = 2.0 * tail_sum(
+                2.0 * interaction_norm_bound * uniform_overlap_degree * time,
+                distance,
+            )
+            assert_true(
+                exact_commutator_norm <= lr_bound * (1.0 + 1.0e-10),
+                "nearest-neighbor exact commutator obeys the uniform path-count LR bound",
+            )
+        assert_true(
+            exact_commutator_norm > 0.0,
+            "the comparison is nontrivial: the local perturbation reaches the far endpoint",
+        )
 
 
 def two_level_h(theta: float) -> Matrix:
@@ -249,6 +362,32 @@ def check_quasilocal_tail_split() -> None:
             "numerical exponential-filter tail matches analytic tail",
             tol=2e-3,
         )
+
+
+def check_receding_boundary_cauchy_tail_bound() -> None:
+    """A summable locality tail makes nested-volume boundary differences vanish."""
+
+    beta = 1.3
+    velocity = 2.0
+    mu = 0.8
+
+    def cauchy_tail(distance_to_boundary: float) -> float:
+        lr_leakage = math.exp(-mu * distance_to_boundary / 2.0)
+        filter_leakage = math.exp(-beta * distance_to_boundary / (2.0 * velocity))
+        return 2.0 * (lr_leakage + filter_leakage)
+
+    previous = cauchy_tail(4.0)
+    for distance_to_boundary in [8.0, 12.0, 16.0, 24.0, 32.0]:
+        current = cauchy_tail(distance_to_boundary)
+        assert_true(
+            current < previous,
+            "boundary-flow difference bound decreases as the boundary recedes",
+        )
+        previous = current
+    assert_true(
+        previous < 1.0e-4,
+        "nested finite-volume spectral-flow actions are Cauchy under summable tails",
+    )
 
 
 def check_uniform_gap_is_not_pointwise_continuity() -> None:
@@ -445,9 +584,12 @@ def check_parameter_value_does_not_select_coexisting_phase_face() -> None:
 
 def main() -> None:
     check_overlap_path_count()
+    check_growing_support_recursion_is_not_path_count()
     check_exponential_tail_bound()
+    check_nearest_neighbor_commutator_bound()
     check_two_level_spectral_flow()
     check_quasilocal_tail_split()
+    check_receding_boundary_cauchy_tail_bound()
     check_uniform_gap_is_not_pointwise_continuity()
     check_weak_topology_ignores_susceptibility_divergence()
     check_fixed_local_convergence_does_not_transport_growing_support()

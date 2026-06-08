@@ -2151,19 +2151,21 @@ Current checks:
   integer filling, enlarged unit cells, gapless exits, and topological-sector
   momentum absorption.
 - `lattice_locality_flow_checks.py`: finite-regulator locality checks for the
-  gauge-theory phases chapter, including overlap-chain counting for the
-  path-count Lieb--Robinson estimate, the factorial-to-exponential tail bound,
-  two-level spectral-flow transport, and the time-window split behind
-	  quasi-local generator tails.  It also includes negative controls showing that
-	  fixed-distance correlator continuity can coexist with a closing gap and that
-	  a value-only topology can miss a divergent susceptibility, together with a
-	  growing-support negative control where finite-volume automorphisms converge
-	  on every fixed local algebra but do not control a moving boundary or logical
-	  observable sequence, and an explicit finite Ising Hamiltonian selector
-	  control showing that a gapped parameter value with a multi-branch
-	  ground-state band does not select a unique phase face, that the full
-	  ground-state set can transport setwise, and that plus/minus selected faces
-	  transport only with a covariant boundary selector.
+  gauge-theory phases chapter, including adjacent overlap-chain counting for
+  the path-count Lieb--Robinson estimate, a negative control for the invalid
+  growing-support recursion, the factorial-to-exponential tail bound, an exact
+  nearest-neighbor Pauli-chain commutator comparison, two-level spectral-flow
+  transport, the time-window split behind quasi-local generator tails, and a
+  receding-boundary Cauchy-tail arithmetic check.  It also includes negative
+  controls showing that fixed-distance correlator continuity can coexist with a
+  closing gap and that a value-only topology can miss a divergent
+  susceptibility, together with a growing-support negative control where
+  finite-volume automorphisms converge on every fixed local algebra but do not
+  control a moving boundary or logical observable sequence, and an explicit
+  finite Ising Hamiltonian selector control showing that a gapped parameter
+  value with a multi-branch ground-state band does not select a unique phase
+  face, that the full ground-state set can transport setwise, and that
+  plus/minus selected faces transport only with a covariant boundary selector.
 - `toric_code_logical_operator_checks.py`: finite Pauli and chain-complex
   checks for the gauge-theory phases chapter, including star/plaquette
   commutation, global stabilizer redundancies, the four-dimensional torus
