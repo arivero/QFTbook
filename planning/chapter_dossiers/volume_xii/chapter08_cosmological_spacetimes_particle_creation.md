@@ -25,7 +25,10 @@ space, not as a slogan about ambiguity.
 - `u_k^{in/out}`, `alpha_k`, `beta_k`, `B_k`: asymptotic modes, Bogoliubov
   coefficients, and the \(2\times2\) mode matrix
   \(\begin{pmatrix}\alpha_k&\beta_k\\ \overline{\beta_k}&\overline{\alpha_k}\end{pmatrix}\).
-- `W_k`: adiabatic frequency in the WKB ansatz.
+- `W_k`, `W_k^{[2r]}`, `omega_{0,k}`, `V_{2,k}`, `Lambda_N`: adiabatic
+  frequency, truncated WKB frequency, derivative-free zeroth-order frequency,
+  second-order curvature potential, and finite-order adiabatic two-point
+  function.
 - `P(E)`, `chi(tau)`, `W(x,x')`: detector response, switching function, and
   two-point function.
 - `H`, `nu`: de Sitter Hubble constant and Hankel index for Bunch--Davies
@@ -64,8 +67,17 @@ space, not as a slogan about ambiguity.
   annihilators, then derives both \(\langle N_k^{\rm out}\rangle=|\beta_k|^2\)
   and \(\langle a_k^{\rm out}a_{-k}^{\rm out}\rangle=\alpha_k\overline{\beta_k}\).
 - Gives the instantaneous frequency-jump example as a normalization check.
-- Derives the exact Riccati equation for the adiabatic frequency and records
-  the second-order solution.
+- Derives the exact Riccati equation for the adiabatic frequency, separates
+  \(\Omega_k^2=\omega_{0,k}^2+V_{2,k}\) with \(V_{2,k}\) counted as second
+  adiabatic order, records the corrected second-order frequency, and gives the
+  truncated-WKB initial-data prescription with its positivity/turning-point
+  boundary.
+- Separates finite adiabatic order from full Hadamard regularity: finite order
+  is a Sobolev-wavefront condition \(WF'^s(\Lambda_N)\subset C^+\) below a
+  finite threshold, while full Hadamard regularity is the infinite-order
+  microlocal spectrum condition.  Fourth-order adiabatic subtraction is stated
+  only as the selected four-dimensional stress-subtraction coefficient match,
+  not as a Hadamard claim.
 - Records positivity of the switched detector response as direct
   positive-type smearing of the two-point function, with the pointlike
   worldline smearing understood as a limit of ordinary spacetime test
@@ -105,13 +117,14 @@ space, not as a slogan about ambiguity.
   sudden-quench Bogoliubov normalization, the complex two-mode Bogoliubov
   matrix with genuinely complex \(\alpha\), the transpose-not-adjoint
   annihilator transformation, rephasing covariance, anomalous out-correlator
-  phase, a power-law adiabatic Riccati identity, finite positive-type
-  detector-response Gram forms, the out-region produced energy/pressure
-  formulas, the required \(a_+^{-d}\) scale-factor power, the massless equation
-  of state, and the Friedmann response coefficient, plus the time-dependent
-  produced-stress continuity identity with negative controls against wrong
-  pressure normalization, wrong scale-factor power, and treating ongoing
-  production as a conserved fluid.
+  phase, a power-law adiabatic Riccati identity, the finite adiabatic-order
+  curvature split, the finite-order-versus-Hadamard negative control,
+  truncated-WKB positivity, finite positive-type detector-response Gram forms,
+  the out-region produced energy/pressure formulas, the required \(a_+^{-d}\)
+  scale-factor power, the massless equation of state, and the Friedmann response
+  coefficient, plus the time-dependent produced-stress continuity identity with
+  negative controls against wrong pressure normalization, wrong scale-factor
+  power, and treating ongoing production as a conserved fluid.
   The same script now checks the finite backreaction-window budget, including
   scheme transport, tail/gravity remainders, pressure-dependent Hubble drift,
   number-density-only failures, compact spacetime stress-noise smearing,
@@ -185,3 +198,11 @@ timelike detector worldline sampling the two-point function.
   time/spatial/volume scaling and infrared prescription, and required retarded
   metric covariance pushforward before tolerance comparisons.  The companion
   rejects pointlike spatial evaluation and unnormalized whole-slice smearing.
+- 2026-06-08 issue #914 finite-adiabatic-order pass: separated
+  derivative-free \(\omega_{0,k}\) data from the second-order curvature
+  potential \(V_{2,k}\), replaced the old "sufficiently high finite order is
+  Hadamard" wording with the Junker--Schrohe Sobolev-wavefront finite-order
+  criterion, and restricted fourth-order adiabatic subtraction to the
+  four-dimensional stress-tensor coefficient match.  The companion now has a
+  negative control that passes the selected fourth-order subtraction gate while
+  failing a full smooth-difference/Hadamard gate.

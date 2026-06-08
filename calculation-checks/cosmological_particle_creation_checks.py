@@ -7,9 +7,10 @@ Target claims:
 - `ch:cosmological-particle-creation`: Robertson-Walker scalar-mode
   conventions, de Sitter index arithmetic, Bogoliubov normalization and
   phase-sensitive annihilator transformations, detector positivity,
-  produced-stress source coordinates, pressure work, Friedmann response
-  coefficients, compact spacetime stress-noise smearing, retarded metric-noise
-  pushforward, and a finite backreaction-window budget.
+  finite adiabatic-order bookkeeping, produced-stress source coordinates,
+  pressure work, Friedmann response coefficients, compact spacetime
+  stress-noise smearing, retarded metric-noise pushforward, and a finite
+  backreaction-window budget.
 
 Independent construction:
 - The checks use finite mode sums, exact rational complex two-mode
@@ -26,9 +27,10 @@ Negative controls:
 - Wrong scale-factor powers, missing pressure work, treating ongoing
   production as a conserved fluid, untransported scheme shifts, omitted
   tail/noise budgets, number-density-only sources, zero-particle source
-  shortcuts, pointlike spatial stress-noise evaluation, unnormalized whole-slice
-  smearing, the old conjugated-alpha annihilator rule, and real-quench-only
-  Bogoliubov tests are rejected.
+  shortcuts, curvature-as-zeroth-order WKB bookkeeping, finite-order
+  adiabatic/Hadamard conflation, pointlike spatial stress-noise evaluation,
+  unnormalized whole-slice smearing, the old conjugated-alpha annihilator rule,
+  and real-quench-only Bogoliubov tests are rejected.
 
 Scope boundary:
 - Passing this file checks finite stress-source, stress-noise, response, and
@@ -222,6 +224,77 @@ def check_adiabatic_riccati_power_law() -> None:
             omega_squared,
             (c * c + Fraction(1, 4)) / (eta * eta),
         )
+
+
+def check_finite_adiabatic_order_bookkeeping() -> None:
+    omega0 = Fraction(5)
+    omega0_prime = Fraction(2, 3)
+    omega0_second = -Fraction(1, 7)
+    curvature_potential_second_order = Fraction(3, 11)
+
+    second_order_correction = (
+        curvature_potential_second_order / (2 * omega0)
+        - omega0_second / (4 * omega0 * omega0)
+        + 3 * omega0_prime * omega0_prime / (8 * omega0 * omega0 * omega0)
+    )
+    riccati_second_order_rhs = (
+        curvature_potential_second_order
+        - Fraction(1, 2) * omega0_second / omega0
+        + Fraction(3, 4) * (omega0_prime / omega0) * (omega0_prime / omega0)
+    )
+    assert_equal(
+        "second adiabatic order Riccati recursion",
+        2 * omega0 * second_order_correction,
+        riccati_second_order_rhs,
+    )
+
+    derivative_only_correction = (
+        -omega0_second / (4 * omega0 * omega0)
+        + 3 * omega0_prime * omega0_prime / (8 * omega0 * omega0 * omega0)
+    )
+    assert_equal(
+        "curvature potential is not zeroth-order WKB data",
+        2 * omega0 * derivative_only_correction == riccati_second_order_rhs,
+        False,
+    )
+
+    adiabatic_order = Fraction(4)
+    stress_subtraction_required_order = Fraction(4)
+    sobolev_regular_orders_below = adiabatic_order + Fraction(3, 2)
+    full_hadamard_test_order = Fraction(8)
+    assert_equal(
+        "finite fourth order passes selected stress subtraction gate",
+        adiabatic_order >= stress_subtraction_required_order,
+        True,
+    )
+    assert_equal(
+        "finite fourth order fails full Hadamard smooth-difference gate",
+        full_hadamard_test_order < sobolev_regular_orders_below,
+        False,
+    )
+
+    truncated_frequency = Fraction(7, 3)
+    truncated_frequency_prime = -Fraction(5, 11)
+    amplitude_squared = 1 / (2 * truncated_frequency)
+    log_derivative_real_part = -truncated_frequency_prime / (
+        2 * truncated_frequency
+    )
+    assert_equal(
+        "truncated WKB initial data has unit Wronskian factor",
+        2 * truncated_frequency * amplitude_squared,
+        Fraction(1),
+    )
+    assert_equal(
+        "truncated WKB initial real logarithmic derivative",
+        log_derivative_real_part,
+        Fraction(5, 22) / truncated_frequency,
+    )
+    bad_truncated_frequency = -Fraction(1, 5)
+    assert_equal(
+        "negative truncated frequency violates positivity boundary",
+        bad_truncated_frequency > 0,
+        False,
+    )
 
 
 def check_detector_positive_type_finite_model() -> None:
@@ -623,6 +696,7 @@ def main() -> None:
     check_sudden_quench_bogoliubov()
     check_complex_bogoliubov_annihilator_matrix()
     check_adiabatic_riccati_power_law()
+    check_finite_adiabatic_order_bookkeeping()
     check_detector_positive_type_finite_model()
     check_out_region_produced_stress_tensor()
     check_produced_stress_continuity_check()

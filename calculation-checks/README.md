@@ -1416,8 +1416,12 @@ Current checks:
   transformation, in/out rephasing covariance, and the phase-sensitive
   anomalous correlator
   \(\langle a_k^{\rm out}a_{-k}^{\rm out}\rangle=\alpha_k\overline{\beta_k}\).
-  It also checks the Riccati equation for a power-law adiabatic frequency and
-  finite positive type of detector-response Gram forms.  The same companion
+  It also checks the Riccati equation for a power-law adiabatic frequency, the
+  second-order split
+  \(\Omega_k^2=\omega_{0,k}^2+V_{2,k}\), the finite-order
+  adiabatic-versus-Hadamard regularity gate, truncated WKB initial-data
+  positivity, and finite positive type of detector-response Gram forms.  The
+  same companion
   checks the out-region produced stress-tensor bridge from \(|\beta_k|^2\) to
   \(a_+^{-d}\int \Omega_k^+|\beta_k|^2\), the pressure formula, the
   massless equation of state, and the homogeneous Friedmann response

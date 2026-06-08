@@ -623,27 +623,87 @@ Thus \(\chi''+\Omega_k^2\chi=0\) is equivalent to
 
 The adiabatic expansion is obtained by assigning one derivative of
 \(a(\eta)\) one adiabatic order and solving
-\eqref{eq:adiabatic-riccati-equation} recursively.  To second adiabatic
-order, if \(\omega_k=\Omega_k\) denotes the zeroth-order positive frequency,
+\eqref{eq:adiabatic-riccati-equation} recursively.  This counting separates
+the derivative-free frequency from the curvature potential.  In the
+four-dimensional stress-subtraction setting,
 \begin{equation}
-  W_k
+  \Omega_k^2
   =
-  \omega_k
-  -
-  \frac{\omega_k''}{4\omega_k^2}
+  \omega_{0,k}^2+V_{2,k},
+  \qquad
+  \omega_{0,k}=\sqrt{k^2+a^2m^2},
+  \qquad
+  V_{2,k}=(\xi-\xi_c)a^2R ,
+  \label{eq:adiabatic-frequency-order-split}
+\end{equation}
+so \(V_{2,k}\) is already second adiabatic order.  Writing
+\(W_k^{[2]}=\omega_{0,k}+W_{2,k}\), the order-two part of
+\eqref{eq:adiabatic-riccati-equation} gives
+\begin{equation}
+  W_k^{[2]}
+  =
+  \omega_{0,k}
   +
-  \frac{3(\omega_k')^2}{8\omega_k^3}
+  \frac{V_{2,k}}{2\omega_{0,k}}
+  -
+  \frac{\omega_{0,k}''}{4\omega_{0,k}^2}
+  +
+  \frac{3(\omega_{0,k}')^2}{8\omega_{0,k}^3}
   +O(\partial_\eta^4).
   \label{eq:adiabatic-second-order-frequency}
 \end{equation}
-An adiabatic state of sufficiently high order is Hadamard for the scalar
-field on Robertson--Walker spacetime.  Conversely, the point-splitting
-subtraction for \(\langle T_{\mu\nu}\rangle\) has the same ultraviolet
-content as the fourth adiabatic order subtraction in four spacetime
-dimensions.  Equality here means equality of the local large-\(k\)
-singular terms; finite local curvature counterterms remain the
-renormalization freedom described in
-Chapter~\ref{ch:point-splitting-stress-tensor-renormalization}.
+Higher orders are obtained by re-inserting the truncated \(W_k^{[2r]}\) into
+\eqref{eq:adiabatic-riccati-equation} and retaining only terms through order
+\(2r+2\).
+
+A finite adiabatic order is a finite microlocal regularity statement, not the
+Hadamard condition itself.  Following Junker--Schrohe
+\cite{JunkerSchrohe2002AdiabaticVacua}, a quasifree state with two-point
+function \(\Lambda_N\) is adiabatic of order \(N\) if
+\[
+  WF'^{\,s}(\Lambda_N)\subset C^+
+  \qquad\text{for every }s<N+\frac32 .
+\]
+Equivalently, relative to a Hadamard two-point function \(\Lambda_H\), the
+difference \(\Lambda_N-\Lambda_H\) has empty Sobolev wavefront set only up to
+that finite Sobolev order.  The full Hadamard condition is the ordinary
+microlocal spectrum condition \(WF'(\Lambda)=C^+\); in the finite-order
+language it is the infinite-order subclass, or equivalently smooth difference
+from a Hadamard parametrix in all Sobolev orders.  Thus a fourth- or
+sixth-order adiabatic state may be good enough for a specified ultraviolet
+subtraction without being a Hadamard state.
+
+The initial-data prescription is likewise finite.  Choose an initial time
+\(\eta_0\), construct a positive truncated frequency \(W_k^{[2r]}\) there, and
+set
+\begin{equation}
+  \chi_k(\eta_0)=\frac{1}{\sqrt{2W_k^{[2r]}(\eta_0)}},
+  \qquad
+  \chi_k'(\eta_0)
+  =
+  \left(
+    -\frac{(W_k^{[2r]})'(\eta_0)}{2W_k^{[2r]}(\eta_0)}
+    -\ii W_k^{[2r]}(\eta_0)
+  \right)\chi_k(\eta_0),
+  \label{eq:adiabatic-truncated-initial-data}
+\end{equation}
+then solve the exact mode equation.  The prescription is a high-frequency
+asymptotic condition; low-\(k\) modes may be smoothly modified to keep
+\(W_k^{[2r]}>0\) without changing the ultraviolet order.  If the truncated
+frequency loses positivity, or if the background has a turning point where the
+chosen WKB frequency is no longer separated from zero, the ansatz no longer
+defines a positive-frequency splitting in that window and the failure must be
+treated as a basis-change or tail remainder.
+
+Finally, state regularity, subtraction order, and equality of local
+coefficients are distinct claims.  In four spacetime dimensions, fourth
+adiabatic order reproduces the local large-\(k\) subtraction coefficients needed
+for the homogeneous stress tensor, matching the point-splitting singular
+coefficients up to the finite local curvature counterterms described in
+Chapter~\ref{ch:point-splitting-stress-tensor-renormalization}.  That equality
+does not say that the state is Hadamard; it says only that the selected Wick
+observable has been given the required local ultraviolet subtraction in the
+declared homogeneous scheme.
 
 \section{Detector Response}
 

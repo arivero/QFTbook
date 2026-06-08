@@ -223,6 +223,9 @@
         "alpha and beta rephase with theta_in-minus/out and theta_in-plus/out laws",
         "out anomalous correlator is alpha times conjugate beta",
         "produced stress source requires pressure work and a^{-d} density scaling",
+        "adiabatic expansion separates omega0 squared from second-order curvature potential",
+        "finite adiabatic order can pass selected stress subtraction without being Hadamard",
+        "truncated WKB initial data requires positive frequency away from turning points",
         "stress noise uses compact spacetime test tensors with normalized spatial averaging",
         "pointlike spatial stress evaluation and unnormalized whole-slice smearing are rejected",
         "metric noise is the retarded pushforward of stress covariance before tolerance comparison"
