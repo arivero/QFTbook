@@ -2,8 +2,9 @@
 """Finite checks for the lattice-to-continuum bridge chapter.
 
 The checks verify the finite algebra used in Volume XI, Chapter 8: cell
-averages, finite-graph random-walk resolvents, closedness of reflection
-positivity, and tensor-product locality.
+averages, finite-graph random-walk resolvents, the finite-graph Dirichlet
+form convention, closedness of reflection positivity, and tensor-product
+locality.
 """
 
 from __future__ import annotations
@@ -32,6 +33,14 @@ def matmul(left: Matrix, right: Matrix) -> Matrix:
         ]
         for i in range(len(left))
     ]
+
+
+def matvec(matrix: Matrix, vector: list[Fraction]) -> list[Fraction]:
+    return [sum(row[j] * vector[j] for j in range(len(vector))) for row in matrix]
+
+
+def quadratic_form(matrix: Matrix, vector: list[Fraction]) -> Fraction:
+    return sum(vector[i] * value for i, value in enumerate(matvec(matrix, vector)))
 
 
 def matadd(left: Matrix, right: Matrix, sign: int = 1) -> Matrix:
@@ -101,6 +110,14 @@ def cycle_adjacency(size: int) -> Matrix:
     return matrix
 
 
+def cycle_edges(size: int) -> list[tuple[int, int]]:
+    return [(i, (i + 1) % size) for i in range(size)]
+
+
+def edge_dirichlet_form(vector: list[Fraction], edges: list[tuple[int, int]]) -> Fraction:
+    return sum((vector[left] - vector[right]) ** 2 for left, right in edges)
+
+
 def enumerate_cycle_paths(size: int, start: int, end: int, length: int) -> int:
     count = 0
     for steps in product([-1, 1], repeat=length):
@@ -129,6 +146,25 @@ def check_random_walk_resolvent() -> None:
     fourth_power = matpow(adjacency, 4)
     path_count = enumerate_cycle_paths(size, start=0, end=0, length=4)
     assert_equal("path count equals adjacency power", fourth_power[0][0], path_count)
+
+
+def check_finite_graph_dirichlet_form() -> None:
+    size = 5
+    degree = 2
+    mass_squared = Fraction(5, 3)
+    adjacency = cycle_adjacency(size)
+    laplacian = matadd(matscale(degree, identity(size)), adjacency, sign=-1)
+    k_matrix = matadd(matscale(mass_squared + degree, identity(size)), adjacency, sign=-1)
+    vector = [Fraction(2), Fraction(-1), Fraction(3), Fraction(0), Fraction(1)]
+
+    mass_term = mass_squared * sum(entry * entry for entry in vector)
+    edge_term = edge_dirichlet_form(vector, cycle_edges(size))
+    assert_equal("cycle graph Laplacian Dirichlet form", quadratic_form(laplacian, vector), edge_term)
+    assert_equal("massive graph quadratic form", quadratic_form(k_matrix, vector), mass_term + edge_term)
+
+    half_weighted_unoriented = mass_term + Fraction(1, 2) * edge_term
+    if quadratic_form(k_matrix, vector) == half_weighted_unoriented:
+        raise AssertionError("negative control failed: half-weighted unoriented edge sum matched K_m")
 
 
 def check_reflection_positivity_closedness() -> None:
@@ -174,6 +210,7 @@ def check_spin_tensor_locality() -> None:
 def main() -> None:
     check_cell_average_product()
     check_random_walk_resolvent()
+    check_finite_graph_dirichlet_form()
     check_reflection_positivity_closedness()
     check_spin_tensor_locality()
     print("Lattice-to-continuum bridge checks passed.")

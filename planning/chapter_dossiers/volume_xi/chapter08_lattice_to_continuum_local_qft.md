@@ -21,6 +21,8 @@ and local-algebra comparison layer.
 - `G=(V,E)`, `A`, `K_m`, `N_n(x,y)`: finite graph, adjacency matrix,
   massive lattice operator, and length-\(n\) path count in the random-walk
   representation.
+- `E_nn`: nearest-neighbor unoriented edge set in the cubic-lattice
+  specialization of the massive covariance operator.
 - `S_a`, `A_+`, `Theta`: reflected-positive Schwinger functional,
   positive-time test algebra, and reflection.
 - `A_a(O_a)`, `A(O)`: lattice and continuum local algebras.
@@ -44,7 +46,8 @@ and local-algebra comparison layer.
   making explicit which part is functional analysis and which part is the
   constructive estimate.
 - Proves the finite-graph random-walk resolvent for the massive lattice
-  covariance and relates it to path/polymer expansions.
+  covariance, with the positive quadratic form normalized by counting each
+  unoriented edge once, and relates it to path/polymer expansions.
 - States the OS reconstruction bridge under reflection positivity and growth
   hypotheses.
 - Proves closedness of reflection positivity under entrywise convergence of
@@ -66,6 +69,7 @@ the OS reconstruction pipeline.
 
 - `calculation-checks/lattice_continuum_bridge_checks.py` verifies the
   cell-average product arithmetic, finite-graph random-walk resolvent,
+  finite-graph Dirichlet form with the unoriented-edge convention,
   reflection-positive Gram-matrix limit, and tensor-product locality for
   disjoint spin factors.
 
@@ -77,3 +81,8 @@ the OS reconstruction pipeline.
 - 2026-06-05 issue #777 cross-reference pass: added the lattice-to-continuum
   data needed to carry LSMOH filling/projective-cell constraints into an
   infrared QFT or anomaly statement.
+- 2026-06-08 issue #898 finite-graph audit: corrected the massive graph
+  quadratic-form identity to count each unoriented edge once without a
+  spurious factor \(1/2\), carried the same convention into the cubic-lattice
+  specialization, and added an exact rational cycle-graph regression with a
+  half-weight negative control.

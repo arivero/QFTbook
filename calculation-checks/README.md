@@ -2456,9 +2456,10 @@ Current checks:
   fixed-spin rotor \(1/N_c\) scaling.
 - `lattice_continuum_bridge_checks.py`: exact finite checks for the
   Volume XI lattice-to-continuum local-QFT chapter, including cell-average
-  test-function arithmetic, the finite-graph random-walk resolvent,
-  closedness of reflection-positive Gram matrices, and tensor-product
-  locality for spin algebras.
+  test-function arithmetic, the finite-graph random-walk resolvent, the
+  finite-graph Dirichlet form with its unoriented-edge convention and
+  half-weight negative control, closedness of reflection-positive Gram
+  matrices, and tensor-product locality for spin algebras.
 - `lattice_fermion_chiral_checks.py`: exact finite checks for the
   Volume XI lattice-fermion chapter, including naive-doubler chirality
   cancellation, Wilson corner-mass degeneracies, the Ginsparg-Wilson and

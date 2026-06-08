@@ -223,7 +223,7 @@ For any vector \(u\),
   =
   m^2\sum_x |u_x|^2
   +
-  \frac12\sum_{x\sim y}|u_x-u_y|^2 ,
+  \sum_{\{x,y\}\in E}|u_x-u_y|^2 ,
   \label{eq:finite-graph-positive-quadratic-form}
 \end{equation}
 where each unoriented edge is counted once.  Thus \(K_m\) is positive
@@ -252,6 +252,16 @@ the same formula after the replacement
   (m^2+2da^{-2})I-a^{-2}A .
   \label{eq:massive-cubic-lattice-operator}
 \end{equation}
+With the same unoriented-edge convention,
+\[
+  u^*K_{m,a}u
+  =
+  m^2\sum_x |u_x|^2
+  +
+  a^{-2}\sum_{\{x,y\}\in E_{\rm nn}}|u_x-u_y|^2 ,
+\]
+where \(E_{\rm nn}\) is the nearest-neighbor edge set of the finite cubic
+lattice with the chosen boundary condition.
 The path expansion then weights an \(n\)-step path by
 \[
   a^{-2n}\bigl(m^2+2da^{-2}\bigr)^{-(n+1)}
