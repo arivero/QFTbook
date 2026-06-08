@@ -409,7 +409,10 @@
       "convention_tags": [
         "j equals zero Hawking number packet is infrared divergent",
         "low-frequency energy flux is separate from number flux",
-        "late-time packet remainders require global support and Fourier derivative bounds"
+        "late-time packet remainders require global support and Fourier derivative bounds",
+        "Rindler normal form and Euclidean cone require constant surface gravity",
+        "rotating horizon KMS weights use omega minus m Omega_H",
+        "superradiant channels cannot use positive Schwarzschild greybody shortcuts"
       ]
     },
     {

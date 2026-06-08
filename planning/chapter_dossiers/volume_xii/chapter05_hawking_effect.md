@@ -15,9 +15,15 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
 
 - Killing horizon and surface gravity convention
   `chi^nu nabla_nu chi^mu = kappa chi^mu`.
-- Rindler normal form for a nonextremal horizon.
+- Zeroth-law/constant-surface-gravity hypothesis for the Rindler normal form
+  and Euclidean period.
+- Rindler normal form for a nonextremal constant-`kappa` horizon, with the
+  variable-`kappa(y)` failure mode recorded.
 - Schwarzschild normalization `kappa=1/(4M)` and `T_H=1/(8 pi M)`.
-- Euclidean regularity and the exact scope of the KMS conclusion.
+- Static Euclidean regularity and the exact scope of the KMS conclusion.
+- Rotating-horizon generator `chi = partial_t + Omega_H partial_phi`,
+  rotating KMS weight `omega - m Omega_H`, angular chemical potential, and
+  superradiant-sector boundary.
 - Late-time collapse ray-tracing lemma from regular Kruskal coordinate `U`
   and affine past-null coordinate `v`.
 - Null-mode Klein-Gordon product and singular Bogoliubov coefficient
@@ -39,6 +45,9 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
   exponential ray-tracing map.
 - Trans-Planckian precursor-frequency estimate.
 - Boulware, Hartle-Hawking, and Unruh states as state-selection properties.
+  Their clean three-state taxonomy is stated for static bifurcate exteriors;
+  rotating analogues require model-specific superradiance and regularity
+  qualifications.
 - Scalar Schwarzschild radial wave equation and greybody flux formula.
 - Interacting horizon flux package: KMS greater/lesser functions determine the
   universal thermal ratio, while the spectral density, channel mixing,
@@ -55,6 +64,7 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
 | --- | --- |
 | `chi` | horizon-generating Killing field |
 | `kappa` | surface gravity in the normalization of `chi` |
+| `Omega_H`, `tilde omega` | horizon angular velocity and rotating horizon energy `omega - m Omega_H` |
 | `rho,t` | Rindler-normal distance and stationary time |
 | `U,V` | regular Kruskal-type null coordinates |
 | `beta_H` | inverse Hawking temperature `2 pi/kappa` |
@@ -81,40 +91,49 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
 ## Claim Ledger
 
 1. A nonextremal Killing horizon has Rindler normal form with acceleration
-   scale `kappa`.
-2. Euclidean smoothness fixes period `2 pi/kappa`, provided the Euclidean
-   object and Lorentzian analytic continuation exist.
-3. Regular Kruskal coordinate plus smooth collapse ray labeling gives
+   scale `kappa` after a zeroth-law or bifurcate-horizon hypothesis supplies
+   constant surface gravity.
+2. If `kappa=kappa(y)`, the displayed coordinate transformation develops
+   transverse terms and no single Euclidean period regularizes the whole
+   cross-section.
+3. Euclidean smoothness fixes period `2 pi/kappa` only in the static
+   real-cone argument, provided the Euclidean object and Lorentzian analytic
+   continuation exist.
+4. Rotating horizons use the generator
+   `chi = partial_t + Omega_H partial_phi` and the KMS weight
+   `omega - m Omega_H`; superradiant modes require a separate scattering
+   treatment and obstruct the generic static Hartle-Hawking story.
+5. Regular Kruskal coordinate plus smooth collapse ray labeling gives
    `v_0-v = C exp(-kappa u) + O(exp(-2 kappa u))`.
-4. The singular Fourier transform of the traced outgoing mode gives
+6. The singular Fourier transform of the traced outgoing mode gives
    `|alpha|^2/|beta|^2 = exp(2 pi omega/kappa)` and the displayed
    `|beta|^2` density.
-5. Continuous `|beta|^2` is not a particle number; Hawking quanta must be
+7. Continuous `|beta|^2` is not a particle number; Hawking quanta must be
    defined by wave-packet observables.
-6. The packet occupation tends to the Planck-bin average at late retarded
+8. The packet occupation tends to the Planck-bin average at late retarded
    time only for positive-lower-edge number bins or other infrared-safe
    observables.
-7. The `j=0` sharp number packet is infrared divergent in the idealized
+9. The `j=0` sharp number packet is infrared divergent in the idealized
    massless horizon calculation; energy flux remains finite because the
    stress tensor supplies an extra factor of `omega`.
-8. The late-time remainder requires global support and Fourier derivative
+10. The late-time remainder requires global support and Fourier derivative
    hypotheses.  Local smoothness across the last escaping ray does not by
    itself imply decay of the smooth contribution.
-9. For a two-dimensional CFT, the exponential ray-tracing Schwarzian gives
+11. For a two-dimensional CFT, the exponential ray-tracing Schwarzian gives
    `T_uu = c kappa^2/(48 pi)`, matching the chiral thermal flux.
-10. The trans-Planckian estimate is a domain-of-validity statement for the
+12. The trans-Planckian estimate is a domain-of-validity statement for the
    fixed-background continuum derivation.
-11. Greybody factors are exterior scattering data, separate from the universal
+13. Greybody factors are exterior scattering data, separate from the universal
    horizon Planck factor.
-12. In an interacting QFT, the universal thermal factor is a KMS
+14. In an interacting QFT, the universal thermal factor is a KMS
     spectral-density relation.  The flux at infinity also requires the
     interacting spectral density, channel basis, greybody propagation,
     stress-tensor conversion, and residual budget.
-13. The adiabatic mass-loss ODE is a controlled finite-window approximation
+15. The adiabatic mass-loss ODE is a controlled finite-window approximation
     only after the retained stress-flux luminosity, drift bound,
     state-transport error, gravitational EFT residual, quasi-stationary
     parameter, and integrated flux noise are all controlled.
-14. Semiclassical back-reaction requires additional hypotheses and is not a
+16. Semiclassical back-reaction requires additional hypotheses and is not a
     consequence of the fixed-background Hawking calculation alone.
 
 ## Calculation Ledger
@@ -124,12 +143,14 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
   continuum normalization density, wave-packet Planck-bin average,
   packet Fourier orthogonality/completeness, the `j=0` infrared number
   divergence, finite low-frequency energy flux, exponential precursor
-  blueshift, ray-map/smooth-remainder late-time packet bounds, Schwarzian flux,
-  chiral Planck flux, and Schwarzschild temperature convention.  It also checks
-  the interacting horizon KMS spectral-density package, greybody-weighted
-  retained flux, residual-budget negative controls, stress-flux mass-loss
-  bookkeeping, and the flux-to-mass backreaction window with drift,
-  quasi-stationary, noise, and number-flux negative controls.
+  blueshift, ray-map/smooth-remainder late-time packet bounds, the
+  constant-`kappa` Rindler gate, variable-`kappa(y)` coordinate failure,
+  rotating `omega-m Omega_H` KMS weights, superradiant-channel negative
+  controls, Schwarzian flux, chiral Planck flux, and Schwarzschild temperature
+  convention.  It also checks the interacting horizon KMS spectral-density
+  package, greybody-weighted retained flux, residual-budget negative controls,
+  stress-flux mass-loss bookkeeping, and the flux-to-mass backreaction window
+  with drift, quasi-stationary, noise, and number-flux negative controls.
 
 ## Figures
 
@@ -157,3 +178,8 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
   a finite number observable, separated number and energy-flux infrared
   behavior, and replaced the unsupported smooth-remainder `o(1)` statement by
   a global-cutoff and Fourier-derivative late-time packet estimate.
+- 2026-06-08 issue #907 horizon-hypothesis pass: made constant surface gravity
+  an explicit zeroth-law/bifurcate-horizon input, restricted the real
+  Euclidean cone proof to static horizons, added the rotating KMS generator
+  and angular chemical-potential weight, and recorded superradiance/Kay-Wald
+  qualifications for rotating state taxonomy.

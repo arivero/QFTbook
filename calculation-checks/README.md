@@ -2222,7 +2222,9 @@ Current checks:
   Fourier orthogonality/completeness, the logarithmic infrared divergence of
   the \(j=0\) number bin, finite low-frequency energy flux, the exponential
   precursor blueshift, the late-time ray-map and smooth-remainder packet
-  bounds, the exponential-map Schwarzian flux, and the Schwarzschild
+  bounds, the constant-surface-gravity Rindler normal-form gate, rotating
+  \(\omega-m\Omega_H\) KMS weights, superradiant-channel negative controls,
+  the exponential-map Schwarzian flux, and the Schwarzschild
   \(T_H=1/(8\pi M)\) convention.  It also checks the interacting horizon-flux
   package: KMS greater/lesser detailed balance, spectral-density
   reconstruction, greybody-weighted retained flux, negative controls against
