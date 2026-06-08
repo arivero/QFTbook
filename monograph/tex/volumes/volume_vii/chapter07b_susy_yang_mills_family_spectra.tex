@@ -953,27 +953,41 @@ pure-Yang--Mills \(k\)-strings consists of:
 \end{enumerate}
 \end{definition}
 
-\paragraph{What the Abelian sine calculation transfers.}
+\paragraph{What the Abelian sine calculation does and does not transfer.}
 Assume a comparison problem as in
 Definition~\ref{def:sw-to-pure-ym-string-comparison}.  If, for a fixed
 \(k\), the tensions \(T_1(t)\) and \(T_k(t)\) exist, are positive, and are
-continuous on \(0\le t\le1\), then the normalized ratio \(R_k(t)\) is
-continuous.  If in addition \(R_k(t)\) is constant along the path, then the
-pure-Yang--Mills ratio equals the Abelianized value
-\[
-  R_k(1)=\frac{\sin(\pi k/N_c)}{\sin(\pi/N_c)} .
-\]
-The Abelian Seiberg--Witten calculation proves the initial value \(R_k(0)\)
-under its low-energy hypotheses; constancy, or any other controlled evolution
-law for \(R_k(t)\), is an additional nonperturbative statement about the
-deformation path.
-The first assertion is the continuity of a quotient whose
-denominator is positive.  The second follows by evaluating the constant
-function \(R_k(t)\) at \(t=0\) and using
-\eqref{eq:sw-sine-k-string-ratio}.  The last sentence records the logical
-dependence of the two inputs: Example~\ref{ex:a-type-sine-profile-k-string}
-is an Abelian effective-theory statement, while constancy of \(R_k(t)\) is a
-statement about a family of nonperturbative flux-sector transfer matrices.
+absolutely continuous on an interval \(I\), then the only transferable
+numerical information is the initial value together with a bound on the
+relative response
+\begin{equation}
+  \Gamma_k(t)
+  =
+  \frac{\partial_tT_k(t)}{T_k(t)}
+  -
+  \frac{\partial_tT_1(t)}{T_1(t)} .
+  \label{eq:sw-string-ratio-response}
+\end{equation}
+Indeed, for \(t_0,t_1\in I\),
+\begin{equation}
+  \log\frac{R_k(t_1)}{R_k(t_0)}
+  =
+  \int_{t_0}^{t_1}\Gamma_k(t)\,\dd t,
+  \qquad
+  \left|\log\frac{R_k(t_1)}{R_k(t_0)}\right|
+  \le
+  \int_{t_0}^{t_1}|\Gamma_k(t)|\,\dd t .
+  \label{eq:sw-string-ratio-transport-bound}
+\end{equation}
+The Abelian Seiberg--Witten calculation proves the initial value
+\(R_k(0)\) under its low-energy hypotheses.  It does not by itself bound
+\(\Gamma_k\) after the path leaves the Abelian patch.  Setting
+\(\Gamma_k=0\), or assuming the integral in
+\eqref{eq:sw-string-ratio-transport-bound} vanishes, is precisely the
+nonperturbative flux-sector statement that must be proved from a common
+regulator, transfer matrices, level isolation, and continuum-limit control.
+Thus the sine ratio is a controlled Abelian initial datum; its equality to a
+bosonic pure-Yang--Mills ratio is not asserted in this chapter.
 
 \subsection[Planar N=4]{Planar \(\mathcal N=4\)}
 
@@ -1068,6 +1082,144 @@ of the source term:
 At first order, minimizing \(\Delta E_k\) is the same as maximizing
 \(\operatorname{Re}(m_\lambda S_k)\).
 
+\subsection{A Controlled Soft-Mass Spectral Bridge Segment}
+\label{sec:susy-soft-mass-spectral-bridge-segment}
+
+The small-\(m_\lambda\) deformation has one place where the chapter can make
+a genuine spectral bridge rather than a comparison slogan: finite-volume
+spectral projections may be transported as long as the relevant levels remain
+isolated.  This is a local bridge in the soft-mass parameter.  It is not a
+proof that the path reaches bosonic Yang--Mills.
+
+\begin{definition}[Common regulated soft-mass spectral bridge datum]
+\label{def:soft-mass-spectral-bridge-datum}
+A regulated soft-mass spectral bridge datum consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a common gauge-field regulator with lattice spacing or cutoff \(a\), a
+  finite spatial box of size \(L\), a fixed global form, and a fixed
+  line-operator lattice;
+\item a renormalized one-parameter path \(H_{a,L}(m)\) of finite-volume
+  Hamiltonians along a fixed ray \(m=\operatorname{Re}m_\lambda\) in the soft
+  source plane, including the counterterm and tuning prescriptions that keep
+  the gauge coupling, vacuum energy, and relevant fermion-mass coordinate in
+  the declared scheme;
+\item the renormalized perturbing operator
+  \begin{equation}
+    \mathcal V_{a,L}(m)=\partial_m H_{a,L}(m),
+    \label{eq:soft-mass-perturbing-operator}
+  \end{equation}
+  whose bare representative is the spatial integral of
+  \(S|_{\theta=0}+\overline S|_{\overline\theta=0}\) plus the required
+  contact and counterterm derivatives;
+\item isolated finite-volume spectral windows for a selected vacuum branch,
+  for gauge-invariant local channels, and for selected center-flux sectors;
+\item explicit gap, no-level-collision, and resolvent bounds on those windows
+  for \(0\le |m|\le m_\ast(a,L)\).
+\end{enumerate}
+\end{definition}
+
+\begin{controlledapproximation}[Finite-volume soft-mass spectral transport]
+\label{ca:soft-mass-finite-volume-spectral-transport}
+Assume the datum of
+Definition~\ref{def:soft-mass-spectral-bridge-datum}.  Let \(I_n(0)\) be an
+isolated local-channel spectral cluster of \(H_{a,L}(0)\), separated from the
+rest of the finite-volume spectrum by distance \(g_n>0\), and let
+\(\mathcal C_n\) be a contour enclosing only that cluster.  If
+\(\|(z-H_{a,L}(m))^{-1}\mathcal V_{a,L}(m)\|\le K_n/g_n\) on
+\(\mathcal C_n\) throughout the interval, then the Riesz projection
+\begin{equation}
+  P_n(m)=\frac{1}{2\pi\ii}
+  \oint_{\mathcal C_n}(z-H_{a,L}(m))^{-1}\,\dd z
+  \label{eq:soft-mass-riesz-projection}
+\end{equation}
+exists with constant rank and satisfies
+\begin{equation}
+  \partial_mP_n(m)
+  =
+  \frac{1}{2\pi\ii}
+  \oint_{\mathcal C_n}
+  (z-H_{a,L}(m))^{-1}\mathcal V_{a,L}(m)
+  (z-H_{a,L}(m))^{-1}\,\dd z .
+  \label{eq:soft-mass-projection-derivative}
+\end{equation}
+For the cluster centroid
+\[
+  \overline E_n(m)=\frac{1}{d_n}\operatorname{Tr}\bigl(P_n(m)H_{a,L}(m)\bigr),
+  \qquad d_n=\operatorname{rank}P_n,
+\]
+the mass above the selected vacuum obeys the finite-volume
+Feynman--Hellmann identity
+\begin{equation}
+  \partial_m\bigl(\overline E_n(m)-E_0(m)\bigr)
+  =
+  \frac{1}{d_n}\operatorname{Tr}\bigl(P_n(m)\mathcal V_{a,L}(m)P_n(m)\bigr)
+  -
+  \langle\Omega_m,\mathcal V_{a,L}(m)\Omega_m\rangle .
+  \label{eq:soft-mass-cluster-feynman-hellmann}
+\end{equation}
+For a nondegenerate level this reduces to the difference of the perturbing
+operator's matrix element in the excited state and in the vacuum.  The same
+statement holds in a center-flux sector \(k\), with the corresponding
+finite-volume lowest energy \(E_k(L,m)\):
+\begin{equation}
+  \partial_m T_k^{(L)}(m)
+  =
+  \frac1L\left(
+    \langle k,L;m|\mathcal V_{a,L}(m)|k,L;m\rangle
+    -
+    \langle\Omega_m,\mathcal V_{a,L}(m)\Omega_m\rangle
+  \right),
+  \label{eq:soft-mass-flux-feynman-hellmann}
+\end{equation}
+where \(T_k^{(L)}(m)=(E_k(L,m)-E_0(L,m))/L\).  If the
+\(a\to0\), \(L\to\infty\), and \(m\)-derivative limits are uniform in the
+declared order, then \eqref{eq:soft-mass-flux-feynman-hellmann} gives the
+continuum string-tension response.  In that case
+\begin{equation}
+  \partial_m\log R_k(m)
+  =
+  \frac{\partial_mT_k(m)}{T_k(m)}
+  -
+  \frac{\partial_mT_1(m)}{T_1(m)}
+  \label{eq:soft-mass-ratio-response}
+\end{equation}
+is the quantity that controls whether the normalized \(k\)-string ratio is
+transported.
+\end{controlledapproximation}
+
+The proof is the standard finite-volume perturbation argument, included here
+to expose the physics input.  The resolvent identity gives
+\[
+  \partial_m(z-H_{a,L}(m))^{-1}
+  =
+  (z-H_{a,L}(m))^{-1}\mathcal V_{a,L}(m)(z-H_{a,L}(m))^{-1},
+\]
+which is \eqref{eq:soft-mass-projection-derivative} after contour
+integration.  Differentiating
+\(\operatorname{Tr}(P_nH_{a,L})\) gives two terms:
+\[
+  \operatorname{Tr}((\partial_mP_n)H_{a,L})
+  +
+  \operatorname{Tr}(P_n\mathcal V_{a,L}).
+\]
+The first vanishes because \(P_n\) commutes with \(H_{a,L}\) and
+\(\operatorname{Tr}(\partial_mP_n\,P_n)=0\) for a differentiable projection of
+fixed rank.  Subtracting the vacuum derivative gives
+\eqref{eq:soft-mass-cluster-feynman-hellmann}.  The flux-sector formula is
+the same identity applied to the transfer-matrix Hamiltonian in the sector
+with center charge \(k\), followed by division by the long length \(L\).
+
+This bridge has concrete failure diagnostics.  It fails before the bosonic
+endpoint if any selected local or flux spectral gap closes, if the Riesz
+contour intersects another level, if center flux can break by dynamical
+matter in the chosen global form, if the fermion regulator changes Pfaffian
+or reflection-positivity status, or if the counterterm/tuning trajectory
+needed to define \(\mathcal V_{a,L}\) is not uniform in the continuum and
+thermodynamic limits.  These are the phase-boundary tests for the soft-mass
+path.  What the bridge supplies is a controlled derivative and stability
+criterion while the tests pass; it does not turn the large-\(|m_\lambda|\)
+decoupling limit into a theorem.
+
 \section{Status Summary}
 \label{sec:susy-ym-family-status-summary}
 
@@ -1087,15 +1239,20 @@ following theorem boundaries:
   \text{BPS Abelian-Higgs controlled approximation}\\
 \mathcal N=2\text{ Abelianized }k\text{-strings} &
   \text{\(A\)-type sine profile; comparison problem}\\
+\text{small }m_\lambda\text{ spectral transport} &
+  \text{finite-volume FH response; isolated windows}\\
 \mathcal N=4\text{ Wilson-line flux tube} &
   \text{defect spectral problem plus integrability hypotheses}\\
 \text{bosonic glueball and }k\text{-string spectra} &
   \text{central YM conjecture plus spectra}
 \end{array}
 \]
-The frontier problem is to construct a regulator-level family in which enough
-of the ladder is realized simultaneously to compare the spectral measures,
-line-defect Hilbert spaces, and flux-sector transfer matrices directly.
+The frontier problem is to extend the local soft-mass bridge of
+Controlled Approximation~\ref{ca:soft-mass-finite-volume-spectral-transport}
+to a regulator-level
+family in which enough of the ladder is realized simultaneously to compare the
+spectral measures, line-defect Hilbert spaces, and flux-sector transfer
+matrices all the way to a bosonic endpoint.
 
 \begin{openproblem}[Regulator-level supersymmetry-breaking spectral bridge]
 \label{op:regulator-level-susy-breaking-spectral-bridge}

@@ -39,6 +39,8 @@ The chapter depends on:
   lattice.
 - `T_k`, `E_k(L)`, `R_k`: `k`-string tension, finite-length center-flux
   energy, and normalized tension ratio.
+- `Gamma_k(t)`: logarithmic response controlling transport of normalized
+  string-tension ratios along a deformation path.
 - `R_k^sine`, `R_k^Casimir`: finite comparison functions for center-string
   tension ratios.
 - `K_ij`, `xi_i`, `s_i`: `A_{N_c-1}` Cartan matrix, Abelian FI coordinates,
@@ -46,6 +48,9 @@ The chapter depends on:
 - `C_+`, `C_-`, `C_F`, `delta_SUSY`: pure-SYM scalar, pseudoscalar,
   fermionic correlator matrices and the supersymmetry-restoration spectral
   diagnostic.
+- `H_{a,L}(m)`, `V_{a,L}(m)`, `P_n(m)`: common regulated soft-mass
+  Hamiltonian path, perturbing Hamiltonian derivative, and Riesz projection
+  for an isolated finite-volume spectral cluster.
 
 ## Claim Ledger
 
@@ -78,14 +83,18 @@ The chapter depends on:
   tension near a monopole point.
 - Defines the Abelianized `A_{N_c-1}` string construction and proves the
   finite sine-profile identities inside that low-energy Abelian chart.
-- States the Seiberg-Witten-to-pure-Yang-Mills string comparison as a
-  conditional deformation problem.  The current chapter does not prove a
-  non-tautological transport law for `R_k(t)`; issue #927 is the open
-  architecture task for replacing the present comparison map by a controlled
-  spectral bridge or retitling it honestly as a comparison problem.
+- Replaces the tautological Seiberg-Witten-to-pure-Yang-Mills transfer claim
+  by a derivative criterion:
+  `log(R_k(t1)/R_k(t0)) = integral Gamma_k dt`.  The Abelian sine ratio is an
+  initial datum unless a common-regulator bound on `Gamma_k` is supplied.
 - States the soft gaugino-mass branch-selection response at small
-  `m_lambda` and leaves large soft-mass decoupling to a regulator-level
-  spectral bridge.
+  `m_lambda`.
+- Constructs a finite-volume controlled soft-mass spectral bridge segment:
+  common regulator and tuning path, renormalized perturbing Hamiltonian
+  derivative, Riesz projection transport for isolated local and flux-sector
+  windows, Feynman-Hellmann formulas for mass and tension responses, and
+  phase-boundary diagnostics.  Large soft-mass decoupling to bosonic
+  Yang-Mills remains an open endpoint problem.
 
 ## Calculation Checks
 
@@ -97,12 +106,16 @@ The chapter depends on:
   holomorphic scale dimensions, the `N=1*` fuzzy-sphere ansatz, sine/Casimir
   `k`-string comparison identities, local vortex flux and small-radius
   normalization, the Abelianized `A`-type sine eigenvector and subadditivity
-  algebra, and pure-SYM channel-pole diagnostic bookkeeping.
+  algebra, pure-SYM channel-pole diagnostic bookkeeping, finite soft-mass
+  Riesz-projection and Feynman-Hellmann transport, and a negative control
+  rejecting constant ratio transfer when the logarithmic tension response is
+  nonzero.
 
 These checks are finite normalization and algebra companions.  They do not
 prove the nonperturbative existence of the pure-YM endpoint, spectral
-continuity along a soft-breaking path, or equality of Abelianized and
-bosonic string tension ratios.
+continuity along a full soft-breaking path, or equality of Abelianized and
+bosonic string tension ratios.  The deformation-ladder check now carries an
+extended evidence contract.
 
 ## Source Notes
 
@@ -130,3 +143,9 @@ which data are local and which require a global deformation argument.
   a soft-gaugino-mass spectral projection transport or an explicitly
   bounded Seiberg-Witten Abelian string approximation with regulator-level
   deformation diagnostics.
+- 2026-06-08 issue #927 pass: replaced the constant-ratio transfer paragraph
+  by a logarithmic-response criterion and added a controlled small-soft-mass
+  spectral bridge segment with finite-volume Riesz projections,
+  Feynman-Hellmann mass/tension responses, and explicit failure diagnostics.
+  The pass improves the physics architecture while preserving the theorem
+  boundary: it does not claim the path reaches bosonic Yang-Mills.

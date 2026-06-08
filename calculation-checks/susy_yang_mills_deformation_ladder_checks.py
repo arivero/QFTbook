@@ -1,11 +1,48 @@
 #!/usr/bin/env python3
 """Finite checks for the supersymmetric Yang-Mills deformation ladder.
 
-The checks cover algebraic identities used in Volume VII's family-comparison
-chapter: holomorphic scale dimensions, the N=1* fuzzy-sphere F-term ansatz,
-finite k-string comparison ledgers, and the local Seiberg-Witten vortex
-profile normalization, together with the Abelianized A-type sine profile and
-pure N=1 SYM channel-pole bookkeeping.
+Evidence contract.
+Target claims:
+- Volume VII Chapter 7b's holomorphic scale dimensions, N=1* fuzzy-sphere
+  F-term ansatz, finite k-string comparison ledgers, local
+  Seiberg-Witten vortex profile normalization, Abelianized A-type sine
+  profile, pure N=1 SYM channel-pole bookkeeping, and soft-gaugino-mass
+  spectral-bridge response formulae.
+Independent construction:
+- Exact finite-dimensional algebra using symbolic matrices, rational
+  perturbations, and trigonometric identities; the spectral-bridge checks use
+  a diagonal finite Hamiltonian with an explicit perturbing operator rather
+  than any monograph prose formula.
+Imported assumptions:
+- The script imports only SymPy algebra.  QFT inputs such as regulator
+  existence, reflection positivity, continuum limits, and spectral isolation
+  are hypotheses in the text, not assumptions verified here.
+Negative controls:
+- The checks reject a transported k-string ratio when the logarithmic response
+  is nonzero, so the old "if constant, then equal" bridge cannot pass as a
+  calculation.
+Scope boundary:
+- These checks verify finite algebra and normalization.  They do not prove a
+  four-dimensional supersymmetric or bosonic Yang-Mills continuum
+  construction, a phase-boundary exclusion theorem, or a decoupling theorem.
+Primary derivation route:
+- Derive scale dimensions, BPS/vortex identities, Riesz-projection
+  derivatives, finite-volume Feynman-Hellmann formulae, and logarithmic
+  tension-ratio responses directly.
+Independent verification route:
+- Compare the spectral-bridge formulas against explicit matrix entries and
+  exact Taylor coefficients of finite tension functions.
+Convention dependencies:
+- The soft mass path is a real ray in the gaugino-mass source plane; the
+  perturbing operator is the derivative of the finite-volume Hamiltonian along
+  that renormalized path.
+Domain and remainder assumptions:
+- Spectral projection transport requires finite-volume level isolation and a
+  uniform continuum/thermodynamic limiting order supplied by the chapter.
+Remaining unproved or conditional:
+- Extension from the small-soft-mass bridge segment to the bosonic
+  Yang-Mills endpoint remains conditional on regulator-level phase and
+  decoupling control.
 """
 
 from __future__ import annotations
@@ -161,6 +198,65 @@ def check_pure_sym_channel_pole_bookkeeping() -> None:
     assert_zero("pure SYM split diagnostic value", split_delta / split_average - sp.Rational(2, 5))
 
 
+def check_soft_mass_spectral_projection_transport() -> None:
+    energies = [sp.Integer(0), sp.Integer(2), sp.Integer(5)]
+    h0 = sp.diag(*energies)
+    perturbation = sp.Matrix(
+        [
+            [sp.Integer(3), sp.Integer(7), sp.Integer(0)],
+            [sp.Integer(7), sp.Integer(11), sp.Integer(13)],
+            [sp.Integer(0), sp.Integer(13), sp.Integer(17)],
+        ]
+    )
+    level = 1
+
+    pprime = sp.zeros(3, 3)
+    for other in range(3):
+        if other == level:
+            continue
+        coefficient = perturbation[other, level] / (energies[level] - energies[other])
+        pprime[other, level] = coefficient
+        pprime[level, other] = coefficient
+
+    expected = sp.Matrix(
+        [
+            [0, sp.Rational(7, 2), 0],
+            [sp.Rational(7, 2), 0, sp.Rational(-13, 3)],
+            [0, sp.Rational(-13, 3), 0],
+        ]
+    )
+    if pprime != expected:
+        raise AssertionError(f"soft-mass Riesz projection derivative failed: {pprime!r}")
+
+    # Differentiating Tr(PH) through a fixed-rank isolated projection leaves the
+    # perturbing operator restricted to the transported cluster.
+    cluster_derivative = perturbation[level, level]
+    vacuum_derivative = perturbation[0, 0]
+    assert_zero("soft-mass Feynman-Hellmann mass derivative", cluster_derivative - vacuum_derivative - 8)
+
+    commutator_trace = sp.trace((pprime * h0) * sp.eye(3))
+    assert_zero("soft-mass projection derivative trace term", commutator_trace)
+
+
+def check_soft_mass_string_ratio_response() -> None:
+    m = sp.symbols("m")
+    tension_one = sp.Integer(5) + 2 * m
+    tension_k = sp.Integer(15) + 9 * m
+    ratio = tension_k / tension_one
+    gamma = sp.diff(tension_k, m) / tension_k - sp.diff(tension_one, m) / tension_one
+
+    gamma_at_zero = sp.simplify(gamma.subs(m, 0))
+    assert_zero("soft-mass ratio response value", gamma_at_zero - sp.Rational(1, 5))
+
+    transported_log = sp.log(ratio / ratio.subs(m, 0)).series(m, 0, 2).removeO()
+    assert_zero("soft-mass log-ratio transport linear term", transported_log - gamma_at_zero * m)
+
+    if sp.simplify(sp.diff(ratio, m).subs(m, 0)) == 0:
+        raise AssertionError("nonzero response negative control degenerated")
+    if sp.simplify(ratio.subs(m, 1) - ratio.subs(m, 0)) == 0:
+        raise AssertionError("constant-ratio negative control was incorrectly accepted")
+
+
 def main() -> None:
     check_holomorphic_scale_dimensions()
     check_n1_star_fuzzy_sphere_ansatz()
@@ -168,6 +264,8 @@ def main() -> None:
     check_sw_vortex_radial_normalization()
     check_abelianized_a_type_sine_profile()
     check_pure_sym_channel_pole_bookkeeping()
+    check_soft_mass_spectral_projection_transport()
+    check_soft_mass_string_ratio_response()
     print("All supersymmetric Yang-Mills deformation-ladder checks passed.")
 
 

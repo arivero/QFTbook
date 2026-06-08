@@ -119,6 +119,18 @@
       ]
     },
     {
+      "path": "susy_yang_mills_deformation_ladder_checks.py",
+      "risk_class": "supersymmetric Yang-Mills spectral bridge",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "soft mass path is a real ray in the gaugino-mass source plane",
+        "perturbing operator is the renormalized Hamiltonian derivative",
+        "finite-volume Riesz projection requires an isolated spectral window",
+        "k-string ratio transport is controlled by logarithmic tension response",
+        "nonzero response rejects constant-ratio transfer"
+      ]
+    },
+    {
       "path": "kinetic_theory_checks.py",
       "risk_class": "Schwinger-Keldysh kinetic collision kernel",
       "convention_tags": [
