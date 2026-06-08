@@ -290,8 +290,10 @@
         "conductivity kernel is negative full current response",
         "diamagnetic response contact has opposite sign in Kcond",
         "real local contacts do not change nonzero-frequency spectral slope",
+        "Hermitian dissipative conductivity excludes real Hall reactive block",
         "Drude sector separated from regular dc slope",
-        "Cesaro and Abel Drude projections are not pointwise long-time limits"
+        "Cesaro and Abel Drude projections are not pointwise long-time limits",
+        "filtered low-frequency Drude extraction rejects uncontrolled UV tails"
       ]
     },
     {

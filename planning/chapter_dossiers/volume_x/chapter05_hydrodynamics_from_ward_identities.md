@@ -52,7 +52,8 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   transverse temperature gradient to the charge thermodynamic force basis.
 - First-order shear, bulk, and charge-diffusion constitutive relations.
 - Entropy-production formula fixing positivity of \(\eta\), \(\zeta\), and
-  the conductivity matrix.
+  the symmetric/Hermitian dissipative part of the conductivity matrix, with
+  Hall-type antisymmetric response kept nondissipative.
 - Single- and multi-charge diffusion equations, susceptibility geometry, and
   Einstein relation \(D=\Sigma\chi^{-1}\).
 - Linearized neutral stress tensor, shear pole, sound poles, and attenuation
@@ -161,7 +162,9 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
      \eta\sigma^2/(2T)+\zeta\vartheta^2/T
      +T\Sigma_{AB}\nabla(\mu_A/T)\nabla(\mu_B/T)+O(\partial^3),
    \]
-   so the transport matrix positivity conditions follow.
+   so the transport matrix positivity conditions apply to the
+   symmetric/Hermitian dissipative sector.  Antisymmetric Hall-type response
+   gives no entropy production and is not constrained as a positive measure.
 13. Charge diffusion at constant \(T\) gives
    \(\omega=-i(\Sigma/\chi)k^2+\cdots\).
 14. Multi-charge diffusion has \(D=\Sigma\chi^{-1}\); if \(\chi\) is positive
@@ -240,6 +243,10 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   construction for the declared generator, formulated complement regularity
   through the Schur complement of the operator actually inverted, and added
   operator-mixing and continuum lower-edge negative controls.
+- 2026-06-08 issue #942 synchronization: matched the entropy/Onsager
+  discussion to Chapter 4's Hermitian dissipative conductivity projection,
+  keeping antisymmetric Hall-type response outside the positive entropy
+  production matrix.
 
 ## Calculation Checks
 

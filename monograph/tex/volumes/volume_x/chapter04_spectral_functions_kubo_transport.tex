@@ -500,29 +500,60 @@ argument proves.  It is a Cesaro projection onto \(\ker[H,\cdot]\), not an
 ordinary \(t\to\infty\) limit of \(C_{ij,V}(t)\).
 \end{proof}
 
-After the thermodynamic limit has been taken, the low-frequency real
-conductivity in a fixed tensor channel must be regarded as a positive
-matrix-valued measure or distribution, not as an ordinary function.  The
-Drude weight is defined by the zero-frequency atom of this thermodynamic
-conductivity measure:
+After the thermodynamic limit has been taken, the low-frequency conductivity
+in a fixed tensor channel must be regarded as a distributional response, not
+as an ordinary function.  The positive object is the Hermitian dissipative
+sector.  For real frequencies set
+\[
+  \sigma^{\rm diss}(\omega)
+  =
+  \frac12\bigl(\sigma(\omega)+\sigma(\omega)^\dagger\bigr),
+  \qquad
+  \sigma^{\rm react}(\omega)
+  =
+  \frac12\bigl(\sigma(\omega)-\sigma(\omega)^\dagger\bigr),
+\]
+where \((\sigma^\dagger)_{ij}=\overline{\sigma_{ji}}\).  The absorbed power
+of a complex test electric field is
+\(\overline{E_i}\sigma^{\rm diss}_{ij}E_j\).  Hence the nonlocal
+dissipative conductivity is represented, after contact terms and
+magnetization currents have been separated, by a positive Hermitian
+matrix-valued spectral measure or positive spectral distribution:
+\[
+  \overline{u_i}\,d\mu^{\sigma,\rm diss}_{ij}\,u_j\ge0
+  \quad\text{for every complex vector }u .
+\]
+The spectral adjoint convention is
+\[
+  \rho_{J_iJ_j}(\omega,\mathbf0)^*
+  =
+  \rho_{J_jJ_i}(\omega,\mathbf0).
+\]
+In a scalar, longitudinal, or time-reversal-invariant real basis this
+Hermitian projection reduces to the entrywise
+\(\operatorname{Re}\sigma_{ij}\).  When parity or time reversal is broken,
+however, a real antisymmetric Hall matrix is entrywise real but belongs to
+\(\sigma^{\rm react}\); it carries no entropy production and is not part of
+the positive dissipative measure.
+
+The Drude weight is defined by the zero-frequency atom of the thermodynamic
+dissipative conductivity measure:
 \begin{equation}
-  \operatorname{Re}\sigma_{ij}
+  d\mu^{\sigma,\rm diss}_{ij}
   \supset
   \pi D_{ij}\delta_0,
   \qquad
   D_{ij}
   =
-  \frac1\pi\,\mu^\sigma_{ij}(\{0\}),
+  \frac1\pi\,\mu^{\sigma,\rm diss}_{ij}(\{0\}),
   \label{eq:kubo-drude-weight-definition}
 \end{equation}
-where \(\mu^\sigma\) is the measure representing
-\(\operatorname{Re}\sigma\) after the thermodynamic limit and after the
-contact-term convention has been fixed.  More generally one should separate
+so \(D=D^\dagger\ge0\).  More generally one should separate
 \begin{equation}
-  \mu^\sigma_{ij}
+  d\mu^{\sigma,\rm diss}_{ij}
   =
   \pi D_{ij}\delta_0
-  +\mu^{\rm sc}_{ij}
+  +d\mu^{\rm sc}_{ij}
   +\sigma^{\rm ac}_{ij}(\omega)\,d\omega ,
   \label{eq:kubo-drude-regular-decomposition}
 \end{equation}
@@ -535,7 +566,7 @@ singularity rather than a finite dissipative dc coefficient.  In the
 simplified case where the non-atomic part is represented near zero by a
 locally integrable density
 \[
-  \sigma^{\rm reg}_{ij}(\omega)
+  \sigma^{{\rm diss},\rm reg}_{ij}(\omega)
   =
   \frac{1}{2\omega}\rho^{\rm reg}_{J_iJ_j}(\omega,\mathbf0)
   \quad(\omega\ne0),
@@ -544,16 +575,16 @@ the ordinary dissipative dc coefficient is
 \begin{equation}
   \sigma^{\rm dc}_{ij}
   =
-  \lim_{\omega\downarrow0}\sigma^{\rm reg}_{ij}(\omega)
+  \lim_{\omega\downarrow0}\sigma^{{\rm diss},\rm reg}_{ij}(\omega)
   =
   \lim_{\omega\downarrow0}
   \frac{1}{2\omega}\rho^{\rm reg}_{J_iJ_j}(\omega,\mathbf0),
   \label{eq:kubo-regular-dc-from-regular-spectral-slope}
 \end{equation}
 when this limit exists.  The singular term is a separate distributional
-summand, while \(\sigma^{\rm reg}\) is the locally integrable part used in the
-finite dc limit.  Figure~\ref{fig:kubo-order-of-limits} records this
-order-of-limits prescription.
+summand, while \(\sigma^{{\rm diss},\rm reg}\) is the locally integrable part
+used in the finite dc limit.  Figure~\ref{fig:kubo-order-of-limits} records
+this order-of-limits prescription.
 
 The finite Mazur matrix \(A^{(0)}_{ij,V}\) and the thermodynamic Drude atom
 are connected only after a spectral convergence statement is added.  If the
@@ -572,53 +603,66 @@ Without this convergence hypothesis, the finite-volume result remains a
 lower bound on a finite-volume Cesaro projection.  It is not a pointwise
 long-time theorem.
 
-\begin{proposition}[When Drude, Cesaro, Abel, and pointwise limits agree]
+\begin{proposition}[Filtered Drude, Cesaro, Abel, and pointwise limits]
 \label{prop:kubo-drude-time-domain-equivalences}
-Let \(C_{ij}(t)\) be the thermodynamic connected symmetrized current
-correlator in a fixed tensor channel, represented near \(\omega=0\) by a
-finite positive matrix-valued spectral measure
+Let \(d\nu_{ij}\) be the noncontact thermodynamic spectral distribution of the
+connected symmetrized current correlator in a fixed tensor channel.  Assume
+that, on some interval \(|\omega|<\Omega\), this distribution is represented
+by a locally finite positive Hermitian matrix-valued measure and that its
+zero-frequency atom is \(A^{(0)}_{ij}\delta_0\).  Let
+\(\chi\in C_c^\infty((-\Omega,\Omega))\) be equal to \(1\) on a neighborhood
+of \(0\), and define the filtered low-frequency correlator
 \[
-  C_{ij}(t)
+  C^\chi_{ij}(t)
   =
   A^{(0)}_{ij}
   +
-  \int_{\omega\ne0}e^{-\ii\omega t}\,d\nu_{ij}(\omega),
-  \qquad
-  \nu_{ij}(\{0\})=0 .
+  \int_{\omega\ne0}e^{-\ii\omega t}\,\chi(\omega)\,d\nu_{ij}(\omega).
 \]
-Then, for every real vector \(u_i\),
+Then, for every complex vector \(u_i\),
 \begin{align}
   \lim_{T\to\infty}\frac1T\int_0^Tdt\,
-  u_iC_{ij}(t)u_j
+  \overline{u_i}C^\chi_{ij}(t)u_j
   &=
-  u_iA^{(0)}_{ij}u_j,
+  \overline{u_i}A^{(0)}_{ij}u_j,
   \label{eq:kubo-cesaro-drude-atom}\\
   \lim_{\epsilon\downarrow0}
   \epsilon\int_0^\infty dt\,e^{-\epsilon t}
-  u_iC_{ij}(t)u_j
+  \overline{u_i}C^\chi_{ij}(t)u_j
   &=
-  u_iA^{(0)}_{ij}u_j .
+  \overline{u_i}A^{(0)}_{ij}u_j .
   \label{eq:kubo-abel-drude-atom}
 \end{align}
-If, in addition, the nonzero-frequency part has a Fourier transform that
-vanishes as \(t\to\infty\) in this channel, then the ordinary pointwise limit
+If, in addition, the filtered nonzero-frequency part has a Fourier transform
+that vanishes as \(t\to\infty\) in this channel, then the ordinary pointwise
+filtered limit
 \[
-  \lim_{t\to\infty}u_iC_{ij}(t)u_j
+  \lim_{t\to\infty}\overline{u_i}C^\chi_{ij}(t)u_j
   =
-  u_iA^{(0)}_{ij}u_j
+  \overline{u_i}A^{(0)}_{ij}u_j
 \]
 also exists.  A sufficient dephasing condition for the last statement is that
-the nonzero-frequency part be absolutely continuous with \(L^1\) density
-after exact nonzero-frequency atoms have been removed.  Under the
+the filtered nonzero-frequency part be absolutely continuous with \(L^1\)
+density after exact nonzero-frequency atoms have been removed.  Under the
 fluctuation--dissipation normalization of
-\eqref{eq:kubo-fluctuation-dissipation}, the corresponding Drude matrix is
+\eqref{eq:kubo-fluctuation-dissipation}, a zero-frequency atom \(A^{(0)}\) in
+the symmetrized correlator gives the dissipative conductivity Drude matrix
 \[
   D_{ij}=\beta A^{(0)}_{ij}.
 \]
+If a regulator or spacetime smearing makes the full noncontact spectral
+measure globally finite, the same proof applies with \(\chi=1\).  Removing
+the cutoff, smearing, or regulator requires separate uniform ultraviolet
+estimates and contact-term subtractions; local low-frequency finiteness alone
+does not justify the unfiltered statement.
 \end{proposition}
 
 \begin{proof}
-Apply the scalar argument to \(u_iC_{ij}u_j\).  For the Cesaro limit the
+Apply the scalar argument to
+\(\overline{u_i}C^\chi_{ij}u_j\).  The compact support of \(\chi\) and local
+finiteness make
+\(\overline{u_i}\chi\,d\nu_{ij}u_j\) a finite positive measure on the
+nonzero-frequency support.  For the Cesaro limit the
 nonzero-frequency kernel is
 \[
   \frac1T\int_0^Tdt\,e^{-\ii\omega t}
@@ -626,7 +670,7 @@ nonzero-frequency kernel is
   \frac{1-e^{-\ii\omega T}}{\ii\omega T},
 \]
 which tends to zero for \(\omega\ne0\) and is bounded by \(1\).  Dominated
-convergence against the finite measure \(u_i\nu_{ij}u_j\) gives
+convergence against the filtered finite measure gives
 \eqref{eq:kubo-cesaro-drude-atom}.  The Abel kernel is
 \[
   \epsilon\int_0^\infty dt\,e^{-(\epsilon+\ii\omega)t}
@@ -636,9 +680,37 @@ convergence against the finite measure \(u_i\nu_{ij}u_j\) gives
 again bounded by \(1\) and tending to zero away from the atom at the origin,
 which gives \eqref{eq:kubo-abel-drude-atom}.  The pointwise statement is the
 extra dephasing hypothesis; for an \(L^1\) density it is the
-Riemann--Lebesgue lemma.  Thus deriving a pointwise long-time limit requires
-a stronger mixing statement beyond the Mazur projection.
+Riemann--Lebesgue lemma.  For the Drude normalization, test the singular
+fluctuation--dissipation relation against an even smooth approximate identity
+\(\eta_\lambda(\omega)\) shrinking to zero.  The regular relation combines
+\eqref{eq:kubo-fluctuation-dissipation} with
+\(d\mu^{\sigma,\rm diss}=\rho_{JJ}(\omega,\mathbf0)\,d\omega/(2\omega)\),
+and the factor
+\((\beta\omega/2)\coth(\beta\omega/2)\) tends to \(1\).  Thus a dissipative
+conductivity atom \(d\mu^{\sigma,\rm diss}\supset\pi D\delta_0\) contributes
+a symmetrized spectral atom \(2\pi D\delta_0/\beta\).  Since the inverse
+Fourier convention sends \(2\pi A^{(0)}\delta_0\) to the persistent constant
+\(A^{(0)}\), the coefficients obey \(D=\beta A^{(0)}\).
+Thus deriving a pointwise long-time limit requires a stronger mixing
+statement beyond the Mazur projection.
 \end{proof}
+
+The cutoff in Proposition~\ref{prop:kubo-drude-time-domain-equivalences} is
+part of the theorem's domain.  A tempered measure such as
+\[
+  a\delta_0+d\nu_{\rm low}+
+  \sum_{n\ge1}n^2(\delta_n+\delta_{-n})
+\]
+can be locally finite near zero and still have unbounded polynomial
+ultraviolet weight.  The low-frequency atom is perfectly meaningful after a
+compact cutoff, but an unfiltered dominated-convergence proof has no finite
+dominating measure; Abel kernels also probe the short-time singular structure
+unless the correlator has been smeared or subtracted.  Local contact
+distributions and ultraviolet subtraction polynomials are therefore kept
+outside the positive nonlocal low-frequency measure.  This ultraviolet
+negative control is separate from the finite oscillatory example
+\(C(t)=C_0+\cos\Omega t\), where Cesaro and Abel averages isolate \(C_0\)
+but an ordinary pointwise long-time limit does not exist.
 
 This distinction is the one emphasized by finite-regulator Mazur/Suzuki
 analyses and by thermodynamic quasi-local-charge bounds on Drude weights
@@ -648,7 +720,7 @@ analyses and by thermodynamic quasi-local-charge bounds on Drude weights
 \centering
 \begin{tikzpicture}[>=Stealth,scale=1.0]
   \draw[->] (-3.3,0) -- (3.45,0) node[right] {\(\omega\)};
-  \draw[->] (0,0) -- (0,2.85) node[above] {\(\operatorname{Re}\sigma(\omega)\)};
+  \draw[->] (0,0) -- (0,2.85) node[above] {\(\sigma^{\rm diss}(\omega)\)};
   \draw[dashed,gray] (-3.0,0.86) -- (3.0,0.86);
   \node[gray,anchor=west,fill=white,inner sep=1pt] at (2.05,0.94)
     {\(\sigma_{\rm dc}\)};
@@ -974,8 +1046,9 @@ resolvent of the closed slow-coordinate equation.
 
 The conductivity matrix entering the Einstein relation is the same datum
 expressed in current variables.  Let \(\Sigma_{AB}\) denote the regular
-zero-frequency limit of the current response after subtracting the Drude
-sector and contact terms.  In a purely diffusive charge channel,
+zero-frequency limit of the Hermitian dissipative current response after
+subtracting the Drude sector, Hall/reactive pieces, and contact terms.  In a
+purely diffusive charge channel,
 \begin{equation}
   \Sigma_{AB}
   =
@@ -1039,10 +1112,10 @@ The contact appearing here is the same response contact
 \(C^{\rm resp}_{ij}\) as in
 \eqref{eq:kubo-current-full-response-contact}; the minus sign comes only from
 the convention \(\langle J\rangle=-K^{\rm cond}A^{\rm ext}\).
-For \(\omega\ne0\), the dissipative real part is determined by the spectral
-density:
+For \(\omega\ne0\), the Hermitian dissipative part is determined by the
+spectral density:
 \begin{equation}
-  \operatorname{Re}\sigma_{ij}(\omega)
+  \sigma^{\rm diss}_{ij}(\omega)
   =
   \frac{1}{2\omega}\,
   \rho_{J_iJ_j}(\omega,\mathbf0)
@@ -1050,7 +1123,34 @@ density:
   \text{in a transverse channel after contact terms are separated.}
   \label{eq:kubo-conductivity-spectral-slope}
 \end{equation}
-The dc conductivity, when finite, is therefore
+The entrywise notation \(\operatorname{Re}\sigma_{ij}\) is legitimate only
+after projecting to a scalar/longitudinal or time-reversal-invariant real
+channel where the conductivity tensor is already symmetric.  In a Hall
+channel, for example,
+\[
+  \sigma
+  =
+  \begin{pmatrix}
+    \gamma & h\\
+    -h & \gamma
+  \end{pmatrix},
+  \qquad
+  \sigma^{\rm diss}
+  =
+  \gamma\mathbf1,\qquad
+  \sigma^{\rm react}
+  =
+  \begin{pmatrix}
+    0 & h\\
+    -h & 0
+  \end{pmatrix}.
+\]
+The Hall block is real entrywise, but
+\(\operatorname{Re}(\overline{E_i}\sigma^{\rm react}_{ij}E_j)=0\) for every
+complex phasor \(E\), so it is nondissipative and does not define a positive
+matrix-valued conductivity measure.  Magnetization and other reactive contact
+terms are treated in the same separated sector.  The dc dissipative
+conductivity, when finite, is therefore
 \[
   \sigma_{ij}^{\rm dc}
   =

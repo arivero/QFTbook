@@ -39,9 +39,15 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   conserved current overlap, kept at the level of the Cesaro
   zero-Liouvillian projection.
 - Thermodynamic Drude weight defined as the coefficient of the
-  zero-frequency atom in the conductivity measure, with Cesaro/Abel
-  time-domain equivalence and ordinary pointwise long-time equivalence stated
-  only under additional spectral-convergence and dephasing hypotheses.
+  zero-frequency atom in the Hermitian dissipative conductivity measure, with
+  Cesaro/Abel time-domain equivalence stated only for a compactly filtered
+  locally finite low-frequency measure, or for a globally finite
+  regulated/smeared measure, and ordinary pointwise long-time equivalence
+  stated only under additional spectral-convergence and dephasing hypotheses.
+- Explicit split between the positive Hermitian dissipative conductivity
+  sector and Hall/reactive/contact terms; entrywise \(\operatorname{Re}\sigma\)
+  is used only after scalar, longitudinal, or time-reversal-symmetric
+  projection.
 - Separation of a genuine Drude atom from singular-continuous response and
   from absolutely continuous low-frequency tails without a finite dc limit.
 - Finite-regulator Kubo--Mori projection, Mori--Zwanzig memory identity, and
@@ -76,8 +82,9 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 | \(C_{ij,V}(t)\) | finite-volume connected symmetrized current autocorrelation |
 | \(Q_a\), \(C_{ab}\), \(v_{ia}\) | conserved operators, symmetrized covariance, and current-charge overlap |
 | \(A^{(0)}_{ij,V}\) | finite-volume Cesaro projection onto the zero-Liouvillian current sector |
-| \(D_{ij}\) | thermodynamic Drude-weight matrix, defined by the zero-frequency atom of \(\operatorname{Re}\sigma_{ij}\) |
-| \(\mu^\sigma_{ij}\), \(\mu^{\rm sc}_{ij}\), \(\sigma^{\rm ac}_{ij}\) | thermodynamic conductivity measure, its singular-continuous part, and its absolutely continuous density |
+| \(D_{ij}\) | thermodynamic Drude-weight matrix, defined by the zero-frequency atom of the Hermitian dissipative conductivity measure |
+| \(\sigma^{\rm diss}\), \(\sigma^{\rm react}\) | Hermitian dissipative and reactive conductivity sectors \((\sigma\pm\sigma^\dagger)/2\) |
+| \(\mu^{\sigma,\rm diss}_{ij}\), \(\mu^{\rm sc}_{ij}\), \(\sigma^{\rm ac}_{ij}\) | thermodynamic Hermitian dissipative conductivity measure, its singular-continuous part, and its absolutely continuous density |
 | \(\mathcal L\) | finite-regulator Liouville generator \(\mathcal L X=\ii[H_L,X]\) |
 | \((\cdot,\cdot)_\beta\) | Kubo--Mori inner product on the finite-regulator operator space |
 | \(P,Q\) | Kubo--Mori projection onto chosen slow operators and its complement |
@@ -119,10 +126,14 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 8. Conserved charges with nonzero current overlap give a positive
    finite-volume zero-Liouvillian Cesaro projection bounded by the Mazur
    matrix.  Identifying its thermodynamic limit with a Drude atom requires
-   spectral-measure convergence; identifying it with an ordinary pointwise
+   spectral-measure convergence into the Hermitian dissipative sector.
+   Cesaro/Abel extraction is a filtered low-frequency theorem unless a
+   globally finite regulated or spacetime-smeared measure has been supplied;
+   removing the filter requires ultraviolet estimates and contact
+   subtractions.  Identifying the atom with an ordinary pointwise
    \(t\to\infty\) limit requires additional dephasing/mixing.  The Drude atom,
-   singular-continuous response, and regular dc slope are distinct
-   low-frequency objects.
+   singular-continuous response, Hall/reactive response, and regular dc slope
+   are distinct low-frequency objects.
 9. At finite regulator, the Kubo--Mori projection gives an exact
    Mori--Zwanzig block identity for chosen slow coordinates.  This identity
    is algebraic and does not by itself imply transport.
@@ -132,7 +143,10 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
    memory equation into a local low-frequency closure.
 11. Conductivity and viscosity are low-frequency spectral slopes after contact
    terms, Drude weights, order of limits, and conserved-density mixings are
-   specified.  In the current channel
+   specified.  In tensor current channels the positive measure is the
+   Hermitian dissipative part \(\sigma^{\rm diss}\), not the entrywise real
+   matrix; Hall, magnetization, and reactive contacts are separated before
+   positivity is asserted.  In the current channel
    \(K^{\rm cond}=G^{R,\rm comm}-C^{\rm resp}\), so the diamagnetic contact
    that cancels the static paramagnetic response has the sign opposite to its
    full-response-derivative entry.
@@ -155,11 +169,14 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   also checks a minimally coupled charged oscillator with nonzero diamagnetic
   response contact, verifying the static full-response cancellation, the
   opposite contact sign in \(K^{\rm cond}\), and the unchanged spectral part;
-  the finite Mazur projection/Drude-atom normalization; an oscillatory
-  \(C(t)=C_0+\cos\Omega t\) negative control where Cesaro and Abel averages
-  isolate \(C_0\) but no pointwise long-time limit exists; and a
-  two-dimensional finite-regulator Mori--Zwanzig identity with its
-  Laplace-space Schur complement.
+  the Hermitian dissipative projection that removes a real antisymmetric Hall
+  block from the positive measure; the finite Mazur projection/Drude-atom
+  normalization; an oscillatory \(C(t)=C_0+\cos\Omega t\) negative control
+  where Cesaro and Abel averages isolate \(C_0\) but no pointwise long-time
+  limit exists; a polynomial ultraviolet-tail negative control showing why
+  the Drude extraction is filtered, smeared, or regulated before dominated
+  convergence is used; and a two-dimensional finite-regulator Mori--Zwanzig
+  identity with its Laplace-space Schur complement.
 - The #882 canonical convention ledger is also guarded by
   `calculation-checks/kms_foundation_checks.py` and
   `calculation-checks/finite_temperature_path_integral_checks.py`, which test
@@ -227,3 +244,9 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   the Drude weight as a thermodynamic zero-frequency atom, added Cesaro/Abel
   equivalence only under stated spectral hypotheses, and guarded the
   distinction with an oscillatory finite-system negative control.
+- 2026-06-08 issues #942/#943 pass: projected matrix conductivity positivity
+  onto the Hermitian dissipative sector before defining the positive measure,
+  separated Hall/reactive/contact terms, and replaced the unfiltered
+  finite-measure Drude/Cesaro/Abel proposition by a compactly filtered
+  low-frequency theorem with an explicit regulated/smeared alternative and a
+  polynomial ultraviolet-tail negative control.

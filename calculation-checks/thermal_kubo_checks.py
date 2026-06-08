@@ -9,17 +9,22 @@ conductivity kernel.
 Independent construction: two-level Lehmann weights, finite retarded pole
 models, a minimally coupled charged oscillator with a diamagnetic contact
 term, finite Mazur projection algebra, and a two-dimensional Mori-Zwanzig
-Schur-complement model.  The Mazur/Drude check uses a finite oscillatory
-negative control to separate Cesaro and Abel zero-frequency projections from
-an unproved ordinary pointwise long-time limit.
+Schur-complement model.  The conductivity-sector checks separate Hermitian
+dissipation from a real antisymmetric Hall block.  The Mazur/Drude checks use
+both a finite oscillatory negative control and a polynomial ultraviolet-tail
+control to separate filtered Cesaro/Abel zero-frequency projections from
+unproved pointwise or unfiltered continuum claims.
 Imported assumptions: the thermal KMS condition, finite-volume linear
 response, and the interpretation of real local source contacts as contact
 terms outside the nonzero-frequency commutator spectral measure.
 Negative controls: the wrong contact sign leaves a spurious static
 conductivity kernel, real contact terms do not alter the dissipative spectral
-slope, the Drude sector is separated from the regular dc slope, and an
-oscillatory finite-volume correlator is not accepted as having a pointwise
-long-time Drude limit.
+Hermitian spectral slope, the Hall block is not accepted as a positive
+entrywise real measure, the Drude sector is separated from the regular dc
+slope, an oscillatory finite-volume correlator is not accepted as having a
+pointwise long-time Drude limit, and a locally finite low-frequency measure
+with a polynomial ultraviolet tail is not accepted as supporting unfiltered
+dominated convergence.
 Scope boundary: these checks do not prove hydrodynamic closure, continuum
 limit exchange, or Euclidean analytic-continuation stability.
 """
@@ -47,6 +52,27 @@ def matadd(a: list[list[complex]], b: list[list[complex]]) -> list[list[complex]
 
 def matscale(c: complex, a: list[list[complex]]) -> list[list[complex]]:
     return [[c * a[i][j] for j in range(len(a))] for i in range(len(a))]
+
+
+def adjoint(a: list[list[complex]]) -> list[list[complex]]:
+    size = len(a)
+    return [[a[j][i].conjugate() for j in range(size)] for i in range(size)]
+
+
+def hermitian_part(a: list[list[complex]]) -> list[list[complex]]:
+    return matscale(0.5, matadd(a, adjoint(a)))
+
+
+def antihermitian_part(a: list[list[complex]]) -> list[list[complex]]:
+    return matscale(0.5, matadd(a, matscale(-1.0, adjoint(a))))
+
+
+def quadratic_form(a: list[list[complex]], vector: list[complex]) -> complex:
+    return sum(
+        vector[i].conjugate() * a[i][j] * vector[j]
+        for i in range(len(vector))
+        for j in range(len(vector))
+    )
 
 
 def trace(a: list[list[complex]]) -> complex:
@@ -155,6 +181,41 @@ def check_contact_term_does_not_change_spectral_slope() -> None:
         -2.0 * nonlocal_gr.imag,
     )
     assert_close("contact-independent transport slope", -full_kernel.imag / omega, eta, tol=2.0e-7)
+
+
+def check_hall_block_is_not_positive_dissipative_measure() -> None:
+    gamma = 0.73
+    hall = 1.9
+    sigma = [[gamma + 0j, hall + 0j], [-hall + 0j, gamma + 0j]]
+
+    sigma_diss = hermitian_part(sigma)
+    sigma_react = antihermitian_part(sigma)
+    expected_diss = [[gamma + 0j, 0j], [0j, gamma + 0j]]
+    expected_react = [[0j, hall + 0j], [-hall + 0j, 0j]]
+
+    for i in range(2):
+        for j in range(2):
+            assert_close("Hall Hermitian dissipative projection", sigma_diss[i][j].real, expected_diss[i][j].real)
+            assert_close("Hall Hermitian dissipative projection imaginary", sigma_diss[i][j].imag, 0.0)
+            assert_close("Hall reactive projection", sigma_react[i][j].real, expected_react[i][j].real)
+            assert_close("Hall reactive projection imaginary", sigma_react[i][j].imag, 0.0)
+
+    real_forces = ([1.2 + 0j, -0.4 + 0j], [0.3 + 0j, 2.0 + 0j])
+    complex_phasors = ([1.0 + 0.5j, -0.2 + 0.7j], [0.3 - 0.6j, 1.4 + 0.2j])
+    for force in real_forces + complex_phasors:
+        dissipated_power = quadratic_form(sigma_diss, list(force))
+        reactive_power = quadratic_form(sigma_react, list(force))
+        full_power = quadratic_form(sigma, list(force))
+        assert dissipated_power.real > 0.0
+        assert_close("Hall block has zero real entropy production", reactive_power.real, 0.0)
+        assert_close("full real power equals Hermitian dissipative power", full_power.real, dissipated_power.real)
+
+    entrywise_real_includes_hall = [[entry.real for entry in row] for row in sigma]
+    if entrywise_real_includes_hall[0][1] == 0.0 or entrywise_real_includes_hall[1][0] == 0.0:
+        raise AssertionError("entrywise real conductivity should still contain the Hall block")
+    nonsymmetric_minor = entrywise_real_includes_hall[0][1] - entrywise_real_includes_hall[1][0]
+    if abs(nonsymmetric_minor) <= hall:
+        raise AssertionError("entrywise real Hall block was incorrectly projected out")
 
 
 def check_vector_potential_response_sign() -> None:
@@ -267,6 +328,51 @@ def check_cesaro_abel_not_pointwise_negative_control() -> None:
         raise AssertionError("oscillatory finite-volume correlator should not have a pointwise long-time limit")
 
 
+def check_filtered_drude_rejects_uncontrolled_uv_tail() -> None:
+    atom = 0.31
+    low_frequency_weights = [(0.2, 0.05), (0.4, 0.07), (0.7, 0.02)]
+
+    filtered_total_variation = sum(weight for _omega, weight in low_frequency_weights)
+    assert filtered_total_variation < 0.2
+
+    for epsilon in (0.2, 0.05, 0.01):
+        filtered_abel_remainder = sum(
+            weight * epsilon / complex(epsilon, omega)
+            + weight * epsilon / complex(epsilon, -omega)
+            for omega, weight in low_frequency_weights
+        )
+        assert filtered_abel_remainder.real > 0.0
+        assert filtered_abel_remainder.real < 2.0 * epsilon * sum(weight / omega for omega, weight in low_frequency_weights)
+    tiny_epsilon = 1.0e-5
+    filtered_abel = atom + sum(
+        (
+            weight * tiny_epsilon / complex(tiny_epsilon, omega)
+            + weight * tiny_epsilon / complex(tiny_epsilon, -omega)
+        ).real
+        for omega, weight in low_frequency_weights
+    )
+    assert_close("filtered Abel low-frequency projection isolates atom", filtered_abel, atom, tol=2.0e-5)
+
+    def uv_dominated_convergence_majorant(cutoff: int, time_window: float) -> float:
+        # The Cesaro kernel is bounded by 2/(T |omega|) away from zero.  With
+        # polynomial weights n^2 at omega=n, this candidate majorant grows
+        # like sum n/T and has no cutoff-independent finite bound.
+        return sum((n * n) * 2.0 / (time_window * n) for n in range(1, cutoff + 1))
+
+    majorants = [uv_dominated_convergence_majorant(cutoff, time_window=10.0) for cutoff in (10, 100, 1000)]
+    assert majorants[0] < majorants[1] < majorants[2]
+    if majorants[2] <= 100.0 * majorants[0]:
+        raise AssertionError("polynomial UV tail should defeat an unfiltered dominated-convergence bound")
+
+    def uv_abel_resolvent_size(cutoff: int, epsilon: float) -> float:
+        return sum((n * n) * abs(epsilon / complex(epsilon, n)) for n in range(1, cutoff + 1))
+
+    uv_sizes = [uv_abel_resolvent_size(cutoff, epsilon=0.1) for cutoff in (10, 100, 1000)]
+    assert uv_sizes[0] < uv_sizes[1] < uv_sizes[2]
+    if uv_sizes[2] <= 100.0 * uv_sizes[0]:
+        raise AssertionError("polynomial UV tail should require smearing, cutoff, or subtraction")
+
+
 def check_regular_drude_decomposition_for_figure() -> None:
     sigma_dc = 0.64
     tau = 1.7
@@ -336,10 +442,12 @@ def main() -> None:
     check_two_level_kms_and_fdt()
     check_retarded_sign_and_transport_slope()
     check_contact_term_does_not_change_spectral_slope()
+    check_hall_block_is_not_positive_dissipative_measure()
     check_vector_potential_response_sign()
     check_diamagnetic_contact_response_convention()
     check_mazur_projection_and_drude_weight()
     check_cesaro_abel_not_pointwise_negative_control()
+    check_filtered_drude_rejects_uncontrolled_uv_tail()
     check_regular_drude_decomposition_for_figure()
     check_mori_zwanzig_projection_identity()
     print("All thermal Kubo convention checks passed.")
