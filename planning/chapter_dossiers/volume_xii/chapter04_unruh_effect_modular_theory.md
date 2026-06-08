@@ -10,16 +10,24 @@
 ## Definitions And Results
 
 - Right Rindler wedge and boost flow.
-- KMS statement for the vacuum restricted to a wedge algebra.
+- KMS statement for the vacuum restricted to a wedge algebra, with the
+  distributional free-field core separated from the bounded Weyl/von Neumann
+  algebra theorem.
 - Complex boost geometry: imaginary boost time sends right-wedge points into
   future/past tubes and imaginary angle \(\pi\) maps \(W_R\) to \(W_L\).
 - Bisognano--Wichmann theorem recorded as an external AQFT theorem boundary,
   with the local proof obligation discharged in the free massive scalar model.
-- Self-contained free massive scalar wedge-KMS derivation for the polynomial
-  wedge algebra, using tube analyticity and spacelike locality at imaginary
-  boost angle \(\pi\).
+- Self-contained free massive scalar two-point wedge-KMS derivation as a
+  distributional boundary-value theorem, using tube analyticity and spacelike
+  locality at imaginary boost angle \(\pi\).
+- Wick-polynomial distributional core, stated as an unbounded analytic core
+  rather than a completed \(C^\ast\)-algebra KMS theorem.
+- Bounded Weyl/von Neumann algebra KMS theorem boundary, tied to
+  Bisognano--Wichmann and the free quasifree Weyl construction.
 - Accelerated-worldline specialization.
-- Detector detailed-balance relation derived from the KMS boundary condition.
+- Detector response split into finite switched probability, stationary
+  spectral detailed balance, controlled long-time switching limit, and a
+  normalized four-dimensional massless Planck rate.
 
 ## Symbols
 
@@ -37,25 +45,35 @@
 ## Claim Ledger
 
 1. The general Bisognano--Wichmann theorem is identified as an external
-   structural theorem boundary; the chapter proves the wedge-restricted KMS
-   statement directly for the free massive scalar polynomial wedge algebra.
+   structural theorem boundary; the chapter proves the wedge-restricted
+   two-point distributional KMS statement directly for the free massive scalar
+   and records the bounded Weyl/von Neumann algebra KMS theorem as a separate
+   bounded-observable assertion.
 2. The proper-time Unruh temperature is \(a/(2\pi)\).
 3. For the free massive scalar, the wedge two-point KMS relation is proved
    from the past-tube analyticity of \(\Delta_+^{(m)}\), complex boost
    geometry, and vanishing of the free commutator at spacelike separation.
-4. Wick's theorem extends the two-point result to the free polynomial wedge
-   algebra.
+4. Wick's theorem extends the two-point result to a free polynomial
+   distributional core; the completed \(C^\ast\)-algebra theorem is carried by
+   bounded Weyl observables or by a separately specified unbounded analytic
+   domain.
 5. The free scalar two-point function along an accelerated trajectory has the
    required imaginary-time periodicity.
-6. Detector thermality requires weak coupling, stationary long-time limit, and
-   controlled switching.
+6. Detector thermality requires weak coupling, stationary spectral KMS, a
+   controlled long-time switching family, and separation of finite probability
+   from stationary transition rate.
+7. For a four-dimensional massless scalar, the stationary excitation rate is
+   \(E/(2\pi)(e^{2\pi E/a}-1)^{-1}\), with de-excitation fixed by spectral
+   detailed balance.
 
 ## Calculation Checks
 
 - `calculation-checks/unruh_boost_geometry_checks.py`: verifies the complex
   boost imaginary-part formula, the \(i\pi\) right-to-left wedge map,
-  right-left spacelike separation, and the detector detailed-balance exponent
-  sign.
+  right-left spacelike separation, the detector detailed-balance exponent
+  sign, the four-dimensional massless Planck detector rate, finite-switching
+  spectral smearing as a non-exact detailed-balance control, and compact
+  smooth switching as a nonanalytic contour-regulator control.
 
 ## Figures
 
@@ -76,3 +94,9 @@
   boundary distinguishing the fixed-background wedge-local AQFT theorem from
   pAQFT interacting curved-spacetime constructions.  This keeps Unruh
   thermality from being used as an unstated interacting horizon theorem.
+- 2026-06-08 issue #906 KMS/detector pass: separated the proved
+  distributional two-point KMS core from the bounded Weyl/von Neumann algebra
+  KMS theorem, replaced switched-contour detailed-balance prose with the
+  stationary spectral KMS theorem plus a controlled \(\chi_T\) long-time
+  limit, added the normalized four-dimensional massless detector rate, and
+  recorded finite-switching and compact-smooth-switch negative controls.

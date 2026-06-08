@@ -325,7 +325,10 @@ Current checks:
 - `unruh_boost_geometry_checks.py`: finite checks for the wedge modular-flow
   geometry used in Volume IV and Volume XII, including the complex boost
   imaginary part, the \(i\pi\) right-to-left wedge map, right/left wedge
-  spacelike separation, detector detailed-balance sign, and the right-wedge
+  spacelike separation, detector spectral detailed balance, the normalized
+  four-dimensional massless Planck detector rate, finite-switching smearing
+  as a non-exact detailed-balance negative control, compact smooth switching
+  as a nonanalytic-strip-regulator negative control, and the right-wedge
   lightlike half-sided-inclusion sign in the convention
   \(\Delta^{it}=U(\Lambda_R(-2\pi t))\), together with the mostly-plus
   physical light-ray translation sign

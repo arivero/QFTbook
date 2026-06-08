@@ -158,6 +158,17 @@
       ]
     },
     {
+      "path": "unruh_boost_geometry_checks.py",
+      "risk_class": "Unruh wedge KMS and detector switching",
+      "convention_tags": [
+        "distributional field KMS separated from bounded Weyl algebra KMS",
+        "detector detailed balance is stationary spectral KMS",
+        "finite switching is spectral smearing not exact detailed balance",
+        "generic compact smooth switching is not a strip analytic regulator",
+        "four-dimensional massless detector rate is Planck normalized"
+      ]
+    },
+    {
       "path": "finite_temperature_path_integral_checks.py",
       "risk_class": "thermal Euclidean spectral reconstruction",
       "convention_tags": [

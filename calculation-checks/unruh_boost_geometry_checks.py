@@ -1,14 +1,30 @@
 #!/usr/bin/env python3
-"""Arithmetic checks for the Unruh/Rindler complex-boost geometry.
+"""Arithmetic checks for the Unruh/Rindler KMS and detector chapter.
 
-The checks are deliberately elementary: they guard the sign conventions used
-in Volume XII, Chapter 4.  The metric convention is mostly plus,
-eta(v,v)=-(v0)^2+(v1)^2 for the boost plane.
+Evidence contract.
+Target claims: Volume XII, Chapter 4 separates the distributional free-field
+wedge KMS core from the bounded Weyl/von Neumann algebra KMS theorem, derives
+detector detailed balance from the stationary spectral KMS relation rather
+than from a generic switched contour shift, and computes the normalized
+four-dimensional massless scalar Unruh detector rate.
+Independent construction: complex boost arithmetic in the mostly-plus boost
+plane, finite spectral-density models satisfying the KMS relation, finite
+switching smearing by a symmetric approximate identity, compactly supported
+smooth switch diagnostics, and the Planck-rate closed form.
+Imported assumptions: the tube analyticity of the Wightman function, the
+Bisognano-Wichmann theorem for bounded wedge algebras, and the spectral
+KMS theorem for stationary positive-type distributions.
+Negative controls: finite switching does not obey exact detailed balance, a
+compactly supported smooth switch is not an analytic strip regulator, and
+the wrong detector detailed-balance sign is rejected.
+Scope boundary: these checks do not prove Bisognano-Wichmann, construct the
+Weyl algebra, or establish analytic bounds for an interacting detector model.
 """
 
 from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
+from check_utils import assert_finite as _assert_finite
 from check_utils import assert_geq as _assert_geq
 
 import cmath
@@ -84,6 +100,106 @@ def check_detector_detailed_balance_sign() -> None:
     assert_close(math.log(ratio) / energy, beta, "detailed-balance exponent")
 
 
+def planck_excitation_rate(energy: float, acceleration: float) -> float:
+    beta = 2 * math.pi / acceleration
+    return energy / (2 * math.pi) / math.expm1(beta * energy)
+
+
+def spectral_rate(omega: float, acceleration: float) -> float:
+    if omega == 0:
+        return acceleration / (4 * math.pi**2)
+    energy = abs(omega)
+    beta = 2 * math.pi / acceleration
+    if omega > 0:
+        return planck_excitation_rate(energy, acceleration)
+    return energy / (2 * math.pi) / (1 - math.exp(-beta * energy))
+
+
+def check_four_dimensional_planck_response() -> None:
+    acceleration = 1.7
+    energy = 0.43
+    beta = 2 * math.pi / acceleration
+    excitation = spectral_rate(energy, acceleration)
+    deexcitation = spectral_rate(-energy, acceleration)
+    expected_excitation = energy / (2 * math.pi) / (math.exp(beta * energy) - 1)
+    expected_deexcitation = energy / (2 * math.pi) / (1 - math.exp(-beta * energy))
+
+    assert_close(excitation, expected_excitation, "4d Unruh excitation Planck rate")
+    assert_close(deexcitation, expected_deexcitation, "4d Unruh de-excitation rate")
+    assert_close(
+        deexcitation / excitation,
+        math.exp(beta * energy),
+        "4d Unruh detailed-balance ratio",
+    )
+    if not excitation < deexcitation:
+        raise AssertionError("excitation should be thermally suppressed for positive gap")
+
+
+def check_finite_switching_smearing_not_exact_balance() -> None:
+    acceleration = 1.0
+    beta = 2 * math.pi / acceleration
+    energy = 0.41
+    delta = 0.13
+
+    stationary_ratio = math.exp(beta * energy)
+    smeared_excitation = 0.5 * (
+        spectral_rate(energy - delta, acceleration)
+        + spectral_rate(energy + delta, acceleration)
+    )
+    smeared_deexcitation = 0.5 * (
+        spectral_rate(-energy - delta, acceleration)
+        + spectral_rate(-energy + delta, acceleration)
+    )
+    smeared_ratio = smeared_deexcitation / smeared_excitation
+    _assert_finite("stationary detailed-balance ratio", stationary_ratio)
+    _assert_finite("finite-switch smeared excitation", smeared_excitation)
+    _assert_finite("finite-switch smeared de-excitation", smeared_deexcitation)
+    _assert_finite("finite-switch smeared ratio", smeared_ratio)
+    if abs(smeared_ratio - stationary_ratio) < 1e-4:
+        raise AssertionError("finite spectral smearing should not give exact detailed balance")
+
+    smaller_delta = delta / 3
+    narrower_excitation = 0.5 * (
+        spectral_rate(energy - smaller_delta, acceleration)
+        + spectral_rate(energy + smaller_delta, acceleration)
+    )
+    narrower_deexcitation = 0.5 * (
+        spectral_rate(-energy - smaller_delta, acceleration)
+        + spectral_rate(-energy + smaller_delta, acceleration)
+    )
+    narrower_ratio = narrower_deexcitation / narrower_excitation
+    _assert_finite("narrow finite-switch excitation", narrower_excitation)
+    _assert_finite("narrow finite-switch de-excitation", narrower_deexcitation)
+    _assert_finite("narrow finite-switch ratio", narrower_ratio)
+    if not abs(narrower_ratio - stationary_ratio) < abs(smeared_ratio - stationary_ratio):
+        raise AssertionError("narrower switching kernel should approach stationary detailed balance")
+
+
+def compact_smooth_bump(x: float) -> float:
+    if abs(x) >= 1:
+        return 0.0
+    return math.exp(-1 / (1 - x * x))
+
+
+def check_nonanalytic_switch_negative_control() -> None:
+    # This standard compactly supported smooth bump is a Schwartz function on
+    # the real line.  If it had a holomorphic strip extension agreeing with the
+    # real function, the extension would vanish on the open real interval
+    # (1, infinity), hence everywhere by the identity theorem, contradicting
+    # its nonzero value at the origin.
+    if compact_smooth_bump(0.0) <= 0:
+        raise AssertionError("compact smooth switch should be nonzero inside support")
+    assert_close(compact_smooth_bump(1.5), 0.0, "compact smooth switch outside support")
+
+    beta = 2 * math.pi
+    gaussian_strip_bound = math.exp(beta * beta)
+    for x in (-2.0, 0.0, 3.0):
+        for y in (-beta, -beta / 2, 0.0):
+            value_abs = math.exp(-x * x + y * y)
+            if value_abs > gaussian_strip_bound * (1 + 1e-12):
+                raise AssertionError("Gaussian analytic regulator exceeded strip bound")
+
+
 def check_right_wedge_lightlike_half_sided_sign() -> None:
     """Check the sign convention for the right-wedge modular inclusion."""
 
@@ -147,6 +263,9 @@ def main() -> None:
     check_ipi_maps_right_to_left_wedge()
     check_right_left_wedge_spacelike_separation()
     check_detector_detailed_balance_sign()
+    check_four_dimensional_planck_response()
+    check_finite_switching_smearing_not_exact_balance()
+    check_nonanalytic_switch_negative_control()
     check_right_wedge_lightlike_half_sided_sign()
     check_physical_light_ray_generator_sign()
     print("All Unruh complex-boost geometry and detailed-balance checks passed.")
