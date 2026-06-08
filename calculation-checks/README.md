@@ -2068,8 +2068,10 @@ Current checks:
   and charge reversal, linking/intersection dimension bookkeeping, local
   meridian crossing recovery, nonbounding \(T^3\) loop and bounding-chain
   ambiguity negative controls, torsion \(\mathbb Q/\mathbb Z\) linking
-  bilinearity, finite-background evaluation on noncontractible cycles, and
-  junction charge conservation.
+  bilinearity, degree/type rejection of \(H^{p+1}\) evaluation on \(H_p\)
+  charged cycles, degree-\(p\) holonomy evaluation on noncontractible cycles,
+  transgression of a codimension-\((p+1)\) defect class to the local linking
+  action, and junction charge conservation.
 - `categorical_defect_structure_checks.py`: exact finite checks for the
   categorical-symmetry defect-fusion chapter, including defect fusion as
   composition of local-operator actions, noninvertible projection kernels,

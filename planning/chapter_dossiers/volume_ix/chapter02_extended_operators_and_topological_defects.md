@@ -25,8 +25,9 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
 - Fusion through tubular-neighborhood collision, including group-like finite
   symmetry defects and associativity data.
 - Higher-form Ward operators acting on charged defects by local integer
-  linking, with the global action separated into background/cohomology
-  evaluation and torsion \(\mathbb Q/\mathbb Z\) linking where applicable.
+  linking, with the global action separated into degree-\(p\)
+  holonomy/transgression data, background characteristic classes, and torsion
+  \(\mathbb Q/\mathbb Z\) linking where applicable.
 - Defect locality and braiding, including Wilson/'t Hooft electric-magnetic
   pairing.
 - Defect-completion data as part of a full nonperturbative QFT definition.
@@ -45,7 +46,10 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
 | \(U_a(N^{D-p-1})\) | higher-form symmetry defect |
 | \(q\in\widehat A\) | character associated to charge \(q\) |
 | \(\operatorname{Link}_{\rm loc}(N,\Sigma)\) | local or controlled-chart integer linking number |
-| \(\beta_a\) | finite higher-form background or relative/Thom class for a symmetry defect |
+| \([B]\in H^{p+1}(M;A)\) | characteristic class of a finite \(p\)-form background, evaluable on \((p+1)\)-cycles |
+| \(\check B\) | cochain or differential-cohomology representative with declared \(p\)-cycle holonomy |
+| \(\lambda\in Z^p(M;A)\) | degree-\(p\) gauge/transgression datum acting on charged \(p\)-operators |
+| \(\tau_a\) | relative/Thom class of a codimension-\((p+1)\) symmetry defect before transgression |
 | \(\lambda_{\rm tor}\) | torsion linking pairing with values in \(\mathbb Q/\mathbb Z\) |
 
 ## Claim Ledger
@@ -63,9 +67,11 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
 6. Screening is an operator statement about allowed endpoints.
 7. Higher-form symmetry acts on charged defects through local integer linking
    only in a ball, \(S^D\), \(\mathbb R^D\) with compact support, or a declared
-   bounding-chain chart whose ambiguity vanishes.  On general \(M\), the action
-   is expressed by background/cohomology evaluation, with torsion wrapping data
-   valued in \(\mathbb Q/\mathbb Z\).
+   bounding-chain chart whose ambiguity vanishes.  On general \(M\), the
+   characteristic class \([B]\in H^{p+1}(M;A)\) is not evaluated directly on a
+   charged \(p\)-cycle.  Operator phases use a declared \(p\)-cycle holonomy,
+   degree-\(p\) gauge parameter, or transgressed complement datum, with torsion
+   wrapping data valued in \(\mathbb Q/\mathbb Z\).
 8. Defect completion data record the genuine extended operators, boundaries,
    junctions, and fusion limits included in the theory.
 
@@ -75,9 +81,11 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
   `Z_N` group-like fusion, Ward phase multiplicativity, orientation and charge
   reversal, dimension bookkeeping for linking/intersection, local meridian
   integer recovery, nonbounding \(T^3\) loop and bounding-chain ambiguity
-  negative controls, torsion \(\mathbb Q/\mathbb Z\) linking bilinearity,
-  finite-background evaluation on noncontractible cycles, and junction charge
-  conservation.
+  negative controls, torsion \(\mathbb Q/\mathbb Z\) linking bilinearity, the
+  degree/type rejection of \(H^{p+1}\) evaluation on an \(H_p\) cycle,
+  degree-\(p\) holonomy evaluation on noncontractible cycles, transgression of
+  a codimension-\((p+1)\) defect class to the local linking action, and junction
+  charge conservation.
 
 ## Audit Notes
 
@@ -88,6 +96,11 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
   linking as a \(\mathbb Q/\mathbb Z\) pairing rather than an integer.  The
   companion check now includes the requested \(T^3\), bounding-chain ambiguity,
   and local meridian negative/positive controls.
+- 2026-06-08 issue #961 pass: corrected the global higher-form action typing.
+  A background characteristic class \([B]\in H^{p+1}(M;A)\) is now separated
+  from evaluable \(p\)-cycle holonomy data, degree-\(p\) gauge parameters, and
+  transgressed defect-complement data.  The companion check rejects direct
+  evaluation of an \(H^{p+1}\) class on an \(H_p\) charged cycle.
 
 ## Figures
 

@@ -166,7 +166,9 @@
         "nonbounding ambient cycles do not have canonical integer linking",
         "bounding-chain ambiguity is measured by ambient intersection pairing",
         "torsion linking takes values in Q/Z",
-        "global higher-form action is background/cohomology evaluation"
+        "background characteristic class has degree p+1 and does not evaluate directly on p-cycles",
+        "operator phases use degree-p holonomy or transgression data",
+        "global higher-form action is holonomy, transgression, or torsion-pairing evaluation"
       ]
     },
     {

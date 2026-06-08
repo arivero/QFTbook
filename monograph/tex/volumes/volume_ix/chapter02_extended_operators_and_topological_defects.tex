@@ -370,13 +370,33 @@ when the homology class of \(\Sigma\) pairs trivially with
 survives, an integer \(B\cdot\Sigma\) is additional bounding-chain data rather
 than a canonical global linking number.
 
-There are two standard global replacements.  A finite \(p\)-form background
-is represented by a cohomology class
-\(\beta_a\in H^{p+1}(M,A)\), or by a relative/Thom class for a symmetry
-defect, and its action on \(W_q(\Sigma)\) is the character evaluation
+There are two standard global replacements, but their degrees must be kept
+separate.  The characteristic class of a finite \(p\)-form background is
 \[
-  q\!\left(\langle\beta_a,[\Sigma]\rangle\right).
+  [B]\in H^{p+1}(M;A).
 \]
+This class evaluates on \((p+1)\)-cycles; it is not itself a functional on the
+\(p\)-cycle \([\Sigma]\).  To write the phase of \(W_q(\Sigma)\), one must
+choose the operator holonomy data: for example a cochain or
+differential-cohomology representative \(\check B\) with a declared
+\(p\)-cycle holonomy
+\[
+  \operatorname{Hol}_{\check B}(\Sigma)\in A,
+  \qquad
+  W_q(\Sigma)\mapsto
+  q\!\left(\operatorname{Hol}_{\check B}(\Sigma)\right)W_q(\Sigma),
+\]
+or, for an ordinary symmetry transformation, a degree-\(p\) gauge parameter
+\(\lambda\in Z^p(M;A)\) with \(B\mapsto B+\delta\lambda\), acting by
+\[
+  W_q(\Sigma)\mapsto
+  q\!\left(\langle\lambda,[\Sigma]\rangle\right)W_q(\Sigma).
+\]
+A codimension-\((p+1)\) symmetry defect is typed similarly: its relative or
+Thom class is degree \(p+1\), and a specified transgression, slant, cap, or
+bounding-chain construction produces the degree-\(p\) complement datum that is
+evaluated on \(\Sigma\).  In the local chart this transgressed datum is exactly
+the integer-linking phase above.
 For torsion supports on a closed oriented manifold, the global linking datum is
 the torsion pairing
 \[
@@ -418,7 +438,8 @@ A negative crossing contributes \(q(a)^{-1}\).  Summing the signed crossings
 gives the intersection number \(B\cdot\Sigma\) for a bounding chain
 \(\partial B=N\) in the local chart, or in a global chart where the
 bounding-chain ambiguity vanishes.  On nontrivial \(M\), a wrapping symmetry
-defect is evaluated by the chosen background or torsion-pairing datum above.
+defect is evaluated by the chosen holonomy/transgression or torsion-pairing
+datum above.
 For \(\mathbb Z_N\), the character group is canonically \(\mathbb Z_N\) after
 choosing the generator
 \[

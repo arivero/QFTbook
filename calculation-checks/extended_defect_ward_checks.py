@@ -4,12 +4,15 @@
 Evidence contract.
 Target claims: the finite higher-form Ward algebra in Volume IX, Chapter 2,
 including the local integer linking chart, the topology restrictions on global
-integer linking, finite-background evaluation, torsion linking, and
+integer linking, the degree distinction between finite-background
+characteristic classes and operator holonomy data, torsion linking, and
 junction-charge conservation.
 Independent construction: exact arithmetic in finite cyclic groups, a homology
 model of nonbounding loops on T^3, an intersection-pairing model of
 bounding-chain ambiguity, local signed-crossing recovery of the integer
-meridian rule, and the lens-space torsion pairing a*b/n in Q/Z.
+meridian rule, finite degree-checked cochain evaluation, transgression of a
+defect class to a degree-p complement datum, and the lens-space torsion pairing
+a*b/n in Q/Z.
 Imported assumptions: oriented closed manifolds for the global torsion-pairing
 model, the standard degree condition
 Tor H_{D-p-1}(M) x Tor H_p(M) -> Q/Z, and the use of finite homology models
@@ -18,6 +21,8 @@ Negative controls: two noncontractible loops on T^3 do not start the
 bounding-chain integer-linking construction; two bounding chains whose
 difference has nonzero intersection with the charged cycle give different
 integers; a torsion pairing returns Q/Z data rather than canonical integers.
+Evaluating an H^{p+1} characteristic class directly on an H_p charged cycle is
+rejected as a degree error.
 Scope boundary: these checks do not prove Alexander duality, construct
 topological defect operators in a continuum QFT, or classify all possible
 global higher-form backgrounds.
@@ -243,31 +248,106 @@ def check_torsion_linking_pairing_is_q_mod_z() -> None:
                     assert_equal(lhs, rhs, "torsion linking is bilinear in the first slot")
 
 
-def finite_background_evaluation(n: int, background: tuple[int, ...], cycle: tuple[int, ...]) -> int:
-    return sum(bg * cyc for bg, cyc in zip(background, cycle, strict=True)) % n
+def degree_checked_cochain_evaluation(
+    n: int,
+    cochain_degree: int,
+    cycle_dimension: int,
+    cochain: tuple[int, ...],
+    cycle: tuple[int, ...],
+) -> int:
+    if cochain_degree != cycle_dimension:
+        raise ValueError(
+            f"degree-{cochain_degree} cochain cannot evaluate on a "
+            f"{cycle_dimension}-cycle"
+        )
+    return sum(bg * cyc for bg, cyc in zip(cochain, cycle, strict=True)) % n
 
 
-def check_global_background_evaluation_replaces_integer_linking() -> None:
+def check_background_characteristic_class_degree_not_operator_holonomy() -> None:
+    p = 1
+    n = 7
+    characteristic_class = (1, 2, 3)
+    charged_cycle = (0, 1, 0)
+    try:
+        degree_checked_cochain_evaluation(
+            n,
+            cochain_degree=p + 1,
+            cycle_dimension=p,
+            cochain=characteristic_class,
+            cycle=charged_cycle,
+        )
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("H^{p+1} characteristic class evaluated directly on H_p cycle")
+
+    two_cycle = (1, 0, 1)
+    assert_equal(
+        degree_checked_cochain_evaluation(
+            n,
+            cochain_degree=p + 1,
+            cycle_dimension=p + 1,
+            cochain=characteristic_class,
+            cycle=two_cycle,
+        ),
+        4 % n,
+        "degree p+1 characteristic class evaluates on p+1 cycles",
+    )
+
+
+def check_degree_p_holonomy_data_replaces_integer_linking() -> None:
     for n in range(2, 13):
-        background = (1 % n, 2 % n, 3 % n)
+        holonomy_data = (1 % n, 2 % n, 3 % n)
         x_cycle = (1, 0, 0)
         y_cycle = (0, 1, 0)
         sum_cycle = (1, 1, 0)
 
         assert_equal(
-            finite_background_evaluation(n, background, y_cycle),
+            degree_checked_cochain_evaluation(n, 1, 1, holonomy_data, y_cycle),
             2 % n,
-            "finite background evaluates on a noncontractible T^3 cycle",
+            "degree-p holonomy data evaluate on a noncontractible T^3 cycle",
         )
         assert_equal(
-            finite_background_evaluation(n, background, sum_cycle),
+            degree_checked_cochain_evaluation(n, 1, 1, holonomy_data, sum_cycle),
             (
-                finite_background_evaluation(n, background, x_cycle)
-                + finite_background_evaluation(n, background, y_cycle)
+                degree_checked_cochain_evaluation(n, 1, 1, holonomy_data, x_cycle)
+                + degree_checked_cochain_evaluation(n, 1, 1, holonomy_data, y_cycle)
             )
             % n,
-            "background evaluation is additive on charged cycles",
+            "holonomy evaluation is additive on charged cycles",
         )
+
+
+def check_defect_transgression_yields_degree_p_action() -> None:
+    for n in range(2, 13):
+        for p in range(0, 4):
+            relative_or_thom_degree = p + 1
+            transgressed_degree = relative_or_thom_degree - 1
+            assert_equal(
+                transgressed_degree,
+                p,
+                "codimension-(p+1) defect transgresses to degree-p action datum",
+            )
+            for defect_label in range(n):
+                for charge_label in range(n):
+                    for local_linking in range(-2, 3):
+                        transgressed_parameter = (defect_label * local_linking) % n
+                        charged_cycle = (1,)
+                        evaluated_parameter = degree_checked_cochain_evaluation(
+                            n,
+                            cochain_degree=p,
+                            cycle_dimension=p,
+                            cochain=(transgressed_parameter,),
+                            cycle=charged_cycle,
+                        )
+                        lhs = (charge_label * evaluated_parameter) % n
+                        rhs = zn_phase_exponent(
+                            n,
+                            defect_label,
+                            charge_label,
+                            local_linking,
+                        )
+                        assert_equal(lhs, rhs, "local linking is a transgressed degree-p action")
 
 
 def check_junction_charge_conservation() -> None:
@@ -299,7 +379,9 @@ def main() -> None:
     check_t3_noncontractible_loops_have_no_canonical_integer_linking()
     check_bounding_chain_ambiguity_requires_homology_condition()
     check_torsion_linking_pairing_is_q_mod_z()
-    check_global_background_evaluation_replaces_integer_linking()
+    check_background_characteristic_class_degree_not_operator_holonomy()
+    check_degree_p_holonomy_data_replaces_integer_linking()
+    check_defect_transgression_yields_degree_p_action()
     check_junction_charge_conservation()
     print("Extended-defect Ward and fusion checks passed.")
 
