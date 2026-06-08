@@ -3690,6 +3690,37 @@ coordinate \(T_\Lambda\) carries the topological FI-theta sector weight, while
 the \(c_{i,\Lambda}\) carry only the reduced determinant and operator-map
 normalization.  The mirror residue may be used as a check only through the
 double-entry comparison
+
+\[
+  q_{\rm mir}
+  =
+  \exp(T_{\rm mir})\prod_i c^{\rm mir}_i,
+  \qquad
+  \delta T_q
+  =
+  T_\Lambda-T_{\rm mir}
+  +
+  \sum_i\bigl(\log c_{i,\Lambda}-\log c^{\rm mir}_i\bigr),
+\]
+where all logarithms are branch-fixed characters of the same compact flux
+lattice.  The \(q\)-transport residual below is the same-line mismatch
+\begin{equation}
+  q_\Lambda-q_{\rm mir}
+  =
+  q_{\rm mir}\bigl(\exp(\delta T_q)-1\bigr).
+  \label{eq:cpn-hv-residue-compact-fugacity-transport}
+\end{equation}
+A theta-period shift \(T\mapsto T+2\pi\ii m\) with \(m\in\Lambda_G^\vee\), or a
+branch shift of the \(c_i\)'s compensated by the inverse FI-character shift,
+leaves both sides of
+\eqref{eq:cpn-hv-residue-compact-fugacity-transport} in the same compact
+coordinate.  A residue computed with bare \(\exp(T)\), with
+\(\exp(\tau)\), or with branch-shifted \(c_i\)'s but unshifted \(T\), lives in
+a different coordinate; its difference from the direct vortex package belongs
+in \(B_q\), not in the determinant or incidence term.
+
+\noindent
+With this typing, the comparison is
 \begin{equation}
   C_{\Lambda,1}^{A}
   -

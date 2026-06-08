@@ -171,9 +171,9 @@ and
   intersection, rejects Boolean boundary-indicator arithmetic, and separates
   collision-sensitive source contacts from the primary invariant.
 - `q_mir`, `I_{Lambda,1}`, `B_vort`, `B_I`, `B_q`, `B_off,a`:
-  mirror-residue FI coordinate, retained finite degree-one instanton-measure
-  integral, and residual majorants in the Hori--Vafa residue/direct-instanton
-  comparison map.
+  mirror-residue FI coordinate typed as the transported compact FI character,
+  retained finite degree-one instanton-measure integral, and residual majorants
+  in the Hori--Vafa residue/direct-instanton comparison map.
 - `V_{1,Lambda}`, `U_Lambda`, `pi_i`, `tilde pi_i`, `Pi_O`,
   `B_span`: finite common-flux source space, original-to-dual operator
   transport map, primitive original and mirror source rows, tested observable
@@ -516,15 +516,16 @@ and
   untransported orientation signs are treated as real coefficient changes.
 - Adds the Hori--Vafa residue/direct-instanton comparison map for the
   degree-one `P^{N-1}` product: the mirror residue `S_1(q_mir)` is compared
-  against the direct A-twisted coefficient only through the transported vortex
-  fugacity `q_Lambda`, the retained instanton-measure integral
-  `I_{Lambda,1}`, FI-coordinate transport, operator/continuum residuals, and
-  off-pairing bounds.  The direct side now also exposes the finite
+  against the direct A-twisted coefficient only after `q_mir` and the
+  transported vortex fugacity `q_Lambda` have been placed on the same compact
+  FI-character line.  The comparison then uses the retained instanton-measure
+  integral `I_{Lambda,1}`, FI-coordinate transport, operator/continuum
+  residuals, and off-pairing bounds.  The direct side now also exposes the finite
   degree-one incidence determinant `+1`, insertion-degree gate, and
   compactification exclusion before the residual `I_{Lambda,1}-1` is
   budgeted.  This prevents the protected root sum, the stable-map line count,
-  or the Coulomb normalization check from standing in for the regulated vortex
-  measure and zero-mode calculation.
+  the Coulomb normalization check, or a separately chosen mirror fugacity from
+  standing in for the regulated vortex measure and zero-mode calculation.
 - Derives the classical cigar quotient metric by solving the auxiliary
   constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
   gauge field.
@@ -1242,3 +1243,10 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   normalization.  The companion adds an exact negative control in which the
   formal root count remains unchanged but a stale bare `exp(T)` moves the root
   product and the protected degree-one trace.
+- The 2026-06-08 issue #847 compact-fugacity residue pass tightens
+  `rem:cpn-hv-residue-instanton-cross-check`: `q_mir` is now explicitly the
+  mirror image of the same compact FI character as `q_Lambda`, with
+  `delta T_q` measuring the transported same-line mismatch.  The companion
+  rejects stale bare mirror fugacities, period-one `exp(tau)` drift under a
+  theta period, and omitted `q`-transport residuals in the degree-one
+  residue/direct-instanton comparison.

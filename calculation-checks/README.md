@@ -3182,10 +3182,12 @@ Current checks:
   vortex coefficient normalizations, the FI coordinate, chart Jacobians,
   determinant densities, and orientation/operator signs, the Hori--Vafa
   residue/direct-instanton comparison map comparing the mirror root sum with
-  the transported vortex fugacity and a directly computed degree-one
-  incidence/Jacobian package, retained A-model measure residual,
-  operator/continuum residuals, and off-pairing contacts while rejecting
-  mirror-only, line-count-only, stale-FI, orientation-flip,
+  the transported vortex fugacity only after the mirror residue fugacity and
+  direct vortex fugacity are typed as the same compact FI character, together
+  with a directly computed degree-one incidence/Jacobian package, retained
+  A-model measure residual, operator/continuum residuals, and off-pairing
+  contacts while rejecting mirror-only, line-count-only, stale-FI, stale bare
+  mirror-fugacity, period-one mirror-fugacity, orientation-flip,
   compactification-gate, and zero-mode shortcuts, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, the mirror-conjecture

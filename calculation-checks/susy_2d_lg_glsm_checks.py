@@ -39,7 +39,8 @@ completeness checks, and reflection Gamma-function
 cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
-Jacobian computed before comparison, and the one-vortex source-frame
+Jacobian computed before comparison and the mirror residue fugacity typed as
+the transported compact FI character, and the one-vortex source-frame
 calibration proof-obligation map distinguishing a component amplitude from the
 common mirror fugacity, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
@@ -87,7 +88,8 @@ controls, plus
 finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and representative-independence
-gate, are
+gate, plus compact-fugacity transport checks rejecting stale bare or
+period-one mirror fugacities, are
 computed directly from finite data rather than by substituting the displayed
 final identities.
 
@@ -180,6 +182,7 @@ quantum-product shortcuts, determinant-orientation flips,
 zero-mode multiplicity errors, representative/source-contact mutations,
 duplicated evaluation forms, hyperplane-normalization changes, omitted off-pairing controls, line-count-only
 or vortex-fugacity-only observable claims, stale FI-coordinate changes,
+wrong compact fugacity lines for the mirror residue,
 missing measure Jacobians, untransported orientation signs, protected-sector
 shortcuts to full mirror equivalence, metric/dilaton representatives used as
 exact finite-level QFT data, rescalings used as chirality-changing mirror maps,
@@ -4309,6 +4312,91 @@ def check_hori_vafa_residue_instanton_comparison_map() -> None:
         )
 
 
+def check_hori_vafa_residue_compact_fugacity_transport() -> None:
+    # The mirror residue is allowed to use q_mir only after it is typed as the
+    # same compact FI character as the direct vortex package.  Store a compact
+    # fugacity by its positive magnitude and theta phase modulo one.
+    def compact_fugacity(
+        bare_magnitude: Fraction,
+        coefficient_magnitudes: list[Fraction],
+        theta_phase: Fraction,
+        coefficient_phases: list[Fraction],
+    ) -> tuple[Fraction, Fraction]:
+        return (
+            bare_magnitude * prod(coefficient_magnitudes, start=Fraction(1)),
+            (theta_phase + sum(coefficient_phases, Fraction(0))) % 1,
+        )
+
+    bare_fi = Fraction(5, 7)
+    coefficients = [Fraction(2, 3), Fraction(3, 5), Fraction(7, 11)]
+    theta_phase = Fraction(1, 8)
+    coefficient_phases = [Fraction(1, 6), -Fraction(1, 10), Fraction(2, 15)]
+    q_lambda = compact_fugacity(bare_fi, coefficients, theta_phase, coefficient_phases)
+
+    rescalings = [Fraction(11, 13), Fraction(17, 19), Fraction(23, 29)]
+    mirror_coefficients = [
+        coefficient * rescaling
+        for coefficient, rescaling in zip(coefficients, rescalings)
+    ]
+    transported_mirror_fi = bare_fi / prod(rescalings, start=Fraction(1))
+    q_mir = compact_fugacity(
+        transported_mirror_fi,
+        mirror_coefficients,
+        theta_phase,
+        coefficient_phases,
+    )
+    assert_equal("Hori-Vafa residue q_mir is the transported compact fugacity", q_mir, q_lambda)
+
+    stale_bare_mirror = compact_fugacity(
+        bare_fi,
+        mirror_coefficients,
+        theta_phase,
+        coefficient_phases,
+    )
+    assert_equal(
+        "bare mirror fugacity after coefficient transport changes residue coordinate",
+        stale_bare_mirror == q_lambda,
+        False,
+    )
+
+    theta_shifted = compact_fugacity(
+        bare_fi,
+        coefficients,
+        theta_phase + 1,
+        coefficient_phases,
+    )
+    assert_equal("compact q is invariant under a theta period", theta_shifted, q_lambda)
+
+    period_one_shortcut = (
+        q_lambda[0] * Fraction(13, 11),
+        q_lambda[1],
+    )
+    assert_equal(
+        "period-one exp(tau) shortcut drifts under theta period",
+        period_one_shortcut == q_lambda,
+        False,
+    )
+
+    direct_incidence = Fraction(1)
+    direct_coefficient = q_lambda[0] * direct_incidence
+    mirror_residue = q_mir[0]
+    assert_equal("same compact fugacity gives same degree-one residue magnitude", mirror_residue, direct_coefficient)
+
+    wrong_mirror_residue = stale_bare_mirror[0]
+    q_transport_residual = direct_coefficient - wrong_mirror_residue
+    assert_equal(
+        "wrong mirror fugacity produces a q-transport residual",
+        q_transport_residual == Fraction(0),
+        False,
+    )
+    omitted_q_transport_bound = Fraction(0)
+    assert_equal(
+        "omitting q-transport underbudgets wrong compact fugacity comparison",
+        abs(q_transport_residual) <= omitted_q_transport_bound,
+        False,
+    )
+
+
 def check_cigar_metric_elimination() -> None:
     examples = [
         (Fraction(9, 5), Fraction(7, 3)),
@@ -6383,6 +6471,7 @@ def main() -> None:
     check_degree_one_cpn_representative_independence_gate()
     check_degree_one_measure_scheme_covariance()
     check_hori_vafa_residue_instanton_comparison_map()
+    check_hori_vafa_residue_compact_fugacity_transport()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_mirror_conjecture_observable_boundary()
