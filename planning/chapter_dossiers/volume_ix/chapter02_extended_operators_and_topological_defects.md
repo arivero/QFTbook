@@ -24,8 +24,9 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
   displacement criterion and the cohomological `Q`-exact variant.
 - Fusion through tubular-neighborhood collision, including group-like finite
   symmetry defects and associativity data.
-- Higher-form Ward operators acting on charged defects by linking, with a
-  proof from crossing and character evaluation.
+- Higher-form Ward operators acting on charged defects by local integer
+  linking, with the global action separated into background/cohomology
+  evaluation and torsion \(\mathbb Q/\mathbb Z\) linking where applicable.
 - Defect locality and braiding, including Wilson/'t Hooft electric-magnetic
   pairing.
 - Defect-completion data as part of a full nonperturbative QFT definition.
@@ -43,7 +44,9 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
 | \(\mathcal D^i\) | displacement operator |
 | \(U_a(N^{D-p-1})\) | higher-form symmetry defect |
 | \(q\in\widehat A\) | character associated to charge \(q\) |
-| \(\operatorname{Link}(N,\Sigma)\) | linking number |
+| \(\operatorname{Link}_{\rm loc}(N,\Sigma)\) | local or controlled-chart integer linking number |
+| \(\beta_a\) | finite higher-form background or relative/Thom class for a symmetry defect |
+| \(\lambda_{\rm tor}\) | torsion linking pairing with values in \(\mathbb Q/\mathbb Z\) |
 
 ## Claim Ledger
 
@@ -58,8 +61,11 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
 5. Fusion is a correlation-function limit inside a tubular neighborhood, with
    associators and unit defects included in the defect data.
 6. Screening is an operator statement about allowed endpoints.
-7. Higher-form symmetry acts on charged defects through the linking number and
-   the character pairing.
+7. Higher-form symmetry acts on charged defects through local integer linking
+   only in a ball, \(S^D\), \(\mathbb R^D\) with compact support, or a declared
+   bounding-chain chart whose ambiguity vanishes.  On general \(M\), the action
+   is expressed by background/cohomology evaluation, with torsion wrapping data
+   valued in \(\mathbb Q/\mathbb Z\).
 8. Defect completion data record the genuine extended operators, boundaries,
    junctions, and fusion limits included in the theory.
 
@@ -67,8 +73,21 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
 
 - `calculation-checks/extended_defect_ward_checks.py` verifies finite
   `Z_N` group-like fusion, Ward phase multiplicativity, orientation and charge
-  reversal, dimension bookkeeping for linking/intersection, and junction
-  charge conservation.
+  reversal, dimension bookkeeping for linking/intersection, local meridian
+  integer recovery, nonbounding \(T^3\) loop and bounding-chain ambiguity
+  negative controls, torsion \(\mathbb Q/\mathbb Z\) linking bilinearity,
+  finite-background evaluation on noncontractible cycles, and junction charge
+  conservation.
+
+## Audit Notes
+
+- 2026-06-08 issue #880 pass: restricted the linking-number Ward formula to
+  local/spherical or explicitly controlled bounding-chain charts.  The chapter
+  now records the bounding-chain independence condition, treats nonbounding
+  global cycles by higher-form background evaluation, and separates torsion
+  linking as a \(\mathbb Q/\mathbb Z\) pairing rather than an integer.  The
+  companion check now includes the requested \(T^3\), bounding-chain ambiguity,
+  and local meridian negative/positive controls.
 
 ## Figures
 

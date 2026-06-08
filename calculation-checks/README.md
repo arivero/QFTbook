@@ -2065,7 +2065,10 @@ Current checks:
 - `extended_defect_ward_checks.py`: finite arithmetic checks for the extended
   operators and topological defects chapter, including group-like
   \(\mathbb Z_N\) fusion, higher-form Ward phase multiplicativity, orientation
-  and charge reversal, linking/intersection dimension bookkeeping, and
+  and charge reversal, linking/intersection dimension bookkeeping, local
+  meridian crossing recovery, nonbounding \(T^3\) loop and bounding-chain
+  ambiguity negative controls, torsion \(\mathbb Q/\mathbb Z\) linking
+  bilinearity, finite-background evaluation on noncontractible cycles, and
   junction charge conservation.
 - `categorical_defect_structure_checks.py`: exact finite checks for the
   categorical-symmetry defect-fusion chapter, including defect fusion as

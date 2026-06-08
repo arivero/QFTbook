@@ -159,6 +159,17 @@
       ]
     },
     {
+      "path": "extended_defect_ward_checks.py",
+      "risk_class": "extended-defect Ward topology",
+      "convention_tags": [
+        "integer linking formula requires a local or controlled bounding-chain chart",
+        "nonbounding ambient cycles do not have canonical integer linking",
+        "bounding-chain ambiguity is measured by ambient intersection pairing",
+        "torsion linking takes values in Q/Z",
+        "global higher-form action is background/cohomology evaluation"
+      ]
+    },
+    {
       "path": "susy_moduli_space_checks.py",
       "risk_class": "supersymmetric moduli-space and Higgs-metric theorem boundary",
       "convention_tags": [

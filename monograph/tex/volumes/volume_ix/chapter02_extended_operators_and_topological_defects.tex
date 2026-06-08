@@ -340,30 +340,63 @@ has charge
 \[
   q\in\widehat A=\operatorname{Hom}(A,U(1)).
 \]
-When \(N\) and \(\Sigma\) are disjoint, their linking number is the integer
+There is a canonical integer linking coordinate in the local chart used for
+Ward identities.  Namely, if the isotopy is contained in a ball, or if
+\(M=\mathbb R^D\) with compact supports, equivalently \(S^D\) after
+one-point compactification, then a closed symmetry-defect support \(N\)
+disjoint from \(\Sigma\) has an integer
 \[
-  \operatorname{Link}(N,\Sigma)\in\mathbb Z
+  \operatorname{Link}_{\rm loc}(N,\Sigma)\in\mathbb Z .
 \]
-defined as follows.  If \(N=\partial B\) for an oriented
-\((D-p)\)-chain \(B\) transverse to \(\Sigma\), then
+If \(N=\partial B\) for an oriented \((D-p)\)-chain \(B\) transverse to
+\(\Sigma\), this integer is
 \[
-  \operatorname{Link}(N,\Sigma)=B\cdot\Sigma ,
+  \operatorname{Link}_{\rm loc}(N,\Sigma)=B\cdot\Sigma ,
 \]
-the signed intersection number.  In general the same integer is the
-Alexander-duality pairing between the homology class of \(N\) in
+the signed intersection number.  In these local or spherical settings this is
+the Alexander-duality coordinate of the class of \(N\) in the complement of
+\(\Sigma\).
+
+On a general spacetime manifold \(M\), the same displayed intersection formula
+is a controlled chart only after extra topology is declared.  First,
+\(N\) must bound such a chain \(B\).  Second, the value must be independent of
+the chosen bounding chain: if \(B'\) is another choice, the ambiguity is
 \[
-  H_{D-p-1}(M\setminus\Sigma;\mathbb Z)
+  (B-B')\cdot\Sigma ,
 \]
-and the class of \(\Sigma\).
+with \(B-B'\) a closed \((D-p)\)-cycle.  Thus independence holds, for example,
+when the homology class of \(\Sigma\) pairs trivially with
+\(H_{D-p}(M;\mathbb Z)\).  If \(N\) does not bound, or if this ambiguity
+survives, an integer \(B\cdot\Sigma\) is additional bounding-chain data rather
+than a canonical global linking number.
+
+There are two standard global replacements.  A finite \(p\)-form background
+is represented by a cohomology class
+\(\beta_a\in H^{p+1}(M,A)\), or by a relative/Thom class for a symmetry
+defect, and its action on \(W_q(\Sigma)\) is the character evaluation
+\[
+  q\!\left(\langle\beta_a,[\Sigma]\rangle\right).
+\]
+For torsion supports on a closed oriented manifold, the global linking datum is
+the torsion pairing
+\[
+  \lambda_{\rm tor}:
+  \operatorname{Tor}H_{D-p-1}(M;\mathbb Z)
+  \times
+  \operatorname{Tor}H_p(M;\mathbb Z)
+  \longrightarrow
+  \mathbb Q/\mathbb Z ,
+\]
+which a finite character can exponentiate.  It is a \(\mathbb Q/\mathbb Z\)
+coordinate, not an integer intersection number.
 
 \paragraph{Higher-form Ward action.}
-For an abelian \(p\)-form symmetry defect \(U_a(N)\) and a charged
-\(p\)-operator \(W_q(\Sigma)\), the Ward action inside correlation functions
-whose other insertions are outside the isotopy region is
+In the local integer-linking chart, an abelian \(p\)-form symmetry defect
+\(U_a(N)\) and a charged \(p\)-operator \(W_q(\Sigma)\) obey the Ward action
 \[
   U_a(N)\,W_q(\Sigma)
   =
-  q(a)^{\operatorname{Link}(N,\Sigma)}
+  q(a)^{\operatorname{Link}_{\rm loc}(N,\Sigma)}
   W_q(\Sigma)
 \]
 inside correlation functions whose other insertions are outside the isotopy
@@ -372,20 +405,22 @@ integers modulo \(N\),
 \[
   q(a)=\exp\left(\frac{2\pi i\,rs}{N}\right).
 \]
-This is the topological definition of the action written in linking-number
-form.  Because \(U_a\) is topological, move \(N\) through the complement of
-\(\Sigma\) without changing the correlator.  The only change occurs when the
-swept chain crosses \(\Sigma\).  A single positive crossing implements the
-symmetry action on \(W_q\), which is multiplication by the character
+This is the topological definition of the local action written in
+linking-number form.  Because \(U_a\) is topological, move \(N\) through the
+complement of \(\Sigma\) without changing the correlator.  The only change
+occurs when the swept chain crosses \(\Sigma\).  A single positive crossing
+implements the symmetry action on \(W_q\), which is multiplication by the
+character
 \[
   q(a)\in U(1).
 \]
 A negative crossing contributes \(q(a)^{-1}\).  Summing the signed crossings
 gives the intersection number \(B\cdot\Sigma\) for a bounding chain
-\(\partial B=N\).  This is the linking number.  Homological invariance of the
-intersection pairing extends the formula to the Alexander-duality definition
-of linking.  For \(\mathbb Z_N\), the character group is canonically
-\(\mathbb Z_N\) after choosing the generator
+\(\partial B=N\) in the local chart, or in a global chart where the
+bounding-chain ambiguity vanishes.  On nontrivial \(M\), a wrapping symmetry
+defect is evaluated by the chosen background or torsion-pairing datum above.
+For \(\mathbb Z_N\), the character group is canonically \(\mathbb Z_N\) after
+choosing the generator
 \[
 s(r)=\exp(2\pi i\,rs/N),
 \]
