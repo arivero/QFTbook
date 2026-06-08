@@ -2154,12 +2154,14 @@ Current checks:
   gauge-theory phases chapter, including overlap-chain counting for the
   path-count Lieb--Robinson estimate, the factorial-to-exponential tail bound,
   two-level spectral-flow transport, and the time-window split behind
-  quasi-local generator tails.  It also includes negative controls showing that
-  fixed-distance correlator continuity can coexist with a closing gap and that
-  a value-only topology can miss a divergent susceptibility, together with a
-  growing-support negative control where finite-volume automorphisms converge
-  on every fixed local algebra but do not control a moving boundary or logical
-  observable sequence.
+	  quasi-local generator tails.  It also includes negative controls showing that
+	  fixed-distance correlator continuity can coexist with a closing gap and that
+	  a value-only topology can miss a divergent susceptibility, together with a
+	  growing-support negative control where finite-volume automorphisms converge
+	  on every fixed local algebra but do not control a moving boundary or logical
+	  observable sequence, and a finite symmetry-breaking/coexistence control
+	  showing that a gapped parameter value with a multi-branch ground-state band
+	  does not select a unique phase face.
 - `toric_code_logical_operator_checks.py`: finite Pauli and chain-complex
   checks for the gauge-theory phases chapter, including star/plaquette
   commutation, global stabilizer redundancies, the four-dimensional torus

@@ -149,7 +149,8 @@
         "pointwise finite-distance correlator continuity does not certify phase equivalence",
         "value-only comparison topology does not replace susceptibility control",
         "finite spectral-flow algebra remains separate from thermodynamic automorphic theorem",
-        "fixed-local automorphic convergence does not transport growing-support extended data"
+        "fixed-local automorphic convergence does not transport growing-support extended data",
+        "gapped parameter value does not select a unique ground-state phase face"
       ]
     },
     {

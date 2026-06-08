@@ -11,7 +11,8 @@ the time-window split for quasi-local generator tails, and finite model
 diagnostics with continuous correlators or free energy but failed uniform
 stability.  A growing-support negative control separates pointwise convergence
 on every fixed local algebra from transport of boundary/logical/extended
-observable sequences.
+observable sequences.  A symmetry-breaking finite-band example separates a
+bare parameter value from the selected ground-state simplex or phase face.
 Imported assumptions: finite-dimensional local Hilbert spaces, the chapter's
 filter convention for quasi-adiabatic continuation, and the use of these
 finite checks as arithmetic companions to the imported thermodynamic
@@ -21,7 +22,9 @@ correlator continuous while losing every positive gap lower bound and sending
 the correlation length to infinity; a value-only topology on a critical free
 energy misses a divergent susceptibility; automorphisms can converge on every
 fixed local observable while a sequence whose support moves to the boundary or
-grows with the volume has no controlled transported limit.
+grows with the volume has no controlled transported limit; a gapped
+finite-volume ground band can contain two extremal branches, so the parameter
+value alone does not select a phase carrier.
 Scope boundary: these checks do not prove the infinite-volume
 Lieb-Robinson/spectral-flow theorem, establish a continuum gauge-theory phase
 equivalence, or classify gapless universality classes.
@@ -328,6 +331,61 @@ def check_fixed_local_convergence_does_not_transport_growing_support() -> None:
     )
 
 
+def check_parameter_value_does_not_select_coexisting_phase_face() -> None:
+    """A gapped finite band can contain several thermodynamic branches."""
+
+    coupling = 1.0
+
+    def periodic_ising_energy(length: int, spin: int) -> float:
+        return -coupling * length if spin in (-1, 1) else math.inf
+
+    def first_domain_wall_energy(length: int) -> float:
+        # A periodic chain must create a pair of broken bonds.
+        return -coupling * (length - 4)
+
+    for length in range(6, 18):
+        plus_energy = periodic_ising_energy(length, 1)
+        minus_energy = periodic_ising_energy(length, -1)
+        gap_above_union = first_domain_wall_energy(length) - plus_energy
+        assert_close(
+            plus_energy,
+            minus_energy,
+            "coexisting Ising branches have the same finite-band energy",
+        )
+        assert_close(
+            gap_above_union,
+            4.0 * coupling,
+            "positive gap above the union does not select a branch",
+        )
+
+    plus_magnetization = 1.0
+    minus_magnetization = -1.0
+    symmetric_mixture_magnetization = 0.5 * (plus_magnetization + minus_magnetization)
+
+    assert_true(
+        abs(plus_magnetization - minus_magnetization) == 2.0,
+        "extremal branches are distinct local-state faces",
+    )
+    assert_close(
+        symmetric_mixture_magnetization,
+        0.0,
+        "the whole ground-state simplex is not an extremal branch",
+    )
+
+    identity_transport = {plus_magnetization, minus_magnetization}
+    spin_flip_transport = {-plus_magnetization, -minus_magnetization}
+    assert_true(
+        identity_transport == spin_flip_transport,
+        "setwise transport of the full simplex does not identify its two faces",
+    )
+    selected_plus_face = frozenset({plus_magnetization})
+    selected_minus_face = frozenset({minus_magnetization})
+    assert_true(
+        selected_plus_face != selected_minus_face,
+        "a selected face is extra phase data beyond the parameter value",
+    )
+
+
 def main() -> None:
     check_overlap_path_count()
     check_exponential_tail_bound()
@@ -336,6 +394,7 @@ def main() -> None:
     check_uniform_gap_is_not_pointwise_continuity()
     check_weak_topology_ignores_susceptibility_divergence()
     check_fixed_local_convergence_does_not_transport_growing_support()
+    check_parameter_value_does_not_select_coexisting_phase_face()
     print("Finite lattice locality and spectral-flow checks passed.")
 
 
