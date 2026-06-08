@@ -2324,8 +2324,10 @@ Current checks:
 - `su2_gauge_metropolis_checks.py`: finite checks for the
   `qft_scripts/su2_gauge_4d_metropolis.py` companion script, verifying
   quaternion \(SU(2)\) group operations, the local compact-link plaquette
-  score change, pairwise detailed balance, gauge invariance of the action and
-  Wilson loops, and the \(1\times1\) Wilson-loop/plaquette identity.
+  score change, pairwise detailed balance, spread-out minorization bookkeeping,
+  the finite-support dense-orbit negative control for Haar irreducibility,
+  gauge invariance of the action and Wilson loops, and the \(1\times1\)
+  Wilson-loop/plaquette identity.
 - `su3_lattice_update_checks.py`: exact checks for the Volume XI
   \(SU(3)\) subgroup-update section, including embedded \(SU(2)\)
   unitarity and determinant one, the \(\mathfrak{su}(3)\) span from the

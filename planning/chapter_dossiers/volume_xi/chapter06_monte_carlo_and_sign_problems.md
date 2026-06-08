@@ -117,8 +117,10 @@ and scaling-window inference.
   measure and Wilson plaquette score \(Q(U)=\sum_p\frac12\operatorname{Re}
   \operatorname{tr}U_p\).
 - Proves pairwise detailed balance for a compact \(SU(2)\) local-link
-  Metropolis chain with inversion-symmetric proposal law, and states the
-  Haar-irreducibility condition without claiming continuum convergence.
+  Metropolis chain with inversion-symmetric proposal law, separates dense
+  topological generation from product-Haar irreducibility, and gives a
+  spread-out positive-density sufficient condition plus explicit lazy
+  aperiodicity datum.
 - Defines gauge transformations and rectangular Wilson-loop measurements for
   the finite \(SU(2)\) script.
 - Proves exact coordinate heat-bath detailed balance from regular
@@ -292,7 +294,8 @@ the exponential decay of average phase with volume.
   and the \(1\times1\) Wilson-loop/plaquette identity.
 - `calculation-checks/su2_gauge_metropolis_checks.py` verifies the companion
   script's quaternion group operations, local score change,
-  detailed-balance identity, gauge invariance, and the \(1\times1\)
+  detailed-balance identity, spread-out minorization bookkeeping, finite-support
+  dense-orbit negative control, gauge invariance, and the \(1\times1\)
   Wilson-loop/plaquette identity.
 - `calculation-checks/heatbath_overrelaxation_checks.py` verifies finite
   conditional heat-bath balance, \(SU(2)\) staple reduction, overrelaxation
@@ -388,3 +391,11 @@ the exponential decay of average phase with volume.
   phase-correlated observable as negative controls against promoting the
   denominator obstruction to a universal observable-variance theorem without an
   explicit residual-noncancellation hypothesis.
+- 2026-06-08 issue #896 scope pass: split compact \(SU(2)\) link Metropolis
+  detailed balance from product-Haar irreducibility.  Dense subgroup generation
+  is now recorded as topological reach only; the chapter uses a spread-out
+  positive-density proposal condition as the compact-state Harris/minorization
+  witness for Haar irreducibility and an explicit lazy step for the
+  aperiodicity datum, with a finite-support dense-orbit negative control in the
+  calculation check.  The existing \(SU(3)\) subgroup status remark already
+  keeps invariance separate from ergodicity and mixing.

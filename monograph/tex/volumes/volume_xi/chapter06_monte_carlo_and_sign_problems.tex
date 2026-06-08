@@ -654,10 +654,7 @@ probability
   \label{eq:su2-link-metropolis-acceptance}
 \end{equation}
 Then the resulting transition kernel satisfies detailed balance with respect
-to \(d\nu_{\beta,\Lambda}\).  If the support of \(\kappa\) generates
-\(SU(2)\) as a closed subgroup, the chain is irreducible with respect to the
-product Haar measure on the compact link space; rejection probabilities give
-the usual holding component.
+to \(d\nu_{\beta,\Lambda}\).
 \end{lemma}
 
 \begin{proof}
@@ -679,14 +676,67 @@ then
 \]
 The case \(\Delta Q<0\) is the same identity with \(U\) and \(U'\) exchanged.
 Multiplying by the common proposal density and normalizing by
-\(Z_{\beta,\Lambda}\) gives detailed balance.  If the support of \(\kappa\)
-generates \(SU(2)\), finite products of allowed local left multiplications
-can approximate any assignment of link variables by compactness and the group
-generation hypothesis.  This gives irreducibility relative to product Haar
-measure.  The holding component is present whenever a proposal is rejected;
-one may also insert an explicit lazy step without changing the invariant
-measure.
+\(Z_{\beta,\Lambda}\) gives detailed balance.
 \end{proof}
+
+The measure-theoretic reachability hypothesis is separate from this pairwise
+balance calculation.  Let
+\[
+  \mathcal U_\Lambda=SU(2)^{\mathcal E_\Lambda}
+\]
+be the finite link space with product Haar measure \(\lambda_\Lambda\).
+Assume finite \(\beta\), and suppose the proposal law is spread out in the
+following local sense: for some integer \(n_0\), constant \(c>0\), and open
+identity neighborhood \(B\subset SU(2)\),
+\begin{equation}
+  \kappa^{*n_0}(dR)\ge c\,\mathbf 1_B(R)\,dR ,
+  \label{eq:su2-spread-out-proposal-minorization}
+\end{equation}
+where \(dR\) is normalized Haar measure on \(SU(2)\).  The compact-group
+convolution input is that such a neighborhood minorization on the connected
+compact Lie group \(SU(2)\) yields a further finite convolution power whose
+absolutely continuous component has positive density on \(SU(2)\).
+
+\begin{proposition}[Spread-out sufficient condition for Haar irreducibility]
+\label{prop:su2-link-metropolis-haar-irreducibility}
+Under \eqref{eq:su2-spread-out-proposal-minorization}, the random-scan local
+\(SU(2)\) Metropolis kernel is \(\lambda_\Lambda\)-irreducible on
+\(\mathcal U_\Lambda\).  If the explicit lazy variant
+\[
+  P_{\rm lazy}=\ell I+(1-\ell)P,\qquad 0<\ell<1,
+\]
+is used, the resulting chain has the corresponding aperiodicity datum.
+\end{proposition}
+
+\begin{proof}
+The Wilson score \(Q\) is continuous on the compact finite link space, hence
+bounded.  Therefore the Metropolis acceptance probability for any single
+local proposal is bounded below by a positive constant depending only on
+\(\beta\) and the finite lattice.  A prescribed finite string of link choices
+and accepted local proposals consequently has positive probability whenever
+the proposal factors have positive Haar density.
+
+By the spread-out convolution input, a finite number of proposals at one
+chosen link has an absolutely continuous component with positive density on
+the whole copy of \(SU(2)\) acting on that link.  Applying such blocks to the
+finitely many links gives, after a finite deterministic scan pattern, an
+absolutely continuous component on the full product link space with positive
+density.  Thus every measurable \(A\subset\mathcal U_\Lambda\) with
+\(\lambda_\Lambda(A)>0\) is reached from every starting configuration with
+positive probability after some finite number of steps.  This is
+\(\lambda_\Lambda\)-irreducibility.  In compact-state Markov-chain language,
+the finite scan supplies the Harris/minorization witness: a finite-step
+absolutely continuous component charges every product-Haar-positive set.  The
+lazy term gives a self-transition atom of mass \(\ell\) at every state, which
+supplies the stated aperiodicity datum.
+\end{proof}
+
+Topological generation by itself is a weaker datum.  If \(\kappa\) is supported
+on a finite symmetric set whose generated subgroup is dense in \(SU(2)\), then
+the orbit of any starting link configuration is still countable.  Its
+complement has full product Haar measure and is unreachable from that start.
+Such a proposal can pass a dense-generation test while failing
+\(\lambda_\Lambda\)-irreducibility.
 
 Gauge transformations are maps \(g_x\in SU(2)\) at sites, acting by
 \[
