@@ -7,6 +7,7 @@ from check_utils import assert_close as _assert_close
 
 import cmath
 import math
+from fractions import Fraction
 
 
 def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-10) -> None:
@@ -163,6 +164,73 @@ def check_cutoff_integral_d3_separation() -> None:
     assert branch_value.real > 0.0 and branch_value.imag < 0.0
 
 
+def check_fdt_exponent_shift_and_transport_kernel() -> None:
+    # A scalar equilibrium tail C(t) ~ t^{-d/2} gives a symmetrized spectrum
+    # |omega|^{d/2-1}.  The low-frequency FDT relation multiplies the
+    # symmetrized spectrum by one power of omega to obtain the commutator
+    # spectral density, and a Kubo transport kernel divides the retarded
+    # correlator by -i omega.
+    for spatial_dim in (1, 3, 5):
+        sym_exponent = Fraction(spatial_dim, 2) - 1
+        retarded_exponent = sym_exponent + 1
+        kernel_exponent = retarded_exponent - 1
+        assert sym_exponent == kernel_exponent
+        assert retarded_exponent == Fraction(spatial_dim, 2)
+
+    d3_sym_exponent = Fraction(1, 2)
+    d3_retarded_exponent = Fraction(3, 2)
+    d3_kernel_exponent = Fraction(1, 2)
+    assert d3_retarded_exponent - d3_sym_exponent == 1
+    assert d3_kernel_exponent == d3_sym_exponent
+
+    # In d=2, the exponent d/2-1 vanishes and the dimensionally regularized
+    # power is replaced by a logarithm.  The retarded correlator has one
+    # additional omega multiplying the logarithm, while the transport kernel
+    # retains the logarithmic running.
+    d2_sym_power = Fraction(2, 2) - 1
+    d2_retarded_power = d2_sym_power + 1
+    d2_kernel_power = d2_retarded_power - 1
+    assert d2_sym_power == 0
+    assert d2_retarded_power == 1
+    assert d2_kernel_power == 0
+
+
+def check_shear_stress_tail_projectors_and_kernel_scaling() -> None:
+    # Angular averages on S^2:
+    # <n_x^2>=1/3 and <n_x^2 n_y^2>=1/15 for x != y.
+    nx2 = Fraction(1, 3)
+    nx2_ny2 = Fraction(1, 15)
+    transverse_average = 1 - nx2 - nx2 + 2 * nx2_ny2
+    longitudinal_average = 2 * nx2_ny2
+    assert transverse_average == Fraction(7, 15)
+    assert longitudinal_average == Fraction(2, 15)
+
+    # The transverse retarded shear loop has nonanalytic piece
+    # C*(-i omega)^{3/2}.  Dividing by -i omega for the viscosity kernel lowers
+    # the scaling exponent to 1/2.
+    temperature = 1.3
+    nu = 0.47
+    coefficient = -7.0 * temperature / (60.0 * math.pi * (2.0 * nu) ** 1.5)
+
+    omega = 0.08
+    scale = 4.0
+    retarded = coefficient * (-1j * omega) ** 1.5
+    retarded_scaled = coefficient * (-1j * (scale * omega)) ** 1.5
+    kernel = retarded / (-1j * omega)
+    kernel_scaled = retarded_scaled / (-1j * scale * omega)
+
+    assert_close(
+        "retarded shear nonanalytic exponent",
+        abs(retarded_scaled / retarded),
+        scale ** 1.5,
+    )
+    assert_close(
+        "viscosity-kernel square-root exponent",
+        abs(kernel_scaled / kernel),
+        scale ** 0.5,
+    )
+
+
 def check_stress_noise_tensor_positivity() -> None:
     temperature = 1.1
     eta = 0.8
@@ -211,6 +279,8 @@ def main() -> None:
     check_time_domain_tail()
     check_frequency_nonanalytic_coefficients()
     check_cutoff_integral_d3_separation()
+    check_fdt_exponent_shift_and_transport_kernel()
+    check_shear_stress_tail_projectors_and_kernel_scaling()
     check_stress_noise_tensor_positivity()
     print("All hydrodynamic fluctuation and long-time-tail checks passed.")
 

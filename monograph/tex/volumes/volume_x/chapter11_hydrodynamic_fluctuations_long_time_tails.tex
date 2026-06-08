@@ -366,7 +366,7 @@ terms depend on this cutoff and renormalize local transport coefficients.
 The low-frequency nonanalytic part is independent of the detailed cutoff
 profile.
 
-\section{Time-Domain Tail From A Diffusive Pair}
+\section{Scalar Equilibrium Tail From A Diffusive Pair}
 
 Consider one scalar diffusive mode \(\phi\) with
 \[
@@ -375,17 +375,27 @@ Consider one scalar diffusive mode \(\phi\) with
   T\chi\,e^{-Dk^2t},
   \qquad t>0.
 \]
-Let the long-wavelength current contain the normal-ordered quadratic piece
+Let the scalar composite operator be
 \[
-  J(t,\mathbf x)=\lambda:\!\phi(t,\mathbf x)^2\!: .
+  O(t,\mathbf x)=\lambda:\!\phi(t,\mathbf x)^2\!: .
 \]
-At Gaussian order, Wick contraction gives
-\begin{align}
-  C_{JJ}(t)
-  &=
+This operator is a scalar in a homogeneous isotropic parity-even state.  A
+spatial current needs a vector supplied by a gradient, momentum density, or an
+external anisotropy.  Thus the calculation below is the scalar-composite
+equilibrium tail; it becomes a current or stress calculation only after the
+corresponding tensor vertex is supplied.
+
+At Gaussian order, the connected classical or symmetrized equilibrium
+correlator
+\[
+  C^{\rm sym}_{OO}(t)
+  =
   \int d^dx\,
-  \langle J(t,\mathbf x)J(0,\mathbf0)\rangle_{\rm conn}
-  \nonumber\\
+  \langle O(t,\mathbf x)O(0,\mathbf0)\rangle_{\rm conn}^{\rm sym}
+\]
+has the Wick contraction
+\begin{align}
+  C^{\rm sym}_{OO}(t)
   &=
   2\lambda^2(T\chi)^2
   \int\frac{d^dk}{(2\pi)^d}\,e^{-2Dk^2t}
@@ -396,17 +406,18 @@ At Gaussian order, Wick contraction gives
   \qquad t>0 .
   \label{eq:hydro-fluct-time-tail-single-diffusive-mode}
 \end{align}
-This is the basic long-time tail.  More general hydrodynamic systems give
-sums of terms of the same form, with diffusion constants replaced by sums of
-the damping rates of the two modes in the loop and with tensor projectors
-from momentum or sound modes.  The exponent is fixed by the Gaussian
-integration over small loop momentum.
+This is the basic long-time tail in an equilibrium fluctuation channel.  More
+general hydrodynamic systems give sums of terms of the same form, with
+diffusion constants replaced by sums of the damping rates of the two modes in
+the loop and with tensor projectors from momentum or sound modes.  The
+exponent is fixed by the Gaussian integration over small loop momentum.
 
-\section{Frequency-Domain Nonanalyticity}
+\section{Symmetric, Retarded, And Transport Nonanalyticities}
 
-The same tail appears in the retarded correlator as a nonanalytic
-low-frequency term.  The scalar integral that controls a pair of diffusive
-modes is
+The frequency-domain scalar object obtained directly from
+\eqref{eq:hydro-fluct-time-tail-single-diffusive-mode} is the symmetrized
+equilibrium spectrum.  Its one-sided Laplace kernel is the pair-diffusion
+integral
 \begin{equation}
   I_d(z;D)
   =
@@ -427,6 +438,64 @@ regularization of the infrared integral:
   \qquad d\notin 2\mathbb Z_{\ge1}.
   \label{eq:hydro-fluct-loop-nonanalytic-general}
 \end{equation}
+For the two-sided symmetrized spectrum the real completion of this boundary
+value gives
+\begin{equation}
+  G^{\rm sym}_{OO}(\omega)\big|_{\rm nonan}
+  \propto
+  |\omega|^{d/2-1}
+  \qquad
+  (d\notin2\mathbb Z_{\ge1}),
+  \label{eq:hydro-fluct-symmetric-spectrum-exponent}
+\end{equation}
+with the logarithmic replacement in even spatial dimension.  This is the
+Fourier transform of the \(t^{-d/2}\) equilibrium tail.
+
+The retarded correlator is a different object.  For the commutator convention
+of Chapter~\ref{ch:thermal-spectral-kubo-transport},
+\[
+  G^{\rm sym}_{OO}(\omega)
+  =
+  \frac12\coth\!\left(\frac{\omega}{2T}\right)\rho_{OO}(\omega),
+  \qquad
+  \rho_{OO}=-2\,\operatorname{Im}G^R_{OO}.
+\]
+In the hydrodynamic regime,
+\begin{equation}
+  \rho_{OO}(\omega)\big|_{\rm nonan}
+  =
+  \frac{\omega}{T}\,
+  G^{\rm sym}_{OO}(\omega)\big|_{\rm nonan}
+  +O(\omega^3/T^3),
+  \label{eq:hydro-fluct-fdt-extra-frequency}
+\end{equation}
+so the spectral density, and hence the nonlocal retarded boundary value, has
+one additional power of frequency:
+\begin{equation}
+  G^R_{OO}(\omega)\big|_{\rm nonan}
+  =
+  c_R\,(-\ii\omega+0^+)^{d/2}
+  \quad
+  \text{up to local real polynomials}
+  \label{eq:hydro-fluct-retarded-exponent-shift}
+\end{equation}
+for non-even \(d\), with \(c_R\) fixed by the vertex and by the retarded
+completion.  Thus in \(d=3\) the scalar equilibrium spectrum has a
+\(|\omega|^{1/2}\) cusp, while the retarded scalar correlator has a
+\((- \ii\omega)^{3/2}\) branch term.  In \(d=2\), the pair is
+\begin{equation}
+  G^{\rm sym}_{OO}\big|_{\rm nonan}\propto
+  \log\frac{\Lambda_{\rm hyd}^2D}{|\omega|},
+  \qquad
+  G^R_{OO}\big|_{\rm nonan}\propto
+  (-\ii\omega)\log\frac{\Lambda_{\rm hyd}^2D}{-\ii\omega+0^+}.
+  \label{eq:hydro-fluct-d2-fdt-log-pair}
+\end{equation}
+The integral \(I_d\) therefore has two legitimate later uses: it can describe
+the symmetrized scalar spectrum, and after a Kubo tensor structure divides a
+retarded correlator by \(-\ii\omega\), it can describe the nonanalytic
+transport kernel.  By itself it lacks the vector or tensor vertex and the FDT
+frequency factor required for a retarded current or stress correlator.
 
 \paragraph{Infrared loop integral by Schwinger parameter.}
 For \(\operatorname{Re}z>0\) and \(D>0\), the dimensionally regularized
@@ -440,7 +509,8 @@ is
   \frac{\Gamma(1-d/2)}{(4\pi)^{d/2}(2D)^{d/2}}z^{d/2-1}.
   \label{eq:hydro-fluct-dimreg-loop-derived}
 \end{equation}
-The retarded correlator is obtained by analytic continuation to
+The causal boundary value used in retarded kernels is obtained by analytic
+continuation to
 \begin{equation}
   z=-\ii\omega+0^+,
   \label{eq:hydro-fluct-retarded-z-branch}
@@ -482,7 +552,7 @@ function:
 Substituting \(\alpha=1-d/2\) gives
 \eqref{eq:hydro-fluct-dimreg-loop-derived}.  Dimensional regularization
 drops power-divergent local terms and retains the nonanalytic infrared
-dependence.  The retarded prescription
+dependence.  The causal prescription
 \eqref{eq:hydro-fluct-retarded-z-branch} follows from the original
 denominator \(z+2Dk^2=-\ii\omega+0^+ +2Dk^2\), which is nonzero for
 \(\operatorname{Im}\omega>0\).
@@ -498,8 +568,8 @@ d & I_d^{\rm nonan}(z;D)\\ \hline
 \end{array}
 \]
 up to scheme-dependent additive constants in \(d=2\).  The branch is fixed
-by \(z=-\ii\omega+0^+\), so the retarded function is analytic in the upper
-half \(\omega\)-plane.
+by \(z=-\ii\omega+0^+\), so the corresponding causal kernel is analytic in
+the upper half \(\omega\)-plane.
 
 For \(d=3\), an explicit cutoff computation displays the separation between
 local and nonlocal terms:
@@ -526,7 +596,10 @@ As \(z/\Lambda^2\to0\),
   +O(z/\Lambda).
 \]
 The first term renormalizes a local transport coefficient.  The square-root
-term is the long-time tail written in frequency space.
+term is the symmetrized scalar-spectrum nonanalyticity, or the transport-kernel
+nonanalyticity after the retarded correlator has been divided by its Kubo
+factor.  The retarded correlator itself carries the additional frequency
+factor in \eqref{eq:hydro-fluct-fdt-extra-frequency}.
 
 \section{Transport Coefficients As Scale-Dependent Local Data}
 
@@ -556,6 +629,37 @@ inside the hydrodynamic scaling regime, and only then studies the small
 \(\omega,\mathbf k\) asymptotics.  Interchanging this order can erase the
 hydrodynamic pole, mix static and dynamic susceptibilities, or replace
 retarded functions by finite-volume quasiperiodic sums.
+
+If the operator channel defines a transport kernel through
+\[
+  G^R_{\mathcal T\mathcal T}(\omega,\mathbf0)
+  =
+  G^R_{\mathcal T\mathcal T}(0,\mathbf0)
+  -\ii\omega\,\kappa(\omega)
+  +\cdots ,
+\]
+then a retarded nonanalyticity
+\[
+  \delta G^R_{\mathcal T\mathcal T}(\omega)
+  \propto
+  (-\ii\omega)^{d/2}
+\]
+corresponds to
+\begin{equation}
+  \delta\kappa(\omega)
+  =
+  \frac{\delta G^R_{\mathcal T\mathcal T}(\omega)}{-\ii\omega}
+  \propto
+  (-\ii\omega)^{d/2-1}.
+  \label{eq:hydro-fluct-transport-kernel-exponent}
+\end{equation}
+This is the location where the \(I_d\) exponent \(d/2-1\) enters a transport
+coefficient.  In \(d=3\), the retarded correlator has a \(3/2\)-power branch
+while the frequency-dependent viscosity or conductivity kernel has a
+square-root correction.  In \(d=2\), the transport kernel runs logarithmically
+with frequency; a fixed finite bare coefficient is then a scale-dependent local
+parameter of the hydrodynamic effective theory, not a frequency-independent
+infrared observable.
 
 \section{Stress-Tensor Noise}
 
@@ -642,6 +746,120 @@ controlled by the sound attenuation constant.  The existence of the tail
 therefore follows from the convective nonlinearity and the conserved
 momentum pole; the exact tensor coefficient requires the full hydrodynamic
 mode basis and frame convention.
+
+\paragraph{A symmetry-allowed \(d=3\) shear loop.}
+The scalar \(\phi^2\) example above becomes a genuine shear-stress example
+when the tensor vertex is
+\[
+  T^{xy}_{\rm conv}
+  =
+  \frac{\pi^x\pi^y}{w},
+  \qquad
+  w=\varepsilon+p .
+\]
+For the transverse shear modes,
+\[
+  \langle\pi^i(t,\mathbf k)\pi^j(0,-\mathbf k)\rangle_{\rm T}
+  =
+  T w\,P_{\rm T}^{ij}(\hat{\mathbf k})\,e^{-\nu k^2t},
+  \qquad
+  P_{\rm T}^{ij}=\delta^{ij}-\hat k^i\hat k^j .
+\]
+Wick contraction gives
+\[
+  C^{\rm sym}_{xy,xy;{\rm T}}(t)
+  =
+  T^2\int\frac{d^3k}{(2\pi)^3}
+  \left[
+    P_{\rm T}^{xx}P_{\rm T}^{yy}
+    +
+    P_{\rm T}^{xy}P_{\rm T}^{yx}
+  \right]e^{-2\nu k^2t}.
+\]
+The angular average is
+\begin{equation}
+  \left\langle
+    P_{\rm T}^{xx}P_{\rm T}^{yy}
+    +
+    P_{\rm T}^{xy}P_{\rm T}^{yx}
+  \right\rangle_{S^2}
+  =
+  1-\frac13-\frac13+2\frac1{15}
+  =
+  \frac7{15}.
+  \label{eq:hydro-fluct-transverse-angular-seven-fifteenths}
+\end{equation}
+Thus
+\begin{equation}
+  C^{\rm sym}_{xy,xy;{\rm T}}(t)
+  =
+  \frac7{15}\,T^2(8\pi\nu t)^{-3/2}.
+  \label{eq:hydro-fluct-shear-transverse-tail}
+\end{equation}
+
+The retarded SK loop has one retarded momentum propagator and one symmetric
+momentum propagator.  With a sharp hydrodynamic cutoff, its transverse
+nonlocal part can be written
+\begin{equation}
+  \delta G^R_{xy,xy;{\rm T}}(\omega)
+  =
+  -\frac{7T}{30\pi^2}
+  \int_0^{\Lambda_{\rm hyd}}dk\,
+  \frac{k^4}{k^2-\ii\omega/(2\nu)} .
+  \label{eq:hydro-fluct-shear-retarded-radial-integral}
+\end{equation}
+The radial identity
+\[
+  \int_0^\Lambda dk\,\frac{k^4}{k^2+a}
+  =
+  \frac{\Lambda^3}{3}-a\Lambda+a^{3/2}
+  \arctan\frac{\Lambda}{a^{1/2}}
+\]
+with \(a=-\ii\omega/(2\nu)\) gives
+\begin{align}
+  \delta G^R_{xy,xy;{\rm T}}(\omega)
+  &=
+  -\frac{7T}{90\pi^2}\Lambda_{\rm hyd}^3
+  -\ii\omega\,\frac{7T\Lambda_{\rm hyd}}{60\pi^2\nu}
+  \nonumber\\
+  &\quad
+  -\frac{7T}{60\pi(2\nu)^{3/2}}\,
+  (-\ii\omega+0^+)^{3/2}
+  +O(\omega^2/\Lambda_{\rm hyd}) .
+  \label{eq:hydro-fluct-shear-retarded-three-halves}
+\end{align}
+The cubic term shifts the pressure contact, the linear term shifts the local
+viscosity at the cutoff, and the branch term is the retarded long-time-tail
+contribution.  Dividing the branch term by \(-\ii\omega\) in the shear Kubo
+structure gives the frequency-dependent viscosity correction
+\[
+  \delta\eta_{\rm T}(\omega)
+  \propto
+  (-\ii\omega+0^+)^{1/2}.
+\]
+
+Sound modes use the longitudinal projector
+\[
+  P_{\rm L}^{ij}=\hat k^i\hat k^j,
+  \qquad
+  \left\langle
+    P_{\rm L}^{xx}P_{\rm L}^{yy}
+    +
+    P_{\rm L}^{xy}P_{\rm L}^{yx}
+  \right\rangle_{S^2}
+  =
+  \frac2{15}.
+\]
+Their propagating poles carry denominators
+\(\omega\mp c_s k+\ii\Gamma_s k^2/2\).  After the frequency convolution, the
+same infrared radial structure as
+\eqref{eq:hydro-fluct-shear-retarded-radial-integral} appears with the sound
+attenuation replacing the shear diffusion constant and with the longitudinal
+projector coefficient above.  The sound-sound loop therefore contributes the
+same retarded branch power \((-\ii\omega)^{3/2}\), while mixed
+shear-sound pieces are analytic at this order because their poles sit on
+different hydrodynamic scalings.  The exponent is universal; the coefficient
+records the full mode content and frame convention.
 
 \section{Microscopic Theorem Boundary}
 

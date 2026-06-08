@@ -2272,7 +2272,9 @@ Current checks:
   the classical FDT relation, the finite bond-current contraction behind the
   macroscopic current cost, the Gaussian time-domain tail, nonanalytic loop
   coefficients, the \(d=2\) cutoff logarithm coefficient, the \(d=3\)
-  cutoff/nonanalytic split, and positivity of the stress-noise tensor.
+  cutoff/nonanalytic split, the FDT exponent shift between symmetrized,
+  retarded, and Kubo-divided transport kernels, shear-stress projector
+  averages, and positivity of the stress-noise tensor.
 - `ising_defect_fusion_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for
   the Ising/Kramers--Wannier noninvertible defect example, including fusion
   associativity, Frobenius--Perron dimensions, modular \(S\)-matrix
