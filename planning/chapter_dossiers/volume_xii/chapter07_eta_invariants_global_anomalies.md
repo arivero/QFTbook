@@ -19,6 +19,8 @@ global anomaly as an explicit mod-two-index example.
 - `D_X^{+,APS}`: chiral Dirac operator with APS spectral boundary condition.
 - `P_{\geq0}`: APS projection onto nonnegative boundary spectrum.
 - `Det D`, `Pf D`: determinant and Pfaffian lines over background-field space.
+- `p(Det D)`, `p_{\rm Pf}(Pf D)`: complex determinant superline parity
+  \(\operatorname{Ind}D^+\bmod2\) and separate real Pfaffian mod-two parity.
 - `gamma`, `Y_gamma`: closed loop of backgrounds and its mapping torus.
 - `Ind_2(B_Y)`: mod-two index of the real/pseudoreal Dirac operator.
 - `R_j`, `n=2j`, `T_Delta(R_j)`: \(SU(2)\) isospin representation, doubled
@@ -49,6 +51,12 @@ global anomaly as an explicit mod-two-index example.
   theorem for mapping tori, with an expanded mechanism explaining local
   zeta-determinant charts, the Bismut--Freed connection, curvature as the
   family index density, and holonomy as the adiabatic eta invariant.
+- Upgrades determinant-line gluing to the Dai--Freed/Freed superline
+  convention: complex determinant lines have parity
+  \(\operatorname{Ind}D^+\bmod2\), real Pfaffian lines have their own
+  mod-two Fredholm parity, orientation reversal is graded dualization, and
+  common-interface contraction is the supertrace
+  \((-1)^{p(M)}\) times ordinary evaluation.
 - Adds the elementary Cech-de Rham line-bundle bookkeeping behind
   Bismut--Freed holonomy: local frames \(e_i\), normalized connection forms
   \(a_i\), transition functions \(f_{ij}\), the overlap law
@@ -107,10 +115,11 @@ global anomaly as an explicit mod-two-index example.
 - Adds the intermediate-cut composition algebra for Dai--Freed inflow with
   the ordinary bordism convention
   \(\partial Y_{01}=(-M_0)\sqcup M_1\): the inverse Dai--Freed object has
-  variance \(L_{M_0}\otimes L_{M_1}^{-1}\), dual to the relative
+  variance \(L_{M_0}\otimes L_{M_1}^\vee\), dual to the relative
   boundary-QFT transition amplitude, successive bulk bordisms compose by
-  evaluating the anomaly line on the common cut, and the artificial-cut frame
-  cancels between adjacent factors.
+  supertracing the anomaly superline on the common cut, the odd-index cut
+  contributes the explicit minus sign, and the artificial-cut frame cancels
+  between adjacent factors.
 - Separates anomaly-factor composition from full physical gluing: the
   Dai--Freed line identity is compatible with a separately constructed
   Hilbert-space/path-integral cut formula, but does not itself supply the
@@ -144,8 +153,11 @@ global anomaly as an explicit mod-two-index example.
   jump at a one-mode crossing, the finite \(U(1)\)-phase algebra behind
   Dai--Freed gluing, boundary-pairing anomaly cancellation, typed
   orientation/variance for the ordinary bordism convention, and
-  intermediate-cut frame cancellation for composed inflow amplitudes, and a
-  finite cochain Stokes model for the contractible-loop
+  intermediate-cut frame cancellation for composed inflow amplitudes, graded
+  supertrace signs for determinant/Pfaffian superlines, the odd-index
+  ordinary-contraction negative control, a three-piece associativity
+  regression with fixed tensor order, and a finite cochain Stokes model for
+  the contractible-loop
   curvature-to-descent step.
 - The same script now checks the Cech-de Rham local connection/transition
   algebra for determinant-line holonomy: \(a_j=a_i-df_{ij}\) on overlaps and
@@ -276,3 +288,11 @@ global anomaly as an explicit mod-two-index example.
   contraction is not a proof of full physical state/path-integral gluing, and
   `eta_global_anomaly_checks.py` includes a typed variance diagnostic that
   rejects the old dualized assignment.
+- 2026-06-08 graded Dai--Freed gluing pass: corrected the June 3 ordinary
+  evaluation language to the Dai--Freed/Freed superline convention.  Complex
+  determinant lines now carry Fredholm-index parity, real Pfaffian lines
+  carry separate mod-two Fredholm parity, orientation reversal uses graded
+  dualization, common cuts are contracted by supertrace, and odd-index cuts
+  contribute the explicit minus sign.  The companion check now includes an
+  odd-superline negative control and a fixed-order three-piece associativity
+  regression.

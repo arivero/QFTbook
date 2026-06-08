@@ -425,7 +425,13 @@
     },
     {
       "path": "eta_global_anomaly_checks.py",
-      "risk_class": "eta/global anomaly"
+      "risk_class": "eta/global anomaly",
+      "convention_tags": [
+        "complex determinant line is a superline of Fredholm-index parity",
+        "real Pfaffian line uses separate mod-two Fredholm parity",
+        "Dai-Freed interface contraction is supertrace not ordinary evaluation",
+        "odd-index intermediate boundary contributes the explicit minus sign"
+      ]
     },
     {
       "path": "hawking_bogoliubov_checks.py",

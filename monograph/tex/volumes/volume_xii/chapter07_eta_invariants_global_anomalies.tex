@@ -12,8 +12,10 @@ backgrounds.  For free fermions the transport is computed by eta invariants
 of Dirac operators on the associated mapping tori.
 The source traces for the global-analysis inputs are the APS spectral
 asymmetry papers, the Bismut--Freed holonomy theorem, Dai--Freed determinant
-lines, and Witten's \(SU(2)\) anomaly
-\cite{APS1975I,APS1975II,APS1976III,BismutFreed1986,DaiFreed1994,Witten1982}.
+lines, Freed's graded determinant-line convention, and Witten's \(SU(2)\)
+anomaly
+\cite{APS1975I,APS1975II,APS1976III,BismutFreed1986,DaiFreed1994,
+Freed1995DeterminantRevisited,Witten1982}.
 
 \section{Self-Adjoint Dirac Operators and Eta Functions}
 
@@ -315,7 +317,7 @@ chiral Dirac operators
   \Gamma(M,S^-\otimes E_b),
   \qquad b\in\mathcal B,
 \]
-defines the determinant line
+defines the determinant superline
 \begin{equation}
   \operatorname{Det}D_b
   =
@@ -324,10 +326,24 @@ defines the determinant line
   \left(\bigwedge\nolimits^{\mathrm{top}}\ker D_b^-\right)^* .
   \label{eq:det-line-fiber}
 \end{equation}
+The underlying vector space is one-dimensional, but in the Dai--Freed/Freed
+formalism it is a complex \(\mathbb Z_2\)-graded line.  Its parity is
+\begin{equation}
+  p(\operatorname{Det}D_b)
+  \equiv
+  \operatorname{Ind}(D_b^+)
+  \equiv
+  \dim\ker D_b^+ - \dim\ker D_b^-
+  \pmod 2 .
+  \label{eq:det-superline-parity}
+\end{equation}
+We write \(L^\vee\) for the graded dual.  As an ungraded line this is the
+usual inverse line, but in a gluing formula it retains its parity and the
+graded tensor category supplies Koszul signs.
 Where kernels jump this formula is not a literal vector bundle chart, but the
 Quillen determinant construction glues these local descriptions to a smooth
-complex line bundle over \(\mathcal B\).  The regulated chiral fermion
-functional integral is a section of this line, not a function, until a
+complex superline bundle over \(\mathcal B\).  The regulated chiral fermion
+functional integral is a section of this superline, not a function, until a
 trivialization is chosen.
 
 Let \(\gamma:S^1\to\mathcal B\) be a loop of backgrounds.  The mapping torus
@@ -768,6 +784,20 @@ representation is pseudoreal, and the spin representation supplies an
 anti-linear symmetry that makes the Euclidean quadratic form skew on a real
 vector space.  The path integral is then a Pfaffian.  Its possible global
 anomaly is a sign.
+The Pfaffian line is also a superline, but its parity is a separate real
+Fredholm parity, not the complex chiral index in
+\eqref{eq:det-superline-parity}.  For the real skew Fredholm problem used
+below we write
+\[
+  p_{\rm Pf}(\operatorname{Pf}D)
+  =
+  \operatorname{Ind}_2(D_{\mathbb R})
+  =
+  \dim_{\mathbb R}\ker D_{\mathbb R}
+  \pmod 2 .
+\]
+This is the parity used for real Pfaffian gluing and for the Witten
+mapping-torus sign.
 
 \begin{definition}[Mod-two index]
 \label{def:mod-two-index}
@@ -1082,7 +1112,7 @@ anomaly line over the background groupoid.  A \((d+1)\)-dimensional
 invertible field theory trivializes this line when its boundary variation is
 the inverse of the fermion-line variation.  In the free-fermion model the
 closed \((d+1)\)-manifold partition function is the eta phase
-\cite{DaiFreed1994}:
+\cite{DaiFreed1994,Freed1995DeterminantRevisited}:
 \begin{equation}
   Z_{\mathrm{DF}}(Y)
   =
@@ -1139,13 +1169,36 @@ construction assigns a vector
 \[
   Z_{\mathrm{DF}}(Y)
   \in
-  L_M^{-1},
+  L_M^\vee,
 \]
-where \(L_M\) is the determinant or Pfaffian anomaly line of the boundary
-fermion system.  This vector is a trivialization of the boundary anomaly
-line, not a numerical partition function.  The numerical partition function
-appears only after pairing it with the boundary fermion determinant vector in
-\(L_M\).
+where \(L_M\) is the determinant or Pfaffian anomaly superline of the
+boundary fermion system.  For a complex chiral determinant
+\(p(M)=\operatorname{Ind}(D_M^+)\bmod2\), and for a real Pfaffian line
+\(p(M)=p_{\rm Pf}(M)\).  Orientation reversal is dualization in the graded
+category,
+\begin{equation}
+  L_{-M}\simeq L_M^\vee,
+  \qquad
+  p(-M)=p(M).
+  \label{eq:graded-orientation-reversal-dual}
+\end{equation}
+This vector is a trivialization of the boundary anomaly superline, not a
+numerical partition function.  The numerical partition function appears only
+after pairing it with the boundary fermion determinant vector in \(L_M\).
+
+The interface contraction is the graded trace on the common boundary line.
+For homogeneous local dual frames \(\ell^\vee\in L_M^\vee\) and
+\(\ell\in L_M\), our convention is
+\begin{equation}
+  \operatorname{str}_{L_M}(\ell^\vee\otimes\ell)
+  =
+  (-1)^{p(M)}\ell^\vee(\ell).
+  \label{eq:dai-freed-supertrace-interface}
+\end{equation}
+Thus an odd-index determinant or Pfaffian superline differs from ordinary
+evaluation by a minus sign, while an even-index interface reduces to ordinary
+line algebra.  For the complex determinant case this is the explicit factor
+\((-1)^{\operatorname{Ind}(D_M^+)}\).
 
 If \(Y_0\) and \(Y_1\) have the same boundary \(M\), with the same boundary
 background, the ratio between the two boundary trivializations is the closed
@@ -1155,21 +1208,26 @@ phase of the glued odd manifold
   =
   Y_0\cup_M(-Y_1).
 \]
-In the determinant-line pairing this is the gluing identity
+Since \(Z_{\rm DF}(Y_0)\in L_M^\vee\) and
+\(Z_{\rm DF}(-Y_1)\in L_M\) by
+\eqref{eq:graded-orientation-reversal-dual}, the determinant-line pairing is
+the graded gluing identity
 \begin{equation}
-  \bigl\langle Z_{\mathrm{DF}}(Y_0),Z_{\mathrm{DF}}(-Y_1)\bigr\rangle
+  \operatorname{str}_{L_M}
+  \bigl(Z_{\mathrm{DF}}(Y_0)\otimes Z_{\mathrm{DF}}(-Y_1)\bigr)
   =
   Z_{\mathrm{DF}}\bigl(Y_0\cup_M(-Y_1)\bigr),
   \label{eq:dai-freed-boundary-gluing-law}
 \end{equation}
-with the evident real-line version in the Pfaffian case.  The left side pairs
-the vector in \(L_M^{-1}\) supplied by \(Y_0\) with the dual vector supplied
-by the orientation reversal of \(Y_1\).  The right side is a number because
-the boundary anomaly lines cancel under gluing.  Associativity of gluing is
-therefore not an extra physical postulate: it is the statement that tensoring
-one-dimensional determinant lines and composing their canonical pairings give
-the same number as gluing all odd-dimensional pieces first.  This is the
-finite-line algebra that the eta invariant realizes analytically.
+with the same formula for the real Pfaffian superline after replacing
+\(p(M)\) by \(p_{\rm Pf}(M)\).  In an ordinary local coordinate the left side
+is \((-1)^{p(M)}\) times the ungraded evaluation.  The right side is a number
+because the boundary anomaly superlines cancel under gluing.  Associativity
+of gluing is therefore not an extra physical postulate: it is the statement
+that tensoring one-dimensional superlines in a fixed order and composing
+their graded traces gives the same number as gluing all odd-dimensional
+pieces first.  This is the finite superline algebra that the eta invariant
+realizes analytically.
 
 \begin{proposition}[Dai--Freed boundary pairing cancels the anomaly cocycle]
 \label{prop:dai-freed-boundary-pairing-cancels-cocycle}
@@ -1183,7 +1241,7 @@ transport.  Suppose the boundary fermion functional is a line-valued vector
   \label{eq:boundary-fermion-line-covariance}
 \end{equation}
 and a Dai--Freed filling \(Y\) supplies a vector
-\(Z_{\rm DF}(Y;A)\in L_A^{-1}\) with inverse covariance
+\(Z_{\rm DF}(Y;A)\in L_A^\vee\) with inverse covariance
 \begin{equation}
   Z_{\rm DF}(Y;A^g)
   =
@@ -1194,7 +1252,8 @@ Then the paired amplitude
 \begin{equation}
   \mathcal A_Y(A)
   =
-  \bigl\langle Z_{\rm DF}(Y;A),\Psi(A)\bigr\rangle
+  \operatorname{str}_{L_A}
+  \bigl(Z_{\rm DF}(Y;A)\otimes\Psi(A)\bigr)
   \label{eq:dai-freed-paired-boundary-amplitude}
 \end{equation}
 is invariant under \(g\).  If \(Y_0\) and \(Y_1\) are two fillings with the
@@ -1212,8 +1271,9 @@ is measured by a closed invertible-theory phase.
 \end{proposition}
 
 \begin{proof}
-Work in a local frame \(e_A\) of \(L_A\).  Write
-\(\Psi(A)=\psi_A e_A\), \(Z_{\rm DF}(Y;A)=z_A e_A^{-1}\), and let the line
+Let \(p(A)\) be the parity of the superline \(L_A\), which is preserved by
+the line transport.  Work in a local frame \(e_A\) of \(L_A\).  Write
+\(\Psi(A)=\psi_A e_A\), \(Z_{\rm DF}(Y;A)=z_A e_A^\vee\), and let the line
 transport multiply the frame coordinate by a phase \(\alpha(A,g)\).  The
 covariance equations give
 \(\psi_{A^g}=\alpha(A,g)\psi_A\) and
@@ -1221,18 +1281,24 @@ covariance equations give
 \[
   \mathcal A_Y(A^g)
   =
-  z_{A^g}\psi_{A^g}
+  (-1)^{p(A)}z_{A^g}\psi_{A^g}
   =
-  z_A\psi_A
+  (-1)^{p(A)}z_A\psi_A
   =
   \mathcal A_Y(A).
 \]
 For two fillings, the ratio \(z_{0,A}/z_{1,A}\) is a scalar because both
-vectors live in the same inverse line.  The gluing law
-\eqref{eq:dai-freed-boundary-gluing-law} identifies this scalar with the
+vectors live in the same graded dual line.  The common supertrace sign
+is not a gauge-cocycle factor; it belongs to the closed-interface comparison
+of \(Z_{\rm DF}(Y_0)\) with the orientation-reversed vector from
+\(-Y_1\).  With the graded orientation-reversal convention in
+\eqref{eq:graded-orientation-reversal-dual}, the gluing law
+\eqref{eq:dai-freed-boundary-gluing-law} identifies this comparison with the
 closed Dai--Freed phase of \(Y_0\cup_M(-Y_1)\).  Pairing both numerator and
-denominator with the same boundary vector \(\Psi(A)\) gives
-\eqref{eq:dai-freed-filling-change-closed-phase}.
+denominator with the same boundary vector \(\Psi(A)\) then gives
+\eqref{eq:dai-freed-filling-change-closed-phase}; for an odd interface, the
+minus sign is exactly the supertrace sign in
+\eqref{eq:dai-freed-supertrace-interface}.
 \end{proof}
 
 \paragraph{Composition through an intermediate boundary.}
@@ -1244,46 +1310,53 @@ a bordism \(Y_{01}:M_0\to M_1\) has
   \partial Y_{01}=(-M_0)\sqcup M_1 .
 \]
 Orientation reversal dualizes the anomaly line,
-\(L_{-M}\simeq L_M^{-1}\).  Since the Dai--Freed object for a manifold with
-boundary is a vector in the inverse line over the full boundary, this gives
+\(L_{-M}\simeq L_M^\vee\), in the graded sense of
+\eqref{eq:graded-orientation-reversal-dual}.  Since the Dai--Freed object
+for a manifold with boundary is a vector in the inverse line over the full
+boundary, this gives
 \[
   Z_{\rm DF}(Y_{01})
   \in
-  L_{\partial Y_{01}}^{-1}
+  L_{\partial Y_{01}}^\vee
   \simeq
-  (L_{-M_0}\otimes L_{M_1})^{-1}
+  (L_{-M_0}\otimes L_{M_1})^\vee
   \simeq
-  L_{M_0}\otimes L_{M_1}^{-1}.
+  L_{M_0}\otimes L_{M_1}^\vee .
 \]
+The last display fixes the source-to-target tensor order used below; the
+graded symmetry needed to pass from the formal dual of a tensor product to
+this order is included in that identification and is not repeated as a
+separate sign in later formulas.
 Thus the Dai--Freed bulk has the dual variance to a relative boundary-QFT
 transition amplitude from \(M_0\) to \(M_1\), which would live in
-\(L_{M_0}^{-1}\otimes L_{M_1}\).  The former is the inverse anomaly factor
+\(L_{M_0}^\vee\otimes L_{M_1}\).  The former is the inverse anomaly factor
 that cancels the latter; it is not itself the physical transition kernel.
 
 For successive invertible bulk bordisms \(Y_{01}:M_0\to M_1\) and
 \(Y_{12}:M_1\to M_2\), the resulting Dai--Freed vectors have the form
 \[
-  Z_{\rm DF}(Y_{01})\in L_{M_0}\otimes L_{M_1}^{-1},
+  Z_{\rm DF}(Y_{01})\in L_{M_0}\otimes L_{M_1}^\vee,
   \qquad
-  Z_{\rm DF}(Y_{12})\in L_{M_1}\otimes L_{M_2}^{-1}.
+  Z_{\rm DF}(Y_{12})\in L_{M_1}\otimes L_{M_2}^\vee.
 \]
-Their composition is obtained by evaluating the two \(M_1\)-factors:
+Their composition is obtained by taking the supertrace over the two
+\(M_1\)-factors in the displayed order:
 \begin{equation}
   Z_{\rm DF}(Y_{12}\circ Y_{01})
   =
   \bigl(\operatorname{id}_{L_{M_0}}
-  \otimes\operatorname{ev}_{L_{M_1}}
-  \otimes\operatorname{id}_{L_{M_2}^{-1}}\bigr)
+  \otimes\operatorname{str}_{L_{M_1}}
+  \otimes\operatorname{id}_{L_{M_2}^\vee}\bigr)
   \bigl(Z_{\rm DF}(Y_{01})\otimes Z_{\rm DF}(Y_{12})\bigr).
   \label{eq:dai-freed-interface-composition}
 \end{equation}
 Here
-\(\operatorname{ev}_{L_{M_1}}:L_{M_1}^{-1}\otimes L_{M_1}\to\mathbb C\)
-is the evaluation pairing, with the displayed tensor order understood.  In
-the real Pfaffian case \(L_M\) is a \(\mathbb Z_2\)-graded real superline;
-the formulas above are written in the order in which the intermediate factors
-are evaluated, and any reordering of odd Pfaffian factors uses the Koszul sign
-rule.
+\(\operatorname{str}_{L_{M_1}}:L_{M_1}^\vee\otimes L_{M_1}\to\mathbb C\)
+is the Dai--Freed supertrace \eqref{eq:dai-freed-supertrace-interface}.  If
+\(p(M_1)=0\), this is ordinary evaluation.  If \(p(M_1)=1\), it is minus
+ordinary evaluation.  The formulas above are written in the order in which
+the intermediate factors are evaluated; any other reordering of odd
+determinant or Pfaffian factors must include the Koszul sign rule.
 
 This is only the anomaly-line component of locality.  A boundary
 Hilbert-space matrix element, or a Euclidean transition amplitude, also
@@ -1298,41 +1371,67 @@ of freedom.
 \label{prop:dai-freed-intermediate-cut-frame-cancellation}
 Choose local frames \(e_i\) of the anomaly lines \(L_{M_i}\).  Write
 \[
-  Z_{\rm DF}(Y_{01})=z_{01}\,e_0\otimes e_1^{-1},
+  Z_{\rm DF}(Y_{01})=z_{01}\,e_0\otimes e_1^\vee,
   \qquad
-  Z_{\rm DF}(Y_{12})=z_{12}\,e_1\otimes e_2^{-1}.
+  Z_{\rm DF}(Y_{12})=z_{12}\,e_1\otimes e_2^\vee.
 \]
 Then the composed coefficient in
-\(L_{M_0}\otimes L_{M_2}^{-1}\) is \(z_{01}z_{12}\), and it is independent
-of the choice of frame \(e_1\) on the glued boundary.  If the frame on
+\(L_{M_0}\otimes L_{M_2}^\vee\) is
+\((-1)^{p(M_1)}z_{01}z_{12}\), and it is independent of the choice of
+frame \(e_1\) on the glued boundary.  If the frame on
 \(M_1\) is changed by \(e_1\mapsto q e_1\), \(q\in U(1)\), the two
 coefficients transform as \(z_{01}\mapsto qz_{01}\) and
 \(z_{12}\mapsto q^{-1}z_{12}\); their product is unchanged.  The same statement
-holds for real Pfaffian lines with \(q=\pm1\).
+holds for real Pfaffian lines with \(q=\pm1\), with
+\((-1)^{p_{\rm Pf}(M_1)}\) in place of the complex determinant parity.
 \end{proposition}
 
 \begin{proof}
-The evaluation pairing satisfies
-\(\operatorname{ev}_{L_{M_1}}(e_1^{-1}\otimes e_1)=1\).  Substituting the
-two displayed expressions into
+The graded trace satisfies
+\(\operatorname{str}_{L_{M_1}}(e_1^\vee\otimes e_1)=(-1)^{p(M_1)}\).
+Substituting the two displayed expressions into
 \eqref{eq:dai-freed-interface-composition} gives
 \[
   Z_{\rm DF}(Y_{12}\circ Y_{01})
   =
-  z_{01}z_{12}\,e_0\otimes e_2^{-1}.
+  (-1)^{p(M_1)}z_{01}z_{12}\,e_0\otimes e_2^\vee.
 \]
 After the frame change \(e_1'=q e_1\), the same vectors are written as
 \[
-  Z_{\rm DF}(Y_{01})=(qz_{01})\,e_0\otimes (e_1')^{-1},
+  Z_{\rm DF}(Y_{01})=(qz_{01})\,e_0\otimes (e_1')^\vee,
   \qquad
-  Z_{\rm DF}(Y_{12})=(q^{-1}z_{12})\,e_1'\otimes e_2^{-1}.
+  Z_{\rm DF}(Y_{12})=(q^{-1}z_{12})\,e_1'\otimes e_2^\vee.
 \]
-The product of the two coefficients is still \(z_{01}z_{12}\), which is the
-coefficient of the glued bordism in the remaining endpoint lines.
+The product of the two coefficients is still \(z_{01}z_{12}\), and the
+supertrace sign \((-1)^{p(M_1)}\) is intrinsic to the intermediate
+superline, not to the chosen frame.  Hence the coefficient of the glued
+bordism in the remaining endpoint superlines is frame independent.
+
+For three successive pieces \(Y_{01},Y_{12},Y_{23}\), with endpoint frames
+kept in the fixed order
+\[
+  e_0\otimes e_1^\vee\otimes e_1\otimes e_2^\vee
+  \otimes e_2\otimes e_3^\vee,
+\]
+the two possible parenthesizations give
+\begin{align*}
+  &\bigl(Z_{\rm DF}(Y_{23})\circ Z_{\rm DF}(Y_{12})\bigr)\circ
+  Z_{\rm DF}(Y_{01}) \\
+  &\qquad =
+  Z_{\rm DF}(Y_{23})\circ
+  \bigl(Z_{\rm DF}(Y_{12})\circ Z_{\rm DF}(Y_{01})\bigr) \\
+  &\qquad =
+  (-1)^{p(M_1)+p(M_2)}z_{01}z_{12}z_{23}\,
+  e_0\otimes e_3^\vee .
+\end{align*}
+Thus associativity is ordinary associativity of scalar multiplication plus
+the two graded traces on the two common interfaces.  When the glued
+interfaces all have even index, these signs are \(+1\) and the formula
+reduces to the ungraded determinant-line calculation.
 \end{proof}
 
 When a relative boundary-theory amplitude
-\(\mathcal U_{02}\in L_{M_0}^{-1}\otimes L_{M_2}\) is paired with the
+\(\mathcal U_{02}\in L_{M_0}^\vee\otimes L_{M_2}\) is paired with the
 composed bulk vector, all exposed anomaly lines are evaluated and the result
 is an ordinary number.  If the physical theory supplies a valid cut formula
 for \(\mathcal U_{02}\) through \(M_1\), then

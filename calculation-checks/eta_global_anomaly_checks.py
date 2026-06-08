@@ -7,8 +7,8 @@ Target claims:
     APS boundary-sign bookkeeping, determinant/Pfaffian line coordinate
     algebra, finite action-groupoid descent, Witten SU(2) trace-delta
     parity arithmetic, typed orientation/variance of Dai-Freed boundary
-    lines, and the finite phase algebra used by Dai-Freed gluing, boundary
-    pairing, and intermediate-cut composition.
+    lines, and the finite phase algebra used by Dai-Freed gluing, graded
+    supertrace signs, boundary pairing, and intermediate-cut composition.
 
 Independent construction:
     The checks use exact integer, rational, and finite cyclic phase models
@@ -30,8 +30,9 @@ Negative controls:
     cancellation, nontrivial stabilizer-character obstruction to descent,
     zero-mode exclusion in the APS half-cylinder convention, parity-changing
     Pfaffian sign crossings, rejection of the relative boundary-amplitude
-    variance as a Dai-Freed inverse-line variance, and nontrivial SU(2)
-    mapping-torus generator signs for odd trace-delta index.
+    variance as a Dai-Freed inverse-line variance, ordinary contraction on an
+    odd determinant/Pfaffian superline, and nontrivial SU(2) mapping-torus
+    generator signs for odd trace-delta index.
 
 Scope boundary:
     Passing this script verifies exact finite algebra and convention-sensitive
@@ -52,6 +53,12 @@ def assert_equal(name: str, got: object, expected: object) -> None:
 
 
 LineType = tuple[int, ...]
+
+
+def supertrace_sign(parity: int) -> int:
+    """Sign of the supertrace of the identity on a homogeneous superline."""
+
+    return -1 if parity % 2 else 1
 
 
 def invert_line_type(line_type: LineType) -> LineType:
@@ -602,6 +609,88 @@ def check_dai_freed_interface_composition_frame_cancellation() -> None:
                     )
 
 
+def check_dai_freed_superline_supertrace_signs() -> None:
+    """Finite superline model for the graded Dai-Freed interface trace."""
+
+    for parity in [0, 1]:
+        ordinary_evaluation = 1
+        graded_trace = supertrace_sign(parity) * ordinary_evaluation
+        assert_equal(
+            f"supertrace of identity on parity-{parity} superline",
+            graded_trace,
+            1 if parity == 0 else -1,
+        )
+        assert_equal(
+            f"ordinary evaluation agrees exactly in even index parity={parity}",
+            ordinary_evaluation == graded_trace,
+            parity == 0,
+        )
+
+    for p1 in [0, 1]:
+        for z01 in [-3, -1, 2, 5]:
+            for z12 in [-2, 1, 4]:
+                graded = supertrace_sign(p1) * z01 * z12
+                ordinary = z01 * z12
+                assert_equal(
+                    f"two-piece graded interface sign p1={p1}",
+                    graded,
+                    ((-1) if p1 else 1) * ordinary,
+                )
+                if p1 == 1:
+                    assert_equal(
+                        "ordinary contraction fails on an odd-index interface",
+                        ordinary == graded,
+                        False,
+                    )
+                for q in [Fraction(-1), Fraction(1), Fraction(2, 3)]:
+                    transformed_z01 = q * z01
+                    transformed_z12 = z12 / q
+                    assert_equal(
+                        f"graded two-piece frame cancellation p1={p1} q={q}",
+                        supertrace_sign(p1) * transformed_z01 * transformed_z12,
+                        graded,
+                    )
+
+    for p1 in [0, 1]:
+        for p2 in [0, 1]:
+            for z01 in [-2, 1, 3]:
+                for z12 in [-1, 2]:
+                    for z23 in [-3, 1]:
+                        left_grouping = (
+                            supertrace_sign(p2)
+                            * (supertrace_sign(p1) * z01 * z12)
+                            * z23
+                        )
+                        right_grouping = (
+                            supertrace_sign(p1)
+                            * z01
+                            * (supertrace_sign(p2) * z12 * z23)
+                        )
+                        expected = (
+                            supertrace_sign(p1)
+                            * supertrace_sign(p2)
+                            * z01
+                            * z12
+                            * z23
+                        )
+                        assert_equal(
+                            f"three-piece graded associativity p1={p1} p2={p2}",
+                            left_grouping,
+                            right_grouping,
+                        )
+                        assert_equal(
+                            f"three-piece graded coefficient p1={p1} p2={p2}",
+                            left_grouping,
+                            expected,
+                        )
+                        if (p1 + p2) % 2 == 1:
+                            assert_equal(
+                                "ordinary three-piece contraction misses odd total supertrace sign",
+                                z01 * z12 * z23 == expected,
+                                False,
+                            )
+
+
 def oriented_edge_value(cochain: dict[tuple[int, int], Fraction], start: int, end: int) -> Fraction:
     if (start, end) in cochain:
         return cochain[(start, end)]
@@ -1055,6 +1144,7 @@ def main() -> None:
     check_dai_freed_boundary_pairing_cancels_cocycle()
     check_dai_freed_interface_orientation_variance()
     check_dai_freed_interface_composition_frame_cancellation()
+    check_dai_freed_superline_supertrace_signs()
     check_contractible_loop_curvature_stokes()
     check_action_groupoid_anomaly_cocycle_and_descent()
     check_dual_anomaly_line_cancellation()
