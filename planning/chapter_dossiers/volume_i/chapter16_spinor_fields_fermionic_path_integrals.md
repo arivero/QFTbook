@@ -34,8 +34,16 @@ Source-File: monograph/tex/volumes/volume_i/chapter16_spinor_fields_fermionic_st
 - The ordinary-commutator trial field is included only as a locality check:
   it shows the nonvanishing spacelike scalar part and fixes the CAR sign
   used in the actual local spinor algebra.
-- The full spin-statistics theorem is cited only as a theorem-level statement
-  under Wightman-type assumptions; its proof is not reproduced.
+- The full Wightman spin-statistics theorem is quoted as
+  `thm:wightman-spin-statistics` under explicit positive-metric, covariance,
+  spectrum, common-domain, adjoint-pairing, cyclicity, and nonzero-field
+  assumptions.  The chapter records the proof architecture through Jost
+  points, weak local commutativity, complex Lorentz covariance, PCT, and the
+  distributional edge-of-the-wedge theorem, while leaving the complete
+  Streater--Wightman/Jost proof external.
+- The theorem site separates the positive-metric field theorem from
+  DHR/parastatistics, gauge-fixed indefinite-metric/BRST boundaries, and
+  low-dimensional braid or solitonic exceptions.
 - The Berezin path integral is constructed first in finite dimension and then
   used as the regulated model for the continuum notation.
 - Spinorial LSZ and the first fermionic vertex appear only after the
@@ -179,6 +187,14 @@ Source-File: monograph/tex/volumes/volume_i/chapter16_spinor_fields_fermionic_st
   algebra behind the Dirac phase equations, \(U(1)\) charge convention, CAR
   locality sign, odd Dirac bracket, Berezinian inverse determinant, one-pair
   Berezin Gaussian, and coherent-state trace endpoint signs.
+- The 2026-06-08 theorem-boundary pass added
+  `thm:wightman-spin-statistics`, a quoted Wightman theorem whose conclusion
+  is the sharp wrong-statistics statement: imposing the spin-incompatible
+  spacelike exchange sign forces the adjoint-paired multiplet to vanish.
+  The pass also added the text audit that requires the theorem assumptions,
+  Streater--Wightman/Jost references, PCT and edge-of-the-wedge cross-refs,
+  DHR/parastatistics boundary, BRST boundary, low-dimensional boundary, and
+  downstream Haag--Ruelle/LSZ references to remain visible.
 - The 2026-05-28 follow-up formalized the remaining long prose blocks:
   `def:dirac-weyl-majorana-local-spinor-data`,
   the chiral/Majorana Lorentz-covariance reduction paragraph,
@@ -228,12 +244,15 @@ Source-File: monograph/tex/volumes/volume_i/chapter16_spinor_fields_fermionic_st
   extraction, and the \(\widehat A\)-series coefficients through degree six.
 - `calculation-checks/spinor_grassmann_checks.py` verifies finite sign and
   normalization algebra for the spinor-field and Grassmann path-integral
-  sections formalized on 2026-05-27.
+  sections formalized on 2026-05-27, and the 2026-06-08 text-audit contract
+  for the Wightman spin-statistics theorem and its scattering cross-references.
 
 ## Exclusions
 
 - No massless helicity representations.
 - No Maxwell gauge constraints.
 - No QED vertices or radiative corrections.
-- No proof of the general spin-statistics theorem.
+- No self-contained proof of the general spin-statistics theorem; the chapter
+  quotes the Wightman theorem with assumptions, proof architecture, and
+  external proof references.
 - No use of fermionic diagrams before the spinorial LSZ pole has been stated.

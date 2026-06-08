@@ -33,7 +33,8 @@ Source-File: monograph/tex/volumes/volume_i/chapter13_lsz_reduction_and_the_s_ma
   constructed in the preceding chapter.
 - The symmetric Fock space and plus permutation signs are scalar-boson data.
   Fermionic external particles use the graded asymptotic Fock space with signs
-  fixed by spin-statistics.
+  fixed by the Wightman spin-statistics theorem
+  `thm:wightman-spin-statistics`.
 - Scattering operator \(S=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) on
   the asymptotic Fock space when the incoming and outgoing ranges coincide.
 - Relativistically normalized generalized momentum states.

@@ -140,7 +140,8 @@ Source-File: monograph/tex/volumes/volume_i/chapter12_haag_ruelle_scattering_the
   \(\sqrt{n!}\Pi_{s,n}\) convention for \(\odot\).
 - The use of \(\mathcal F_s(\Hilb_1)\) is scoped to the scalar bosonic sector;
   the graded asymptotic Fock space for general spin/statistics is fixed by the
-  spin-statistics theorem stated in the spinor chapter.
+  Wightman spin-statistics theorem
+  `thm:wightman-spin-statistics` stated in the spinor chapter.
 - Generalized in/out momentum kernels obey the symmetrized relativistic
   delta-function normalization.
 - The S-operator is \(\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) when the

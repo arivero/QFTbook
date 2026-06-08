@@ -2557,8 +2557,11 @@ Current checks:
   spinor-field and Grassmann path-integral chapter, including the phase signs
   in the free Dirac equations, the charge ledger for \(b,d\) oscillators, the
   CAR locality sign, the odd Dirac bracket, the purely odd Berezinian
-  determinant, one-pair Berezin Gaussian normalization, and coherent-state
-  trace and supertrace endpoint signs.
+  determinant, one-pair Berezin Gaussian normalization, coherent-state trace
+  and supertrace endpoint signs, and the text-audit contract for
+  Theorem~\ref{thm:wightman-spin-statistics}: Wightman hypotheses,
+  wrong-statistics vanishing, proof-route references, and downstream
+  Haag--Ruelle/LSZ theorem cross-references.
 - `locally_covariant_kg_checks.py`: exact finite linear-algebra checks for
   the Volume XII locally covariant Klein--Gordon construction, including
   descent of the causal-propagator pairing to the equation-of-motion

@@ -362,20 +362,126 @@ Locality is the vanishing of this graded commutator for spacelike separated
 smeared fields. The Dirac field has parity \(1\), while bosonic local fields
 have parity \(0\).
 
-\begin{remark}
-The preceding computation is the free spin-\(\frac12\) instance of the
-spin-statistics connection.  A theorem-level spin-statistics statement
-requires a specified Wightman framework: a common invariant dense domain for
-the smeared fields, a positive-energy unitary representation of the spin
-cover of the proper orthochronous Poincare group, covariance of the fields as
-operator-valued tempered distributions, locality on the common domain,
-positivity of the Hilbert-space inner product, and the stated adjoint
-compatibility between fields and their conjugates.  Under those hypotheses,
-integer-spin fields have even local commutation and half-integer-spin fields
-have odd local anticommutation, except for fields that vanish in the physical
-Hilbert space.  This chapter does not use that theorem as an input; the
-displayed anticommutator is the direct verification needed for the free Dirac
-field used below.
+\begin{quotedtheorem}[Wightman spin--statistics theorem in four dimensions]
+\label{thm:wightman-spin-statistics}
+\emph{Proof references.}\footnote{The theorem is one of the standard
+Wightman consequences of positivity, locality, and complex Lorentz
+covariance.  We use the formulation in R.~F. Streater and A.~S. Wightman,
+\emph{PCT, Spin and Statistics, and All That}, Benjamin, 1964, and R.~Jost,
+\emph{The General Theory of Quantized Fields}, American Mathematical Society,
+1965 \cite{StreaterWightman1964,Jost1965}.}
+Let
+\[
+  (\Hilb,\vac,U,\mathcal D,J,\{\widehat\Phi_\alpha\}_{\alpha\in I})
+\]
+be the field and Hilbert-space part of a four-dimensional cyclic Wightman
+field presentation in the sense of
+Definition~\ref{def:cyclic-wightman-field-presentation}.  Thus \(\Hilb\) is a
+positive Hilbert space, \(U\) is a positive-energy unitary representation of
+the universal cover of the proper orthochronous Poincare group, \(\vac\) is a
+Poincare-invariant cyclic vacuum, the \(\widehat\Phi_\alpha\) are
+operator-valued tempered distributions on a common invariant dense domain
+\(\mathcal D\), the spectrum condition holds, and the adjoint operation is
+implemented on the label space by \(J\).
+
+Assume that a finite multiplet \(\Phi\subset\{\widehat\Phi_\alpha\}\) is closed
+under this adjoint pairing and transforms covariantly in a finite-dimensional
+representation \(R\) of \(SL(2,\mathbb C)\).  Let the central element
+\(-1\in SL(2,\mathbb C)\), the lift of a \(2\pi\) spatial rotation, act on
+this irreducible spin-parity block by
+\[
+  R(-1)=\chi_\Phi\,\mathbf 1,
+  \qquad
+  \chi_\Phi\in\{+1,-1\}.
+\]
+The value \(\chi_\Phi=+1\) is the integer-spin case and
+\(\chi_\Phi=-1\) is the half-integer-spin case.  Suppose that \(\Phi\) is
+locally related to its adjoint multiplet by a fixed spacelike exchange sign:
+for test functions \(f,g\) with spacelike separated supports,
+\[
+  \widehat\Phi_a(f)\widehat\Phi_{b^\dagger}(g)
+  -
+  \epsilon_\Phi\,
+  \widehat\Phi_{b^\dagger}(g)\widehat\Phi_a(f)
+  =
+  0
+  \qquad\text{on }\mathcal D,
+  \qquad
+  \epsilon_\Phi\in\{+1,-1\}.
+\]
+If the multiplet is nonzero, in the sense that
+\(\widehat\Phi_a(f)\vac\ne0\) for some component \(a\) and test function
+\(f\), then
+\[
+  \epsilon_\Phi=\chi_\Phi .
+\]
+Equivalently, integer-spin Wightman fields commute locally with their
+adjoints, while half-integer-spin Wightman fields anticommute locally with
+their adjoints.  In the logically sharp wrong-statistics form: if the
+opposite sign \(\epsilon_\Phi=-\chi_\Phi\) is imposed under the same
+positive-metric, covariance, spectrum, locality, adjoint-pairing, and
+cyclicity hypotheses, then
+\[
+  \widehat\Phi_a(f)\vac=0
+  \quad\text{for all }a,f,
+\]
+and the Wightman reconstruction argument, equivalently the
+Reeh--Schlieder/cyclicity consequence of the same hypotheses, gives
+\[
+  \widehat\Phi_a(f)=0
+  \quad\text{as an operator-valued distribution on }\mathcal D .
+\]
+\end{quotedtheorem}
+
+\paragraph{Proof architecture and theorem boundary.}
+Theorem~\ref{thm:wightman-spin-statistics} is not proved from the preceding
+free Dirac calculation.  The standard proof works at the level of Wightman
+distributions.  The spectrum condition gives tube analyticity; covariance
+extends the tube functions by the complex Lorentz group; at Jost points,
+locality is equivalent to weak local commutativity; and the equality of the
+permuted boundary values is propagated by the distributional
+edge-of-the-wedge theorem, Theorem~\ref{thm:distributional-edge-of-the-wedge}.
+The same Jost analytic input is the one used in the Wightman PCT theorem,
+Theorem~\ref{thm:wightman-pct}.  Comparing the reversal sign obtained from
+weak local commutativity with the finite-dimensional spin matrix obtained
+from the complex Lorentz transformation and the \(2\pi\)-rotation central
+element gives \(\epsilon_\Phi=\chi_\Phi\).  If the signs disagree, the
+two-point Wightman distribution pairing \(\Phi\) with its adjoint is equal to
+its negative after analytic continuation, hence vanishes.  Positivity then
+turns this vanished two-point function into
+\(\|\widehat\Phi_a(f)\vac\|^2=0\); the local cyclicity step promotes vacuum
+annihilation to vanishing of the field distribution.  This paragraph records
+the proof route and the external analytic theorem being quoted, not a
+self-contained reproduction of the Streater--Wightman/Jost proof.
+
+\begin{remark}[Observable, gauge, and low-dimensional boundaries]
+The theorem is a positive-metric field theorem, not a theorem about arbitrary
+charged sectors stated only in the neutral observable algebra.  In the
+Doplicher--Haag--Roberts setting, observable sectors can carry Bose, Fermi, or
+parastatistics data.  Under transportability, Haag duality, symmetric
+exchange, finite statistics, and the finite-dimensionality hypotheses of
+Theorem~\ref{thm:doplicher-roberts-reconstruction}, Doplicher--Roberts
+reconstruction produces a charged field algebra with a compact gauge group;
+after that reconstruction the charged field multiplets have ordinary
+Bose/Fermi local grading, while the observable algebra remembers the sector
+statistics categorically.
+
+Gauge-fixed covariant fields before the physical quotient are outside the
+positive Hilbert-space hypothesis.  Vector potentials, ghosts, antighosts, and
+auxiliary fields in a covariant gauge live naturally in the Krein/BRST
+framework of Chapter~\ref{ch:volume-ii-18}; their Grassmann parity and
+indefinite-metric commutation rules are gauge-fixing devices, not direct
+applications of Theorem~\ref{thm:wightman-spin-statistics}.  The positive
+statement is made after passing to gauge-invariant observables or to the
+positive physical BRST cohomology, when such a cohomology Hilbert space has
+been constructed.
+
+The four-dimensional hypothesis is also structural.  In \(2+1\) dimensions
+the topology of spacelike exchange allows braid-group statistics and anyonic
+spin.  In \(1+1\) dimensions, solitonic, disorder, and other nonlocal or
+relatively local sectors can evade the assumptions of a local Wightman field
+multiplet, even though genuinely local positive-metric fields in such a
+presentation still obey the corresponding local spin-statistics restriction.
 \end{remark}
 
 \section{Dirac, Weyl, and Majorana Fields}
