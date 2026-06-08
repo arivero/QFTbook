@@ -124,8 +124,10 @@
       "contract_tier": "extended",
       "convention_tags": [
         "soft mass path is a real ray in the gaugino-mass source plane",
-        "perturbing operator is the renormalized Hamiltonian derivative",
-        "finite-volume Riesz projection requires an isolated spectral window",
+        "perturbing operator is the renormalized Hamiltonian derivative on a declared domain or form domain",
+        "finite-volume Riesz projection requires an isolated spectral window and a Kato or norm-resolvent hypothesis",
+        "finite matrix transport is downstream regression not domain verification",
+        "cutoff-only boundedness does not prove a uniform relative bound",
         "k-string ratio transport is controlled by logarithmic tension response",
         "nonzero response rejects constant-ratio transfer"
       ]

@@ -10,17 +10,20 @@ Target claims:
   spectral-bridge response formulae.
 Independent construction:
 - Exact finite-dimensional algebra using symbolic matrices, rational
-  perturbations, and trigonometric identities; the spectral-bridge checks use
-  a diagonal finite Hamiltonian with an explicit perturbing operator rather
-  than any monograph prose formula.
+  perturbations, trigonometric identities, an unbounded diagonal common-domain
+  model with exact resolvent derivative, and a finite matrix cluster used only
+  as a downstream bounded regression.
 Imported assumptions:
 - The script imports only SymPy algebra.  QFT inputs such as regulator
-  existence, reflection positivity, continuum limits, and spectral isolation
-  are hypotheses in the text, not assumptions verified here.
+  existence, self-adjoint domain construction, reflection positivity,
+  continuum limits, and spectral isolation are hypotheses in the text, not
+  assumptions verified here.
 Negative controls:
 - The checks reject a transported k-string ratio when the logarithmic response
   is nonzero, so the old "if constant, then equal" bridge cannot pass as a
-  calculation.
+  calculation.  They also reject a cutoff-only perturbation whose relative
+  bound grows with the cutoff, showing why a finite matrix identity cannot
+  verify the unbounded-operator domain step.
 Scope boundary:
 - These checks verify finite algebra and normalization.  They do not prove a
   four-dimensional supersymmetric or bosonic Yang-Mills continuum
@@ -37,7 +40,9 @@ Convention dependencies:
   perturbing operator is the derivative of the finite-volume Hamiltonian along
   that renormalized path.
 Domain and remainder assumptions:
-- Spectral projection transport requires finite-volume level isolation and a
+- Spectral projection transport requires a common-domain Kato type-(A), common
+  form-domain type-(B), or C^1 norm-resolvent hypothesis; finite-volume level
+  isolation; Riesz ranges in the perturbing-operator or form domain; and a
   uniform continuum/thermodynamic limiting order supplied by the chapter.
 Remaining unproved or conditional:
 - Extension from the small-soft-mass bridge segment to the bosonic
@@ -47,7 +52,13 @@ Remaining unproved or conditional:
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import sympy as sp
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+CHAPTER = REPO_ROOT / "monograph/tex/volumes/volume_vii/chapter07b_susy_yang_mills_family_spectra.tex"
 
 
 def assert_zero(name: str, expr: sp.Expr) -> None:
@@ -64,6 +75,13 @@ def assert_near_zero(name: str, expr: sp.Expr, tol: sp.Float = sp.Float("1e-45")
         raise AssertionError(f"{name} has invalid tolerance: {tol!r}")
     if value >= tol:
         raise AssertionError(f"{name} failed numerically: {value!r}")
+
+
+def assert_contains(text: str, phrase: str, context: str) -> None:
+    normalized_text = " ".join(text.split())
+    normalized_phrase = " ".join(phrase.split())
+    if phrase not in text and normalized_phrase not in normalized_text:
+        raise AssertionError(f"{context}: missing {phrase!r}")
 
 
 def check_holomorphic_scale_dimensions() -> None:
@@ -198,7 +216,46 @@ def check_pure_sym_channel_pole_bookkeeping() -> None:
     assert_zero("pure SYM split diagnostic value", split_delta / split_average - sp.Rational(2, 5))
 
 
+def check_soft_mass_common_domain_unbounded_model() -> None:
+    # Exact diagonal model on l^2(N):
+    # H_m e_n = (n + m(2n+3)) e_n, with common domain
+    # {psi: sum n^2 |psi_n|^2 < infinity}.  The perturbation is H_0-bounded,
+    # so the resolvent derivative is an operator-domain statement rather than
+    # a finite-matrix identity.
+    m = sp.symbols("m")
+    z = sp.I
+    for n_value in (0, 1, 3, 9, 17):
+        h_n = sp.Integer(n_value) + m * (2 * n_value + 3)
+        v_n = sp.Integer(2 * n_value + 3)
+        resolvent_entry = 1 / (z - h_n)
+        assert_zero(
+            f"unbounded common-domain resolvent derivative n={n_value}",
+            sp.diff(resolvent_entry, m) - v_n / (z - h_n) ** 2,
+        )
+        # Relative bound with respect to H_0: 2n+3 <= 5(n+1).
+        if not (v_n <= 5 * (n_value + 1)):
+            raise AssertionError("common-domain relative bound check failed")
+
+
+def check_unbounded_domain_negative_control() -> None:
+    # V_bad e_n = n^2 e_n is bounded in every finite cutoff, but it is not
+    # H_0-bounded for H_0 e_n = n e_n on l^2(N).  The cutoff relative-bound
+    # constant grows like N, so a 3-by-3 check cannot certify the domain step.
+    cutoff_ratios = []
+    for cutoff in (4, 8, 16, 32):
+        worst_ratio = max(sp.Rational(n * n, n + 1) for n in range(1, cutoff + 1))
+        cutoff_ratios.append(worst_ratio)
+    for previous, current in zip(cutoff_ratios, cutoff_ratios[1:]):
+        if not current > previous:
+            raise AssertionError("bad unbounded perturbation did not grow with cutoff")
+    if cutoff_ratios[-1] <= 4 * cutoff_ratios[0]:
+        raise AssertionError("cutoff matrix negative control failed to expose domain loss")
+
+
 def check_soft_mass_spectral_projection_transport() -> None:
+    # Bounded finite-cluster regression after the chapter has supplied the
+    # common-domain/norm-resolvent hypotheses.  This does not verify the
+    # unbounded Hamiltonian domain hypothesis.
     energies = [sp.Integer(0), sp.Integer(2), sp.Integer(5)]
     h0 = sp.diag(*energies)
     perturbation = sp.Matrix(
@@ -257,6 +314,27 @@ def check_soft_mass_string_ratio_response() -> None:
         raise AssertionError("constant-ratio negative control was incorrectly accepted")
 
 
+def check_soft_mass_domain_text_contract() -> None:
+    text = CHAPTER.read_text(encoding="utf-8")
+    required = [
+        "self-adjoint Hamiltonian",
+        r"\mathcal D_{\sigma}",
+        r"\mathcal Q_{\sigma}",
+        "operator-topology hypothesis",
+        "Kato type-\\((A)\\)",
+        "closed-quadratic-form type-\\((B)\\)",
+        r"C^1\) norm-resolvent",
+        r"\label{eq:soft-mass-relative-bound}",
+        "finite-rank Riesz range",
+        r"\label{eq:soft-mass-resolvent-derivative-domain}",
+        "form-resolvent language",
+        "Finite cutoff versus continuum endpoint",
+        "bosonic Yang--Mills endpoint remains a",
+    ]
+    for phrase in required:
+        assert_contains(text, phrase, "soft-mass domain hypothesis text")
+
+
 def main() -> None:
     check_holomorphic_scale_dimensions()
     check_n1_star_fuzzy_sphere_ansatz()
@@ -264,8 +342,11 @@ def main() -> None:
     check_sw_vortex_radial_normalization()
     check_abelianized_a_type_sine_profile()
     check_pure_sym_channel_pole_bookkeeping()
+    check_soft_mass_common_domain_unbounded_model()
+    check_unbounded_domain_negative_control()
     check_soft_mass_spectral_projection_transport()
     check_soft_mass_string_ratio_response()
+    check_soft_mass_domain_text_contract()
     print("All supersymmetric Yang-Mills deformation-ladder checks passed.")
 
 

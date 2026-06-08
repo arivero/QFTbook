@@ -51,6 +51,9 @@ The chapter depends on:
 - `H_{a,L}(m)`, `V_{a,L}(m)`, `P_n(m)`: common regulated soft-mass
   Hamiltonian path, perturbing Hamiltonian derivative, and Riesz projection
   for an isolated finite-volume spectral cluster.
+- `mathcal H_{a,L}^{sigma}`, `mathcal D_sigma`, `mathcal Q_sigma`: sector
+  Hilbert space, common self-adjoint operator domain, and common closed-form
+  domain required for the unbounded finite-volume Hamiltonian bridge.
 
 ## Claim Ledger
 
@@ -90,11 +93,14 @@ The chapter depends on:
 - States the soft gaugino-mass branch-selection response at small
   `m_lambda`.
 - Constructs a finite-volume controlled soft-mass spectral bridge segment:
-  common regulator and tuning path, renormalized perturbing Hamiltonian
-  derivative, Riesz projection transport for isolated local and flux-sector
-  windows, Feynman-Hellmann formulas for mass and tension responses, and
-  phase-boundary diagnostics.  Large soft-mass decoupling to bosonic
-  Yang-Mills remains an open endpoint problem.
+  common regulator and tuning path, sector Hilbert spaces, self-adjoint
+  domains or form domains, Kato type-(A), type-(B), or `C^1`
+  norm-resolvent topology hypothesis, relative/form bounds for the
+  renormalized perturbing Hamiltonian derivative, Riesz projection transport
+  for isolated local and flux-sector windows, Feynman-Hellmann formulas for
+  mass and tension responses with Riesz ranges in the perturbing-operator or
+  form domain, and phase-boundary diagnostics.  Large soft-mass decoupling to
+  bosonic Yang-Mills remains an open endpoint problem.
 
 ## Calculation Checks
 
@@ -106,10 +112,12 @@ The chapter depends on:
   holomorphic scale dimensions, the `N=1*` fuzzy-sphere ansatz, sine/Casimir
   `k`-string comparison identities, local vortex flux and small-radius
   normalization, the Abelianized `A`-type sine eigenvector and subadditivity
-  algebra, pure-SYM channel-pole diagnostic bookkeeping, finite soft-mass
-  Riesz-projection and Feynman-Hellmann transport, and a negative control
-  rejecting constant ratio transfer when the logarithmic tension response is
-  nonzero.
+  algebra, pure-SYM channel-pole diagnostic bookkeeping, an unbounded
+  diagonal common-domain resolvent derivative model, a negative control for
+  cutoff-only boundedness without a uniform relative bound, finite soft-mass
+  Riesz-projection and Feynman-Hellmann transport after the domain hypothesis
+  has been supplied, and a negative control rejecting constant ratio transfer
+  when the logarithmic tension response is nonzero.
 
 These checks are finite normalization and algebra companions.  They do not
 prove the nonperturbative existence of the pure-YM endpoint, spectral
@@ -149,3 +157,12 @@ which data are local and which require a global deformation argument.
   Feynman-Hellmann mass/tension responses, and explicit failure diagnostics.
   The pass improves the physics architecture while preserving the theorem
   boundary: it does not claim the path reaches bosonic Yang-Mills.
+- 2026-06-08 issue #930 pass: strengthened the soft-mass spectral bridge from
+  a bounded-matrix-style Riesz identity to a finite-cutoff unbounded-operator
+  statement.  The monograph now requires sector Hilbert spaces, self-adjoint
+  domains or form domains, a Kato type-(A), type-(B), or `C^1`
+  norm-resolvent hypothesis, relative/form bounds for the integrated
+  gaugino-mass operator and counterterm derivatives, and Riesz ranges in the
+  perturbing-operator or form domain before Feynman-Hellmann traces are used.
+  Continuum and thermodynamic uniformity remain separate endpoint
+  hypotheses.

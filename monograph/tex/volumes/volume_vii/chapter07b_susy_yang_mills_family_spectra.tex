@@ -1098,38 +1098,79 @@ A regulated soft-mass spectral bridge datum consists of:
 \item a common gauge-field regulator with lattice spacing or cutoff \(a\), a
   finite spatial box of size \(L\), a fixed global form, and a fixed
   line-operator lattice;
-\item a renormalized one-parameter path \(H_{a,L}(m)\) of finite-volume
-  Hamiltonians along a fixed ray \(m=\operatorname{Re}m_\lambda\) in the soft
-  source plane, including the counterterm and tuning prescriptions that keep
-  the gauge coupling, vacuum energy, and relevant fermion-mass coordinate in
-  the declared scheme;
-\item the renormalized perturbing operator
+\item for each sector \(\sigma\) used below, a Hilbert space
+  \(\mathcal H_{a,L}^{\sigma}\) and a self-adjoint Hamiltonian
+  \(H_{a,L}^{\sigma}(m)\).  In a compact Hamiltonian lattice regulator this
+  means the \(L^2\)-space of link variables, tensored with the finite fermion
+  Fock space and projected to the Gauss-law and flux sector.  The
+  electric-field kinetic term is unbounded, so the sector comes with a dense
+  self-adjoint domain \(\mathcal D_{\sigma}\), or with a closed quadratic-form
+  domain \(\mathcal Q_{\sigma}\);
+\item a renormalized one-parameter path \(H_{a,L}^{\sigma}(m)\) along a fixed
+  ray \(m=\operatorname{Re}m_\lambda\) in the soft source plane, including the
+  counterterm and tuning prescriptions that keep the gauge coupling, vacuum
+  energy, and relevant fermion-mass coordinate in the declared scheme;
+\item an operator-topology hypothesis for that path.  For the operator
+  formulae below it is enough to assume a common-domain Kato type-\((A)\)
+  family: \(\mathcal D_{\sigma}\) is independent of \(m\),
+  \(m\mapsto H_{a,L}^{\sigma}(m)\psi\) is \(C^1\) for every
+  \(\psi\in\mathcal D_{\sigma}\), and the derivative is relatively bounded
+  on every compact \(m\)-interval,
   \begin{equation}
-    \mathcal V_{a,L}(m)=\partial_m H_{a,L}(m),
+    \|\mathcal V_{a,L}^{\sigma}(m)\psi\|
+    \le
+    A_{a,L,I}\|H_{a,L}^{\sigma}(m)\psi\|
+    +B_{a,L,I}\|\psi\|,
+    \qquad \psi\in\mathcal D_{\sigma}.
+    \label{eq:soft-mass-relative-bound}
+  \end{equation}
+  A closed-quadratic-form type-\((B)\) hypothesis may also be used, with a
+  common form domain \(\mathcal Q_{\sigma}\) and a \(C^1\) form derivative
+  bounded by the Hamiltonian form plus \(\|\cdot\|^2\).  In that case the
+  displayed matrix elements of \(\mathcal V\) below are read as form
+  derivatives.  A direct \(C^1\) norm-resolvent hypothesis is an equally
+  sufficient substitute;
+\item the renormalized perturbing operator or form derivative
+  \begin{equation}
+    \mathcal V_{a,L}^{\sigma}(m)=\partial_m H_{a,L}^{\sigma}(m),
     \label{eq:soft-mass-perturbing-operator}
   \end{equation}
   whose bare representative is the spatial integral of
   \(S|_{\theta=0}+\overline S|_{\overline\theta=0}\) plus the required
-  contact and counterterm derivatives;
+  contact and counterterm derivatives, all satisfying the same relative or
+  form bounds as the complete derivative;
 \item isolated finite-volume spectral windows for a selected vacuum branch,
   for gauge-invariant local channels, and for selected center-flux sectors;
 \item explicit gap, no-level-collision, and resolvent bounds on those windows
-  for \(0\le |m|\le m_\ast(a,L)\).
+  for \(0\le |m|\le m_\ast(a,L)\), together with the requirement that every
+  finite-rank Riesz range used in a trace formula lies in
+  \(\mathcal D_{\sigma}\), or in \(\mathcal Q_{\sigma}\) for the form
+  version.
 \end{enumerate}
 \end{definition}
 
 \begin{controlledapproximation}[Finite-volume soft-mass spectral transport]
 \label{ca:soft-mass-finite-volume-spectral-transport}
 Assume the datum of
-Definition~\ref{def:soft-mass-spectral-bridge-datum}.  Let \(I_n(0)\) be an
-isolated local-channel spectral cluster of \(H_{a,L}(0)\), separated from the
+Definition~\ref{def:soft-mass-spectral-bridge-datum} in a fixed sector
+\(\sigma\), and use the type-\((A)\) or \(C^1\) norm-resolvent hypothesis
+for the displayed operator formulae.  Let \(I_n(0)\) be an isolated
+local-channel spectral cluster of \(H_{a,L}^{\sigma}(0)\), separated from the
 rest of the finite-volume spectrum by distance \(g_n>0\), and let
-\(\mathcal C_n\) be a contour enclosing only that cluster.  If
-\(\|(z-H_{a,L}(m))^{-1}\mathcal V_{a,L}(m)\|\le K_n/g_n\) on
-\(\mathcal C_n\) throughout the interval, then the Riesz projection
+\(\mathcal C_n\) be a contour enclosing only that cluster.  Suppose
+\(\mathcal C_n\) remains in the resolvent set of \(H_{a,L}^{\sigma}(m)\)
+throughout the interval and
+\[
+  \sup_{z\in\mathcal C_n}
+  \|(z-H_{a,L}^{\sigma}(m))^{-1}
+    \mathcal V_{a,L}^{\sigma}(m)
+    (z-H_{a,L}^{\sigma}(m))^{-1}\|
+  <\infty .
+\]
+Then the Riesz projection
 \begin{equation}
   P_n(m)=\frac{1}{2\pi\ii}
-  \oint_{\mathcal C_n}(z-H_{a,L}(m))^{-1}\,\dd z
+  \oint_{\mathcal C_n}(z-H_{a,L}^{\sigma}(m))^{-1}\,\dd z
   \label{eq:soft-mass-riesz-projection}
 \end{equation}
 exists with constant rank and satisfies
@@ -1138,13 +1179,16 @@ exists with constant rank and satisfies
   =
   \frac{1}{2\pi\ii}
   \oint_{\mathcal C_n}
-  (z-H_{a,L}(m))^{-1}\mathcal V_{a,L}(m)
-  (z-H_{a,L}(m))^{-1}\,\dd z .
+  (z-H_{a,L}^{\sigma}(m))^{-1}\mathcal V_{a,L}^{\sigma}(m)
+  (z-H_{a,L}^{\sigma}(m))^{-1}\,\dd z .
   \label{eq:soft-mass-projection-derivative}
 \end{equation}
 For the cluster centroid
 \[
-  \overline E_n(m)=\frac{1}{d_n}\operatorname{Tr}\bigl(P_n(m)H_{a,L}(m)\bigr),
+  \overline E_n(m)
+  =
+  \frac{1}{d_n}
+  \operatorname{Tr}\bigl(P_n(m)H_{a,L}^{\sigma}(m)\bigr),
   \qquad d_n=\operatorname{rank}P_n,
 \]
 the mass above the selected vacuum obeys the finite-volume
@@ -1152,9 +1196,10 @@ Feynman--Hellmann identity
 \begin{equation}
   \partial_m\bigl(\overline E_n(m)-E_0(m)\bigr)
   =
-  \frac{1}{d_n}\operatorname{Tr}\bigl(P_n(m)\mathcal V_{a,L}(m)P_n(m)\bigr)
+  \frac{1}{d_n}
+  \operatorname{Tr}\bigl(P_n(m)\mathcal V_{a,L}^{\sigma}(m)P_n(m)\bigr)
   -
-  \langle\Omega_m,\mathcal V_{a,L}(m)\Omega_m\rangle .
+  \langle\Omega_m,\mathcal V_{a,L}^{0}(m)\Omega_m\rangle .
   \label{eq:soft-mass-cluster-feynman-hellmann}
 \end{equation}
 For a nondegenerate level this reduces to the difference of the perturbing
@@ -1165,9 +1210,9 @@ finite-volume lowest energy \(E_k(L,m)\):
   \partial_m T_k^{(L)}(m)
   =
   \frac1L\left(
-    \langle k,L;m|\mathcal V_{a,L}(m)|k,L;m\rangle
+    \langle k,L;m|\mathcal V_{a,L}^{k}(m)|k,L;m\rangle
     -
-    \langle\Omega_m,\mathcal V_{a,L}(m)\Omega_m\rangle
+    \langle\Omega_m,\mathcal V_{a,L}^{0}(m)\Omega_m\rangle
   \right),
   \label{eq:soft-mass-flux-feynman-hellmann}
 \end{equation}
@@ -1187,22 +1232,44 @@ is the quantity that controls whether the normalized \(k\)-string ratio is
 transported.
 \end{controlledapproximation}
 
-The proof is the standard finite-volume perturbation argument, included here
-to expose the physics input.  The resolvent identity gives
-\[
+\paragraph{Operator-theoretic proof of the local bridge.}
+The common-domain type-\((A)\) or norm-resolvent hypothesis supplies the
+resolvent derivative in operator norm,
+\begin{equation}
   \partial_m(z-H_{a,L}(m))^{-1}
   =
   (z-H_{a,L}(m))^{-1}\mathcal V_{a,L}(m)(z-H_{a,L}(m))^{-1},
-\]
-which is \eqref{eq:soft-mass-projection-derivative} after contour
-integration.  Differentiating
-\(\operatorname{Tr}(P_nH_{a,L})\) gives two terms:
+  \label{eq:soft-mass-resolvent-derivative-domain}
+\end{equation}
+with sector labels suppressed.  For a type-\((A)\) family this follows by
+differentiating the common-domain identity
 \[
-  \operatorname{Tr}((\partial_mP_n)H_{a,L})
-  +
-  \operatorname{Tr}(P_n\mathcal V_{a,L}).
+  (z-H_{a,L}(m))R_z(m)=1,
+  \qquad
+  R_z(m):=(z-H_{a,L}(m))^{-1},
 \]
-The first vanishes because \(P_n\) commutes with \(H_{a,L}\) and
+and extending the result by the relative bound
+\eqref{eq:soft-mass-relative-bound}; it is the closed-operator perturbation
+theorem used in Kato--Reed--Simon perturbation theory
+\cite{Kato1966Perturbation,ReedSimon1975II}.  A type-\((B)\) datum
+gives the same statement in form-resolvent language and replaces
+\(\langle\psi,\mathcal V\psi\rangle\) by the derivative of the closed form on
+\(\mathcal Q_{\sigma}\).
+
+Integrating \eqref{eq:soft-mass-resolvent-derivative-domain} around
+\(\mathcal C_n\) gives
+\eqref{eq:soft-mass-projection-derivative}.  Norm-continuity of the Riesz
+projection and absence of contour crossings keep the rank constant.  The
+resolvent maps into the operator domain, so the finite-rank range of
+\(P_n(m)\) lies in the domain required for the trace against
+\(\mathcal V_{a,L}^{\sigma}(m)\).  Differentiating
+\(\operatorname{Tr}(P_nH_{a,L}^{\sigma})\) gives two terms:
+\[
+  \operatorname{Tr}((\partial_mP_n)H_{a,L}^{\sigma})
+  +
+  \operatorname{Tr}(P_n\mathcal V_{a,L}^{\sigma}).
+\]
+The first vanishes because \(P_n\) commutes with \(H_{a,L}^{\sigma}\) and
 \(\operatorname{Tr}(\partial_mP_n\,P_n)=0\) for a differentiable projection of
 fixed rank.  Subtracting the vacuum derivative gives
 \eqref{eq:soft-mass-cluster-feynman-hellmann}.  The flux-sector formula is
@@ -1211,14 +1278,28 @@ with center charge \(k\), followed by division by the long length \(L\).
 
 This bridge has concrete failure diagnostics.  It fails before the bosonic
 endpoint if any selected local or flux spectral gap closes, if the Riesz
-contour intersects another level, if center flux can break by dynamical
-matter in the chosen global form, if the fermion regulator changes Pfaffian
-or reflection-positivity status, or if the counterterm/tuning trajectory
-needed to define \(\mathcal V_{a,L}\) is not uniform in the continuum and
-thermodynamic limits.  These are the phase-boundary tests for the soft-mass
-path.  What the bridge supplies is a controlled derivative and stability
-criterion while the tests pass; it does not turn the large-\(|m_\lambda|\)
-decoupling limit into a theorem.
+contour intersects another level, if the common operator domain or common
+form domain is lost, if the relative or form bound for the soft-mass
+insertion and counterterm derivatives blows up, if center flux can break by
+dynamical matter in the chosen global form, if the fermion regulator changes
+Pfaffian or reflection-positivity status, or if the counterterm/tuning
+trajectory needed to define \(\mathcal V_{a,L}\) is not uniform in the
+continuum and thermodynamic limits.  These are the phase-boundary tests for
+the soft-mass path.
+
+\paragraph{Finite cutoff versus continuum endpoint.}
+All hypotheses in
+Definition~\ref{def:soft-mass-spectral-bridge-datum} are finite-cutoff
+operator hypotheses at fixed \(a,L\).  They justify
+\eqref{eq:soft-mass-cluster-feynman-hellmann} and
+\eqref{eq:soft-mass-flux-feynman-hellmann} inside the regulated Hilbert
+spaces.  The passage to \(a\to0\), \(L\to\infty\), and then to a large
+soft-gaugino-mass decoupling regime requires additional uniform spectral
+gaps, uniform relative bounds, reflection-positive transfer matrices or an
+equivalent Hamiltonian construction, and phase-boundary exclusion.  The local
+bridge supplies a controlled derivative and stability criterion while those
+finite-cutoff tests pass; the bosonic Yang--Mills endpoint remains a
+separate theorem boundary.
 
 \section{Status Summary}
 \label{sec:susy-ym-family-status-summary}

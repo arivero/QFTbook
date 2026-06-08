@@ -2662,9 +2662,14 @@ Current checks:
   small-radius normalization, the Abelianized \(A_{N-1}\) sine-vector
   eigenvalue and subadditivity algebra, together with pure
   \(\mathcal N=1\) SYM channel-pole and supersymmetry-restoration diagnostic
-  bookkeeping, finite soft-gaugino-mass Riesz-projection and
-  Feynman--Hellmann transport, and rejection of constant \(k\)-string-ratio
-  transfer when the logarithmic tension response is nonzero.
+  bookkeeping, an unbounded diagonal common-domain model for the
+  soft-gaugino-mass resolvent derivative, a negative control showing that
+  cutoff matrices can hide loss of a uniform relative bound, finite
+  soft-gaugino-mass Riesz-projection and Feynman--Hellmann transport after
+  the domain hypothesis has been supplied, text-contract checks for the
+  Kato/form/norm-resolvent hypotheses, and rejection of constant
+  \(k\)-string-ratio transfer when the logarithmic tension response is
+  nonzero.
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the
