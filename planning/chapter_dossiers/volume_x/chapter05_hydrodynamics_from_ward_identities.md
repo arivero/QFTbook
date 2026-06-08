@@ -25,6 +25,14 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
 - Hydrodynamic scaling family: slowly varying states and sources with an
   asymptotic constitutive expansion after thermodynamic limit and declared
   contact-term subtraction.
+- Complete retained slow-sector datum \(\mathcal S_{\rm slow}\): exact
+  conserved densities are mandatory, but any Goldstone, critical,
+  quasihydrodynamic, kinetic, elastic, orientational, or higher-form variable
+  whose relaxation rate vanishes in the declared scaling family must also be
+  retained.
+- Slow-sector completeness/complement-regularity controlled approximation:
+  after projecting onto \(\mathcal S_{\rm slow}\), omitted retarded or memory
+  kernels must remain uniformly regular in the hydrodynamic scaling window.
 - Mostly-plus projector \(\Delta^{\mu\nu}=\eta^{\mu\nu}+u^\mu u^\nu\).
 - Landau-frame condition \(u_\mu T^{\mu\nu}=-\varepsilon u^\nu\).
 - General hydrodynamic-frame decomposition and first-order frame
@@ -59,7 +67,12 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
 - Diffusive density source-response kernel
   \(K^R_{nn}=\chi Dk^2/(Dk^2-i\omega)+\text{analytic}\), with the sign
   relation to the commutator-retarded convention stated explicitly.
-- Hydrodynamic scaling-limit boundary as a microscopic QFT claim.
+- Omitted-order-parameter memory-kernel negative control: integrating out a
+  relaxational scalar gives
+  \(-\lambda^2/(\Gamma_\phi+\kappa_\phi k^2-i\omega)\), which is analytic
+  only when \(\Gamma_\phi\) remains microscopic.
+- Hydrodynamic scaling-limit boundary as a microscopic QFT claim about
+  complete slow-sector identification plus complement regularity.
 
 ## Symbols
 
@@ -93,6 +106,8 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
 | \(\Pi\) | transient shear stress in the linear causal-completion example |
 | \(\tau_\pi\) | shear-stress relaxation time in the MIS example |
 | \(v_T\) | shear-sector front speed \((D_\eta/\tau_\pi)^{1/2}\) |
+| \(\mathcal S_{\rm slow}\) | retained slow-sector set in the declared scaling family |
+| \(\Gamma_\phi\) | sample nonconserved order-parameter relaxation rate in the omitted-mode negative control |
 
 ## Claim Ledger
 
@@ -104,69 +119,79 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
    gauge/diffeomorphism invariance gives the source Ward identities.
 3. A constitutive relation is an asymptotic statement on hydrodynamic
    scaling families, not a finite-volume identity.
-4. Hydrodynamic frames are coordinate choices; first-order redefinitions
+4. The retained slow-sector set is part of the hydrodynamic datum.  The
+   normal-fluid chapters use
+   \(\mathcal S_{\rm slow}^{\rm normal}=\{T^{00},T^{0i},J_A^0\}\), and this is
+   valid only when no additional mode has a vanishing relaxation rate in the
+   same scaling family.
+5. Hydrodynamic frames are coordinate choices; first-order redefinitions
    shift \(q^\mu\) and \(\nu_A^\mu\) by
    \(-(\varepsilon+p)\delta u^\mu\) and \(-n_A\delta u^\mu\).
-5. The grand-canonical pressure gives \(n_A=\partial p/\partial\mu_A\),
+6. The grand-canonical pressure gives \(n_A=\partial p/\partial\mu_A\),
    \(s=\partial p/\partial T\), and
    \(\varepsilon+p=Ts+\mu_A n_A\).
-6. Projecting \(\partial_\mu T^{\mu\nu}_{(0)}=0\) along and orthogonal to
+7. Projecting \(\partial_\mu T^{\mu\nu}_{(0)}=0\) along and orthogonal to
    \(u^\mu\) gives the ideal energy equation and Euler equation.
-7. With external sources, the ideal Euler equation implies
+8. With external sources, the ideal Euler equation implies
    \(a^\mu+\Delta^{\mu\nu}\partial_\nu\log T
    =Tn_A V_A^\mu/(\varepsilon+p)\), so acceleration is not an independent
    first-order dissipative force.
-8. Current conservation gives the ideal charge equation.
-9. The Gibbs-Duhem identity and first law imply conservation of
+9. Current conservation gives the ideal charge equation.
+10. The Gibbs-Duhem identity and first law imply conservation of
    \(S^\mu_{(0)}=su^\mu\) on ideal solutions.
-10. In Landau frame the first-order parity-even stress and current are
+11. In Landau frame the first-order parity-even stress and current are
    \(-\eta\sigma^{\mu\nu}-\zeta\Delta^{\mu\nu}\vartheta\) and
    \(-T\Sigma_{AB}\Delta^{\mu\nu}\partial_\nu(\mu_B/T)\).
-11. Divergence of the first-order entropy current gives
+12. Divergence of the first-order entropy current gives
    \[
      \partial_\mu S^\mu=
      \eta\sigma^2/(2T)+\zeta\vartheta^2/T
      +T\Sigma_{AB}\nabla(\mu_A/T)\nabla(\mu_B/T)+O(\partial^3),
    \]
    so the transport matrix positivity conditions follow.
-12. Charge diffusion at constant \(T\) gives
+13. Charge diffusion at constant \(T\) gives
    \(\omega=-i(\Sigma/\chi)k^2+\cdots\).
-13. Multi-charge diffusion has \(D=\Sigma\chi^{-1}\); if \(\chi\) is positive
+14. Multi-charge diffusion has \(D=\Sigma\chi^{-1}\); if \(\chi\) is positive
     definite and \(\Sigma\) is symmetric positive semidefinite, \(D\) is
     similar to a symmetric positive semidefinite matrix and has nonnegative
     diffusion eigenvalues.
-14. The density source-response matrix is
+15. The density source-response matrix is
     \(K^R_{n_An_B}=k^2(Dk^2-i\omega)^{-1}_{AC}\Sigma_{CB}\) up to analytic
     contact terms, and its static limit is \(\chi_{AB}\).
-15. Linearized neutral hydrodynamics gives shear diffusion
+16. Linearized neutral hydrodynamics gives shear diffusion
    \(\omega=-i\eta k^2/(\varepsilon+p)+\cdots\) and sound poles
    \[
      \omega=\pm c_sk-\frac{i}{2}
      \frac{\zeta+2\eta(d-1)/d}{\varepsilon+p}k^2+\cdots .
    \]
-16. The corresponding first-order shear PDE is parabolic; its heat kernel has
+17. The corresponding first-order shear PDE is parabolic; its heat kernel has
     instantaneous spatial support when treated as an exact initial-value
     equation.
-17. Boosting the parabolic diffusion pole outside its hydrodynamic regime
+18. Boosting the parabolic diffusion pole outside its hydrodynamic regime
     produces a high-\(k\) growing branch, so frame/variable choice and regime
     bounds are part of the causal-evolution problem.
-18. A linear MIS shear relaxation sector produces
+19. A linear MIS shear relaxation sector produces
     \(\tau_\pi\omega^2+i\omega-D_\eta k^2=0\), with a hydrodynamic shear pole
     and a transient pole at \(-i/\tau_\pi\); shear-sector stability and
     subluminal front speed require \(w>0\), \(\eta\ge0\), \(\tau_\pi>0\), and
     \(D_\eta/\tau_\pi\le1\).
-19. Retarded analyticity/positivity supplies exact QFT causality and Kubo
+20. Retarded analyticity/positivity supplies exact QFT causality and Kubo
     positivity.  The exact pole-location statement is absence of
     singularities in the open upper half-plane; finite-volume spectral lines
     and thermodynamic-limit cuts can sit on the real-axis boundary, while
     lower-half-plane poles describe damped transients or continued-sheet
     resonances.  This does not by itself prove finite-truncation hyperbolicity
     or nonlinear well-posedness; those are formulation-dependent assumptions.
-20. Hydrodynamic correlator poles match the Kubo coefficients only after the
+21. A nonconserved scalar with
+    \((\Gamma_\phi+\kappa_\phi k^2-i\omega)\phi=\lambda X+h_\phi\) can be
+    integrated out as a local analytic correction only when \(\Gamma_\phi\)
+    remains outside the hydrodynamic scaling window.  If \(\Gamma_\phi\) scales
+    to zero, the scalar belongs to \(\mathcal S_{\rm slow}\).
+22. Hydrodynamic correlator poles match the Kubo coefficients only after the
    thermodynamic and hydrodynamic scaling limits are specified.
-21. The microscopic QFT theorem boundary requires local equilibration,
-   clustering, analyticity, and control of nonconserved modes and long-time
-   tails.
+23. The microscopic QFT theorem boundary requires local equilibration,
+   clustering, analyticity, proof of slow-sector completeness, complement
+   regularity, and control of long-time tails.
 
 ## Audit Notes
 
@@ -186,6 +211,10 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   real transition lines before testing upper-half-plane analyticity, instead
   of only sampling distances to preselected real points.  The negative control
   is an actual denominator-root list with a pole in the open upper half-plane.
+- 2026-06-08 issue #884 pass: replaced the conserved-density-only foundation
+  by a complete retained slow-sector criterion, scoped the chapter to the
+  ordinary normal fluid, added a complement-regularity hypothesis, and inserted
+  the omitted-order-parameter memory-kernel negative control.
 
 ## Calculation Checks
 
@@ -197,8 +226,10 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   first-order heat-kernel acausal-support diagnostic, boosted high-\(k\)
   instability negative control, the retarded singularity taxonomy through an
   explicit finite Gibbs/Lehmann construction, and the MIS shear relaxation
-  hydrodynamic/transient poles with a
-  subluminal-front-speed condition.
+  hydrodynamic/transient poles with a subluminal-front-speed condition.  It
+  also checks the slow-sector completeness boundary by verifying that an
+  omitted relaxational order parameter with a vanishing gap produces a
+  nonlocal memory kernel rather than an analytic normal-fluid coefficient.
 
 ## Figures
 

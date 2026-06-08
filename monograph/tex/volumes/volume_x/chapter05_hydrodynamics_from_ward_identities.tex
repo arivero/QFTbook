@@ -3,14 +3,17 @@
 
 \ConventionsLorentzian
 
-Hydrodynamics is the long-wavelength effective theory of conserved
-densities.  Its variables are local thermodynamic parameters attached to a
-family of states whose correlators are controlled, at long distances and long
-times, by Ward identities and by an expansion in gradients.  This chapter
-develops the deterministic first-order theory in flat spacetime, fixes the
-sign and normalization conventions that connect it to the Kubo formulae of
-Chapter~\ref{ch:thermal-spectral-kubo-transport}, and then separates that
-asymptotic low-frequency theory from the stronger problem of causal,
+Hydrodynamics is the long-wavelength effective theory of a complete retained
+slow sector.  Exact conserved densities are always part of that sector, but
+they need not exhaust it: Goldstone phases, critical order parameters,
+weakly-relaxed charges, kinetic moments, elastic variables, or higher-form
+defect data can also remain slow in a declared scaling limit.  This chapter
+develops the deterministic first-order theory for the ordinary normal-fluid
+case in which the retained slow sector is only energy, momentum, and ordinary
+charge densities.  It fixes the sign and normalization conventions that
+connect that restricted theory to the Kubo formulae of
+Chapter~\ref{ch:thermal-spectral-kubo-transport}, and then separates the
+asymptotic low-frequency expansion from the stronger problem of causal,
 well-posed time evolution.
 
 Let \(D=d+1\), where \(d\) is the number of spatial dimensions.  The
@@ -90,25 +93,34 @@ The source-free formulas in most of this chapter are recovered by setting
 \section{Hydrodynamic Scaling Families}
 
 The hydrodynamic expansion is an asymptotic statement about a family of
-states and sources whose variation scale is taken large compared with all
-microscopic relaxation scales except the modes protected by exact
-conservation laws.  The following definition records the data that are being
-approximated.
+states and sources whose variation scale is taken large compared with the
+relaxation scales that are not retained.  The following definition records
+the data that are being approximated.
 
 \begin{definition}[Hydrodynamic scaling family]
 \label{def:hydro-scaling-family}
 A hydrodynamic scaling family near a homogeneous KMS state consists of
 regulated real-time states \(\rho_\lambda\), background sources
-\((g_{\lambda\mu\nu},A^A_{\lambda\mu})\), and local fields
-\((T_\lambda,\mu_{\lambda A},u^\mu_\lambda)\), indexed by
-\(\lambda>0\), such that in local inertial coordinates
+\((g_{\lambda\mu\nu},A^A_{\lambda\mu})\), a retained slow-mode set
+\begin{equation}
+  \mathcal S_{\rm slow}
+  =
+  \{O_a:\ \gamma_a(\lambda)\to0
+  \text{ in the declared scaling limit}\},
+  \label{eq:hydro-retained-slow-sector}
+\end{equation}
+and local slow fields \(\Psi^a_\lambda\) conjugate to the operators in
+\(\mathcal S_{\rm slow}\), indexed by \(\lambda>0\).  Exact energy-momentum
+and charge densities belong to \(\mathcal S_{\rm slow}\) because their
+relaxation rates vanish at zero momentum by Ward identities.  The ordinary
+normal-fluid specialization used in the derivations below takes
+\[
+  \Psi^a_\lambda=(T_\lambda,\mu_{\lambda A},u^\mu_\lambda)
+\]
+and assumes no additional slow variables.  In local inertial coordinates,
 \[
   \partial_{\alpha_1}\cdots\partial_{\alpha_m}
-  T_\lambda,\quad
-  \partial_{\alpha_1}\cdots\partial_{\alpha_m}
-  \mu_{\lambda A},\quad
-  \partial_{\alpha_1}\cdots\partial_{\alpha_m}
-  u^\mu_\lambda,\quad
+  \Psi^a_\lambda,\quad
   \partial_{\alpha_1}\cdots\partial_{\alpha_{m-1}}
   F^A_{\lambda\alpha_m\alpha_{m+1}}
   =
@@ -116,24 +128,51 @@ regulated real-time states \(\rho_\lambda\), background sources
   \qquad(m\ge1),
 \]
 while the zeroth-order fields remain in a fixed compact subset of the
-equilibrium state manifold with \(T>0\).  A constitutive relation through
-order \(N\) is an asymptotic expansion of the one-point functions
-\(\langle T^{\mu\nu}\rangle_{\rho_\lambda}\) and
-\(\langle J_A^\mu\rangle_{\rho_\lambda}\) whose error is
+state manifold with \(T>0\) and away from singular thermodynamic
+coordinates.  A constitutive relation through order \(N\) is an asymptotic
+expansion of the one-point functions of the operators sourced by the retained
+slow fields, in particular \(\langle T^{\mu\nu}\rangle_{\rho_\lambda}\) and
+\(\langle J_A^\mu\rangle_{\rho_\lambda}\), whose error is
 \(O(\lambda^{N+1})\) after the thermodynamic limit and after subtraction of
 declared local contact terms.
 \end{definition}
 
 This definition separates the kinematic part of hydrodynamics from the
 microscopic QFT assertion.  The kinematic part is the classification of all
-local tensor structures compatible with the Ward identities and the chosen
-state variables.  The microscopic assertion is that nonconserved excitations
-produce analytic terms in the scaling region, so that the nonanalytic
-long-distance response is exhausted by the conservation laws.
+local tensor structures compatible with the Ward identities, symmetries, and
+chosen slow variables.  The microscopic assertion is not supplied by Ward
+identities alone.  It is that the retained set \(\mathcal S_{\rm slow}\) is
+complete for the chosen scaling limit and that the complement is uniformly
+regular after projection onto this set.  The
+normal-fluid chapters impose the restrictive case
+\(\mathcal S_{\rm slow}=\{T^{0\mu},J_A^0\}\): no spontaneously broken
+continuous symmetry, no critical slow order parameter, no parametrically weak
+symmetry breaking, no unresolved kinetic moment tower, and no additional
+elastic, orientational, or higher-form hydrodynamic variables.
+
+\begin{controlledapproximation}[Slow-sector completeness and complement regularity]
+\label{ca:hydro-slow-sector-completeness}
+Let \(P_{\rm slow}\) denote the projection, in a declared retarded
+source-response or memory-kernel topology, onto the variables in
+\(\mathcal S_{\rm slow}\).  A local hydrodynamic truncation is controlled only
+if the complementary kernel
+\[
+  (1-P_{\rm slow})\,K^R(\omega,\mathbf k)\,(1-P_{\rm slow})
+\]
+and the mixed kernels generated by integrating out the complement remain
+uniformly expandable in \(\omega\) and \(\mathbf k\) throughout the scaling
+window.  Exact Ward identities supply some zero modes and constrain their
+couplings, but they do not prove this regularity.  If a nonconserved
+relaxation rate, a quasiparticle collision eigenvalue, an elastic restoring
+force, or a critical inverse correlation length also scales to zero, the
+associated variable must be moved into \(\mathcal S_{\rm slow}\) before a
+local constitutive expansion is claimed.
+\end{controlledapproximation}
 
 \begin{definition}[First-order hydrodynamic constitutive structure]
 \label{def:first-order-hydrodynamic-datum}
-A parity-even first-order hydrodynamic constitutive structure for ordinary Abelian charges is a
+A parity-even first-order normal-fluid constitutive structure for ordinary
+Abelian charges is a
 tuple
 \[
   \mathfrak D_{\rm hydro}
@@ -142,6 +181,7 @@ tuple
     W[g_+,A_+;g_-,A_-],
     T^{\mu\nu},J_A^\mu,
     \mathcal M_{\rm eq},
+    \mathcal S_{\rm slow}^{\rm normal},
     T,\mu_A,u^\mu,
     \mathsf f,
     \mathsf C^{(0)},\mathsf C^{(1)},
@@ -166,6 +206,16 @@ with the following entries.
   KMS states in the thermodynamic limit.  Its local coordinates are
   temperature \(T>0\), chemical potentials \(\mu_A\), and a
   future-timelike unit vector \(u^\mu\) satisfying \(u^\mu u_\mu=-1\).
+\item \(\mathcal S_{\rm slow}^{\rm normal}\) is the declared retained slow
+  sector for this normal-fluid truncation:
+  \[
+    \mathcal S_{\rm slow}^{\rm normal}
+    =
+    \{T^{00},T^{0i},J_A^0\}.
+  \]
+  This entry is part of the datum.  If another mode has a relaxation rate that
+  vanishes in the same scaling family, the tuple above is not the correct
+  hydrodynamic datum for that state.
 \item \(\mathsf f\) is the hydrodynamic frame, namely the prescription for
   extending \((T,\mu_A,u^\mu)\) away from exact equilibrium.  This chapter
   uses Landau matching:
@@ -213,6 +263,38 @@ family in the sense of Definition~\ref{def:hydro-scaling-family}.  The
 sections below derive the ideal equations, frame transformations, first-order
 entropy production, and hydrodynamic poles from this structure.
 \end{definition}
+
+\paragraph{Common extensions of the retained sector.}
+When the normal-fluid restriction fails, the slow-sector entry must be
+enlarged before constitutive relations are written.  A broken ordinary
+\(U(1)\) symmetry adds a phase \(\varphi\) and a Josephson relation of the
+form
+\[
+  u^\mu(\partial_\mu\varphi+A_\mu)+\mu=\text{dissipative corrections},
+\]
+so the superfluid velocity is not determined by the conserved charge density
+alone.  A dynamic critical point may add a nonconserved order parameter
+\(\phi\) with relaxational equation
+\[
+  \partial_t\phi=-\Gamma_\phi\,\frac{\delta \mathcal F}{\delta\phi}
+  +\cdots ,
+\]
+possibly coupled to energy or charge densities as in Model C or to momentum
+as in Model H.  A weakly broken charge obeys
+\[
+  \partial_\mu J^\mu=-\Gamma n+\cdots,
+  \qquad
+  \omega=-\ii\Gamma-\ii Dk^2+\cdots,
+\]
+and remains quasihydrodynamic when \(\Gamma\) scales with the external
+frequency.  In a kinetic regime the slow variables can instead be angular or
+momentum moments of a distribution function; ordinary hydrodynamics follows
+only after the nonconserved collision eigenvalues are uniformly separated
+from the conserved ones.  Elastic, orientational, and higher-form ordered
+media similarly require displacement, orientation, or defect-density fields.
+Chapter~\ref{ch:thermal-kinetic-theory-controlled-limit} treats kinetic
+moments, and Chapter~\ref{ch:thermal-nonequilibrium-steady-states-open-systems}
+discusses Model A/B/C/H-type nonequilibrium data.
 
 \section{Conserved Densities and Local State Variables}
 
@@ -1081,6 +1163,51 @@ susceptibilities and Ward identities, while the imaginary parts of the pole
 locations are fixed by the Kubo coefficients \(\eta\), \(\zeta\), and
 \(\Sigma_{AB}\).
 
+\section{Omitted Slow Modes and Memory Kernels}
+\label{sec:hydro-omitted-slow-mode-memory}
+
+The normal-fluid truncation is local only when omitted variables relax on a
+scale that remains microscopic in the hydrodynamic limit.  A single
+relaxational order parameter is enough to see the issue.  Let \(X\) denote a
+hydrodynamic force or density combination retained in the normal-fluid sector,
+and let a nonconserved scalar \(\phi\) couple linearly to it.  Linearizing the
+relaxational equation gives
+\begin{equation}
+  \left(\Gamma_\phi+\kappa_\phi k^2-\ii\omega\right)\phi(\omega,\mathbf k)
+  =
+  \lambda X(\omega,\mathbf k)+h_\phi(\omega,\mathbf k),
+  \label{eq:hydro-relaxing-order-parameter-equation}
+\end{equation}
+where \(\Gamma_\phi>0\) is the homogeneous relaxation rate.  If \(\phi\) is
+not retained, substituting its solution back into the \(X\)-sector produces
+the memory correction
+\begin{equation}
+  \Delta K_X(\omega,\mathbf k)
+  =
+  -\frac{\lambda^2}
+  {\Gamma_\phi+\kappa_\phi k^2-\ii\omega}.
+  \label{eq:hydro-omitted-order-parameter-memory}
+\end{equation}
+For fixed \(\Gamma_\phi\) this is a local gradient expansion:
+\[
+  \Delta K_X
+  =
+  -\frac{\lambda^2}{\Gamma_\phi}
+  +\frac{\lambda^2}{\Gamma_\phi^2}
+  (\kappa_\phi k^2-\ii\omega)
+  +\cdots .
+\]
+But near a dynamic critical point, or in any scaling family with
+\(\Gamma_\phi=O(\omega,k^2)\), the denominator in
+\eqref{eq:hydro-omitted-order-parameter-memory} is of the same order as the
+hydrodynamic denominator.  The correction is then nonlocal in time in the
+normal-fluid variables, and the local coefficients obtained by expanding at
+fixed \(\Gamma_\phi\) diverge as the tuning parameter is sent to the slow
+limit.  The correct effective theory retains \(\phi\) with its own equation,
+noise, and KMS data.  This is the finite-dimensional mechanism behind the
+Model A/C/H warning: the failure is not a mathematical subtlety of the
+gradient expansion but a physical omission of a slow channel.
+
 \section{Hydrodynamic Limit as a QFT Claim}
 
 The deterministic equations above are consequences of a proposed
@@ -1094,16 +1221,25 @@ Then consider sources and correlators with
 \]
 while keeping the ratios appropriate to the mode under study:
 \(\omega\sim k^2\) for diffusion and shear, and \(\omega\sim k\) for sound.
-The QFT assertion is that all nonconserved excitations produce analytic
-contributions in this scaling region, and the nonanalyticities are the
-conservation-law poles derived above.  Proving this assertion requires
-clustering, real-time analyticity, local equilibration, and control of
-long-time tails beyond the deterministic approximation.
+For the normal-fluid theory of this chapter, the QFT assertion is that the
+declared sector \(\{T^{0\mu},J_A^0\}\) is complete in this scaling family and
+that the complement satisfies
+Controlled Approximation~\ref{ca:hydro-slow-sector-completeness}.  Then the
+nonanalyticities in the retained source-response kernels are the
+conservation-law poles derived above, up to fluctuation corrections and
+long-time tails that belong to the next chapter.  In a different state or
+tuning limit, the assertion changes: if a Goldstone phase, critical order
+parameter, weakly relaxed charge, kinetic moment, or elastic variable also has
+\(\gamma_a(\lambda)\to0\), it must be part of the hydrodynamic datum before
+the complement is tested for regularity.  Proving the assertion requires
+clustering, real-time analyticity, local equilibration, and a spectral or
+memory-kernel gap for all omitted channels.
 
 \begin{openproblem}[Hydrodynamic emergence theorem]
 \label{op:hydrodynamic-emergence-theorem}
 Find physically useful QFT hypotheses under which local thermalization,
 clustering, analyticity of retarded functions, positivity of entropy
-production, and the hydrodynamic pole expansion can be proved from the
+production, completeness of the retained slow sector, regularity of its
+complement, and the hydrodynamic pole expansion can be proved from the
 microscopic theory.
 \end{openproblem}

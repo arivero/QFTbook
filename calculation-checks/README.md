@@ -2269,7 +2269,11 @@ Current checks:
   response, separating real-axis boundary spectral lines/cuts from
   lower-half-plane damped poles and an actual upper-half-plane denominator-root
   negative control, plus the MIS shear relaxation completion with
-  hydrodynamic/transient poles and a subluminal-front-speed check.
+  hydrodynamic/transient poles and a subluminal-front-speed check.  It also
+  checks the slow-sector completeness boundary by integrating out a sample
+  relaxational order parameter and verifying that when its relaxation gap
+  scales to zero, the induced memory kernel is nonlocal in the hydrodynamic
+  window rather than an analytic conserved-density-only correction.
 - `hydrodynamic_long_time_tail_checks.py`: finite checks for the Volume X
   hydrodynamic fluctuation chapter, including diffusive static covariance,
   the classical FDT relation, the finite bond-current contraction behind the

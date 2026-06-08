@@ -8,6 +8,8 @@ real-time doubled effective action for multi-charge diffusion.  It connects
 the SK generating functional, unitarity normalization, SK reality,
 positivity, gauge-invariant hydrodynamic phase variables, KMS, noise, and
 matrix-valued hydrodynamic response kernels.
+The chapter is scoped to the ordinary normal-fluid retained sector; additional
+slow fields require additional doubled variables and kernels.
 
 ## Notation Inventory
 
@@ -27,6 +29,8 @@ matrix-valued hydrodynamic response kernels.
   function by source-coupling signs and local contact terms.
 - `xi_Ai`: stochastic current noise after Hubbard-Stratonovich
   transformation.
+- `S_slow`: declared retained slow sector inherited from Chapter 5; this
+  chapter treats the ordinary charge-diffusion member explicitly.
 
 ## Claim Ledger
 
@@ -59,8 +63,14 @@ matrix-valued hydrodynamic response kernels.
    \(2T\Sigma_{AB}\,\delta_{ij}\delta(t-t')\delta^{(d)}(x-x')\).
 9. Classical dynamical KMS fixes the noise matrix to \(T\Sigma_{AB}\) by
    the finite algebra \(C_{AB}=\Sigma_{AB}/\beta\).
-10. A microscopic derivation remains an open theorem boundary requiring a
-    controlled real-time hydrodynamic scaling limit of the KMS QFT.
+10. The quadratic diffusion action is an ordinary normal-fluid construction;
+    every additional retained slow field requires its own \(r/a\) variables,
+    source normalization, symmetry/frame data, response and noise kernels,
+    dynamical KMS transformation, and positivity constraints.
+11. A microscopic derivation remains an open theorem boundary requiring a
+    controlled real-time hydrodynamic scaling limit of the KMS QFT, proof of
+    completeness of the retained slow sector, and regularity of the omitted
+    complement.
 
 ## Calculation Checks
 
@@ -69,6 +79,18 @@ matrix-valued hydrodynamic response kernels.
   two-charge susceptibility/conductivity pair, transverse Ohm response, KMS
   coefficient algebra, matrix KMS noise algebra, and Hubbard-Stratonovich
   noise normalization.
+- `calculation-checks/hydrodynamic_modes_checks.py` supplies the paired issue
+  #884 negative control: an omitted relaxational order parameter whose gap
+  scales to zero generates a nonlocal memory kernel rather than an analytic
+  conserved-density-only correction.
+
+## Audit Notes
+
+- 2026-06-08 issue #884 pass: scoped the SK construction to the declared
+  ordinary normal-fluid slow sector, stated the doubled-field data required
+  for any additional retained slow variable, and changed the microscopic
+  theorem boundary from conserved-density-only nonanalyticity to slow-sector
+  completeness plus complement regularity.
 
 ## Figure Ledger
 

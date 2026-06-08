@@ -4,14 +4,18 @@
 \ConventionsRealTime
 
 Hydrodynamic Schwinger--Keldysh effective actions are real-time doubled
-generating functionals for conserved densities in a long-wavelength state.
+generating functionals for a declared retained slow sector in a
+long-wavelength state.  Exact conserved densities are the mandatory slow
+variables in an ordinary normal fluid, but the SK construction itself applies
+to whatever additional Goldstone, critical, quasihydrodynamic, kinetic, or
+elastic variables have relaxation rates that vanish in the scaling limit.
 Their defining constraints are inherited from the closed time path:
 normalization at coincident sources, a reality relation, positivity of the
 imaginary part, gauge or diffeomorphism Ward identities, and the KMS condition
-when the initial state is thermal.  This chapter develops the quadratic
-multi-charge diffusion action explicitly, because it is the simplest place
-where all of these constraints can be seen without hiding the
-source-response signs or the matrix structure of susceptibilities and
+when the initial state is thermal.  This chapter develops the ordinary
+normal-fluid quadratic multi-charge diffusion action explicitly, because it is
+the simplest place where all of these constraints can be seen without hiding
+the source-response signs or the matrix structure of susceptibilities and
 conductivities.
 
 Let spacetime be \(\mathbb R_t\times\mathbb R^d\).  Spatial indices
@@ -671,14 +675,28 @@ to the hydrodynamic effective action only after its frame dependence,
 contact-term ambiguity, KMS transformation, and positivity properties have
 been specified.
 
+\paragraph{Additional retained slow fields.}
+The phase fields above implement ordinary charge conservation.  They are not a
+template for every slow variable.  Each extra member of the retained slow
+sector requires its own \(r/a\) fields, source normalization, symmetry and
+frame data, response and noise kernels, dynamical KMS transformation, and
+positivity constraints.  A superfluid phase has a Josephson relation rather
+than a diffusion equation; a critical order parameter has a relaxational or
+mode-coupled kernel; a weakly broken charge has a small relaxation term; and a
+kinetic moment hierarchy has a collision operator whose small eigenvalues
+must be retained until a uniform gap appears.  Omitting such a field and
+trying to absorb it into local coefficients gives the memory denominator
+displayed in \eqref{eq:hydro-omitted-order-parameter-memory}, not a local SK
+hydrodynamic action for conserved densities alone.
+
 \section{The Microscopic Theorem Boundary}
 
 The construction in this chapter is an effective-field-theory statement.  A
 microscopic derivation from QFT would have to construct the real-time
 generating functional in a thermal state, take the thermodynamic limit,
-identify the hydrodynamic scaling limit, prove that the only nonanalytic
-long-wavelength modes are the conserved densities, and show that the local
-functional above is the asymptotic expansion of connected
+identify the hydrodynamic scaling limit, prove completeness of the retained
+slow sector, prove uniform regularity of the complementary memory kernels, and
+show that the local functional above is the asymptotic expansion of connected
 Schwinger--Keldysh correlators in a controlled topology.  The local
 positivity and KMS constraints are necessary consequences of the microscopic
 closed time path; they are not by themselves a proof of thermalization.
@@ -688,6 +706,8 @@ closed time path; they are not by themselves a proof of thermalization.
 Starting from a continuum QFT with a KMS state, derive the hydrodynamic
 Schwinger--Keldysh effective action as a controlled long-wavelength limit of
 connected real-time correlators, including the topology in which the
-derivative expansion is asymptotic, the treatment of contact terms, and the
-relation between source-response kernels and commutator spectral functions.
+derivative expansion is asymptotic, the identification of the complete
+retained slow sector, the regularity of the omitted complement, the treatment
+of contact terms, and the relation between source-response kernels and
+commutator spectral functions.
 \end{openproblem}

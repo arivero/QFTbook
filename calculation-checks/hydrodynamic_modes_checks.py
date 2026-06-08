@@ -6,7 +6,10 @@ Target claims: the first-order shear and sound poles, entropy-production
 positivity, sourceful Euler force reduction, susceptibility geometry,
 first-order shear acausality as a parabolic initial-value equation, boosted
 high-k instability of the parabolic truncation, and the linear causal
-relaxation completion of the shear sector in Volume X Chapter 5.
+relaxation completion of the shear sector in Volume X Chapter 5.  The checks
+also guard the slow-sector completeness boundary: an omitted relaxational
+order parameter whose gap scales to zero produces a nonlocal memory
+denominator and cannot be absorbed into analytic normal-fluid coefficients.
 Independent construction: direct finite-dimensional algebra for the Ward
 identity modes, exact heat-kernel positivity away from the origin, explicit
 quadratic roots for boosted diffusion and MIS shear relaxation, an explicit
@@ -22,8 +25,10 @@ finite-speed PDE, Lorentz-boosted parabolic diffusion is not accepted as a
 stable high-k theory, real-axis spectral lines are not mistaken for
 lower-half-plane damped poles, a denominator with an actual open-upper-half-
 plane root is rejected, a causal relaxation model with superluminal shear
-front speed is rejected, and linear shear completion is not treated as a
-theorem for full nonlinear causal hydrodynamics.
+front speed is rejected, an omitted order-parameter mode with a vanishing
+relaxation rate is rejected as an analytic conserved-density-only correction,
+and linear shear completion is not treated as a theorem for full nonlinear
+causal hydrodynamics.
 Scope boundary: these checks verify finite algebra and linear-mode
 bookkeeping; they do not prove microscopic hydrodynamic emergence, nonlinear
 well-posedness, or the complete BRSSS/MIS coefficient inequalities.
@@ -35,10 +40,16 @@ from check_utils import assert_close as _assert_close, assert_finite
 
 import cmath
 import math
+from fractions import Fraction
 
 
 def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-10) -> None:
     _assert_close(name, got, expected, tol=tol)
+
+
+def assert_equal(name: str, got, expected) -> None:
+    if got != expected:
+        raise AssertionError(f"{name}: expected {expected!r}, got {got!r}")
 
 
 def shear_pole(eta: float, enthalpy: float, k: float) -> complex:
@@ -426,6 +437,60 @@ def check_multicharge_diffusion_geometry() -> None:
     assert eigenvalues[1] >= 0.0
 
 
+def check_omitted_relaxational_mode_memory_negative_control() -> None:
+    # Integrating out a nonconserved order parameter phi with
+    # (-i omega + Gamma_phi + kappa k^2) phi = lambda X produces
+    # Delta K_X = -lambda^2/(Gamma_phi + kappa k^2 - i omega).
+    # For fixed Gamma_phi this is analytic; if Gamma_phi, k^2, and omega all
+    # scale as the hydrodynamic denominator, it is a retained slow mode.
+    coupling = Fraction(2, 3)
+    gamma_fixed = Fraction(5, 7)
+    epsilon = Fraction(1, 101)
+
+    fixed_static = -(coupling * coupling) / gamma_fixed
+    fixed_first_omega_coefficient = (coupling * coupling) / (gamma_fixed * gamma_fixed)
+    assert_equal(
+        "fixed-gap omitted mode has finite static coefficient",
+        fixed_static,
+        Fraction(-28, 45),
+    )
+    assert_equal(
+        "fixed-gap omitted mode has finite derivative coefficient",
+        fixed_first_omega_coefficient,
+        Fraction(196, 225),
+    )
+
+    gamma0 = Fraction(5, 7)
+    stiffness_k2_0 = Fraction(11, 13)
+    omega0 = Fraction(17, 19)
+    real_denominator = epsilon * epsilon * (gamma0 + stiffness_k2_0)
+    omega = epsilon * epsilon * omega0
+    denominator_norm = real_denominator * real_denominator + omega * omega
+    memory_real = -(coupling * coupling) * real_denominator / denominator_norm
+
+    expected_scaled_memory = (
+        -(coupling * coupling)
+        * (gamma0 + stiffness_k2_0)
+        / ((gamma0 + stiffness_k2_0) * (gamma0 + stiffness_k2_0) + omega0 * omega0)
+    )
+    assert_equal(
+        "slow omitted mode memory scales as inverse hydrodynamic denominator",
+        memory_real * epsilon * epsilon,
+        expected_scaled_memory,
+    )
+    if not abs(memory_real) > abs(fixed_static) / epsilon:
+        raise AssertionError("vanishing order-parameter gap should not look like a fixed analytic correction")
+
+    weak_relaxation = epsilon * epsilon * gamma0
+    diffusion_piece = epsilon * epsilon * stiffness_k2_0
+    quasihydro_damping = weak_relaxation + diffusion_piece
+    assert_equal(
+        "weakly broken charge pole remains in the slow scaling window",
+        quasihydro_damping / (epsilon * epsilon),
+        gamma0 + stiffness_k2_0,
+    )
+
+
 def main() -> None:
     check_shear_mode()
     check_first_order_shear_acausality()
@@ -437,6 +502,7 @@ def main() -> None:
     check_sourceful_euler_force_basis()
     check_diffusion_einstein_relation_and_pole()
     check_multicharge_diffusion_geometry()
+    check_omitted_relaxational_mode_memory_negative_control()
     print("All hydrodynamic Ward-identity mode checks passed.")
 
 
