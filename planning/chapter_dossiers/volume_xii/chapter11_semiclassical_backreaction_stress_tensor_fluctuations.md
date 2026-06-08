@@ -54,6 +54,9 @@ fluctuation data required for controlled backreaction.
 - `R^{ret}_{Th}`, `Q_T`, `G_h`, `D_sc`: typed retained stress response from
   metric perturbations to stress coordinates, the one-point/contact Ward map,
   the metric gauge generator, and the full linearized semiclassical Hessian.
+- `q_h`, `p_T`, `R^{ret}_{red}`: metric reduction, stress projection, and
+  intrinsic reduced retarded response, defined only when
+  `p_T R^{ret}_{Th}` annihilates the full kernel of `q_h`.
 - `T_int^{S,V}`, `K^{ret}`, `N(T^i,T^j)`: the scheme-fixed interacting
   stress tensor, its retained retarded response kernel, and the component
   covariance/cross-covariance entries required to assemble full interacting
@@ -210,7 +213,11 @@ fluctuation data required for controlled backreaction.
   gauge identity on the mean-equation background, and the KMS
   fluctuation-dissipation relation in stationary states; otherwise the Langevin
   noise and dissipative feedback have been assembled from different theories
-  rather than from one interacting stress tensor.
+  rather than from one interacting stress tensor.  The reduced response is
+  intrinsic only after a quotient-factorization theorem: a unique
+  `R^{ret}_{red}` satisfying `R^{ret}_{red} q_h=p_T R^{ret}_{Th}` exists iff
+  `p_T R^{ret}_{Th}` vanishes on the full kernel of `q_h`.  Gauge, constraint,
+  and truncation kernels are kept as separate obligations.
 - Adds the retained causal small-gain layer for interacting backreaction:
   after the full source/noise/response package is fixed in one scheme, the
   full linearized operator is `D_full=D_0-R^{ret}`.  A real-frequency
@@ -289,7 +296,10 @@ fluctuation data required for controlled backreaction.
   negative controls, the closed-time-path influence-package test tying mean
   source, contact-corrected retarded response, and connected noise to
   equal-branch normalization, retarded support, typed Ward identities,
-  positivity, and KMS/FDT compatibility, the causal small-gain
+  positivity, and KMS/FDT compatibility, the reduced-response descent check
+  with a strict inclusion `im G_h < ker q_h` negative control where two
+  sections produce different matrices despite the gauge Ward identity, the
+  compatible full-kernel factorization case, the causal small-gain
   feedback inverse for the full retained backreaction operator,
   Ward-clean source/noise inputs, mean-response and noise-amplification
   bounds, residual missing-noise trace propagation, retarded finite Neumann
@@ -530,3 +540,11 @@ curvature, microscopic, and EFT scales.
   finite check adds both a causal lower-triangular Neumann inverse and an
   adversarial scalar transfer function whose real samples pass while an
   upper-half-plane pole makes the evolution unstable.
+- 2026-06-08 issue #933 reduced-response descent pass: replaced the
+  section-based reduced response claim by the universal factorization
+  criterion `ker q_h <= ker(p_T R^{ret}_{Th})`.  The pure gauge quotient is
+  now only a special case; extra constraint, discarded, or truncation kernels
+  must be checked separately before the reduced feedback, small-gain number,
+  and covariance are interpreted as intrinsic.  The paired finite check rejects
+  the old insufficient hypothesis with `im G_h` strictly contained in
+  `ker q_h` and two sections that give different projected responses.

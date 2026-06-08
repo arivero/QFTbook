@@ -60,7 +60,9 @@ finite operator-mixing terms are required before Ward tests are applied to the
 noise and independently added local noise contacts are rejected, the
 closed-time-path package tests tying typed source/noise Ward identities,
 contact-corrected retarded response, retarded support, positivity, and
-fluctuation-dissipation compatibility together, the
+fluctuation-dissipation compatibility together, the quotient-factorization
+criterion that makes a reduced stress response independent of metric-section
+choices, the
 homogeneous FLRW source/noise closure in which the correction pressure and
 state-transport terms make a time-dependent potential density compatible with
 both Friedmann and Raychaudhuri responses and with derivative-consistent
@@ -88,7 +90,8 @@ unordered covariance positivity tests, Ward-clean local-contact counterexamples,
 finite typed Ward maps with nonzero response contact defects, finite
 full-Hessian gauge-null checks, finite influence-functional quadratic forms,
 retarded-support tests,
-fluctuation-dissipation ratios, causal small-gain inverses, response/noise bounds,
+fluctuation-dissipation ratios, quotient-descent and section-dependence
+matrices, causal small-gain inverses, response/noise bounds,
 FLRW pressure closures, Hubble-response consistency checks, derivative
 pushforwards for density noise, and Ward-clean homogeneous stress-noise
 covariances,
@@ -130,7 +133,9 @@ time-dependent potential energy inserted without correction pressure,
 Friedmann/Raychaudhuri inconsistency, potential-only stochastic stress noise,
 naive separated-response transversality, pure-gauge stress-response
 annihilation, independent dot-density noise, and Hubble-noise estimates that
-ignore the Ward-clean pressure and derivative fluctuations,
+ignore the Ward-clean pressure and derivative fluctuations, quotient kernels
+larger than the metric-gauge image but not annihilated by the reduced stress
+response,
 omitted state-transport Lipschitz constants, omitted residual Lipschitz
 constants, bounded non-Lipschitz residuals with multiple fixed points, overlarge
 quadratic nonlinear feedback, linear-noise-only validity estimates,
@@ -1793,6 +1798,107 @@ def check_interacting_influence_functional_consistency() -> None:
     )
 
 
+def check_reduced_response_section_factorization() -> None:
+    # The reduced response is intrinsic only if p_T R_Th vanishes on the
+    # entire metric-reduction kernel, not just on the metric-gauge image.
+    metric_reduction: Matrix = (
+        (Fraction(1), Fraction(0), Fraction(0)),
+    )
+    metric_gauge_generator: Matrix = (
+        (Fraction(0),),
+        (Fraction(1),),
+        (Fraction(0),),
+    )
+    discarded_direction: Matrix = (
+        (Fraction(0),),
+        (Fraction(0),),
+        (Fraction(1),),
+    )
+    stress_projection: Matrix = (
+        (Fraction(1), -Fraction(1)),
+    )
+    stress_response: Matrix = (
+        (Fraction(2), Fraction(1), Fraction(3)),
+        (Fraction(1), Fraction(1), Fraction(1)),
+    )
+
+    if matmul(metric_reduction, metric_gauge_generator) != zero_matrix(1, 1):
+        raise AssertionError("test gauge direction should lie in the reduction kernel")
+    if matmul(metric_reduction, discarded_direction) != zero_matrix(1, 1):
+        raise AssertionError("test discarded direction should lie in the reduction kernel")
+
+    lie_stress = matmul(stress_response, metric_gauge_generator)
+    if matmul(stress_projection, lie_stress) != zero_matrix(1, 1):
+        raise AssertionError("test stress projection should kill the Lie-stress direction")
+
+    projected_response = matmul(stress_projection, stress_response)
+    if matmul(projected_response, metric_gauge_generator) != zero_matrix(1, 1):
+        raise AssertionError("gauge-only descent should hold in the test setup")
+    if matmul(projected_response, discarded_direction) == zero_matrix(1, 1):
+        raise AssertionError("negative control setup should expose the discarded direction")
+
+    section_zero: Matrix = (
+        (Fraction(1),),
+        (Fraction(0),),
+        (Fraction(0),),
+    )
+    section_shifted: Matrix = (
+        (Fraction(1),),
+        (Fraction(0),),
+        (Fraction(1),),
+    )
+    if matmul(metric_reduction, section_zero) != identity(1):
+        raise AssertionError("first test section should split the reduction map")
+    if matmul(metric_reduction, section_shifted) != identity(1):
+        raise AssertionError("second test section should split the reduction map")
+
+    response_zero = matmul(projected_response, section_zero)
+    response_shifted = matmul(projected_response, section_shifted)
+    if response_zero == response_shifted:
+        raise AssertionError("negative control failed: old inclusion looked section-independent")
+
+    # The pure gauge quotient is valid: its kernel is exactly the gauge image.
+    gauge_quotient: Matrix = (
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(1)),
+    )
+    gauge_reduced_response: Matrix = (
+        (Fraction(1), Fraction(2)),
+    )
+    if matmul(gauge_quotient, metric_gauge_generator) != zero_matrix(2, 1):
+        raise AssertionError("gauge quotient should annihilate the gauge image")
+    if matmul(gauge_reduced_response, gauge_quotient) != projected_response:
+        raise AssertionError("pure-gauge quotient response should factor through q_gauge")
+
+    final_truncation_kernel: Matrix = (
+        (Fraction(0),),
+        (Fraction(1),),
+    )
+    if matmul(gauge_reduced_response, final_truncation_kernel) == zero_matrix(1, 1):
+        raise AssertionError("negative control failed: extra truncation kernel was harmless")
+
+    compatible_stress_response: Matrix = (
+        (Fraction(2), Fraction(1), Fraction(4)),
+        (Fraction(1), Fraction(1), Fraction(4)),
+    )
+    compatible_projected_response = matmul(
+        stress_projection,
+        compatible_stress_response,
+    )
+    if matmul(compatible_projected_response, metric_gauge_generator) != zero_matrix(1, 1):
+        raise AssertionError("compatible response should still kill the gauge image")
+    if matmul(compatible_projected_response, discarded_direction) != zero_matrix(1, 1):
+        raise AssertionError("compatible response should kill the full reduction kernel")
+    compatible_reduced_response: Matrix = ((Fraction(1),),)
+    if matmul(compatible_reduced_response, metric_reduction) != compatible_projected_response:
+        raise AssertionError("compatible response should factor through the full reduction")
+    if (
+        matmul(compatible_projected_response, section_zero)
+        != matmul(compatible_projected_response, section_shifted)
+    ):
+        raise AssertionError("full-kernel descent should make sections agree")
+
+
 def check_backreaction_small_gain_stability() -> None:
     # Finite retained model for D_full = D0 - R_ret and
     # D_full^{-1} = (I - D0^{-1} R_ret)^{-1} D0^{-1}.
@@ -2371,6 +2477,7 @@ def main() -> None:
     check_retained_ward_completion_laboratory()
     check_interacting_stress_tensor_noise_package()
     check_interacting_influence_functional_consistency()
+    check_reduced_response_section_factorization()
     check_backreaction_small_gain_stability()
     check_nonlinear_backreaction_fixed_point_chart()
     check_retained_metric_observable_output()

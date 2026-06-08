@@ -2943,6 +2943,10 @@ Current checks:
   mean source, contact-corrected retarded kernel, and connected noise to one
   package with typed source/noise Ward identities, retarded support, noise
   positivity, equal-branch normalization, and KMS/FDT compatibility, the
+  reduced-response quotient-factorization check showing that gauge-image
+  annihilation alone does not make \(p_T R^{\rm ret}_{Th}s_h\)
+  section-independent when the metric-reduction kernel is larger than the
+  gauge image, plus a compatible full-kernel descent case, the
   homogeneous FLRW source/noise closure with correction pressure,
   Friedmann/Raychaudhuri compatibility, and derivative-consistent dot-density
   noise, the large-species semiclassical

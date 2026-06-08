@@ -2162,22 +2162,48 @@ metric Hessian in the same equation space.  Thus
 \(\bar T\ne0\); the gauge null vector is a null vector of the complete
 semiclassical Hessian on a mean-equation background.
 
-If a calculation wants ordinary reduced matrices, it must construct the
-quotient.  Choose a metric reduction \(q_h:V_h\to V_h^{\rm red}\) with
-\(\ker q_h\supset\operatorname{im}\mathsf G_h\), a section
-\(s_h:V_h^{\rm red}\to V_h\), and a stress projection
-\(p_T:V_T\to V_T^{\rm red}\) that kills the retained Lie-stress directions
-\(p_T\mathsf L_T=0\) and is used only after the local/contact term
-\(\mathsf Q_T\) has been included.  Then
+If a calculation wants ordinary reduced matrices, it must construct a genuine
+quotient descent.  Choose a metric reduction
+\(q_h:V_h\to V_h^{\rm red}\) and a stress projection
+\(p_T:V_T\to V_T^{\rm red}\) only after the local/contact term
+\(\mathsf Q_T\) has been included.  The universal descent criterion is
 \begin{equation}
-  \mathsf R_{\rm red}^{\rm ret}
-  :=
-  p_T\mathsf R^{\rm ret}_{Th}s_h
+  \ker q_h
+  \subset
+  \ker\!\left(p_T\mathsf R^{\rm ret}_{Th}\right),
+  \qquad\text{equivalently}\qquad
+  p_T\mathsf R^{\rm ret}_{Th}k=0
+  \quad(k\in\ker q_h).
+  \label{eq:semiclassical-reduced-response-descent}
+\end{equation}
+When \eqref{eq:semiclassical-reduced-response-descent} holds, there is a
+unique reduced response
+\(\mathsf R_{\rm red}^{\rm ret}:V_h^{\rm red}\to V_T^{\rm red}\) satisfying
+\begin{equation}
+  \mathsf R_{\rm red}^{\rm ret}q_h
+  =
+  p_T\mathsf R^{\rm ret}_{Th}.
   \label{eq:semiclassical-reduced-response-definition}
 \end{equation}
-is independent of the representative of \(s_h\) precisely because
-\eqref{eq:semiclassical-typed-gauge-response} holds.  Only in such a
-constructed quotient, or in a special background where
+For any section \(s_h:V_h^{\rm red}\to V_h\),
+\(\mathsf R_{\rm red}^{\rm ret}=p_T\mathsf R^{\rm ret}_{Th}s_h\); the value is
+the same for all sections because the difference of two sections lands in
+\(\ker q_h\), which is annihilated by the projected response.
+
+The pure gauge quotient is a special case.  If
+\(\ker q_h=\operatorname{im}\mathsf G_h\) and
+\(p_T\mathsf L_T=0\), then
+\eqref{eq:semiclassical-typed-gauge-response} gives
+\(p_T\mathsf R^{\rm ret}_{Th}\mathsf G_h=0\), so the descent criterion holds.
+If \(q_h\) also imposes constraints, discards nonpropagating variables, or
+truncates a numerical basis, its kernel is larger.  Each additional kernel
+must then be checked separately.  Equivalently, first quotient by gauge,
+then impose the constraint surface, and finally apply any truncation map, with
+\(p_T\mathsf R^{\rm ret}_{Th}\) annihilating the kernel introduced at each
+stage.  Otherwise \(p_T\mathsf R^{\rm ret}_{Th}s_h\) is a
+section-dependent coordinate matrix, and the resulting feedback operator,
+small-gain number, and metric covariance are not intrinsic retained
+backreaction data.  Only after this descent, or in a special background where
 \(\mathsf Q_T=0=\mathsf L_T\) on the retained tests, does the tempting display
 \(\mathsf B_T\mathsf R^{\rm ret}_{Th}=0\) become a valid reduced statement.  In
 a stationary KMS state,

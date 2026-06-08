@@ -412,6 +412,7 @@
         "independent Ward-clean local noise contacts can destroy positivity",
         "linearized stress-response Ward identities include one-point/contact maps",
         "metric gauge null directions belong to the full semiclassical Hessian",
+        "reduced stress response descends only after full metric-reduction kernel annihilation",
         "FLRW dot-density noise is derivative-consistent rather than independent",
         "Ricci-squared H2 trace is plus 2 Box R in inverse-metric convention",
         "real-axis small gain is diagnostic without upper-half-plane causal control"
