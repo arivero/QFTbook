@@ -2636,6 +2636,12 @@ Current checks:
   invariant flux, two-body phase-space coefficient, identical \(\phi^4\)
   tree cross-section coefficient, the ordered \(16\pi\) partial-wave
   normalization, and the elastic/inelastic partial-wave unitarity circle.
+- `kallen_lehmann_low_dimensional_checks.py`: exact dyadic checks for the
+  Volume I K\"all\'en--Lehmann endpoint repair, including the two distinct
+  \(SO^+(1,1)\) future null rays, boost invariance of \(dk/k\), logarithmic
+  divergence for a constant test function near the closed-cone origin, bounded
+  behavior after a linear zero-mode condition, and the \(r^{D-3}\dd r\)
+  dimension split for the massless scalar shell.
 - `lsz_residue_checks.py`: finite checks for the Volume I LSZ chapter,
   including mostly-plus invariant-denominator factorization, partial-fraction
   signs, per-leg amputation normalization, all-incoming momentum bookkeeping,

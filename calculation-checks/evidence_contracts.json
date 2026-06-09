@@ -679,6 +679,18 @@
       ]
     },
     {
+      "path": "kallen_lehmann_low_dimensional_checks.py",
+      "risk_class": "Kallen-Lehmann low-dimensional endpoint disintegration",
+      "convention_tags": [
+        "mostly-plus cone uses p squared equals minus p0 squared plus spatial norm squared",
+        "proper-orthochronous SO(1,1) boosts rescale p plus and p minus separately",
+        "two-dimensional future null cone splits into right and left rays",
+        "scalar null-ray shell measure carries dk over k on each punctured ray",
+        "closed-cone local finiteness kills the D=2 scalar zero-mass shell atom",
+        "zero-mode test spaces are separate infrared prescriptions"
+      ]
+    },
+    {
       "path": "scattering_cluster_decomposition_checks.py",
       "risk_class": "scattering cluster theorem uniform-limit and low-dimensional kernel support",
       "convention_tags": [
