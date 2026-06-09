@@ -1,6 +1,37 @@
 #!/usr/bin/env python3
 """Finite combinatorial checks for the BPHZ forest formula.
 
+Evidence contract.
+
+Target claims:
+- The Bogoliubov preparation recursion expands to Zimmermann's forest formula
+  in finite nested, disjoint, and overlapping subdivergence posets.
+- Finite forest algebra and one-scale Taylor counting do not prove the uniform
+  Hepp-Zimmermann sector estimate.
+
+Independent construction:
+- The recursion is built directly from spinneys and counterterm appending,
+  then compared with an independently enumerated compatible-forest sum.
+- Negative controls use finite dyadic shell sums and a two-loop routing matrix
+  to separate one-scale decay and global loop coordinates from a true
+  multiscale sector estimate.
+
+Imported assumptions:
+- The Hepp-Zimmermann analytic theorem supplies sector charts, adapted loop
+  bases, uniform denominator comparisons, simultaneous subgraph/quotient
+  exponents, and bounds for extra global forest terms.
+
+Negative controls:
+- A dyadic model with one decaying scale but an omitted quotient exponent grows
+  with the second cutoff, while the full product-decay model stays bounded.
+- The line variables q1=l1+l2 and q2=l1-l2 share both original loop variables,
+  so disjoint branch estimates require an adapted basis rather than a naive
+  factorization in the original routing.
+
+Scope boundary:
+- No loop integration, sector partition, Jacobian estimate, or uniform
+  analytic majorant is proved here.
+
 The manuscript proves Zimmermann's forest formula from the Bogoliubov
 preparation recursion.  These checks verify the finite poset algebra in small
 models: nested subdivergences, disjoint subdivergences, and overlapping
@@ -9,6 +40,7 @@ subdivergences.  No loop integration is performed here.
 
 from __future__ import annotations
 
+from fractions import Fraction
 from itertools import combinations, product
 
 
@@ -234,12 +266,69 @@ def check_all_subsets_for_nested_chain() -> None:
     assert_equal("nested chain produces every subset", result, expected)
 
 
+def check_one_scale_decay_does_not_imply_sector_product_bound() -> None:
+    def one_scale_decay(cutoff: int) -> Fraction:
+        return sum(Fraction(1, 2**n) for n in range(1, cutoff + 1))
+
+    def missing_quotient_decay(cutoff: int) -> Fraction:
+        return sum(
+            Fraction(1, 2**n)
+            for n in range(1, cutoff + 1)
+            for _m in range(1, cutoff + 1)
+        )
+
+    def product_decay(cutoff: int) -> Fraction:
+        return sum(
+            Fraction(1, 2 ** (n + m))
+            for n in range(1, cutoff + 1)
+            for m in range(1, cutoff + 1)
+        )
+
+    small_cutoff = 8
+    large_cutoff = 16
+    if one_scale_decay(large_cutoff) >= 1:
+        raise AssertionError("one decaying dyadic scale should remain bounded")
+    if product_decay(large_cutoff) >= 1:
+        raise AssertionError("two decaying dyadic scales should remain bounded")
+    if missing_quotient_decay(large_cutoff) <= 2 * missing_quotient_decay(small_cutoff):
+        raise AssertionError(
+            "omitting quotient decay should grow with the independent cutoff"
+        )
+    if missing_quotient_decay(large_cutoff) <= 8 * product_decay(large_cutoff):
+        raise AssertionError(
+            "one-scale decay alone should not mimic a sector product bound"
+        )
+
+
+def check_adapted_routing_is_extra_analytic_input() -> None:
+    # A two-loop routing can make two line momenta share both original loops.
+    # The change to line variables is invertible, but factorization is not
+    # visible until an adapted coordinate choice has been made.
+    line_from_loop = ((1, 1), (1, -1))
+    determinant = (
+        line_from_loop[0][0] * line_from_loop[1][1]
+        - line_from_loop[0][1] * line_from_loop[1][0]
+    )
+    supports = [
+        {index for index, coefficient in enumerate(row) if coefficient}
+        for row in line_from_loop
+    ]
+    if determinant == 0:
+        raise AssertionError("routing change should be an invertible linear map")
+    if supports != [{0, 1}, {0, 1}]:
+        raise AssertionError("both line variables should share both loop variables")
+    if supports[0].isdisjoint(supports[1]):
+        raise AssertionError("original routing should not already factor branches")
+
+
 def main() -> None:
     check_nested_chain()
     check_disjoint_subgraphs()
     check_overlapping_subgraphs()
     check_counterterm_appends_largest_element()
     check_all_subsets_for_nested_chain()
+    check_one_scale_decay_does_not_imply_sector_product_bound()
+    check_adapted_routing_is_extra_analytic_input()
     print("All BPHZ forest-formula combinatorial checks passed.")
 
 

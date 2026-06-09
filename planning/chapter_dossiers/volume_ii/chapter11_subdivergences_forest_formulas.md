@@ -20,9 +20,15 @@ Source-File: monograph/tex/volumes/volume_ii/chapter09_subdivergences_and_bphz_s
   locality of higher-order subtractions and the start of the 1PI RG, used only
   as a comparison layer.
 - `SRC-EXTERNAL`: Fredenhagen--Rejzner for locality/renormalization in
-  perturbative AQFT and the Epstein--Glaser comparison; classic BPHZ theorem
-  enters as a theorem-level mathematical control.  The chapter is written in
-  Euclidean momentum-space language, matching the preceding construction.
+  perturbative AQFT and the Epstein--Glaser comparison.  The chapter is written
+  in Euclidean momentum-space language, matching the preceding construction.
+- `SRC-EXTERNAL-HEPP-ZIMMERMANN`: Hepp's and Zimmermann's momentum-space
+  convergence theorem supplies the uniform Hepp-sector analytic estimate:
+  sector charts, adapted loop bases, Jacobian and denominator comparison
+  constants, simultaneous subgraph/quotient power counting, and the control of
+  extra Taylor operators in the global forest formula.  The local text may
+  explain the forest architecture and one-scale Taylor-remainder mechanism, but
+  must not present the full sector estimate as locally derived.
 - `SRC-EXTERNAL`: Lowenstein--Zimmermann/BPHZL for the massless extension of
   momentum-space subtraction, especially the power-counting theorem for
   massless propagators and the infrared convergence theorem for the massless
@@ -53,6 +59,8 @@ The chapter must define:
 - the Zimmermann forest formula as an identity of formal integrands before
   loop integration;
 - the Hepp-sector forest extracted from an ordered ultraviolet hierarchy;
+- the explicit theorem boundary for the imported Hepp--Zimmermann sector
+  power-counting estimate used in the massive BPHZ finiteness proof;
 - the overlapping-subgraph diamond example;
 - the Zimmermann identity for oversubtracted normal products;
 - locality of counterterms and the finite-list conclusion for
@@ -102,14 +110,20 @@ The chapter must define:
 8a. A Hepp-sector partition turns each ordered ultraviolet hierarchy into a
     forest of divergent 1PI components; this is the sector-local reason that
     the global forest formula subtracts all ultraviolet boundary strata.
+8b. The sector product majorant for \(R_\Gamma I_\Gamma\) is an imported
+    Hepp--Zimmermann analytic estimate.  The chapter must state that the
+    estimate includes adapted routing for branches, uniform denominator and
+    numerator-derivative bounds, simultaneous subgraph/quotient exponents, and
+    harmlessness of extra global forest subtractions.
 9. Counterterms produced by \(C_\gamma\) are local polynomials bounded in degree
    by \(\omega(\gamma)\).
 10. In a finite-list power-counting-renormalizable theory, the recursive
     counterterms remain in the finite local operator space established in the
     previous chapter.
 11. The proof sketch must explicitly use the fact that external-momentum
-    derivatives lower the superficial UV degree, so the Taylor remainder has
-    negative UV degree in each forest sector.
+    derivatives lower the superficial UV degree for one isolated scale, but
+    must also state that this one-scale mechanism does not by itself prove the
+    multiscale Hepp-sector product estimate.
 12. Massless zero-momentum subtractions require separate infrared control:
     BPHZL introduces auxiliary mass/subtraction data and IR degrees so that
     UV-local subtractions possess a distributional massless limit when the
@@ -168,3 +182,11 @@ The chapter must define:
   `calculation-checks/bphz_forest_formula_checks.py` to verify the finite
   recursive/forest combinatorics for nested, disjoint, and overlapping
   subgraph configurations.
+- 2026-06-09 issue #970 correction pass: separated the finite forest
+  architecture from the hard Hepp--Zimmermann analytic convergence theorem.
+  The chapter now quotes the sector power-counting estimate explicitly, marks
+  the sector product bound as imported analytic input, and treats the
+  Taylor-remainder calculation as a one-scale diagnostic rather than a
+  self-contained multiscale proof.  The companion check now carries an evidence
+  contract and negative finite controls for missing quotient decay and naive
+  routing factorization.

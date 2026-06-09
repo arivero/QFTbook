@@ -1151,7 +1151,11 @@ Current checks:
   Volume II BPHZ chapter, verifying that the Bogoliubov preparation recursion
   equals Zimmermann's forest formula for nested, disjoint, and overlapping
   subdivergence posets, and that a counterterm appends the subgraph as the
-  largest Taylor operation in a nested forest.
+  largest Taylor operation in a nested forest.  It also includes negative
+  finite controls showing that one-scale decay plus forest combinatorics does
+  not prove the uniform Hepp--Zimmermann sector estimate: quotient-scale decay,
+  adapted routing, denominator comparisons, and extra-subtraction bounds remain
+  imported analytic input.
 - `bound_state_pole_checks.py`: finite algebra checks for the Volume II
   bound-state-pole chapter, including finite-rank spectral-residue
   factorization, mostly-plus denominator conversion \(P^2+M^2=M^2-s\),

@@ -654,15 +654,17 @@ each compatible option and then the remaining overall divergence.
 \label{lem:hepp-sector-forest-extraction}
 Fix a smooth Hepp-sector partition of the noncompact loop-momentum region of
 a graph \(\Gamma\), so that in each sector the magnitudes of the line momenta
-are ordered up to bounded ratios.  In one sector, the ultraviolet boundary
-strata determine a finite forest \(F_S\) as follows: for each threshold in
-the ordered list of large line momenta, form the subgraph spanned by lines
-above the threshold, decompose it into connected components, keep the
-one-particle-irreducible components that contain loops, and then discard
-components with negative superficial degree.  The retained components are
-pairwise disjoint or nested.  Moreover, every superficially divergent
-ultraviolet boundary of that sector is represented by a member of this
-forest, or by a quotient graph obtained after members of the forest have been
+are ordered up to bounded ratios.  This is a sector-local combinatorial
+statement: it assumes that the analytic sector charts, adapted loop bases, and
+uniform comparison constants have already been supplied.  In one sector, the
+ultraviolet boundary strata determine a finite forest \(F_S\) as follows: for
+each threshold in the ordered list of large line momenta, form the subgraph
+spanned by lines above the threshold, decompose it into connected components,
+keep the one-particle-irreducible components that contain loops, and then
+discard components with negative superficial degree.  The retained components
+are pairwise disjoint or nested.  Moreover, every superficially divergent
+ultraviolet boundary of that sector is represented by a member of this forest,
+or by a quotient graph obtained after members of the forest have been
 contracted.
 \end{lemma}
 
@@ -701,17 +703,60 @@ Now consider a boundary stratum of the sector at which a subset of sector
 ratios tends to zero, equivalently a nested collection of high-momentum
 scales is sent to infinity relative to the slower scales.  At the first
 nontrivial ratio the large lines form one of the components of some
-\(H_j\).  If its superficial degree is negative, the Taylor-subtracted
-integrand has a convergent power-counting exponent at that boundary, so the
-boundary is not superficially divergent.  If its degree is nonnegative, the
-corresponding 1PI loop block is one of the retained elements of \(F_S\).  For
-the next larger scale separation, the lines already represented by retained
-blocks are replaced by local vertices; the remaining divergent large-line
-configuration is therefore a divergent component of the quotient graph.  An
-induction over the ordered ratios gives a nested sequence of retained
-subgraphs and quotient divergences.  This is precisely the forest associated
-to the ultraviolet hierarchy in the Hepp sector.
+\(H_j\).  If its superficial degree is negative, it is not retained in the
+divergent forest; convergence of the corresponding sector variable is one of
+the power-counting conclusions in the Hepp--Zimmermann estimate below.  If its
+degree is nonnegative, the corresponding 1PI loop block is one of the retained
+elements of \(F_S\).  For the next larger scale separation, the lines already
+represented by retained blocks are replaced by local vertices; the remaining
+divergent large-line configuration is therefore a divergent component of the
+quotient graph.  An induction over the ordered ratios gives a nested sequence
+of retained subgraphs and quotient divergences.  This is precisely the forest
+associated to the ultraviolet hierarchy in the Hepp sector.
 \end{proof}
+
+\begin{quotedtheorem}[Hepp--Zimmermann sector power counting]
+\label{qthm:hepp-zimmermann-sector-power-counting}
+For a massive Euclidean graph with polynomial numerator and nonexceptional
+external momenta, the Zimmermann forest integrand admits a finite smooth
+partition of the noncompact loop-momentum region into Hepp sectors with the
+following uniform property.\footnote{This is the analytic convergence theorem
+of the Bogoliubov--Parasiuk--Hepp--Zimmermann construction in momentum space;
+see K.~Hepp, ``Proof of the Bogoliubov--Parasiuk theorem on renormalization,''
+\emph{Commun. Math. Phys.} \textbf{2} (1966) 301--326, and
+W.~Zimmermann, ``Convergence of Bogoliubov's method of renormalization in
+momentum space,'' \emph{Commun. Math. Phys.} \textbf{15} (1969) 208--234.}
+In each sector \(S\), after a sector-adapted linear change of loop variables,
+the Jacobian is bounded above and below, the angular variables range over a
+compact set, and the line denominators are uniformly comparable to monomials
+in radial sector variables.  If \(\rho_j\) are the noncompact variables attached
+to the divergent members and quotient divergences of the sector forest, and
+\(\sigma_b\) are the remaining noncompact variables with negative
+power-counting degree, then the renormalized integrand satisfies an integrable
+majorant of the form
+\begin{equation}
+  |R_\Gamma I_\Gamma(\ell,p)|\,\dd^{D L(\Gamma)}\ell
+  \le
+  C_S
+  \prod_j
+    \rho_j^{-1}\frac{\dd\rho_j}{\rho_j}
+  \prod_b
+    \sigma_b^{-1}\frac{\dd\sigma_b}{\sigma_b}
+  \dd\Omega_S .
+  \label{eq:hepp-zimmermann-imported-sector-bound}
+\end{equation}
+The constant \(C_S\) is uniform in the slower variables and angular variables
+inside the sector.  The statement includes the simultaneous subgraph and
+quotient power counting, the adapted routing needed for disjoint branches, and
+the assertion that extra Taylor operators in the global forest formula do not
+worsen the sector bound.
+\end{quotedtheorem}
+
+The quoted theorem is the hard analytic input.  The preceding forest extraction
+and the algebraic forest formula explain how the BPHZ subtraction terms are
+organized; they do not by themselves construct the sector coordinates or prove
+the uniform denominator, numerator-derivative, and Jacobian estimates in
+\eqref{eq:hepp-zimmermann-imported-sector-bound}.
 
 \begin{theorem}[BPHZ finiteness for massive Euclidean scalar graphs]
 \label{thm:bphz-finiteness-massive-euclidean-scalar}
@@ -730,13 +775,15 @@ subgraph is a polynomial in \(p_\gamma\) of degree at most \(\omega(\gamma)\).
 \end{theorem}
 
 \begin{proof}
-The proof is local on loop-momentum space.  Choose a smooth partition of unity
-subordinate to one compact region and to finitely many conic Hepp sectors.
+The proof separates the algebraic subtraction mechanism from the analytic
+sector estimate.  Choose the smooth partition of unity supplied by
+Theorem~\ref{qthm:hepp-zimmermann-sector-power-counting}, with one compact
+region and finitely many conic Hepp sectors.
 Lemma~\ref{lem:hepp-sector-forest-extraction} attaches to each sector \(S\) a
 forest \(F_S\) containing the superficially divergent boundary components of
-that sector.  It is enough to prove absolute convergence on each sector,
-since the partition has finitely many sectors and the compact region is
-harmless for massive Euclidean propagators.
+that sector.  The compact region is harmless for massive Euclidean
+propagators, so the only analytic question is absolute convergence on the
+noncompact sectors.
 
 The elementary estimate is the following Taylor-remainder bound.  Let
 \(\gamma\) be a connected divergent subgraph, and let
@@ -779,9 +826,8 @@ external variables.  Consequently, including the internal loop measure of
   \dd^{D L(\gamma)}\ell_\gamma .
   \label{eq:bphz-derivative-lowers-degree}
 \end{equation}
-For \(|\alpha|=\omega(\gamma)+1\), the \(\gamma\)-scale exponent is at most
-\(-1\).  In radial sector coordinates this means that the corresponding
-boundary integral is bounded by
+For \(|\alpha|=\omega(\gamma)+1\), the isolated \(\gamma\)-scale exponent is
+at most \(-1\).  In a single radial variable this would give the bound
 \begin{equation}
   C\int_R^\infty \rho^{-1}\,\frac{\dd\rho}{\rho}<\infty .
   \label{eq:bphz-one-boundary-integral}
@@ -789,21 +835,19 @@ boundary integral is bounded by
 If \(\gamma\) has negative superficial degree, the same estimate holds without
 applying \(1-t_\gamma\), because then the exponent is already at most \(-1\).
 
-Now fix a Hepp sector \(S\).  Let
-\(\gamma_1,\ldots,\gamma_r\) be a chain in \(F_S\), ordered from smaller to
-larger subgraph.  If the forest has disjoint branches, introduce one such
-ordered scale chain on each branch; the sector coordinates factor into the
-product of these branch variables because disjoint subgraphs use disjoint
-sets of internal momenta.  Introduce scale ratios \(\rho_j\ge1\) so that the
-momenta internal to \(\gamma_j\) but not to the previous members of the chain
-are of order
-\(\rho_1\cdots\rho_j\), while the external momenta of \(\gamma_j\) are on the
-slower scale \(\rho_1\cdots\rho_{j-1}\).  The forest formula acts in precisely
-this order: smaller Taylor operators are applied before the larger ones, and
-the counterterm produced by a smaller member is viewed as a local vertex in
-the quotient graph.  Applying
-\eqref{eq:bphz-taylor-integral-remainder} successively from the innermost
-members outward gives, on the sector \(S\), a bound of the form
+This one-scale estimate explains why the subtraction degree
+\(\omega(\gamma)\) is the right local degree.  It is not a proof of the
+multiscale sector estimate: it does not choose an adapted loop basis for
+overlapping or disjoint branches, does not control cancellation loci in line
+momenta, and does not supply simultaneous subgraph-and-quotient exponents.
+
+Now fix a Hepp sector \(S\).  Its forest \(F_S\) records the order in which the
+Taylor remainders are interpreted: smaller Taylor operators act before larger
+ones, and the counterterm produced by a smaller member becomes a local vertex
+in the quotient graph.  Theorem~\ref{qthm:hepp-zimmermann-sector-power-counting}
+is precisely the uniform analytic statement that this sector-local subtraction
+architecture gives the integrable product majorant.  Write the divergent
+forest and quotient variables in this sector as \(\rho_1,\ldots,\rho_r\).
 \begin{equation}
   |R_\Gamma I_\Gamma(\ell,p)|\,\dd^{D L(\Gamma)}\ell
   \le
@@ -815,26 +859,23 @@ members outward gives, on the sector \(S\), a bound of the form
   \dd\Omega_S .
   \label{eq:bphz-sector-product-bound}
 \end{equation}
-The additional variables \(\sigma_b\) correspond to superficially convergent
-subgraphs or quotient subgraphs; their exponents are already negative by power
-counting.  The angular variables \(\Omega_S\) range over a compact part of the
-sector after the radial ratios have been extracted.  Thus the right hand side
-is integrable in every noncompact sector variable.
+Here the variables \(\rho_j\) include the divergent forest scales and the
+divergent quotient scales, while the \(\sigma_b\) are the remaining
+noncompact sector variables with negative superficial degree.  The angular
+variables \(\Omega_S\) range over a compact part of the sector after the
+radial ratios have been extracted.  Thus the right hand side is integrable in
+every noncompact sector variable.
 
-It remains to explain why the estimate just obtained for a sector is the
-estimate of the actual forest formula, not of a sector-dependent subtraction
-prescription.  In the sector \(S\), the ultraviolet boundary strata are
-labelled by nested or disjoint components as above.  Expanding the product of
-the corresponding Taylor remainders gives the alternating sum over all
-subforests of \(F_S\).  Zimmermann's forest formula is the global
-inclusion-exclusion sum over all compatible forests of \(\Gamma\); restricted
-to the sector \(S\), the terms that meet the boundary strata of \(S\) are
-exactly the terms in this sector product, while terms corresponding to extra
-subtractions are Taylor polynomials of already integrable remainders and obey
-the same or better estimates.  Overlapping divergent subgraphs are handled by
-the sector decomposition: a single sector resolves the hierarchy into
-compatible nested or disjoint components, and the sum over sectors restores
-the sector-independent forest expression.
+The algebraic reason this is the estimate of the actual forest formula, rather
+than of a sector-dependent subtraction prescription, is Zimmermann's
+inclusion-exclusion identity proved above.  In the sector \(S\), the boundary
+strata that need Taylor remainders are labelled by the nested or disjoint
+members of \(F_S\); the global forest formula is the sector-independent sum
+over all compatible forests of \(\Gamma\).  The analytic theorem quoted above
+supplies the remaining uniform facts that the global terms whose subgraphs do
+not meet the boundary of \(S\) are extra subtractions of already integrable
+remainders, that overlapping subgraphs are resolved by the sector hierarchy,
+and that these extra terms obey the same product majorant.
 
 The mass and nonexceptional-momentum assumptions remove the remaining
 noncompact possibilities.  In the compact part of loop-momentum space the
