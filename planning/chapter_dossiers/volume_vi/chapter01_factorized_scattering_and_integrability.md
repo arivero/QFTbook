@@ -22,9 +22,17 @@ Source-File: monograph/tex/volumes/volume_vi/chapter01_factorized_scattering_and
 - Separating higher-spin charge family, formulated as injectivity of a
   species-resolved moment map outside threshold and bound-state singular
   loci, with a concrete Newton-identity sufficient condition.
-- Higher-spin conserved-charge argument excluding generic particle production
-  as a distribution-kernel support statement under stated asymptotic-state
-  and regularity hypotheses.
+- Higher-spin conserved-charge argument proving elastic permutation support and
+  excluding generic particle production as a distribution-kernel support
+  statement under stated asymptotic-state and regularity hypotheses.
+- No-diffraction pairwise-collision gate: asymptotic wave-packet separation,
+  macrocausality/cluster decomposition, reduction to isolated ordered pair
+  collisions, simultaneous-collision control, threshold and bound-state channel
+  treatment, and regularity needed to identify two-body operators.
+- Conditional pairwise-factorization proposition: under the no-diffraction
+  gate, an allowed ordered collision history gives an ordered product of
+  two-body maps, and Yang--Baxter follows by comparing the two three-particle
+  histories.
 - Chamber groupoid representation by adjacent two-body scattering maps,
   with unitarity and Yang--Baxter proven equivalent to path-independent
   chamber continuation.
@@ -80,6 +88,7 @@ Source-File: monograph/tex/volumes/volume_vi/chapter01_factorized_scattering_and
 | \(Q_{s,\lambda}\) | conserved charge of Lorentz spin \(s\) |
 | \(\Phi_N\) | higher-spin charge moment map on \(N\)-particle multisets |
 | \(\mathsf T_i\) | adjacent chamber-transition map induced by two-body scattering |
+| \(\mathsf S_N(\sigma;\theta)\) | conditional \(N\)-body scattering map attached to a permutation graph after the no-diffraction gate |
 | \(S\)-Fock space | Hilbert space of \(S\)-symmetric finite-particle wavefunctions |
 | ZF algebra | Zamolodchikov--Faddeev exchange algebra encoding ordered scattering bases |
 | TBA | thermodynamic Bethe ansatz; conditional thermodynamic/mirror functional equation |
@@ -94,7 +103,8 @@ Source-File: monograph/tex/volumes/volume_vi/chapter01_factorized_scattering_and
 ## Claim Ledger
 
 1. Factorization is a property of the scattering theory after asymptotic
-   states exist.
+   states exist and the no-diffraction/pairwise-collision gate has been
+   supplied.
 2. Yang--Baxter consistency follows from equality of different pairwise
    scattering orderings.
 2a. More precisely, unitarity and Yang--Baxter are the local relations that
@@ -104,6 +114,16 @@ Source-File: monograph/tex/volumes/volume_vi/chapter01_factorized_scattering_and
 4. Under the separating moment-map hypothesis, that common zero locus is the
    elastic permutation graph away from threshold and bound-state singular
    loci.
+4a. Elastic support and absence of generic production do not by themselves
+    determine the coefficient on an elastic permutation graph; joint
+    three-body diffractive phases can preserve every additive higher-spin charge
+    while failing pairwise factorization.
+4b. Under asymptotic wave-packet separation, macrocausality/cluster
+    decomposition, isolated two-body collision reduction, simultaneous-collision
+    control, threshold/bound-state channel treatment, and two-body regularity,
+    the coefficient on an allowed permutation graph is the ordered product of
+    the corresponding two-body maps.  Yang--Baxter is then the comparison of
+    the two admissible three-particle collision histories.
 5. Watson exchange is a boundary-value identity for ordered scattering
    bases; it should not be compressed into the phrase "locality gives".
 6. Local QFT reconstruction from factorized \(S\)-matrices requires separate
@@ -180,3 +200,10 @@ Source-File: monograph/tex/volumes/volume_vi/chapter01_factorized_scattering_and
   nuclearity, form-factor, state-limit, and projection estimates enter a
   physical observable, but they are not controlled estimates until those
   estimates are supplied in a common topology.
+- 2026-06-09 issue #966 repair: renamed the higher-spin proposition so it
+  claims only elastic permutation support and absence of generic production;
+  inserted the no-diffraction pairwise-collision gate and a conditional
+  factorization proposition before the chamber-groupoid construction; updated
+  `factorized_scattering_algebra_checks.py` with a finite three-body phase
+  negative control showing that additive charges alone do not imply pairwise
+  factorization.

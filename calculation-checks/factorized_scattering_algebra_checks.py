@@ -4,33 +4,38 @@
 These checks accompany Volume VI, Chapter 1.  They verify finite algebraic
 identities behind the rapidity invariant, Newton separation of rapidity
 multisets, chamber braid relations, the rational Yang--Baxter identity,
-scalar Watson-exchange bookkeeping, and the finite proof-obligation map
-separating S-Fock/ZF algebra from wedge-local and local-algebra reconstruction.  They
-also check the finite checkpoint logic behind the end-to-end observable
-reconstruction map: exact scattering, exact TBA, or exact dressing data do not
-by themselves certify a local observable without the corresponding
-local-algebra, domain/completeness, state-limit, and projection checkpoints.
+scalar Watson-exchange bookkeeping, the finite negative control separating
+elastic support from pairwise factorization, and the finite proof-obligation
+map separating S-Fock/ZF algebra from wedge-local and local-algebra
+reconstruction.  They also check the finite checkpoint logic behind the
+end-to-end observable reconstruction map: exact scattering, exact TBA, or exact
+dressing data do not by themselves certify a local observable without the
+corresponding local-algebra, domain/completeness, state-limit, and projection
+checkpoints.
 
 Evidence contract.
 Target claims: rapidity convention, factorized chamber algebra, Watson
-exchange, and the Chapter 1 reconstruction-map claim that exact on-shell
+exchange, the no-diffraction gate between elastic support and pairwise
+factorization, and the Chapter 1 reconstruction-map claim that exact on-shell
 algebra does not by itself construct double-cone local observables or complete
 the route from exact data to a physical local, thermodynamic, or hydrodynamic
 observable.
 Independent construction: rational arithmetic for rapidity invariants, Newton
 identities, finite braid/Yang--Baxter matrices, scalar exchange coefficients,
-finite local-intersection dimension proxies, nuclearity-norm proxies, and a
-residual telescope for wedge-to-local reconstruction, plus Boolean route
-checkpoints and conditional residual propagation for representative Ising,
-sinh-Gordon, TBA, and GHD routes.
+same-multiset additive-charge checks, a mixed-difference test for non-pairwise
+three-body phases, finite local-intersection dimension proxies,
+nuclearity-norm proxies, and a residual telescope for wedge-to-local
+reconstruction, plus Boolean route checkpoints and conditional residual
+propagation for representative Ising, sinh-Gordon, TBA, and GHD routes.
 Imported assumptions: the analytic S-matrix regularity, modular nuclearity,
 operator-domain, form-factor convergence, and completeness hypotheses stated
 in the chapter.
-Negative controls: exact Yang--Baxter algebra with a nonzero local
-reconstruction residual, positive S-Fock dimension with empty local
-intersection, a finite nuclearity proxy that fails the declared bound, exact
-TBA endpoint data overread as a local trace operator, and exact GHD dressing
-overread as a microscopic current.
+Negative controls: an elastic three-particle phase preserving every additive
+charge but failing pairwise additivity, exact Yang--Baxter algebra with a
+nonzero local reconstruction residual, positive S-Fock dimension with empty
+local intersection, a finite nuclearity proxy that fails the declared bound,
+exact TBA endpoint data overread as a local trace operator, and exact GHD
+dressing overread as a microscopic current.
 Scope boundary: these checks verify finite algebra and reconstruction
 interfaces only; they do not prove modular nuclearity, nontrivial local
 intersections, form-factor convergence, common-norm residual estimates, or
@@ -170,6 +175,51 @@ def check_rational_yang_baxter_identity():
 
 def scalar_s(x: Fraction) -> Fraction:
     return (x - 1) / (x + 1)
+
+
+def additive_charge_vector(
+    rapidities: list[Fraction], powers: tuple[int, ...]
+) -> tuple[Fraction, ...]:
+    return tuple(sum(theta**power for theta in rapidities) for power in powers)
+
+
+def pairwise_phase_model(x: Fraction, y: Fraction) -> Fraction:
+    # A pairwise three-particle phase has the form
+    # f12(x) + f13(x + y) + f23(y).
+    return x * x + (x + y) ** 3 + 2 * y
+
+
+def genuine_three_body_phase_model(x: Fraction, y: Fraction) -> Fraction:
+    return x * x * y * y
+
+
+def mixed_difference(phase, x: Fraction, y: Fraction) -> Fraction:
+    return phase(x + 1, y + 1) - phase(x + 1, y) - phase(x, y + 1) + phase(x, y)
+
+
+def check_elastic_support_does_not_imply_pairwise_factorization():
+    incoming = [Fraction(2), Fraction(3), Fraction(5)]
+    outgoing = [Fraction(5), Fraction(2), Fraction(3)]
+    powers = (1, 2, 3, 4)
+    assert_equal(
+        additive_charge_vector(incoming, powers),
+        additive_charge_vector(outgoing, powers),
+        "same rapidity multiset preserves additive higher-spin charges",
+    )
+
+    x1, y1 = Fraction(1), Fraction(3)
+    x2, y2 = Fraction(2), Fraction(2)
+    assert_equal(x1 + y1, x2 + y2, "same total three-particle rapidity span")
+    assert_equal(
+        mixed_difference(pairwise_phase_model, x1, y1),
+        mixed_difference(pairwise_phase_model, x2, y2),
+        "pairwise phase mixed difference depends only on theta13",
+    )
+    assert_true(
+        mixed_difference(genuine_three_body_phase_model, x1, y1)
+        != mixed_difference(genuine_three_body_phase_model, x2, y2),
+        "joint three-body phase is not a product of two-body phases",
+    )
 
 
 def check_scalar_unitarity_and_watson_bookkeeping():
@@ -465,6 +515,7 @@ def main():
     check_newton_two_root_separation()
     check_chamber_groupoid_permutation_relations()
     check_rational_yang_baxter_identity()
+    check_elastic_support_does_not_imply_pairwise_factorization()
     check_scalar_unitarity_and_watson_bookkeeping()
     check_wedge_local_reconstruction_proof_map()
     check_end_to_end_observable_reconstruction_map()

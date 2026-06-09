@@ -89,10 +89,11 @@ form-factor solution is a family of candidate local-operator matrix elements.
 None of these, by itself, is a constructed local quantum field theory.  The
 volume therefore uses a common dependency map with two intertwined chains.
 The Hilbert-space chain runs from a local massive QFT with higher-spin charges
-to elastic factorized scattering, then to \(S\)-Fock/ZF data, wedge-local
-fields, local algebras, and finally local fields and Wightman functions.  The
-thermodynamic chain runs from Bethe--Yang finite-volume quantization to TBA
-pseudoenergies, mirror finite-size data, and GHD currents.
+to elastic permutation support, then through a no-diffraction and
+pairwise-collision gate to factorized scattering, \(S\)-Fock/ZF data,
+wedge-local fields, local algebras, and finally local fields and Wightman
+functions.  The thermodynamic chain runs from Bethe--Yang finite-volume
+quantization to TBA pseudoenergies, mirror finite-size data, and GHD currents.
 The arrows in these chains are not equivalent.  Some are theorems under
 standard Hilbert-space hypotheses; some are conditional theorems after
 analytic and nuclearity assumptions are imposed; some are formal constructions
@@ -131,11 +132,14 @@ missing analytic statement, not adding another finite identity.
   >{\raggedright\arraybackslash}p{0.49\textwidth}@{}}
 \textbf{Bridge} & \textbf{Status} & \textbf{Load-bearing evidence} \\
 \hline
-local QFT to factorized scattering
+local QFT to elastic support, then factorized scattering
 & conditional theorem
 & Haag--Ruelle scattering, mass gap, separating higher-spin charges,
 regular distribution kernels, and control of threshold and bound-state
-singularities. \\
+singularities give elastic permutation support and generic no-production.
+The additional no-diffraction/pairwise-collision gate supplies macrocausality,
+cluster decomposition, isolated two-body collisions, simultaneous-collision
+control, and two-body operator regularity. \\
 factorized \(S\) to \(S\)-Fock/ZF algebra
 & theorem at the algebraic Hilbert-space level
 & Unitarity gives positive chamber inner products; Yang--Baxter gives
@@ -534,8 +538,9 @@ nowhere zero on \(V\).  Since \(fT=0\),
 Thus \(T\) pairs to zero with every test function supported in \(V\), which
 means \(T|_V=0\).
 
-\begin{proposition}[Factorization from conserved higher-spin charges]
-\label{prop:higher-spin-factorization-kinematic}
+\begin{proposition}[Elastic permutation support and absence of generic
+production from separating charges]
+\label{prop:higher-spin-elastic-support-kinematic}
 Assume a massive \(1+1\)-dimensional QFT has Haag--Ruelle asymptotic particle
 states, a family of conserved charges
 \(\{Q_{s,\lambda}\}_{(s,\lambda)\in\mathcal A}\) as in
@@ -591,6 +596,116 @@ because the distribution kernels may have additional singular components
 there; those components must be described after the relevant channel is
 resolved.
 \end{proof}
+
+\begin{definition}[No-diffraction pairwise-collision gate]
+\label{def:no-diffraction-pairwise-collision-gate}
+Fix a regular \(N\)-particle rapidity chamber, away from coincident rapidities,
+thresholds, and bound-state singular loci unless those channels have been
+adjoined explicitly.  A local massive QFT satisfying the support statement of
+Proposition~\ref{prop:higher-spin-elastic-support-kinematic} passes the
+no-diffraction pairwise-collision gate on this chamber if the following
+additional data and estimates are supplied.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item Haag--Ruelle wave packets can be chosen with asymptotically separated
+  centers and velocities so that a prescribed collision history is meaningful.
+\item Macrocausality and cluster decomposition identify widely separated
+  collision regions with products of the corresponding subcluster scattering
+  operators, with a residual that vanishes in the stated wave-packet topology.
+\item The relevant histories reduce, after excluding a controlled exceptional
+  set, to isolated ordered adjacent two-particle encounters.
+\item The isolated two-particle encounter has a regular unitary limit on the
+  wave-packet spaces, denoted
+  \(\mathsf T_i(\theta_i-\theta_{i+1})\), and this limit is the same operator
+  that appears in the two-particle scattering kernel.
+\item Simultaneous collisions either have vanishing contribution in the
+  separated-packet limit or are resolved by a stated limiting prescription whose
+  result agrees with the iterated isolated-collision limits.
+\item Threshold and bound-state channels are either outside the sector being
+  discussed or are included in an enlarged channel space with their projectors,
+  pole residues, and wave-packet estimates.
+\end{enumerate}
+Additive higher-spin charge conservation supplies the elastic support
+constraint, while this gate supplies the physical input that excludes genuine
+joint \(N\)-body diffraction supported on the same elastic permutation graphs.
+\end{definition}
+
+\begin{proposition}[Conditional pairwise factorization from no diffraction]
+\label{prop:conditional-pairwise-factorization-no-diffraction}
+Assume the hypotheses of
+Proposition~\ref{prop:higher-spin-elastic-support-kinematic} and the
+no-diffraction pairwise-collision gate of
+Definition~\ref{def:no-diffraction-pairwise-collision-gate} on a regular
+\(N\)-particle sector.  Let
+\[
+  \sigma=s_{i_k}\cdots s_{i_1}
+\]
+be a reduced adjacent-transposition word realized by an allowed ordered
+collision history.  Then, after smearing by separated wave packets and taking
+the separation limit in the declared topology, the regular \(N\to N\) kernel on
+the permutation graph \(\sigma\) is the ordered product
+\[
+  \mathsf S_N(\sigma;\theta)
+  =
+  \mathsf T_{i_k}(\theta^{(k-1)}_{i_k}
+    -\theta^{(k-1)}_{i_k+1})
+  \cdots
+  \mathsf T_{i_1}(\theta_{i_1}-\theta_{i_1+1}),
+\]
+where \(\theta^{(r)}\) is the rapidity order after the first \(r\) adjacent
+collisions.  If two allowed histories have the same initial and final chambers,
+the same gate requires the two resulting products to agree.  In the
+three-particle case this agreement gives the Yang--Baxter equation by comparing
+the two histories from \((123)\) to \((321)\).
+\end{proposition}
+
+\begin{proof}
+The separating-charge proposition first restricts the regular kernel to elastic
+permutation graphs and removes generic \(N\to M\) production.  It does not fix
+the coefficient on those graphs.  Choose separated incoming wave packets whose
+classical centers realize the reduced collision history
+\(s_{i_k}\cdots s_{i_1}\).  By macrocausality and cluster decomposition, the
+scattering operator for well-separated collision regions differs, in the
+declared topology, from the product of the corresponding subcluster scattering
+operators by a residual that vanishes as the separations are taken to infinity.
+The isolated-collision clause identifies each adjacent subcluster limit with the
+two-particle operator \(\mathsf T_i(\theta_i-\theta_{i+1})\).  Multiplying these
+limits in chronological order gives the displayed ordered product.
+
+The simultaneous-collision clause is the place where diffraction is excluded.
+Without it, a regular three- or higher-body coefficient could remain attached
+to the same elastic permutation graph.  When two separated histories connect
+the same chambers, the clause says that their common simultaneous-collision
+limit is unique, hence their ordered products agree.  For three rapidities
+\(\theta_1>\theta_2>\theta_3\), the two reduced histories give
+\[
+  S_{12}(\theta_{12})S_{13}(\theta_{13})S_{23}(\theta_{23})
+  \quad\text{and}\quad
+  S_{23}(\theta_{23})S_{13}(\theta_{13})S_{12}(\theta_{12}),
+\]
+so their equality is precisely the Yang--Baxter equation.
+\end{proof}
+
+\begin{remark}[Elastic support without pairwise factorization]
+\label{rem:elastic-support-without-pairwise-factorization}
+The no-diffraction gate is a genuine additional assumption.  On a one-species
+three-particle regular sector, an operator of the form
+\[
+  \ket{\theta_1,\theta_2,\theta_3}
+  \longmapsto
+  \exp\!\bigl(\ii F(\theta_{12},\theta_{23})\bigr)
+  \ket{\theta_1,\theta_2,\theta_3}
+\]
+preserves particle number, the unordered rapidity multiset, and every additive
+higher-spin charge.  It is unitary for real \(F\) and has the same elastic
+support.  If \(F\) is not of the form
+\[
+  f_{12}(\theta_{12})+f_{13}(\theta_{13})+f_{23}(\theta_{23}),
+  \qquad \theta_{13}=\theta_{12}+\theta_{23},
+\]
+then this coefficient is genuine joint three-body data, not a product of
+two-body phases.  It is ruled out by macrocausal no-diffraction input, not by
+the additive charges themselves.
+\end{remark}
 
 \section{Ordered Bases and the Scattering Groupoid}
 

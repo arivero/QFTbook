@@ -2850,8 +2850,10 @@ Current checks:
   factorized-scattering opening chapter, including mostly-plus rapidity
   kinematics, Newton separation of rapidity multisets, chamber braid
   relations, the rational Yang--Baxter identity, scalar two-body unitarity,
-  Watson-exchange coefficient bookkeeping, and the wedge-local to
-  double-cone-local reconstruction proof-obligation map which keeps exact
+  Watson-exchange coefficient bookkeeping, the elastic-support negative
+  control in which additive charges do not force pairwise factorization, and
+  the wedge-local to double-cone-local reconstruction proof-obligation map
+  which keeps exact
   S-Fock/ZF algebra, modular nuclearity, local intersections, form-factor
   convergence, operator domains, and completeness as separate load-bearing
   inputs.  It also
