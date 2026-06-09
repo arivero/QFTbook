@@ -136,6 +136,12 @@ Current checks:
   control showing where that recurrence stops proving nonrenormalization, and
   the one-loop cubic gauge-anomaly cancellation input to all-order
   Slavnov--Taylor restoration.
+- `boundary_qft_datum_checks.py`: finite checks for the Volume IX
+  boundary-QFT datum, including a region poset with interior, boundary, and
+  mixed collar algebras, functorial inclusions into collars, rejection of a
+  bare interior-to-boundary algebra map, separation of states from boundary
+  conditions, and finite BOE jet/remainder negative controls for exact
+  convergence and Dirichlet boundary evaluation.
 - `nielsen_identity_effective_potential_checks.py`: finite algebra checks for
   the Nielsen-identity and gauge-effective-potential section, including the
   Abelian-Higgs Goldstone/longitudinal-vector/ghost determinant count, the

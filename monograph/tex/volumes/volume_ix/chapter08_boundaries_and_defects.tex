@@ -13,47 +13,105 @@ and anomaly data can be checked directly.
 
 \begin{definition}[Boundary QFT datum]
 \label{def:boundary-qft-datum}
-Let \(M\) be a spacetime manifold with boundary \(\partial M\).  A boundary
-condition for a local QFT assigns the following data:
+Let \(M\) be a spacetime manifold with boundary \(\partial M\), and let
+\(\mathcal A_{\rm bulk}\) be the local observable net on the interior
+\(M^\circ\).  A boundary condition is an extension of this interior theory to
+a boundary-preserving local net.  Choose a class
+\(\operatorname{Reg}_\partial(M)\) of admissible regions in \(M\), including
+interior regions, boundary regions, and collar regions meeting both strata.
+The datum consists of:
 \[
 \begin{array}{ll}
-\text{bulk observables} & \mathcal A(U),\quad U\subset M^\circ,\\
-\text{boundary observables} & \mathcal B(V),\quad V\subset\partial M,\\
-\text{bulk-to-boundary maps} & \mathcal A(U)\to\mathcal B(V)
-\text{ for }U\to V,\\
-\text{state or functional} & \omega_{\partial}
-\text{ on the combined algebra}.
+\text{mixed-region observables} &
+  \mathcal A_\partial(O),\quad O\in\operatorname{Reg}_\partial(M),\\
+\text{interior identification} &
+  \mathcal A_\partial(O)\cong\mathcal A_{\rm bulk}(O)
+  \quad\text{if }O\Subset M^\circ,\\
+\text{boundary observables} &
+  \mathcal B(V),\quad V\subset\partial M,\\
+\text{structure maps} &
+  \iota_{O_1O_2}:\mathcal A_\partial(O_1)\to
+  \mathcal A_\partial(O_2)
+  \quad\text{for }O_1\subset O_2,\\
+\text{boundary embeddings} &
+  \jmath_{V,O}:\mathcal B(V)\to\mathcal A_\partial(O)
+  \quad\text{when }V\subset O\cap\partial M .
 \end{array}
 \]
-Locality requires that observables with spacelike separated supports commute
-or graded-commute after their supports are interpreted in the manifold with
+The maps are functorial under inclusions.  If the theory is Lorentzian, the
+net is required to satisfy boundary-preserving covariance, causality, and the
+time-slice axiom for globally hyperbolic regions with timelike boundary.  In
+Euclidean or topological formulations the same slot is replaced by the
+corresponding factorization products for disjoint subregions and collar
+gluings.  Observables with spacelike separated supports commute or
+graded-commute after their supports are interpreted in the manifold with
 boundary.
+
+A state, reflection-positive functional, or Euclidean amplitude is additional
+data on this local algebraic system.  The boundary condition specifies the
+allowed local observables and their structure maps before a state is chosen.
 \end{definition}
 
-The bulk-to-boundary maps in Definition~\ref{def:boundary-qft-datum} are not
-optional.  They specify what happens when a bulk operator is brought to the
-boundary and therefore determine boundary operator expansions, boundary Ward
-identities, and the possible endpoints of bulk extended operators.
+Definition~\ref{def:boundary-qft-datum} deliberately contains no bare map
+\(\mathcal A_{\rm bulk}(U)\to\mathcal B(V)\) attached to a symbol \(U\to V\).
+An interior region \(U\) is included into a collar region, and a boundary
+region \(V\) is included into the same collar region; these are ordinary
+local-net structure maps.  Bringing a bulk local field to the boundary is a
+short-distance operation.  When it exists, it is encoded by a renormalized
+approach map or by a boundary operator expansion with a declared remainder
+topology, as in Hypothesis~\ref{hyp:boundary-operator-expansion}.  This
+separation is what lets boundary Ward identities, line endpoints, and anomaly
+inflow be stated as local compatibility conditions rather than as an
+untyped algebra homomorphism.
 
 \section{Boundary Operator Expansion}
 
-\begin{definition}[Boundary operator expansion]
-\label{def:boundary-operator-expansion}
+\begin{hypothesis}[Boundary operator expansion with remainder]
+\label{hyp:boundary-operator-expansion}
 For a scalar bulk local operator \(\mathcal O(x_\perp,y)\), with
-\(x_\perp\geq0\) the distance to the boundary and \(y\in\partial M\), the
-boundary expansion has the form
+\(x_\perp>0\) the distance to the boundary and \(y\in\partial M\), a
+boundary-operator expansion datum consists of boundary local operators
+\(\widehat{\mathcal O}_\alpha(y)\), coefficient distributions
+\(c_{\mathcal O}^{\ \alpha}(x_\perp)\), an ordering of the retained boundary
+operators, and a topology on smeared correlation functions with all other
+insertions separated from \(y\).  The expansion has the form
 \[
   \mathcal O(x_\perp,y)
-  \sim
+  =
   \sum_\alpha
   c_{\mathcal O}^{\ \alpha}(x_\perp)\,\widehat{\mathcal O}_\alpha(y),
 \]
-where \(\widehat{\mathcal O}_\alpha\) are boundary local operators.  The
-symbol means convergence inside the declared correlation-function topology
-after smearing away from coincident boundary insertions.  Boundary critical
-exponents and boundary anomalies are properties of this expansion and of the
-boundary stress tensor.
-\end{definition}
+in the following asymptotic sense.  For each cutoff \(N\), let
+\[
+  R_N(x_\perp,y)
+  =
+  \mathcal O(x_\perp,y)
+  -
+  \sum_{\alpha\leq N}
+  c_{\mathcal O}^{\ \alpha}(x_\perp)\,\widehat{\mathcal O}_\alpha(y).
+\]
+The datum includes seminorms \(p_j\) and functions
+\(\varepsilon_{j,N}(x_\perp)\to0\) such that
+\[
+  p_j\!\left(
+    \langle R_N(x_\perp,y)\,X\rangle
+  \right)
+  \leq
+  \varepsilon_{j,N}(x_\perp)
+\]
+for every allowed separated spectator insertion \(X\) in the stated class.
+Stronger norm convergence or summability is an additional theorem or
+BCFT-specific hypothesis.  Boundary critical exponents and boundary anomalies
+are properties of this asymptotic expansion, the boundary stress tensor, and
+the mixed-region local net.
+\end{hypothesis}
+
+The stronger two-dimensional BCFT package, where positive-energy boundary
+Hilbert spaces, bulk-to-boundary expansion coefficients, and bordered-surface
+sewing maps are part of the controlled datum, is recorded in
+Chapter~\ref{ch:boundary-conformal-field-theory}.  The present chapter uses
+the local-net and asymptotic-remainder slots above as the general boundary-QFT
+interface needed for endpoints, fusion, and anomaly inflow.
 
 \begin{example}[Free scalar half-space boundary expansion]
 \label{ex:free-scalar-half-space-boe}
@@ -73,8 +131,28 @@ image term is reversed.  Consequently the leading boundary operator in the
 Neumann case is \(\widehat\phi(y)=\phi(0,y)\), whereas in the Dirichlet case
 the leading nonzero boundary operator is
 \(\widehat{\partial_\perp\phi}(y)=\partial_\perp\phi(0,y)\).  This example
-shows that the boundary operator expansion is a statement about a boundary
-condition together with the corresponding boundary field content.
+instantiates Definition~\ref{def:boundary-qft-datum}: interior smeared fields
+and boundary smeared fields both map into collar algebras, while the displayed
+two-point functions are Gaussian states on that local system.
+
+For smooth test functions supported away from other insertions, the approach
+to the boundary is an asymptotic statement.  In the Neumann case,
+\[
+  \phi(x_\perp,y)
+  =
+  \widehat\phi(y)+O(x_\perp^2),
+\]
+because the normal derivative vanishes in the boundary condition.  In the
+Dirichlet case,
+\[
+  \phi(x_\perp,y)
+  =
+  x_\perp\,\widehat{\partial_\perp\phi}(y)+O(x_\perp^2),
+\]
+because the boundary value itself vanishes.  Evaluating the bulk field at
+\(x_\perp=0\) would therefore erase the leading Dirichlet boundary operator;
+the BOE is a renormalized approach datum, not an ordinary restriction map from
+bulk algebras to boundary algebras.
 \end{example}
 
 \section{Interfaces And Domain Walls}

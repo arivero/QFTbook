@@ -9,10 +9,20 @@ and prepare later categorical treatments.
 
 ## Notation Inventory
 
-- `A(U)`, `B(V)`: bulk and boundary observable algebras.
-- `omega_partial`: state or functional on the combined boundary-bulk algebra.
+- `Reg_partial(M)`: admissible regions in a spacetime with boundary,
+  including interior, boundary, and mixed collar regions.
+- `A_bulk(U)`, `A_partial(O)`, `B(V)`: interior bulk net, boundary-condition
+  extension net on admissible regions, and boundary observable net.
+- `C(W)`: mixed collar-region algebra used as the ordinary local target for
+  both interior and boundary inclusion maps.
+- `iota_{O_1 O_2}`, `jmath_{V,O}`: isotony maps for admissible regions and
+  boundary-region embeddings into mixed regions.
+- `omega_partial`: optional state or functional on the already-defined
+  boundary-bulk local system.
 - `O(x_perp,y)`, `Ohat_alpha(y)`: bulk local operator and boundary operators
   in the boundary expansion.
+- `R_N`, `p_j`, `epsilon_{j,N}`: BOE remainder, seminorms on smeared
+  separated correlators, and explicit asymptotic remainder functions.
 - `phi`, `G_D`: free half-space scalar field and Euclidean Green function in
   the method-of-images boundary example.
 - `T_-`, `T_+`: QFTs separated by an interface.
@@ -28,11 +38,19 @@ and prepare later categorical treatments.
 
 ## Claim Ledger
 
-- Defines boundary QFT data by bulk algebras, boundary algebras,
-  bulk-to-boundary maps, and a state or functional.
-- Defines the boundary operator expansion as convergence in a declared
-  correlation topology and displays the free half-space scalar Neumann versus
-  Dirichlet leading boundary operators.
+- Defines boundary QFT data as an AQFT-style boundary-preserving local net on
+  admissible regions of a manifold with boundary.  Interior regions recover
+  the bulk net, boundary regions carry a boundary net, mixed collar regions
+  receive ordinary inclusion maps from both strata, and locality/covariance or
+  Euclidean factorization is part of the structure.  States and amplitudes are
+  additional data on this local system.
+- Defines the boundary operator expansion as a renormalized approach datum
+  with explicit seminorm/remainder control, while reserving stronger
+  convergence for controlled BCFT-specific hypotheses or theorems.
+- Displays the free half-space scalar Neumann versus Dirichlet leading
+  boundary operators and now identifies the method-of-images two-point
+  function as a state on the local boundary datum, not as part of the boundary
+  condition itself.
 - Defines interfaces, domain walls, and topological interfaces.
 - Gives the Chern-Simons boundary WZW current as a concrete boundary operator
   algebra, cross-referenced to Volume VIII.
@@ -63,6 +81,11 @@ and prepare later categorical treatments.
 - `calculation-checks/finite_gauge_boundary_checks.py` verifies the finite
   Abelian gauge-theory line-condensation and boundary endpoint algebra that
   models the compact \(BF\) boundary examples.
+- `calculation-checks/boundary_qft_datum_checks.py` verifies the finite
+  stratified-net bookkeeping for the chapter opening: interior and boundary
+  algebras map into collar algebras by ordinary inclusions, a direct
+  interior-to-boundary map is rejected, states are separate from the boundary
+  condition, and finite BOE jets carry nonzero controlled remainders.
 
 ## Audit Notes
 
@@ -71,6 +94,14 @@ and prepare later categorical treatments.
   checks cover the finite algebraic examples used in the chapter; analytic
   boundary-QFT convergence statements remain manuscript proof obligations
   rather than finite calculation checks.
+- 2026-06-09 issue #879 local-boundary-QFT pass: replaced the opening
+  untyped `A(U) -> B(V)` datum with a boundary-preserving local net on
+  interior, boundary, and mixed collar regions.  Re-audit note: the chapter now
+  separates local algebraic structure, BOE/asymptotic approach maps, and
+  states/amplitudes, so later endpoint, fusion, and anomaly statements have a
+  typed local target instead of relying on a singular bulk-to-boundary
+  restriction.  The BOE paragraph now points to Volume V Chapter 14 for the
+  stronger positive-energy BCFT sewing package.
 
 ## Figure Ledger
 
