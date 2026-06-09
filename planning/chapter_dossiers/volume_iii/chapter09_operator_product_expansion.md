@@ -25,9 +25,11 @@ The chapter establishes:
   \(D_{\rm rad}\) specified in Chapter 4's radial reconstruction hypothesis;
 - the separation between Euclidean radial Hilbert-space convergence and
   Lorentzian Wightman boundary-value convergence;
-- a tube-domain continuation criterion for Lorentzian OPE convergence in a
-  fixed Wightman ordering, with the radial bounds \(|\rho|,|\bar\rho|<1\) as
-  channel conditions;
+- the scalar four-point Lorentzian OPE continuation theorem in a fixed
+  Wightman ordering, with the \(|\rho|,|\bar\rho|<1\) radial bounds, the
+  forward-tube compactness input, and the distributional boundary-value
+  interpretation kept separate from any general \(n\)-point or spinning
+  extension;
 - the local operator expansion into primaries and descendants;
 - coefficient functions as distributions or analytic functions on the
   convergence domain;
@@ -109,6 +111,12 @@ The chapter establishes:
   \(D=3\) and other \(D>2\) numerical checks, the universal leading radial
   Gegenbauer/harmonic term, and the \(F_\pm\) crossing-kernel normalization
   used by the mixed-correlator section;
+- `calculation-checks/lorentzian_ope_scope_checks.py`, which guards the
+  theorem boundary of the Lorentzian OPE continuation statement by checking
+  that scalar four-point geometry has the two cross-ratio variables used by
+  \(\rho,\bar\rho\), while five- and six-point scalar geometry and fixed
+  scalar-cross-ratio tensor data require extra variables and compact-set
+  majorants;
 - the status boundary for the three-dimensional Ising numerical island:
   the mixed-correlator crossing and positivity system is derived in the
   chapter, while derivative truncations, block approximations, gap choices,
@@ -148,11 +156,13 @@ The chapter establishes:
    \(\operatorname{Re}\sqrt{1-z}>0\) to \(|\rho|<1\), and radial Hilbert-space
    spectral estimates give absolute, locally uniform block convergence on
    compact subdisks.  At \(z=1/2\), \(\rho=3-2\sqrt2\).
-10. Lorentzian OPE convergence is obtained as a tube-domain analytic
-    continuation plus Wightman boundary value; real timelike configurations
-    require an \(i\epsilon\) ordering and remain controlled only when the
-    corresponding radial variables stay in a compact subdomain
-    \(|\rho|,|\bar\rho|\le q<1\).
+10. The theorem-level Lorentzian OPE continuation stated in the chapter is the
+    scalar four-point forward-tube result: real timelike configurations require
+    an \(i\epsilon\) ordering, the corresponding radial variables must stay in a
+    compact subdomain \(|\rho|,|\bar\rho|\le q<1\), and boundary convergence is
+    distributional.  General \(n\)-point or spinning extensions require their
+    own complex radial domains, angular/tensor majorants, and boundary-growth
+    estimates.
 11. Crossing is not a termwise equality of two channel expansions at distinct
     OPE corners.  It follows from equality of Euclidean separated-point
     correlators, convergence of each channel expansion in its own radial
@@ -257,6 +267,10 @@ The chapter establishes:
   the mixed-correlator \(F_\pm\) helper.  Do not identify this global-block
   script with the separate two-dimensional Virasoro-block problem, whose
   numerical treatment should use Zamolodchikov recursion data.
+- Run `calculation-checks/lorentzian_ope_scope_checks.py` after changing the
+  Lorentzian OPE continuation statement, the scalar four-point \(\rho,\bar\rho\)
+  theorem boundary, or any prose that compares the scalar four-point result
+  with general \(n\)-point or spinning correlators.
 
 ## Audit Notes
 
@@ -337,3 +351,11 @@ The chapter establishes:
   \(D>2\) numerical checks, with explicit leading Gegenbauer/harmonic
   normalization tests and a note that Virasoro blocks require a separate
   Zamolodchikov-recursion companion.
+- 2026-06-09 issue #971 Lorentzian OPE theorem-boundary pass: narrowed
+  `prop:lorentzian-ope-continuation-domain` from a general \(n\)-point
+  Wightman statement to the established scalar four-point forward-tube theorem.
+  The TeX now separates holomorphic compact-tube convergence, ordered
+  \(i\epsilon\) boundary values, and distributional real-boundary convergence,
+  and records the additional data needed before extending the result to
+  \(n\)-point or spinning correlators.  Added
+  `lorentzian_ope_scope_checks.py` to guard the finite kinematic scope.

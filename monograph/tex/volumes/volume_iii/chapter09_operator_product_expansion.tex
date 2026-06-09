@@ -178,14 +178,29 @@ Lorentzian configurations.  Lorentzian OPE convergence is obtained by applying
 the Euclidean expansion inside a common holomorphic domain and then taking the
 appropriate Wightman boundary value.
 
-\begin{proposition}[Lorentzian continuation of the radial OPE]
+\begin{proposition}[Scalar four-point Lorentzian OPE domain]
 \label{prop:lorentzian-ope-continuation-domain}
-Assume the tube-domain part of
-Hypothesis~\ref{hyp:radial-reconstruction-data}.  Work with a fixed Wightman
-ordering \(\pi\) and write \(V_+\subset\R^{1,D-1}\) for the open future light
-cone in the mostly-plus metric.  Let
-\(\mathcal W_\pi(z_1,\ldots,z_n)\) be the holomorphic continuation in the tube
-component
+Assume the radial reconstruction data of
+Hypothesis~\ref{hyp:radial-reconstruction-data}.  In addition, use the scalar
+four-point forward-tube theorem as an external analytic input: for unitary
+scalar primary four-point functions with Wightman reconstruction, the spectrum
+condition, tube analyticity, and Euclidean radial OPE convergence in the chosen
+channel, it supplies the forward-tube \(\rho,\bar\rho\) bound, compact-set
+majorants for the scalar OPE partial sums, and distributional boundary
+convergence.  Work with four scalar primary insertions, a fixed Wightman
+ordering \(\pi\), and write
+\(V_+\subset\R^{1,D-1}\) for the open future light cone in the mostly-plus
+metric.  Let
+\[
+  \mathcal W_\pi(z_1,z_2,z_3,z_4)
+  =
+  \langle\vac,
+    \mathcal O_{\pi(1)}(z_{\pi(1)})
+    \mathcal O_{\pi(2)}(z_{\pi(2)})
+    \mathcal O_{\pi(3)}(z_{\pi(3)})
+    \mathcal O_{\pi(4)}(z_{\pi(4)})\vac\rangle
+\]
+denote the holomorphic continuation in the tube component
 \[
   z_{\pi(a)}-z_{\pi(a+1)}
   =
@@ -193,60 +208,63 @@ component
   \qquad
   \eta_a\in V_+ .
 \]
-For a chosen OPE channel, let \(\rho,\bar\rho\) denote the radial cross-ratios
-of that channel.  On every compact subset of the tube component on which
+For the \(12\to34\) OPE channel, let \(\rho,\bar\rho\) denote the
+Hogervorst--Rychkov radial variables of the scalar four-point cross-ratios,
+with the square-root branches fixed by the chosen tube component.  On every
+compact subset of that tube component which stays away from singular
+hypersurfaces and on which
 \begin{equation}
   |\rho|\le q,\qquad |\bar\rho|\le q,\qquad q<1,
   \label{eq:lorentzian-rho-compact-domain}
 \end{equation}
-the channel OPE converges locally uniformly as a holomorphic function.  Its
-boundary value is the Lorentzian Wightman OPE in that ordering.  Strictly
+the scalar \(12\to34\) channel OPE partial sums converge locally uniformly as
+holomorphic functions to \(\mathcal W_\pi\).  Ordered \(i\epsilon\) boundary
+values give the Lorentzian Wightman OPE in the same ordering, and the
+convergence on the real Lorentzian boundary is distributional.  Strictly
 timelike configurations in which the fused pair lies in each other's future or
-past light cone are included when the specified \(i\epsilon\) approach remains
-in such a compact radial domain.  Null separation, coincident points, and
-crossings of external light cones are boundary strata and require the
-distributional boundary-value interpretation.
+past light cone are included when the chosen \(i\epsilon\) approach remains in
+such a compact radial domain.  Null separation, coincident points, and crossings
+of external light cones are boundary strata and require the distributional
+boundary-value interpretation.
 \end{proposition}
 
 \begin{proof}
-The Euclidean radial theorem gives a convergent expansion in the open polydisc
-of radial variables.  On a compact set satisfying
-\eqref{eq:lorentzian-rho-compact-domain}, the same spectral estimate supplies a
-summable majorant: each level-\(\Delta\) descendant contribution is multiplied
-by a factor bounded by \(q^\Delta\), while finite multiplicity below each level
-and radial Hilbert convergence control the corresponding coefficient norm.
-Therefore the OPE partial sums converge uniformly on compact subsets of the
-radial polydisc after analytic continuation of \(\rho,\bar\rho\).
-
-Each finite partial sum is a finite linear combination of Wightman matrix
-elements of local operators at the origin with the remaining insertions.  By
-the spectrum condition, these matrix elements are boundary values of functions
-holomorphic in the tube component displayed above.  Local uniform convergence
-of holomorphic partial sums gives a holomorphic limit by the Weierstrass
-theorem.  On the Euclidean subdomain this limit equals
-\(\mathcal W_\pi\), because both sides are the Euclidean radial OPE.  The
-identity theorem then identifies the holomorphic limit with
-\(\mathcal W_\pi\) throughout the connected tube component reached without
-crossing singular hypersurfaces.  Taking ordered \(i\epsilon\) boundary values
-gives the stated Lorentzian distributional convergence.
+The Euclidean radial theorem gives the Hilbert-space expansion in the Euclidean
+radial domain.  The scalar four-point forward-tube theorem supplies the extra
+analytic input needed after continuation: in the stated tube component, compact
+sets satisfying \eqref{eq:lorentzian-rho-compact-domain} admit a uniform
+majorant for the scalar \(12\to34\) partial sums, and the approach to the real
+Lorentzian boundary has the distributional growth control required for
+Wightman boundary values.  Hence the finite OPE partial sums converge locally
+uniformly to a holomorphic function in the tube domain.  On the Euclidean
+subdomain this holomorphic limit equals \(\mathcal W_\pi\), because both sides
+are the same radial OPE expansion.  The identity theorem identifies the limit
+with \(\mathcal W_\pi\) on the connected portion of the tube domain reached
+without crossing singular hypersurfaces, and the cited boundary-value theorem
+gives the ordered Lorentzian distribution.
 \end{proof}
 
-\begin{remark}[Status of Lorentzian OPE convergence]
-The criterion above separates the Euclidean Hilbert-space theorem from its
-Lorentzian continuation.  The tube condition fixes the operator ordering, and
-the radial inequality \(|\rho|,|\bar\rho|<1\) fixes the OPE channel.  For
-scalar four-point functions in unitary Euclidean CFT, Kravchuk, Qiao, and
-Rychkov prove the needed forward-tube radial bound and distributional
-Minkowski OPE convergence; Qiao gives a channel-by-channel classification of
-real Lorentzian four-point configurations.\footnote{See G.~Mack,
-``Convergence of operator product expansions on the vacuum in conformal
-invariant quantum field theory,'' Commun. Math. Phys. \textbf{53} (1977)
-155--184; P.~Kravchuk, J.~Qiao, and S.~Rychkov, ``Distributions in CFT II.
-Minkowski Space,'' JHEP \textbf{08} (2021) 094, arXiv:2104.02090; and
+\begin{controlledapproximation}[Beyond the scalar four-point theorem]
+\label{ca:lorentzian-ope-beyond-scalar-four-point}
+The proposition above is a scalar four-point statement.  For a general
+\(n\)-point Wightman function, a selected OPE tree has several independent
+radial ratios and angular variables.  For spinning external operators, the
+continued tensor structures and polarizations introduce finite-dimensional
+matrix factors whose norms must be controlled on the chosen tube compact set.
+Complexified rotations are not unitary with respect to the Euclidean radial
+inner product, so the Euclidean spectral estimate alone supplies only the
+starting Hilbert-space convergence.  A general \(n\)-point or spinning
+Lorentzian OPE theorem would require a stated complex radial domain, a
+compact-set majorant for all descendant and tensor-structure factors, and
+boundary-growth estimates for the Wightman distributional limit.\footnote{See
+G.~Mack, ``Convergence of operator product expansions on the vacuum in
+conformal invariant quantum field theory,'' Commun. Math. Phys. \textbf{53}
+(1977) 155--184; P.~Kravchuk, J.~Qiao, and S.~Rychkov, ``Distributions in CFT
+II. Minkowski Space,'' JHEP \textbf{08} (2021) 094, arXiv:2104.02090; and
 J.~Qiao, ``Classification of Convergent OPE Channels for Lorentzian CFT
 Four-Point Functions,'' SciPost Phys. \textbf{13} (2022) 093,
 arXiv:2005.09105.}
-\end{remark}
+\end{controlledapproximation}
 
 Figure~\ref{fig:ope-radial-expansion} records the radial OPE geometry: the
 smaller sphere encloses the approaching operator pair, and convergence is

@@ -1937,6 +1937,12 @@ Current checks:
   Gegenbauer/harmonic term, and the mixed-correlator \(F_\pm\) crossing kernel
   normalization.  Two-dimensional Virasoro blocks require a separate
   Zamolodchikov-recursion companion rather than this global-block evaluator.
+- `lorentzian_ope_scope_checks.py`: finite scope checks for the Lorentzian OPE
+  continuation statement, including the four-dimensional scalar four-point
+  two-cross-ratio count, the scalar five- and six-point invariant-count
+  negative controls, a fixed-\(\rho,\bar\rho\) tensor-structure distinction,
+  and a complex-angular-norm example showing why \(q^\Delta\) needs a separate
+  compact-set majorant for spinning/tensor continuations.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   the oriented Cardy annulus formula on cyclic pointed modular data where the

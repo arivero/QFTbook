@@ -522,6 +522,16 @@
       ]
     },
     {
+      "path": "lorentzian_ope_scope_checks.py",
+      "risk_class": "Lorentzian OPE theorem-boundary scope",
+      "convention_tags": [
+        "rho and rhobar are scalar four-point channel variables",
+        "four-dimensional five-point invariant count exceeds two",
+        "tensor structures are extra data at fixed scalar cross-ratios",
+        "complex angular continuation needs a compact-set majorant"
+      ]
+    },
+    {
       "path": "constructive_scalar_spde_checks.py",
       "risk_class": "constructive/SPDE reconstruction",
       "convention_tags": [
