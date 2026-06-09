@@ -3353,7 +3353,10 @@ Current checks:
 	  the global-form flux lattice datum which tests the quotient cocharacter
 	  lattice, dual character lattice, enlarged theta-period lattice, forbidden
 	  cover-charge-one matter, quotient-compatible \(\Sigma Y\) periods, and
-	  residual mirror-orbifold order, the chiral-superpotential phase-isometry
+	  residual mirror-orbifold order, the theta-shifted compact electric-flux
+	  Hamiltonian cell deriving the holonomy momentum shift, quotient electric
+	  lattice minimization, noncompact-holonomy and wrong-period negative
+	  controls, and finite-mass charged-screening classes, the chiral-superpotential phase-isometry
 	  lattice showing that gauge-neutral monomials need not preserve the individual
 	  phase rotations used in abelian dualization and rejecting bare Hori--Vafa
 	  data when broken-isometry spurion/mirror-interaction data are omitted,

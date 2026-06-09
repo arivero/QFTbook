@@ -60,6 +60,10 @@ and
   gauge group and its dual electric character lattice.  These control allowed
   matter charges, dual exponentials, FI-theta periods, and residual mirror
   orbifolds.
+- `a`, `p_a`, `L`, `M_i(sigma)`, `Q_dyn`: spatial gauge holonomy, its
+  quantized electric momentum, Hamiltonian circle length, charged-matter
+  masses along the Coulomb direction, and the dynamical charge lattice that
+  controls finite-mass electric screening.
 - `Delta T^phys`: FI-character shift induced by changing branches of
   `log c_i`; it must lie in `2 pi i Lambda_G^vee` so that every compact flux
   in `Lambda_G` sees only an integral theta-period phase.
@@ -307,6 +311,16 @@ and
   The rank-one `U(1)/Z_n` example shows explicitly that cover-charge-one
   matter, ordinary `2 pi i` FI periods, and covering-torus product constraints
   cannot be reused without the quotient mirror orbifold.
+- Adds the Hamiltonian electric-flux lift of the large-`sigma` region: on a
+  spatial circle the compact holonomy `a` has momentum
+  `p_a in Lambda_G^vee`, the Lorentzian zero-mode Lagrangian
+  `dot a^2/(2 e^2 L)+(theta/2 pi) dot a` gives
+  `E_n/L=(e^2/2)(n-theta/2 pi)^2`, and the physical minimum is taken over the
+  declared electric character lattice.  The text separates this dynamical
+  large-`sigma` energy from the protected Coulomb-coordinate singularity,
+  records charged-pair screening by `Q_dyn` at finite matter mass, and
+  distinguishes covering non-effective presentations from faithful
+  `U(1)/Z_g` global form with `Lambda_G^vee=gZ` and theta period `2 pi g`.
 - Defines the full mirror-QFT datum `mathfrak M_Lambda`, distinguishing the
   protected Hori--Vafa presentation `(Y_i,Sigma_a,W_tilde_dual)` from the
   mirror Kahler/D-term functional, induced measure, counterterms,
@@ -617,6 +631,14 @@ and
   `(sigma/mu)^{N-d}(-d)^{-d}_{branch}=exp(T)` and the anomaly-free
   branch condition `exp(T)=C_branch`, or `T_sing=0` after an additive FI-coordinate
   shift.
+- Inserts the separate Hamiltonian explanation of the hypersurface
+  large-`sigma` lift: in the ordinary `U(1)` hypersurface GLSM the charge gcd
+  is one, finite-mass matter can screen adjacent electric sectors, but in the
+  `L |sigma| -> infinity` retained zero-mode limit a nonintegral
+  branch-shifted theta class has positive minimized electric-flux energy.  The
+  text now explicitly distinguishes the D-term chambers, protected one-loop
+  Coulomb coordinate, dynamical electric-flux energy, and conjectural
+  nonsingular IR equivalence.
 - Presents the quintic GLSM solely as intrinsic two-dimensional QFT data, not
   as a string compactification.
 - Records the construction problem for GLSM flows to Landau-Ginzburg and
@@ -666,6 +688,12 @@ and
     logarithmic FI period is `2 pi i n` in covering coordinates, cover-charge
     one is not allowed matter, and the residual mirror orbifold order cannot be
     dropped;
+  - theta-shifted compact electric-flux Hamiltonian checks: the finite
+    holonomy Legendre transform gives
+    `E_n/L=(e^2/2)(n-theta/2 pi)^2`, noncompact holonomy falsely removes the
+    theta gap, quotient global form changes the electric lattice and theta
+    period, and finite-mass charged screening collapses sectors by the
+    dynamical charge gcd before the large-`sigma` unscreened limit is taken;
   - chiral-superpotential phase-isometry checks: a gauge-neutral monomial
     `P X_1 X_2` with charges `(1,1,-2)` preserves only the kernel
     `v_1+v_2+v_P=0`, so charge neutrality alone cannot justify dualizing all
@@ -1251,3 +1279,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   rejects stale bare mirror fugacities, period-one `exp(tau)` drift under a
   theta period, and omitted `q`-transport residuals in the degree-one
   residue/direct-instanton comparison.
+- The 2026-06-09 issue #965 electric-flux pass restores the Hamiltonian
+  mechanism behind the theta lift of the asymptotic Coulomb region.  Re-audit
+  note: the addition is intentionally placed after the hypersurface
+  Coulomb-coordinate paragraph so the chapter reads as a sequence of distinct
+  mechanisms--D-term chambers, protected one-loop coordinate, compact
+  electric-flux energy, and only then IR-equivalence status--rather than as
+  another local Hori--Vafa-derived identity.  The finite companion checks the
+  shifted rotor Hamiltonian and the requested negative controls for
+  noncompact holonomy, wrong quotient theta period/lattice, and omitted
+  charged screening.

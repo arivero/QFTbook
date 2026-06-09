@@ -8,7 +8,8 @@ normalization, compact FI-theta flux periodicity, common-flux rather than
 flavor-labelled vortex topology, common-sector source-projection and
 product-assembly gates, gauge-covariant vortex-core disorder insertion domains,
 quotient global-form flux/character/theta-period
-restrictions, chiral-superpotential phase-isometry restrictions for abelian
+restrictions, theta-shifted compact electric-flux Hamiltonian sectors with
+screening/global-form caveats, chiral-superpotential phase-isometry restrictions for abelian
 dualization,
 one-vortex normal-mode interaction and original/dual-frame
 separation, one-vortex source-functional F-term extraction,
@@ -58,6 +59,9 @@ tests, core-domain residual budgets, quotient cocharacter-lattice and dual
 character-lattice filters with all-rank FI-character branch-shift gates for
 vortex normalization constants and
 theta-period tests,
+compact holonomy Legendre-transform tests, shifted electric-flux spectra,
+quotient electric-lattice minimization tests, and charged-screening class
+filters,
 phase-isometry lattice tests for chiral superpotential monomials,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
 coefficient extraction, warning-clean flux-carrying magnetic-torus
@@ -164,6 +168,9 @@ quotient flux lattices, cover-charge-one matter treated as a quotient
 representation, ordinary \(2\pi i\) FI periods applied to fractional quotient
 fluxes, and quotient residual mirror orbifolds omitted from covering
 presentations,
+noncompact gauge coordinates used to erase the theta gap, wrong theta periods
+or covering electric lattices used for quotient gauge groups, and finite-mass
+charged screening omitted from electric-sector claims,
 vortex-normalization branch shifts tested only on the covering lattice instead
 of the declared compact flux lattice,
 charge-neutral chiral superpotentials treated as preserving all individual
@@ -1157,6 +1164,120 @@ def check_global_form_flux_character_lattice_gate() -> None:
     assert_equal(
         "ordinary covering theta period is not single-valued on quotient fluxes",
         Fraction(1, quotient_order) in set(wrong_topological_weights.values()),
+        True,
+    )
+
+
+def check_theta_shifted_electric_flux_hamiltonian() -> None:
+    def sector_energy_density(e2: Fraction, theta_units: Fraction, sector: int) -> Fraction:
+        return e2 * (Fraction(sector) - theta_units) ** 2 / 2
+
+    def nearest_lattice_distance(theta_units: Fraction, lattice_step: int) -> Fraction:
+        quotient = theta_units / lattice_step
+        lower = quotient.numerator // quotient.denominator
+        candidates = [lattice_step * lower, lattice_step * (lower + 1)]
+        return min(abs(Fraction(candidate) - theta_units) for candidate in candidates)
+
+    def minimized_energy_density(
+        e2: Fraction,
+        theta_units: Fraction,
+        lattice_step: int,
+    ) -> Fraction:
+        distance = nearest_lattice_distance(theta_units, lattice_step)
+        return e2 * distance**2 / 2
+
+    def screening_classes(sectors: list[int], charge_gcd: int) -> set[int]:
+        return {sector % charge_gcd for sector in sectors}
+
+    e2 = Fraction(3, 2)
+    length = Fraction(5, 1)
+    theta_units = Fraction(2, 5)
+    sector = 1
+    dot_holonomy = e2 * length * (sector - theta_units)
+    lagrangian = dot_holonomy**2 / (2 * e2 * length) + theta_units * dot_holonomy
+    canonical_momentum = dot_holonomy / (e2 * length) + theta_units
+    hamiltonian = canonical_momentum * dot_holonomy - lagrangian
+    assert_equal("theta-shifted canonical holonomy momentum", canonical_momentum, sector)
+    assert_equal(
+        "Legendre transform gives shifted electric energy density",
+        hamiltonian / length,
+        sector_energy_density(e2, theta_units, sector),
+    )
+
+    finite_hamiltonian = {
+        n: sector_energy_density(e2, Fraction(1, 3), n)
+        for n in range(-3, 4)
+    }
+    assert_equal(
+        "finite compact-holonomy Hamiltonian diagonal entries",
+        finite_hamiltonian[0],
+        Fraction(1, 12),
+    )
+    assert_equal(
+        "compact electric theta gap is positive away from integral theta",
+        minimized_energy_density(e2, Fraction(1, 3), lattice_step=1) > 0,
+        True,
+    )
+    assert_equal(
+        "integral theta class has a zero compact electric sector",
+        minimized_energy_density(e2, Fraction(0), lattice_step=1),
+        Fraction(0),
+    )
+    assert_equal(
+        "noncompact holonomy would minimize continuously and erase theta gap",
+        Fraction(0) < minimized_energy_density(e2, Fraction(1, 3), lattice_step=1),
+        True,
+    )
+
+    quotient_order = 3
+    quotient_theta = Fraction(1, 1)
+    quotient_energy = minimized_energy_density(e2, quotient_theta, lattice_step=quotient_order)
+    wrong_cover_energy = minimized_energy_density(e2, quotient_theta, lattice_step=1)
+    assert_equal(
+        "quotient electric lattice keeps cover-theta-one class gapped",
+        quotient_energy,
+        e2 / 2,
+    )
+    assert_equal(
+        "wrong covering electric lattice falsely gives zero quotient energy",
+        wrong_cover_energy,
+        Fraction(0),
+    )
+    base_theta = Fraction(2, 5)
+    assert_equal(
+        "quotient theta period is the quotient character generator",
+        minimized_energy_density(e2, base_theta + quotient_order, quotient_order),
+        minimized_energy_density(e2, base_theta, quotient_order),
+    )
+    assert_equal(
+        "ordinary theta period is wrong for quotient electric lattice",
+        minimized_energy_density(e2, base_theta + 1, quotient_order)
+        == minimized_energy_density(e2, base_theta, quotient_order),
+        False,
+    )
+
+    sampled_sectors = list(range(-3, 4))
+    assert_equal(
+        "charge-one finite-mass screening connects all integer sectors",
+        screening_classes(sampled_sectors, charge_gcd=1),
+        {0},
+    )
+    assert_equal(
+        "omitting finite-mass charge-one screening overcounts sectors",
+        len(set(sampled_sectors)) > len(screening_classes(sampled_sectors, 1)),
+        True,
+    )
+    assert_equal(
+        "gcd-two matter leaves two electric screening classes",
+        screening_classes(sampled_sectors, charge_gcd=2),
+        {0, 1},
+    )
+
+    large_mass_scale = Fraction(50, 1) * length
+    small_mass_scale = Fraction(3, 2) * length
+    assert_equal(
+        "large-sigma unscreened regime is a stronger finite-volume limit",
+        large_mass_scale > small_mass_scale,
         True,
     )
 
@@ -6441,6 +6562,7 @@ def main() -> None:
     check_vortex_core_disorder_insertion_gate()
     check_common_flux_operator_map_diagnostic()
     check_global_form_flux_character_lattice_gate()
+    check_theta_shifted_electric_flux_hamiltonian()
     check_chiral_superpotential_phase_isometry_gate()
     check_abelian_coulomb_one_loop_primitive()
     check_coulomb_component_response_selects_log_sign()

@@ -5671,6 +5671,155 @@ Coulomb vacua.  This is the protected Coulomb-coordinate signal associated
 with the chamber boundary.  The continuum behavior at that coordinate is a
 separate infrared construction problem.
 
+\paragraph{Hamiltonian electric-flux lift of the large-\(\sigma\) region.}
+The preceding Coulomb-coordinate statement is holomorphic data.  The real-time
+mechanism that lifts the asymptotic Coulomb region is different: it is the
+compact electric-flux spectrum of the gauge zero mode, shifted by the theta
+angle, after charged matter has become heavy.  Put the rank-one GLSM on
+\(\mathbb R_t\times S^1_L\), choose temporal gauge for the zero mode, and set
+\[
+  a(t)=\int_{S^1_L} A_x(t,x)\,\dd x .
+\]
+The electric part of the component action retained in this Hamiltonian
+regulator is
+\begin{equation}
+  L_{\rm gauge}
+  =
+  \int_{S^1_L}\dd x\,
+  \left[
+    \frac{1}{2e^2}F_{01}^2
+    +\frac{\theta}{2\pi}F_{01}
+  \right],
+  \qquad
+  F_{01}=\dot A_x-\partial_xA_0 .
+  \label{eq:glsm-electric-component-lagrangian}
+\end{equation}
+The \(A_0\)-variation gives Gauss law,
+\[
+  \partial_x\left(\frac{F_{01}}{e^2}\right)
+  +\sum_iQ_i\rho_i=0,
+\]
+where \(\rho_i\) is the matter charge density.  In the low-energy window
+below charged-particle thresholds and with no external charge insertions,
+\(\rho_i=0\) in the retained sector, so the electric field is spatially
+constant.  Then \(F_{01}=\dot a/L\) for the zero mode.
+For the ordinary \(U(1)\) presentation \(a\sim a+2\pi\).  More generally, for
+the compact torus \(G=\mathbb R/(2\pi\Lambda_G)\) of
+Construction~\ref{constr:glsm-global-form-flux-lattice-datum},
+\[
+  a\in \mathbb R/(2\pi\Lambda_G),
+  \qquad
+  p_a\in \Lambda_G^\vee
+\]
+after quantization; the second statement is just the character expansion of
+wavefunctions on the compact holonomy torus.  In the ordinary covering
+coordinate, \eqref{eq:glsm-electric-component-lagrangian} reduces to the
+zero-mode Lagrangian whose Euclidean continuation gives
+\(S_{E,\theta}=-\ii\theta k\):
+\begin{equation}
+  L_{\rm el,0}
+  =
+  \frac{1}{2e^2L}\dot a^{\,2}
+  +\frac{\theta}{2\pi}\dot a .
+  \label{eq:glsm-electric-holonomy-lagrangian}
+\end{equation}
+Thus
+\begin{equation}
+  p_a
+  =
+  \frac{1}{e^2L}\dot a+\frac{\theta}{2\pi},
+  \qquad
+  \dot a=e^2L\left(p_a-\frac{\theta}{2\pi}\right),
+  \label{eq:glsm-electric-theta-shifted-momentum}
+\end{equation}
+and the zero-mode Hamiltonian is
+\begin{equation}
+  H_n(\theta)
+  =
+  \frac{e^2L}{2}
+  \left(n-\frac{\theta}{2\pi}\right)^2,
+  \qquad n\in\Lambda_G^\vee .
+  \label{eq:glsm-electric-flux-sector-energy}
+\end{equation}
+Equivalently, the energy density in a fixed unscreened electric sector is
+\begin{equation}
+  \mathcal E^{(0)}_n(\theta)
+  =
+  \frac{e^2}{2}
+  \left(n-\frac{\theta}{2\pi}\right)^2,
+  \qquad
+  \mathcal E^{(0)}_{\rm min}(\theta)
+  =
+  \min_{n\in\Lambda_G^\vee}
+  \frac{e^2}{2}
+  \left(n-\frac{\theta}{2\pi}\right)^2 .
+  \label{eq:glsm-electric-flux-minimized-energy-density}
+\end{equation}
+This coefficient is not imported from another convention: it follows from the
+same gauge kinetic normalization that produced
+\eqref{eq:abelian-glsm-classical-potential}.  A different normalization of
+the Maxwell term would rescale the displayed \(e^2/2\), but not the compact
+lattice, theta shift, or minimization mechanism.
+
+The \(\sigma\)-dependence enters through the charged matter masses
+\[
+  M_i(\sigma)=|Q_i\sigma|.
+\]
+At finite \(M_i\), charged pair creation can screen electric field: sectors
+whose labels differ by a dynamical charge in
+\[
+  Q_{\rm dyn}=\langle Q_1,\ldots,Q_m\rangle_{\mathbb Z}
+  \subset \Lambda_G^\vee
+\]
+are connected by charged worldlines.  On a finite circle and below the
+two-particle thresholds, the unscreened Hamiltonian
+\eqref{eq:glsm-electric-flux-sector-energy} is therefore a Born--Oppenheimer
+large-mass statement.  The limit used in the phase argument is
+\begin{equation}
+  L\,M_{\min}(\sigma)\longrightarrow\infty,
+  \qquad
+  M_{\min}(\sigma)=\min_{Q_i\neq0}|Q_i\sigma|,
+  \label{eq:glsm-electric-flux-unscreened-limit}
+\end{equation}
+where virtual charged worldlines around the circle and real screening
+thresholds decouple from the retained electric zero mode.  At finite
+\(|\sigma|\), omitting this screening caveat would turn an asymptotic
+Hamiltonian approximation into a false exact superselection claim.
+
+The same lattice controls the global-form and gcd caveats.  If the faithful
+gauge group is \(U(1)/\mathbb Z_g\), then in the covering coordinate
+\[
+  \Lambda_G=\frac1g\mathbb Z,\qquad
+  \Lambda_G^\vee=g\mathbb Z,\qquad
+  \theta\sim\theta+2\pi g .
+\]
+The minimum in
+\eqref{eq:glsm-electric-flux-minimized-energy-density} is then taken over
+\(n\in g\mathbb Z\), and the zero-energy theta classes are those with
+\(\theta/(2\pi)\in g\mathbb Z\).  Conversely, a non-effective covering
+presentation whose matter charges all have gcd \(g\) still has the covering
+electric lattice, but dynamical matter screens only by \(g\mathbb Z\).  This
+is the Hamiltonian counterpart of the non-effective/global-form bookkeeping
+above: one must specify both the compact gauge torus and the dynamical charge
+lattice before counting Coulomb sectors or theta periods.  For a noncompact
+gauge coordinate \(a\in\mathbb R\), \(p_a\) would be continuous and the
+minimum would occur at \(p_a=\theta/(2\pi)\) with zero energy.  Compactness is
+therefore the load-bearing input.
+
+For the hypersurface charge vector \((1,\ldots,1,-d)\) in the ordinary
+\(U(1)\) global form, the charge gcd is one.  At finite charged-matter mass,
+charge-one fields can screen adjacent electric sectors; in the asymptotic
+\(L|\sigma|\to\infty\) regime the retained sectors are unscreened and
+\(\mathcal E^{(0)}_{\rm min}(\theta)>0\) unless the branch-shifted theta
+coordinate is an integral period.  Thus the phase analysis has four distinct
+layers: the classical \(D\)-term chambers describe Higgs quotients; the
+one-loop twisted superpotential gives the protected Coulomb-coordinate
+singular locus; the compact Hamiltonian electric-flux spectrum supplies the
+dynamical large-\(\sigma\) energy away from exceptional theta classes; and
+the equality of the nonsingular infrared endpoints remains a continuum
+two-dimensional QFT construction requiring operator, state-space, stress-tensor,
+and scaling-limit data beyond these protected calculations.
+
 \begin{example}[The quintic GLSM as intrinsic two-dimensional QFT data]
 \label{ex:quintic-glsm-intrinsic-qft}
 Set \(N=d=5\).  The charges are
