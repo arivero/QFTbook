@@ -208,11 +208,14 @@
         "electric Gaussian edge uses first nonzero NSVZ beta coefficient",
         "b0=0 alone does not certify Gaussian endpoint",
         "magnetic canonical Yukawa requires declared Kähler wavefunction data",
+        "Kähler coefficient convention uses gamma=-d log Z/d log mu",
+        "canonical magnetic Yukawa beta sign follows beta_h/h=one half sum gamma",
         "M over mu star fixes engineering dimension but is not automatically canonical",
         "lower SQCD edge is classified by coupled magnetic gauge-Yukawa flow",
+        "lower-edge (4,6,2) sample matches NSVZ expansion to Martin-Vaughn two-loop coefficients",
         "Delta M equals one does not classify the full lower-edge magnetic sector",
         "magnetic lower-edge gauge-only running omits the canonical Yukawa contribution",
-        "magnetic gauge asymptotic freedom alone does not UV-complete nonzero Yukawa",
+        "nonzero magnetic asymptotically-free ray does not prove the free-electric continuum-pair statement",
         "free-electric continuation needs finite cutoff UV completion or matching datum"
       ]
     },

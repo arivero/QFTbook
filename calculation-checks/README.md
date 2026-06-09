@@ -3469,13 +3469,17 @@ Current checks:
   perturbative projection, the neutral-spurion \(q^0\) closure boundary and
   running-coupling finite-redefinition term, the separate one-loop shell
   determinant coefficient \(3C_2(G)-\sum_iT(R_i)\), Konishi and
-  vector-multiplet coordinate shifts, and the differentiated
-  holomorphic-canonical relation leading to the NSVZ beta function.
+  vector-multiplet action shifts versus the solved \(X_h\) coordinate
+  relation, the \(\gamma=-d\log Z/d\log\mu\) Kähler-coefficient convention,
+  the canonical Yukawa sign, and the differentiated holomorphic-canonical
+  relation leading to the NSVZ beta function.
 - `susy_n1_conifold_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) conifold SCFT and cascade section,
   including the KW \(R\)-anomaly, \(\gamma=2\mathcal C\) NSVZ convention,
   KW beta-function rank count for the two gauge numerators and quartic
-  marginality defect, the KW two-dimensional local conformal-locus count,
+  marginality defect, the differentiated KW quartic canonical-source
+  convention with \(\gamma=-d\log Z/d\log\mu\), the KW two-dimensional local
+  conformal-locus count,
   \(a\)-maximization stationarity and Hessian/current-two-point sign for the
   baryonic mixing direction, the SQCD meson unitarity-bound accidental-current
   correction template, central charges, rank-one conifold relation, KS
@@ -3509,10 +3513,15 @@ Current checks:
   comparison factorization, the first nonzero \(N_f=3N_c\) electric
   beta-function coefficient derived from the one-loop matter anomalous
   dimension, magnetic Kähler rescaling covariance for the canonical Yukawa
-  coupling, the canonical magnetic gauge-Yukawa ratio flow after declared
-  Kähler normalization, the exact lower-edge \(2N_f=3N_c\) coupled magnetic
-  flow with the \(r_Y=|h_{\rm can}|^2/g_m^2\) separatrix and marginally free
-  magnetic classification, electric-magnetic local perturbative
+  coupling, the \(\gamma=-d\log Z/d\log\mu\) sign in
+  \(\beta_h/h=\frac12\sum\gamma\), the canonical magnetic gauge-Yukawa ratio
+  flow after declared Kähler normalization, the exact lower-edge
+  \(2N_f=3N_c\) coupled magnetic flow with the
+  \(r_Y=|h_{\rm can}|^2/g_m^2\) separatrix, the direct
+  \((N_c,N_f,\widetilde N_c)=(4,6,2)\) \(g_m^6\) and \(g_m^4|h|^2\)
+  coefficient sample against the Martin--Vaughn two-loop bracket, and
+  marginally free magnetic classification,
+  electric-magnetic local perturbative
   anomaly-polynomial matching, mass and Higgs deformation
   rank/dimension/\(R\)-charge tests,
   \(N_f=N_c+1\) confining-superpotential dimension/\(R\)-charge checks, mass
@@ -3523,9 +3532,10 @@ Current checks:
   alone does not certify the Gaussian endpoint, that lower-edge
   \(b_{0,\mathrm{mag}}=0\), \(\Delta(M)=1\), and gauge-only running do not
   classify the coupled magnetic endpoint, that \(M/\mu_*\) is not automatically
-  canonical without the meson Kähler factor, that magnetic gauge asymptotic
-  freedom alone does not UV-complete the nonzero-Yukawa magnetic theory, and
-  that rank, charge, anomaly, and deformation arithmetic can
+  canonical without the meson Kähler factor, that the nonzero magnetic
+  asymptotically-free ray still does not prove the free-electric continuum-pair
+  statement without matching data, and that rank, charge, anomaly, and
+  deformation arithmetic can
   continue to pass for \(N_f>3N_c\) while the standard continuum-pair
   statement and fixed-point dimension tests remain inadmissible without the
   extra finite-cutoff, UV-completion, or magnetic matching data.

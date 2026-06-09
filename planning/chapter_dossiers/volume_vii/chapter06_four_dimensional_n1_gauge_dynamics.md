@@ -127,7 +127,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
   the Chapter 05 holomorphic \(q_h^0\) closure hypothesis and
   holomorphic-canonical NSVZ coordinate relation to SQCD.
 - SQCD NSVZ coordinate specialization: derivation of
-  `X_h=X_c+N_c log g^2-N_f log Z_Q+kappa` and the specialized SQCD NSVZ
+  `X_h=X_c+N_c log g^2+N_f log Z_Q+kappa` and the specialized SQCD NSVZ
   beta function.
 - SQCD central-charge bookkeeping: SQCD conformal-window
   `Tr R`, `Tr R^3`, \(a\), \(c\), and conditional free-field
@@ -152,7 +152,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - `Y_i`, `x_i`: small-circle affine-Toda coordinates for pure `SU(N_c)`
   supersymmetric Yang-Mills.
 - `gamma_Phi`: monograph anomalous-dimension convention
-  `d log Z_Phi / d log mu`.
+  `-d log Z_Phi / d log mu` for Kähler coefficient `Z_Phi`.
 - `mathcal C_Phi`: half-normalized convention used in the stringbook
   appendices, related by `gamma_Phi = 2 mathcal C_Phi`.
 - `tilde N_c=N_f-N_c`: magnetic gauge rank in the SQCD duality section.
@@ -437,9 +437,9 @@ brane construction, or holographic interpretation is a premise of the chapter.
   while `Z_M`, `Z_q`, `Z_tilde q`, and `lambda` determine
   `h_can`.  With this declared canonical chart, derives the one-loop magnetic
   gauge-Yukawa beta system.  In the free-electric range `N_f>=3N_c`, the ratio
-  flow has no positive nonzero asymptotically-free ray, so nonzero `h_can` is a
-  finite matching-cutoff or UV-completion datum rather than a consequence of
-  magnetic gauge asymptotic freedom.
+  flow has a positive nonzero magnetic asymptotically-free ray; using that ray
+  as a free-electric continuation still requires declared trajectory, matching,
+  and Kähler-normalization data.
 - Derives the coupled magnetic lower-edge status at `2N_f=3N_c`: for
   `N_c=2t`, `N_f=3t`, `t=tilde N_c>=2`, the first nonzero magnetic gauge beta
   is proportional to `g_m^4(2 C_F^(m) g_m^2 - N_f |h_can|^2)`, the
@@ -454,7 +454,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
   assumptions before any electric/magnetic equivalence is used.
 - Proves the magnetic gauge-`R` anomaly cancellation, magnetic
   superpotential \(R=2\), and magnetic NSVZ numerator cancellation in the
-  monograph `gamma=d log Z/d log mu` convention.
+  monograph `gamma=-d log Z/d log mu` Kähler-coefficient convention.
 - Derives the faithful compact SQCD flavor-baryon group by showing that
   `(zeta_f 1_L,zeta_f 1_R,e^{-2 pi i/N_f})` and
   `(1_L,1_R,e^{2 pi i/N_c})` are exactly the finite kernel up to color
@@ -536,7 +536,9 @@ brane construction, or holographic interpretation is a premise of the chapter.
   arithmetic for the new conifold material: KW R-anomaly cancellation,
   `gamma=2 mathcal C` conversion, superpotential R-charge, NSVZ numerator,
   KW beta-function rank count for gauge numerators and quartic marginality,
-  the KW exact-marginality dimension count and tangent-kernel arithmetic,
+  the differentiated KW quartic canonical-source convention with
+  `gamma=-dlog Z/dlog mu`, the KW exact-marginality dimension count and
+  tangent-kernel arithmetic,
   `a`-maximization stationarity and Hessian/current-two-point sign for
   baryonic mixing, the SQCD meson unitarity-bound accidental-current
   correction template, central charges, conifold determinant relation, KS
@@ -634,10 +636,10 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   or fixed-point-dimension claim.
 - 2026-06-08 issue #945 pass: derived the electric Gaussian endpoint from the
   explicit `g^5` NSVZ coefficient, introduced the canonical magnetic
-  gauge-Yukawa coupling `h`, showed that magnetic gauge asymptotic freedom
-  does not UV-complete a nonzero-Yukawa magnetic theory in the free-electric
-  range, and replaced range-label checks with RG coefficient/ratio-flow
-  regressions.
+  gauge-Yukawa coupling `h`, required the free-electric magnetic status to be
+  decided by the coupled gauge-Yukawa ratio flow rather than magnetic gauge
+  asymptotic freedom alone, and replaced range-label checks with RG
+  coefficient/ratio-flow regressions.
 - 2026-06-08 issue #950 pass: inserted the magnetic Kähler normalization datum
   before the canonical magnetic gauge-Yukawa beta functions.  The text now
   distinguishes the holomorphic dimension-one coordinate `M/mu_*` from the
@@ -654,3 +656,14 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   free magnetic with logarithmic running.  The meson unitarity saturation and
   accidental current are now downstream consequences in the ledger, not the
   endpoint classifier.
+- 2026-06-08 issue #959 pass: reconciled the SQCD NSVZ, SCFT
+  anomalous-dimension, and magnetic canonical-Yukawa signs with the
+  Kähler-coefficient convention `gamma=-d log Z/d log mu`.  The SQCD
+  coordinate relation now has `+N_f log Z_Q`, the physical anomalous-dimension
+  coefficients are normalized consistently with `Delta=1+gamma/2`, and the
+  canonical Yukawa beta sign is derived by differentiating
+  `h_can=lambda Z_M^(-1/2) Z_q^(-1/2) Z_tildeq^(-1/2)`.  The paired
+  calculation check includes an independent Martin-Vaughn two-loop comparison
+  at `(N_c,N_f,tilde N_c)=(4,6,2)` and updates the free-electric magnetic
+  status to record the nonzero AF ray without promoting it to a continuum-pair
+  theorem.

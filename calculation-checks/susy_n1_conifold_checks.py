@@ -77,6 +77,34 @@ def check_kw_beta_rank_count():
     assert_equal(1 + 2 * gamma_symmetric, 0, "KW exchange-symmetric fixed defect")
 
 
+def check_kw_quartic_canonical_source_convention():
+    """Differentiate the KW quartic source in the gamma=-d log Z convention."""
+
+    gamma_samples = [
+        (Fraction(-1, 2), Fraction(-1, 2)),
+        (Fraction(-2, 3), Fraction(-1, 3)),
+        (Fraction(1, 5), Fraction(-6, 5)),
+    ]
+    for gamma_a, gamma_b in gamma_samples:
+        # A dimensionless quartic source is obtained by multiplying the
+        # holomorphic quartic coefficient by one power of mu and by the four
+        # canonical-field factors.  With gamma=-d log Z/d log mu this gives
+        # d log h_can/d log mu = 1 + gamma_A + gamma_B.
+        d_log_mu = Fraction(1)
+        d_log_z_a = -gamma_a
+        d_log_z_b = -gamma_b
+        canonical_source_beta = (
+            d_log_mu
+            - Fraction(1, 2) * (2 * d_log_z_a + 2 * d_log_z_b)
+        )
+        defect = 1 + gamma_a + gamma_b
+        assert_equal(canonical_source_beta, defect, "KW quartic source convention")
+
+        wrong_gamma_sign = d_log_mu - gamma_a - gamma_b
+        if defect != 1 and wrong_gamma_sign == defect:
+            raise AssertionError("KW wrong gamma sign incorrectly preserved quartic defect")
+
+
 def check_kw_exact_marginal_dimension_count():
     for n in range(2, 13):
         # The beta map factors through one common defect E:
@@ -314,6 +342,7 @@ def check_endpoint_discrete_r_symmetry():
 def main():
     check_kw_r_anomaly_and_nsvz()
     check_kw_beta_rank_count()
+    check_kw_quartic_canonical_source_convention()
     check_kw_exact_marginal_dimension_count()
     check_kw_a_maximization_and_central_charges()
     check_accidental_symmetry_unitarity_correction()

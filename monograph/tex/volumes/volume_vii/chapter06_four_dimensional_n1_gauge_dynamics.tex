@@ -49,13 +49,13 @@ statement, not a change of the underlying theory.  Write
 where \(g_h\) is the holomorphic Wilsonian coupling and \(g\) is the
 canonical coupling defined by the component kinetic term of
 Chapter~\ref{ch:susy-gauge-theory}.  Let \(Z_Q\) and
-\(Z_{\widetilde Q}\) be the matter wave-function coordinates, with
+\(Z_{\widetilde Q}\) be the positive Kähler wave-function coefficients, with
 \[
-  \gamma_Q(\mu)=\mu\frac{d}{d\mu}\log Z_Q(\mu),
+  \gamma_Q(\mu)=-\mu\frac{d}{d\mu}\log Z_Q(\mu),
   \qquad
   \gamma_{\widetilde Q}(\mu)
   =
-  \mu\frac{d}{d\mu}\log Z_{\widetilde Q}(\mu).
+  -\mu\frac{d}{d\mu}\log Z_{\widetilde Q}(\mu).
 \]
 
 \begin{hypothesis}[SQCD NSVZ coordinate specialization]
@@ -89,7 +89,7 @@ flavor-symmetric SQCD coordinate chart,
 \begin{equation}
   X_h
   =
-  X_c+N_c\log g^2-N_f\log Z_Q+\kappa ,
+  X_c+N_c\log g^2+N_f\log Z_Q+\kappa ,
   \label{eq:sqcd-holomorphic-canonical-coordinate-relation}
 \end{equation}
 where \(\kappa\) is independent of \(\mu\).  Consequently
@@ -111,7 +111,7 @@ Proposition~\ref{prop:nsvz-coordinate-relation-derived} gives
   X_h
   =
   X_c+C_2(SU(N_c))\log g^2
-  -
+  +
   \sum_i T(R_i)\log Z_i+\kappa .
 \]
 There are \(N_f\) chiral multiplets \(Q^i\) in \(\mathbf N_c\) and \(N_f\)
@@ -131,7 +131,7 @@ holomorphic Wilsonian coordinate has one-loop derivative
   \mu\frac{dX_h}{d\mu}=3N_c-N_f .
 \]
 Differentiating \eqref{eq:sqcd-holomorphic-canonical-coordinate-relation}
-therefore gives
+and using \(\mu\,d\log Z_Q/d\mu=-\gamma_Q\) therefore gives
 \[
   \left(
     -\frac{16\pi^2}{g^3}+\frac{2N_c}{g}
@@ -2406,10 +2406,12 @@ Compatibility of these two conventions gives
 \end{equation}
 Here \(\gamma_\Phi\) is the chapter convention
 \[
-  \gamma_\Phi=\frac{d}{d\log\mu}\log Z_\Phi .
+  \gamma_\Phi=-\frac{d}{d\log\mu}\log Z_\Phi ,
 \]
-Some supersymmetric-gauge-theory references instead use
-\(\mathcal C_\Phi=\frac12\,d\log Z_\Phi/d\log\mu\).  The conversion is
+where \(Z_\Phi\) is the coefficient of the Kähler term
+\(Z_\Phi\Phi^\dagger e^V\Phi\).  Some supersymmetric-gauge-theory references
+instead use
+\(\mathcal C_\Phi=-\frac12\,d\log Z_\Phi/d\log\mu\).  The conversion is
 \[
   \gamma_\Phi=2\mathcal C_\Phi,\qquad
   \Delta(\Phi)=1+\mathcal C_\Phi .
@@ -2475,7 +2477,7 @@ anomalous dimension for SQCD with \(W=0\) is
 \begin{equation}
   \gamma_Q(g)
   =
-  -\frac{C_2(\mathbf N_c)}{8\pi^2}g^2+O(g^4),
+  -\frac{C_2(\mathbf N_c)}{4\pi^2}g^2+O(g^4),
   \qquad
   C_2(\mathbf N_c)=\frac{N_c^2-1}{2N_c}.
   \label{eq:sqcd-one-loop-quark-gamma}
@@ -2485,9 +2487,9 @@ Substituting this into the specialized NSVZ expression
 \begin{equation}
   \beta_g
   =
-  \frac{3N_cC_2(\mathbf N_c)}{128\pi^4}g^5+O(g^7)
+  \frac{3N_cC_2(\mathbf N_c)}{64\pi^4}g^5+O(g^7)
   =
-  \frac{3(N_c^2-1)}{256\pi^4}g^5+O(g^7).
+  \frac{3(N_c^2-1)}{128\pi^4}g^5+O(g^7).
   \label{eq:sqcd-electric-gaussian-edge-beta}
 \end{equation}
 Thus \(g=0\) is marginally irrelevant toward the infrared: lowering the
@@ -2948,17 +2950,20 @@ the magnetic fields in the flavor-symmetric gauge--Yukawa chart are
   \gamma_q=\gamma_{\widetilde q}
   &=
   \frac{1}{16\pi^2}
-  \left(N_f|h|^2-2C_F^{(m)}g_m^2\right)
+  \left(2N_f|h|^2-4C_F^{(m)}g_m^2\right)
   +O(g_m^4,g_m^2|h|^2,|h|^4),
   \label{eq:sqcd-magnetic-quark-gamma-one-loop}\\
   \gamma_M
   &=
   \frac{1}{16\pi^2}
-  \left(t|h|^2\right)
+  \left(2t|h|^2\right)
   +O(g_m^2|h|^2,|h|^4).
   \label{eq:sqcd-magnetic-meson-gamma-one-loop}
 \end{align}
-The nonrenormalization theorem then gives
+At fixed holomorphic coordinate \(\lambda\), perturbative
+nonrenormalization gives \(\mu\,d\lambda/d\mu=0\).  Differentiating
+\eqref{eq:sqcd-magnetic-canonical-yukawa-coupling} with
+\(\gamma_\Phi=-d\log Z_\Phi/d\log\mu\) gives
 \[
   \frac{\beta_h}{h}
   =
@@ -2972,7 +2977,7 @@ so, to one loop,
   \label{eq:sqcd-magnetic-gauge-beta-one-loop}\\
   \beta_{|h|^2}
   &=
-  \frac{|h|^2}{16\pi^2}
+  \frac{|h|^2}{8\pi^2}
   \left((2N_f+t)|h|^2-4C_F^{(m)}g_m^2\right)+\cdots .
   \label{eq:sqcd-magnetic-yukawa-beta-one-loop}
 \end{align}
@@ -2980,8 +2985,8 @@ For the ratio \(r=|h|^2/g_m^2\),
 \begin{equation}
   \mu\frac{dr}{d\mu}
   =
-  \frac{r g_m^2}{16\pi^2}
-  \left((2N_f+t)r+2b_{0,m}-4C_F^{(m)}\right)+\cdots .
+  \frac{r g_m^2}{8\pi^2}
+  \left((2N_f+t)r+b_{0,m}-4C_F^{(m)}\right)+\cdots .
   \label{eq:sqcd-magnetic-yukawa-ratio-flow}
 \end{equation}
 At the exact lower edge \(2N_f=3N_c\), write
@@ -2997,7 +3002,7 @@ coupling, gives the first nonzero homogeneous gauge beta function
 \begin{equation}
   \beta_{g_m^2}
   =
-  \frac{N_f g_m^4}{128\pi^4}
+  \frac{N_f g_m^4}{64\pi^4}
   \left(2C_F^{(m)}g_m^2-N_f|h|^2\right)
   +O\!\left((g_m^2+|h|^2)^4\right).
   \label{eq:sqcd-lower-edge-magnetic-gauge-beta}
@@ -3024,7 +3029,7 @@ Thus \(0<r_Y<r_g\), and the leading ratio flow at \(b_{0,m}=0\) is
 \[
   \mu\frac{dr}{d\mu}
   =
-  \frac{r g_m^2}{16\pi^2}(2N_f+t)(r-r_Y)
+  \frac{r g_m^2}{8\pi^2}(2N_f+t)(r-r_Y)
   +O(g_m^4).
 \]
 The line \(h=0\) is an exact superpotential-off line.  The ray
@@ -3039,12 +3044,30 @@ left.  On this ray,
 \begin{equation}
   \beta_{g_m^2}
   =
-  \frac{N_f C_F^{(m)}}{448\pi^4}\,g_m^6
+  \frac{N_f C_F^{(m)}}{224\pi^4}\,g_m^6
   +O(g_m^8)
   >
   0 .
   \label{eq:sqcd-lower-edge-magnetic-ray-beta}
 \end{equation}
+For the first nonabelian integral sample
+\((N_c,N_f,\widetilde N_c)=(4,6,2)\), one has
+\(C_F^{(m)}=3/4\), \(r_Y=3/14\), and \(r_g=1/4\).  Direct substitution in
+\eqref{eq:sqcd-lower-edge-magnetic-gauge-beta} gives
+\[
+  \beta_{g_m^2}
+  =
+  \frac{g_m^4}{\pi^4}
+  \left(\frac{9}{64}g_m^2-\frac{9}{16}|h|^2\right)+\cdots ,
+\]
+The same two coefficients follow from the Martin--Vaughn two-loop gauge
+formula: the pure gauge bracket is \(18\), while the symmetric-superpotential
+Yukawa contraction divided by \(\dim SU(2)\) is \(72\), giving
+\((18,-72)/128=(9/64,-9/16)\).  On the
+superpotential-preserving ray this reduces to
+\(\beta_{g_m^2}=9g_m^6/(448\pi^4)+\cdots\).  The numerical sign and the
+coefficient both use the Yukawa contribution; the gauge-only term would give
+\(9g_m^6/(64\pi^4)\).
 In the chapter convention this means that \(g_m\) and \(h\) are marginally
 irrelevant toward the infrared and flow to a Gaussian magnetic theory with
 logarithmic approach.  The lower edge is therefore a marginally free magnetic
@@ -3059,20 +3082,29 @@ coefficient.
 
 In the free electric range \(N_f\ge 3N_c\), one has \(t\ge2N_c\), and
 \[
-  2b_{0,m}-4C_F^{(m)}
+  b_{0,m}-4C_F^{(m)}
   =
-  2(t-N_c)+\frac{2}{t}
-  >
+  -N_c+\frac{2}{t}
+  <
   0 .
 \]
-Therefore no positive nonzero weak-coupling ray makes both \(g_m\) and \(h\)
-asymptotically free in this range.  The line \(h=0\) is asymptotically free
-for the gauge sector, but it removes the superpotential that implements the
-Seiberg magnetic field identifications.  A magnetic description with nonzero
-matching \(h\) must therefore be treated as a Wilsonian theory with a finite
-matching cutoff and specified \(h\), or be supplied with additional
-ultraviolet completion data; magnetic gauge asymptotic freedom alone is not a
-UV definition of the full magnetic gauge--Yukawa Lagrangian.
+Therefore the perturbative magnetic gauge--Yukawa system has a positive
+weak-coupling AF ray
+\[
+  r_{\rm AF}
+  =
+  \frac{4C_F^{(m)}-b_{0,m}}{2N_f+t}
+  =
+  \frac{N_c-2/t}{2N_f+t}.
+\]
+The line \(h=0\) is also asymptotically free for the gauge sector, but it
+removes the superpotential that implements the Seiberg magnetic field
+identifications.  The nonzero ray is a possible ultraviolet definition of the
+magnetic gauge--Yukawa Lagrangian after a trajectory and matching convention
+have been declared.  A derivation of the free-electric continuation of the
+electric variables still requires the finite-cutoff, ultraviolet-completion,
+or emergent-coordinate data stated in
+Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}.
 
 The fractional magnetic baryon charges are also shorthand for a representation
 of the same faithful group \eqref{eq:sqcd-faithful-flavor-baryon-group}, not
@@ -3117,10 +3149,11 @@ the following hypotheses are part of the statement.
   \(Z_M,Z_q,Z_{\widetilde q}\), holomorphic coefficient \(\lambda\), and the
   derived canonical Yukawa datum \(h_{\mathrm{can}}(\Lambda_{\rm mag})\).
   The one-loop analysis
-  \eqref{eq:sqcd-magnetic-yukawa-ratio-flow} shows that the magnetic gauge
-  coupling may be asymptotically free while the full nonzero-\(h\)
-  gauge--Yukawa system is not thereby UV-completed.  In the finite cutoff
-  formulation one
+  \eqref{eq:sqcd-magnetic-yukawa-ratio-flow} gives a nonzero perturbative
+  magnetic gauge--Yukawa asymptotically-free ray, but using it as an electric
+  free-continuation definition still requires the trajectory, matching scale,
+  and Kähler normalization data to be part of the statement.  In the finite
+  cutoff formulation one
   first takes the thermodynamic limit at fixed \(\Lambda_{\rm el}\), then the
   infrared limit of momenta, masses, and sources with all ratios
   \(p/\Lambda_{\rm el}\) tending to zero.  A subsequent
@@ -3635,21 +3668,23 @@ marginally irrelevant toward the infrared.  The anomaly comparison
 \eqref{eq:sqcd-free-field-a-comparison} has zero difference from the free
 electric value, and fixed-point dimension formulae are interpreted with the
 free electric variables and their accidental currents rather than as an
-interacting SCFT claim.  The magnetic gauge coupling is asymptotically free
-at this endpoint, but the canonical magnetic superpotential has no nonzero
-weak-coupling gauge--Yukawa asymptotically-free ray by
-\eqref{eq:sqcd-magnetic-yukawa-ratio-flow}; it is not a replacement
-derivation of the electric Gaussian edge.
+interacting SCFT claim.  The magnetic gauge--Yukawa system has a nonzero
+weak-coupling AF ray by
+\eqref{eq:sqcd-magnetic-yukawa-ratio-flow}.  The electric Gaussian-edge
+status is the first-nonzero-beta statement
+\eqref{eq:sqcd-electric-gaussian-edge-beta}, with the magnetic ray supplying a
+separate perturbative magnetic trajectory.
 \item[\(N_f>3N_c\).]
 Status: strict free electric continuation.  The electric gauge coupling is
 infrared free in the perturbative Wilsonian sense, while the electric
 Lagrangian by itself is a finite cutoff EFT, a UV-completed theory, or an
-emergent infrared coordinate system supplied by a magnetic Wilsonian
-definition with a declared matching cutoff and Yukawa value.  Magnetic gauge
-asymptotic freedom is not enough: for nonzero canonical \(h\), the one-loop
-system \eqref{eq:sqcd-magnetic-yukawa-beta-one-loop}--
-\eqref{eq:sqcd-magnetic-yukawa-ratio-flow} has a Yukawa UV obstruction rather
-than a positive nonzero asymptotically-free ray.  The phase entry therefore
+emergent infrared coordinate system supplied by a magnetic Wilsonian definition
+with a declared matching cutoff and Yukawa value.  The one-loop system
+\eqref{eq:sqcd-magnetic-yukawa-beta-one-loop}--
+\eqref{eq:sqcd-magnetic-yukawa-ratio-flow} admits a positive nonzero magnetic
+asymptotically-free ray, but that ray supplies a magnetic ultraviolet
+trajectory.  A continuum-pair statement for the electric variables requires
+the range and ultraviolet hypotheses below.  The phase entry therefore
 asserts only the protected low-energy sector specified in
 Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}, with the order of
 thermodynamic, infrared, and cutoff limits stated there.  The same rank,
@@ -3824,8 +3859,9 @@ Work in the \(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving source-coordinate 
 near the Klebanov--Witten point, and assume the NSVZ coordinate convention of
 this chapter with finite denominators for both gauge couplings.  Let
 \(\gamma_A\) and \(\gamma_B\) be the anomalous dimensions of the \(A\)- and
-\(B\)-doublets in the monograph convention.  Then the two gauge beta-function
-numerators and the quartic-superpotential marginality defect are all
+\(B\)-doublets in the monograph convention
+\(\gamma_\Phi=-d\log Z_\Phi/d\log\mu\).  Then the two gauge beta-function
+numerators and the dimensionless quartic-superpotential source defect are all
 proportional to the same expression:
 \begin{equation}
   \mathcal B_1=\mathcal B_2=N(1+\gamma_A+\gamma_B),
@@ -3863,7 +3899,11 @@ antifundamentals interchanged, so \(\mathcal B_2=\mathcal B_1\).
 
 For the superpotential term, nonrenormalization means that the local
 condition for a quartic chiral coordinate to be marginal is the dimension
-condition on the chiral operator.  The operator
+condition on the chiral operator.  Equivalently, the dimensionless canonical
+source is obtained by multiplying the holomorphic quartic coefficient by one
+power of \(\mu\) and by the four \(Z^{-1/2}\) canonical-field factors, so the
+same \(\gamma_\Phi=-d\log Z_\Phi/d\log\mu\) convention gives
+\(\beta_h/h=1+\gamma_A+\gamma_B\).  The operator
 \(\operatorname{tr}(A_iB_kA_jB_l)\) has dimension
 \[
   2\left(1+\frac{\gamma_A}{2}\right)
@@ -3881,7 +3921,7 @@ the marginality defect is
   =
   1+\gamma_A+\gamma_B .
 \]
-Equivalently, the beta function of a dimensionless quartic coupling is
+The beta function of a dimensionless quartic coupling is therefore
 proportional to this defect, up to the sign convention for whether the flow
 parameter is an energy scale or a length scale.  Only the zero locus is used
 here.

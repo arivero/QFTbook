@@ -558,11 +558,15 @@ Chapter~\ref{ch:susy-gauge-theory}.  Define representation indices by
 \]
 Let \(g_h\) be the holomorphic Wilsonian coupling and let \(g\) be the
 canonically normalized gauge coupling in the same momentum-subtraction
-scheme for the two-point function.  Let \(Z_i(\mu)\) be the matter
-wave-function coordinate and define the anomalous-dimension convention
+scheme for the two-point function.  Let \(Z_i(\mu)\) be the positive
+coefficient of the matter Kähler term
+\(Z_i\Phi_i^\dagger e^V\Phi_i\).  The anomalous-dimension convention is
 \[
-  \gamma_i(\mu)=\mu\frac{d}{d\mu}\log Z_i(\mu).
+  \gamma_i(\mu)=-\mu\frac{d}{d\mu}\log Z_i(\mu).
 \]
+Thus \(\gamma_i\) is the physical scaling anomalous dimension used in
+\(\Delta(\Phi_i)=1+\gamma_i/2\); the running Kähler coefficient has
+\(\mu\,d\log Z_i/d\mu=-\gamma_i\).
 
 \begin{proposition}[Holomorphic-canonical gauge-coordinate relation]
 \label{prop:nsvz-coordinate-relation-derived}
@@ -591,7 +595,7 @@ coordinates have been constructed,
   \frac{8\pi^2}{g^2}
   +
   C_2(G)\log g^2
-  -
+  +
   \sum_i T(R_i)\log Z_i
   +
   \kappa ,
@@ -612,14 +616,14 @@ Write the chiral gauge-coordinate part of the Wilsonian action as
 \]
 This equation fixes what is meant by \(X_h=8\pi^2/g_h^2\).  With the same
 normalization, Proposition~\ref{prop:konishi-rescaling-jacobian} says that a
-holomorphic rescaling \(\Phi_i\mapsto e^{\alpha_i}\Phi_i\) shifts this real
-coordinate by
+holomorphic rescaling \(\Phi_i\mapsto e^{\alpha_i}\Phi_i\) contributes to the
+real chiral gauge coefficient in the rescaled-variable action by
 \begin{equation}
-  \Delta_i X_h=2T(R_i)\alpha_i .
+  \delta_i X_{\rm Jac}=2T(R_i)\alpha_i .
   \label{eq:konishi-shift-Xh}
 \end{equation}
 Indeed the chiral action coefficient changes by
-\(\Delta_i X_h/(16\pi^2)\), while the Jacobian coefficient in
+\(\delta_i X_{\rm Jac}/(16\pi^2)\), while the Jacobian coefficient in
 Proposition~\ref{prop:konishi-rescaling-jacobian} is
 \(T(R_i)\alpha_i/(8\pi^2)\).
 
@@ -629,9 +633,10 @@ canonical matter fields, set
   \Phi_i^{\rm hol}=Z_i^{-1/2}\Phi_i^{\rm can}.
 \]
 Thus \(\alpha_i=-\frac12\log Z_i\).  Substitution in
-\eqref{eq:konishi-shift-Xh} gives the matter contribution
+\eqref{eq:konishi-shift-Xh} gives the matter Jacobian contribution to the
+canonical-variable action
 \begin{equation}
-  \Delta_{\rm matter}X_h
+  \delta_{\rm matter}X_{\rm Jac}
   =
   -\sum_iT(R_i)\log Z_i .
   \label{eq:matter-rescaling-shift-Xh}
@@ -656,18 +661,18 @@ local part
 \[
   \Delta_{\rm vec}S
   =
-  \frac{C_2(G)\rho}{8\pi^2}
+  -\frac{C_2(G)\rho}{8\pi^2}
   \int d^4x\,d^2\theta\,
   \operatorname{tr}(W^\alpha W_\alpha)
   +\text{c.c.}
 \]
 Equivalently,
 \begin{equation}
-  \Delta_{\rm vec}X_h
+  \delta_{\rm vec}X_{\rm Jac}
   =
-  2C_2(G)\rho
+  -2C_2(G)\rho
   =
-  C_2(G)\log g^2 .
+  -C_2(G)\log g^2 .
   \label{eq:gauge-multiplet-rescaling-shift-Xh}
 \end{equation}
 Here \(C_2(G)\) is defined by
@@ -686,16 +691,29 @@ canonical coordinate chart, the real gauge kinetic coordinate is
 \]
 Adding the two anomalous local shifts
 \eqref{eq:matter-rescaling-shift-Xh} and
-\eqref{eq:gauge-multiplet-rescaling-shift-Xh}, and allowing a finite
-\(\mu\)-independent normalization difference between the two declared
-coordinate charts, gives
+\eqref{eq:gauge-multiplet-rescaling-shift-Xh} to the action coefficient after
+the change of variables gives
+\[
+  X_c
+  =
+  X_h
+  -
+  \sum_iT(R_i)\log Z_i
+  -
+  C_2(G)\log g^2
+  +
+  \kappa' .
+\]
+Solving for \(X_h\), and absorbing the sign of the finite
+\(\mu\)-independent normalization difference into
+\(\kappa=-\kappa'\), gives
 \[
   X_h
   =
   X_c
   +
   C_2(G)\log g^2
-  -
+  +
   \sum_iT(R_i)\log Z_i
   +
   \kappa .
@@ -726,7 +744,7 @@ coordinate has the one-loop derivative
 \end{equation}
 Then, in the canonical coupling coordinate \(g\), with
 \[
-  \gamma_i=\mu\,\frac{d}{d\mu}\log Z_i ,
+  \gamma_i=-\mu\,\frac{d}{d\mu}\log Z_i ,
 \]
 \begin{equation}
   \beta_g
@@ -750,7 +768,8 @@ Proposition~\ref{prop:nsvz-coordinate-relation-derived}.  Since
   \qquad
   \mu\frac{d}{d\mu}\log g^2=\frac{2\beta_g}{g},
 \]
-and \(\mu\,d\kappa/d\mu=0\), one obtains
+and \(\mu\,d\log Z_i/d\mu=-\gamma_i\) while
+\(\mu\,d\kappa/d\mu=0\), one obtains
 \[
   \left(
     -\frac{16\pi^2}{g^3}

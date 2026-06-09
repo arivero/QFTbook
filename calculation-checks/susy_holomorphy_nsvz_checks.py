@@ -291,20 +291,28 @@ def check_konishi_and_vector_coordinate_shifts():
     ]
     for index, alpha in samples:
         jacobian_action_coefficient = index * alpha / 8
-        coordinate_shift = 16 * jacobian_action_coefficient
-        assert_equal(coordinate_shift, 2 * index * alpha, "Konishi shift in X_h")
+        jacobian_action_shift = 16 * jacobian_action_coefficient
+        assert_equal(jacobian_action_shift, 2 * index * alpha, "Konishi action shift")
 
         log_z = -2 * alpha
         assert_equal(
-            coordinate_shift,
+            jacobian_action_shift,
             -index * log_z,
-            "matter canonicalization shift -T log Z",
+            "matter canonicalization action shift -T log Z",
+        )
+        assert_equal(
+            -jacobian_action_shift,
+            index * log_z,
+            "matter term in solved X_h coordinate relation is +T log Z",
         )
 
     for c2, log_g_squared in samples:
-        rho = log_g_squared / 2
-        vector_coordinate_shift = 2 * c2 * rho
-        assert_equal(vector_coordinate_shift, c2 * log_g_squared, "vector BV shift")
+        vector_action_shift = -c2 * log_g_squared
+        assert_equal(
+            -vector_action_shift,
+            c2 * log_g_squared,
+            "vector term in solved X_h coordinate relation",
+        )
 
 
 def check_nsvz_coordinate_identity():
@@ -328,15 +336,43 @@ def check_nsvz_coordinate_identity():
             if x == c2:
                 continue
             beta_over_g = -numerator / (2 * (x - c2))
+            log_z_derivative_sum = -anomalous_sum
             differentiated_relation = (
                 (-2 * x + 2 * c2) * beta_over_g
-                - anomalous_sum
+                + log_z_derivative_sum
             )
             assert_equal(
                 differentiated_relation,
                 b0,
                 "differentiated holomorphic-canonical relation",
             )
+            wrong_gamma_sign_relation = (
+                (-2 * x + 2 * c2) * beta_over_g
+                + anomalous_sum
+            )
+            if wrong_gamma_sign_relation == b0:
+                raise AssertionError("gamma=+d log Z convention incorrectly passed the plus-Z relation")
+
+
+def check_canonical_yukawa_sign_from_kahler_z():
+    samples = [
+        (Fraction(1, 3), Fraction(-2, 5), Fraction(7, 4)),
+        (Fraction(-1, 2), Fraction(3, 2), Fraction(2, 3)),
+        (Fraction(5, 6), Fraction(1, 7), Fraction(-3, 8)),
+    ]
+    for gamma_m, gamma_q, gamma_tilde in samples:
+        dlog_z_sum = -(gamma_m + gamma_q + gamma_tilde)
+        beta_h_over_h = -dlog_z_sum / 2
+        expected = (gamma_m + gamma_q + gamma_tilde) / 2
+        assert_equal(
+            beta_h_over_h,
+            expected,
+            "canonical Yukawa beta sign from Kähler Z convention",
+        )
+
+        wrong_plus_dlog_gamma = -expected
+        if wrong_plus_dlog_gamma == beta_h_over_h:
+            raise AssertionError("gamma=+d log Z convention incorrectly gave the canonical Yukawa sign")
 
 
 def main():
@@ -349,6 +385,7 @@ def main():
     check_holomorphic_tau_running_sign()
     check_konishi_and_vector_coordinate_shifts()
     check_nsvz_coordinate_identity()
+    check_canonical_yukawa_sign_from_kahler_z()
     print("All SUSY holomorphy and NSVZ coordinate checks passed.")
 
 

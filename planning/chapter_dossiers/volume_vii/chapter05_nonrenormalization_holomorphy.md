@@ -51,7 +51,7 @@ Source-File: monograph/tex/volumes/volume_vii/chapter05_nonrenormalization_holom
 | \(b_0\) | one-loop holomorphic gauge coefficient |
 | \(T(R)\) | representation index in the monograph trace convention |
 | \(C_2(G)\) | adjoint index in the same trace convention |
-| \(Z_i,\gamma_i\) | matter normalization coordinate and anomalous dimension convention |
+| \(Z_i,\gamma_i\) | matter Kähler coefficient and physical anomalous dimension with \(\gamma_i=-d\log Z_i/d\log\mu\) |
 
 ## Claim Ledger
 
@@ -75,9 +75,10 @@ Source-File: monograph/tex/volumes/volume_vii/chapter05_nonrenormalization_holom
    \(1/(4g^2)\operatorname{tr}(F^2)\) normalization.
 5. Canonical gauge couplings differ by rescaling anomalies.
 6. The holomorphic-canonical coordinate relation is derived by combining the
-   classical canonical coordinate \(8\pi^2/g^2\), the matter shifts
-   \(-T(R_i)\log Z_i\), the adjoint gauge-complex shift
-   \(C_2(G)\log g^2\), and a finite \(\mu\)-independent scheme constant.
+   classical canonical coordinate \(8\pi^2/g^2\), the matter Kähler-coefficient
+   term \(+T(R_i)\log Z_i\) in the solved \(X_h\) coordinate relation, the
+   adjoint gauge-complex term \(C_2(G)\log g^2\), and a finite
+   \(\mu\)-independent scheme constant.
 7. The NSVZ beta-function formula is recorded as a coordinate identity in the
    declared canonical coupling and anomalous-dimension convention, not as an
    independent theorem; finite canonical reparametrizations change the
@@ -96,8 +97,10 @@ Source-File: monograph/tex/volumes/volume_vii/chapter05_nonrenormalization_holom
   \(d\tau/d\log\mu=-b_0/(2\pi i)\),
   \(dX_h/d\log\mu=b_0\), and
   \(d\log q_h/d\log\mu=-b_0\), Konishi and vector-multiplet coordinate
-  shifts, and the rational algebra that differentiates the
-  holomorphic-canonical coordinate relation into the NSVZ beta function.
+  shifts, the canonical Yukawa sign implied by the
+  \(\gamma=-d\log Z/d\log\mu\) convention, and the rational algebra that
+  differentiates the holomorphic-canonical coordinate relation into the NSVZ
+  beta function.
 
 ## Audit Notes
 
@@ -132,6 +135,14 @@ Source-File: monograph/tex/volumes/volume_vii/chapter05_nonrenormalization_holom
   formula
   \(d(\tau+F(t))/d\log\mu=d\tau/d\log\mu+\beta_t^A\partial_AF\), and a
   neutral-spurion example showing the allowed failure mode.
+- 2026-06-08 issue #959 pass: reconciled the NSVZ coordinate section with the
+  Kähler-coefficient convention \(Z_i\Phi_i^\dagger e^V\Phi_i\) and physical
+  anomalous dimension \(\gamma_i=-d\log Z_i/d\log\mu\).  The solved
+  holomorphic coordinate relation now has the AHM-sign matter term
+  \(+\sum_iT(R_i)\log Z_i\), while differentiating it still yields the standard
+  \(3C_2-\sum_iT(R_i)(1-\gamma_i)\) NSVZ numerator.  The paired check records
+  the action-shift versus solved-coordinate sign distinction and rejects the
+  opposite gamma convention.
 
 ## Figures
 
