@@ -1133,6 +1133,15 @@ Current checks:
   control, and the projection from
   redundant EFT basis coordinates to the on-shell forward amplitude
   coefficient.
+- `wilsonian_smooth_cutoff_pushforward_checks.py`: exact rational checks for
+  the smooth-cutoff Gaussian pushforward in the Wilsonian chapter.  It verifies
+  that two independent fields on copies of the same finite mode space push
+  forward under addition to covariance \(C_{\Lambda'}+\widehat C\), that the
+  direct-sum covariance \(\operatorname{diag}(a,b)\) is a two-coordinate field
+  rather than the scalar variance \(a+b\), that smooth transition modes can
+  have both covariance summands nonzero, and that the exact low-source
+  condition is \(\widehat C J=0\) with plateau sources annihilating the shell
+  covariance.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

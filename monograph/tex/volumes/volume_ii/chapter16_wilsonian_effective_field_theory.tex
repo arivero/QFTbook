@@ -205,11 +205,22 @@ source functional.
 
 \section{Lowering the Cutoff}
 
-The exact Wilsonian step is most transparent with a finite regulator.  Let
-\(E_\Lambda\) be the finite-dimensional real vector space of Fourier modes
-retained by the ultraviolet regulator, and let \(\dd\mu_{C_\Lambda}\) be the
-centered Gaussian measure with covariance \(C_\Lambda\) on this space.  In the
-notation of
+The exact Wilsonian step is most transparent with a finite regulator.  Fix a
+finite-dimensional real vector space \(E_N\) of regulated Fourier modes; the
+scale label \(\Lambda\) is carried by the covariance, not by changing this
+ambient vector space at every smooth cutoff.  For a positive semidefinite
+covariance \(C\) on \(E_N\), let \(\dd\mu_C\) denote the centered Gaussian
+measure characterized by
+\[
+  \int_{E_N}\ee^{\ii\ell(\phi)}\,\dd\mu_C(\phi)
+  =
+  \exp\!\left\{-\frac12\ell(C\ell)\right\},
+  \qquad \ell\in E_N^* .
+\]
+If \(C\) is invertible this is the usual density with quadratic form
+\(C^{-1}\).  If \(C\) has zero directions, the measure is supported on
+\(\operatorname{Ran}C\); equivalently one uses the Moore--Penrose inverse on
+that range and no Lebesgue density in the null directions.  In the notation of
 Definition~\ref{def:regulated-scalar-integration-conventions}, this chapter has
 absorbed the quadratic kinetic term into \(\dd\mu_{C_\Lambda}\); equivalently,
 \[
@@ -224,15 +235,15 @@ measure.  If
 \[
   C_\Lambda=C_{\Lambda'}+\widehat C_{\Lambda,\Lambda'}
 \]
-with both summands positive covariances on the regulated vector space, then
-the Gaussian convolution identity says
+with both summands positive semidefinite covariances on \(E_N\), then the
+Gaussian convolution identity says
 \begin{equation}
-  \int_{E_\Lambda}F(\phi)\,\dd\mu_{C_\Lambda}(\phi)
+  \int_{E_N}F(\phi)\,\dd\mu_{C_\Lambda}(\phi)
   =
-  \int_{E_{\Lambda'}}\int_{\widehat E_{\Lambda,\Lambda'}}
-  F(\phi'+\phi_{\mathrm{sh}})\,
+  \int_{E_N}\int_{E_N}
+  F(\phi_<+\phi_{\mathrm{sh}})\,
   \dd\mu_{\widehat C_{\Lambda,\Lambda'}}(\phi_{\mathrm{sh}})\,
-  \dd\mu_{C_{\Lambda'}}(\phi')
+  \dd\mu_{C_{\Lambda'}}(\phi_<)
   \label{eq:finite-regulator-gaussian-convolution}
 \end{equation}
 for every integrable regulated function \(F\).  Equation
@@ -241,28 +252,41 @@ measures on finite-dimensional vector spaces.  Its proof and its continuum
 status are logically separate.
 
 \paragraph{Finite-regulator Gaussian pushforward.}
-Assume \(E_\Lambda=E_{\Lambda'}\oplus \widehat E_{\Lambda,\Lambda'}\) and that
-\(C_{\Lambda'}\) and \(\widehat C_{\Lambda,\Lambda'}\) are positive covariance
-operators on the two summands.  Let \(C_\Lambda=C_{\Lambda'}\oplus
-\widehat C_{\Lambda,\Lambda'}\).  If \(F\) is integrable with respect to the
-centered Gaussian measure \(\mu_{C_\Lambda}\), then
-\eqref{eq:finite-regulator-gaussian-convolution} holds.
-
-Let \(X'\) and \(X_{\rm sh}\) be independent centered Gaussian random variables
-with values in \(E_{\Lambda'}\) and \(\widehat E_{\Lambda,\Lambda'}\) and
-covariances \(C_{\Lambda'}\) and \(\widehat C_{\Lambda,\Lambda'}\).  For every
-linear functional \(\ell\in E_\Lambda^*\),
+Let \(X_<\) and \(X_{\rm sh}\) be independent centered \(E_N\)-valued Gaussian
+random variables with covariances \(C_{\Lambda'}\) and
+\(\widehat C_{\Lambda,\Lambda'}\).  Let
 \[
-  \mathbb E\,\ee^{\ii\ell(X'+X_{\rm sh})}
+  \Sigma:E_N\times E_N\longrightarrow E_N,\qquad
+  \Sigma(\phi_<,\phi_{\mathrm{sh}})=\phi_<+\phi_{\mathrm{sh}} .
+\]
+Then
+\[
+  \Sigma_*
+  \bigl(\mu_{C_{\Lambda'}}\otimes
+        \mu_{\widehat C_{\Lambda,\Lambda'}}\bigr)
+  =
+  \mu_{C_\Lambda}.
+\]
+Equivalently, \eqref{eq:finite-regulator-gaussian-convolution} holds for every
+integrable \(F\).
+
+Indeed, for every linear functional \(\ell\in E_N^*\),
+\[
+  \mathbb E\,\ee^{\ii\ell(X_<+X_{\rm sh})}
   =
   \exp\!\left\{-\frac12\ell(C_{\Lambda'}\ell)\right\}
   \exp\!\left\{-\frac12\ell(\widehat C_{\Lambda,\Lambda'}\ell)\right\}
   =
   \exp\!\left\{-\frac12\ell(C_\Lambda\ell)\right\}.
 \]
-Thus \(X'+X_{\rm sh}\) has the centered Gaussian law with covariance
+Thus \(X_<+X_{\rm sh}\) has the centered Gaussian law with covariance
 \(C_\Lambda\).  Equality of expectations of every integrable \(F\) gives
-\eqref{eq:finite-regulator-gaussian-convolution}.
+\eqref{eq:finite-regulator-gaussian-convolution}.  An orthogonal sharp-mode
+split is the special case in which \(E_N=E_<\oplus E_{\rm sh}\) and the two
+covariances are supported on the two summands.  For a smooth cutoff, the two
+covariances can both be nonzero on the same Fourier mode; the independent
+fields then live on two copies of \(E_N\), and the physical field is their
+sum.
 
 \begin{hypothesis}[Continuum interpretation of Wilsonian pushforward]
 \label{hyp:wilsonian-pushforward-continuum-interpretation}
@@ -322,6 +346,13 @@ belongs to an independent shell field \(\phi_{\mathrm{sh}}\), with kinetic term
   \widetilde\phi_{\mathrm{sh}}(k).
   \label{eq:shell-kinetic-term}
 \end{equation}
+This display is a density formula only on the range of
+\(\widehat C_{\Lambda,\Lambda'}\).  Modes for which
+\(\chi_\Lambda(k)-\chi_{\Lambda'}(k)=0\) have zero shell variance and are fixed
+to zero in the shell Gaussian; equivalently the inverse is the pseudoinverse on
+the positive-variance range.  To use an everywhere ordinary Lebesgue density
+one must restrict the finite regulator to modes with strictly positive shell
+variance.
 The shell field is denoted \(\phi_{\mathrm{sh}}\).  A tilde denotes
 Fourier transformation; thus \(\widetilde\phi_{\mathrm{sh}}(k)\) is the shell
 field's Fourier mode, while \(\widetilde\phi(k)\) elsewhere is the Fourier mode
@@ -331,9 +362,11 @@ field notation, and the shell field will not be denoted by
 a hatted \(\phi\).
 
 Figure~\ref{fig:propagator-split-shell-integration} records the exact propagator
-split used in the Wilsonian pushforward: active low modes retain
-\(C_{\Lambda'}\), and the shell field is integrated with covariance
-\(\widehat C_{\Lambda,\Lambda'}\).
+split used in the Wilsonian pushforward: the active field has covariance
+\(C_{\Lambda'}\), and an independent shell field on a second copy of the same
+finite field space is integrated with covariance
+\(\widehat C_{\Lambda,\Lambda'}\).  Only for a sharp orthogonal cutoff do these
+two fields identify with disjoint Fourier-mode subspaces.
 
 \begin{figure}[H]
   \centering
@@ -410,12 +443,14 @@ cutoff-\(\Lambda\) functional as
 The condition on \(J\) is now used in its precise regulated meaning: the source
 belongs to the annihilator of the shell covariance, so that the Gaussian
 random variable \(\langle J,\phi_{\mathrm{sh}}\rangle\) has zero variance.
-Equivalently, for an orthogonal mode split the source belongs to the dual of
-the low subspace.  For a smooth momentum cutoff this exact condition is
-available for a nonzero open low-momentum support only when the profile has a
-plateau; a non-plateau profile requires the source-dependent construction
-introduced in \eqref{eq:source-dependent-wilsonian-action}.  Under the exact
-annihilator condition, the source term in
+This is the covariance condition
+\(\widehat C_{\Lambda,\Lambda'}J=0\), not an orthogonality statement between
+two mode subspaces except in the sharp split special case.  For a smooth
+momentum cutoff this exact condition is available for a nonzero open
+low-momentum support only when the profile has a plateau; a non-plateau
+profile requires the source-dependent construction introduced in
+\eqref{eq:source-dependent-wilsonian-action}.  Under the exact annihilator
+condition, the source term in
 \eqref{eq:z-lambda-after-shell-split} couples only to \(\phi'\).  The shell
 field may then be integrated out by the defining identity
 \begin{equation}

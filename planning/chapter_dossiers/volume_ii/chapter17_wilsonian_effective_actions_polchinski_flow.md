@@ -72,14 +72,17 @@ The chapter must define and derive:
 - the propagator decomposition
   \(C_\Lambda=C_{\Lambda'}+\widehat C_{\Lambda,\Lambda'}\);
 - the finite-regulator Gaussian pushforward proposition and its proof by
-  characteristic functions of independent Gaussian random variables;
+  characteristic functions of independent Gaussian random variables on two
+  copies of the same regulated mode space, followed by the addition map;
+  orthogonal mode-space direct sums are only the sharp-cutoff special case;
 - the separate continuum Wilsonian pushforward hypothesis, distinguishing
   convergence of the interacting source functional from convergence of the
   pushforward or infinitesimal Wilson-Polchinski flow;
 - the Gaussian field split \(\phi=\phi'+\phi_{\mathrm{sh}}\), including the
-  shell kinetic term, and the notation convention that hats are reserved for
-  covariance differences such as \(\widehat C_{\Lambda,\Lambda'}\), not for
-  shell fields;
+  shell kinetic term on the positive-variance range of
+  \(\widehat C_{\Lambda,\Lambda'}\), and the notation convention that hats are
+  reserved for covariance differences such as
+  \(\widehat C_{\Lambda,\Lambda'}\), not for shell fields;
 - the shell-integration formula defining \(L_{\Lambda'}[\phi']\);
 - the infinitesimal Wilson-Polchinski equation, with functional-derivative
   conventions;
@@ -413,7 +416,9 @@ The chapter must define and derive:
    Gaussian covariance and a general local interaction functional.
 3. Lowering \(\Lambda\) is represented exactly, at the formal path-integral
    level, by a decomposition of Gaussian covariance and integration over an
-   independent shell field.
+   independent shell field on a second copy of the regulated field space,
+   followed by the addition map.  For smooth cutoffs this is not a direct sum
+   of disjoint Fourier-mode subspaces.
 3a. The Gaussian pushforward is a finite-regulator theorem about Gaussian
     measures on finite-dimensional vector spaces.  A nonperturbative continuum
     Wilsonian flow additionally requires convergence of the interacting
@@ -793,6 +798,17 @@ The chapter must define and derive:
   field-redefinition/source algebra; issue #823 replaced the formal
   remainder-classification block with the concrete one-loop scalar EFT closure
   example.
+- 2026-06-09 issue #968 pass: replaced the smooth-cutoff Gaussian
+  pushforward's direct mode-space sum reading with the product-space
+  convolution on a fixed finite regulator space and the addition map
+  \(\Sigma(\phi_<,\phi_{\mathrm{sh}})=\phi_<+\phi_{\mathrm{sh}}\).  The
+  monograph now states the semidefinite support/pseudoinverse convention,
+  identifies orthogonal mode-space sums as a sharp-cutoff special case, and
+  derives the exact low-source condition from
+  \(\widehat C_{\Lambda,\Lambda'}J=0\).  Added
+  `calculation-checks/wilsonian_smooth_cutoff_pushforward_checks.py` for the
+  one-mode \(a+b\) pushforward, the direct-sum negative control, and the
+  plateau/transition source-annihilator check.
 - 2026-06-04 issue #823 pass: replaced the formal power-counting and Gaussian
   field-redefinition evidence with a concrete scalar EFT calculation.  The
   chapter now derives the one-loop poles from \((V''(\phi))^2\), shows
