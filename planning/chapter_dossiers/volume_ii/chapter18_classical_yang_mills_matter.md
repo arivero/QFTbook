@@ -246,6 +246,13 @@ The chapter must define and derive:
     Bogomolny equation together with the background-gauge horizontal
     condition, and the low-velocity kinetic energy restricts to the \(L^2\)
     metric on this horizontal zero-mode space.
+25a. The collective-coordinate stationary-phase formula is local on compact
+     fixed-orbit-type charts.  Pointwise nondegeneracy of each saddle supplies
+     a Gaussian determinant, but the moduli-family integral additionally
+     requires compact support or a partition of unity, constant normal rank,
+     a uniform normal Hessian lower bound, an action gap off the retained
+     normal ball, bounded derivatives, and separate treatment of stabilizer
+     jumps, determinant zeros, negative modes, and noncompact ends.
 
 ## Calculation Checks
 
@@ -256,7 +263,11 @@ The chapter must define and derive:
   monopole moduli dimension bookkeeping, zero-mode-density coordinate
   invariance, the one-instanton orientation dimension count, and the
   Jackiw-Rebbi kink zero-mode profile/normalization/half-charge algebra with
-  integer-charge and unpaired-spectrum negative controls.
+  integer-charge and unpaired-spectrum negative controls.  It also verifies
+  finite negative controls for local stationary phase: pointwise positive
+  Hessians with no uniform lower bound, vanishing action gaps, stabilizer
+  jumps in finite group actions, and additive remainders that lose the common
+  saddle exponential scale.
 - `calculation-checks/longitudinal_goldstone_equivalence_checks.py`: verifies
   the longitudinal-polarization \(O(m/E)\) remainder, the vector-shell versus
   \(R_\xi\) Goldstone-pole mismatch, the external-pole residue/analytic-term
@@ -384,3 +395,10 @@ The chapter must define and derive:
   now points pure \(SU(N)\) mass-gap, glueball-spectrum, and confinement uses
   to `conj:pure-yang-mills-central` rather than leaving them as a generic
   continuum-limit assumption.
+- 2026-06-09 issue #972 local stationary-phase pass: replaced the global
+  collective-coordinate stationary-phase reading by a compact fixed-orbit-type
+  theorem with explicit uniform lower-bound, derivative, cutoff, action-gap,
+  and stabilizer hypotheses.  The dossier guard is that this remains
+  infrastructure for the quantum measure; instanton physics still requires
+  determinant, fluctuation, source, endpoint, and analytic-continuation
+  estimates beyond the moduli-space geometry.

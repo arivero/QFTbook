@@ -2613,13 +2613,15 @@ define the zero-mode Gram matrix
   \label{eq:collective-coordinate-zero-mode-gram}
 \end{equation}
 \end{enumerate}
-The data are nondegenerate if the Hessian \(L_{\Lambda,z}\) of
-\(S_\Lambda|_{\Sigma_\Lambda}\) has kernel exactly
-\(T_{\varphi_z}\mathcal M_\Lambda\) and is positive on a chosen normal
-bundle \(N_z\mathcal M_\Lambda\).  If the residual stabilizer of
-\(\varphi_z\) in \(\mathcal G_\Lambda\) is a compact group \(\Gamma_z\), its
-volume is computed using the same normalization of the gauge-group density
-that was used to define \(\Delta_{\rm FP,\Lambda}\).
+The data are pointwise nondegenerate at \(z\) if the Hessian \(L_{\Lambda,z}\)
+of \(S_\Lambda|_{\Sigma_\Lambda}\) has kernel exactly
+\(T_{\varphi_z}\mathcal M_\Lambda\) and is positive on a chosen normal bundle
+\(N_z\mathcal M_\Lambda\).  Uniform stationary phase on a chart requires the
+additional compact-support, spectral-gap, derivative-bound, and orbit-type
+hypotheses stated below.  If the residual stabilizer of \(\varphi_z\) in
+\(\mathcal G_\Lambda\) is a compact group \(\Gamma_z\), its volume is computed
+using the same normalization of the gauge-group density that was used to
+define \(\Delta_{\rm FP,\Lambda}\).
 \end{definition}
 
 For a monopole, \(z\) includes center-of-mass and phase coordinates.  For a
@@ -2629,37 +2631,65 @@ regulator.  The continuum semiclassical formula is obtained only after the
 renormalized nonzero-mode determinant and the moduli integral have been
 given a limit in the chosen scheme.
 
-\begin{theorem}[Collective-coordinate stationary phase]
+\begin{theorem}[Local collective-coordinate stationary phase]
 \label{thm:collective-coordinate-morse-bott-measure}
-Let \(\mathfrak D_\Lambda\) be a nondegenerate regulated
+Let \(\mathfrak D_\Lambda\) be pointwise nondegenerate regulated
 collective-coordinate data in the sense of
 Definition~\ref{def:regulated-collective-coordinate-data}.  Denote its
 field space, gauge slice, critical manifold, and action by
 \(\mathcal C_\Lambda\), \(\Sigma_\Lambda\), \(\mathcal M_\Lambda\), and
 \(S_\Lambda\).  Let \(\epsilon_{\rm sc}>0\) be the semiclassical parameter
-multiplying the action, and let \(O\) be a smooth gauge-invariant observable
-supported in a tubular neighborhood of \(\mathcal M_\Lambda\) inside the
-gauge slice.  Then, for each coordinate patch on \(\mathcal M_\Lambda\),
+that multiplies the action, and let \(O\) be a smooth gauge-invariant
+observable on \(\Sigma_\Lambda\).  Let \(K\Subset\mathcal M_\Lambda\) be a compact
+subset of one smooth orbit-type stratum, and choose a tubular chart
+\[
+  (z,\eta)\longmapsto \varphi(z,\eta),
+  \qquad
+  z\in K,\quad \eta\in N_z\mathcal M_\Lambda,\quad \|\eta\|<\rho_K .
+\]
+Assume on this chart:
+\begin{enumerate}[label=(\roman*)]
+\item the normal rank \(r=\dim N_z\mathcal M_\Lambda\) is constant;
+\item the residual stabilizers have one conjugacy type \(\Gamma_K\), with
+  constant volume in the chosen gauge-density normalization;
+\item there is a uniform normal Hessian lower bound
+  \[
+    \langle\eta,L_{\Lambda,z}\eta\rangle_{\Lambda,z}
+    \ge \lambda_K\|\eta\|^2,\qquad \lambda_K>0 ;
+  \]
+\item the action has uniformly bounded derivatives through fourth order, and
+  \(O\), the Faddeev--Popov factor, and the tubular-coordinate density have
+  uniformly bounded derivatives through second order;
+\item after inserting a cutoff \(\chi\in C_c\) supported in the chart, there is
+  \(0<c_K<\rho_K\) such that the part of \(\operatorname{supp}\chi\) with
+  \(\|\eta\|\ge c_K\) obeys an action gap
+  \(S_\Lambda\ge S_0+\delta_K\), with \(\delta_K>0\).
+\end{enumerate}
+Then, for \(0<\epsilon_{\rm sc}<\epsilon_K\),
 \begin{align}
   &\int_{\Sigma_\Lambda}
-    O(\varphi)\,
+    \chi(\varphi)\,O(\varphi)\,
     \exp\!\left[-S_\Lambda(\varphi)/\epsilon_{\rm sc}\right]\,
     \Delta_{\rm FP,\Lambda}(\varphi)\,\mathrm D_\Lambda\varphi
   \nonumber\\
   &\quad =
   \exp(-S_0/\epsilon_{\rm sc})\,
   (2\pi\epsilon_{\rm sc})^{r/2}
-  \int_{\mathcal M_\Lambda}
-  \frac{O(\varphi_z)\,\Delta_{\rm FP,\Lambda}(\varphi_z)}
-       {\operatorname{Vol}(\Gamma_z)\,
+  \left[
+  \int_K
+  \frac{\chi(\varphi_z)O(\varphi_z)\Delta_{\rm FP,\Lambda}(\varphi_z)}
+       {\operatorname{Vol}(\Gamma_K)\,
         \det{}'_{\Lambda}(L_{\Lambda,z})^{1/2}}\,
   \dd\nu_{\Lambda,\mathcal M}(z)
-  +O\!\left(\epsilon_{\rm sc}^{r/2+1}\right),
+  +R_K(\epsilon_{\rm sc})
+  \right],
   \label{eq:collective-coordinate-stationary-phase-formula}
 \end{align}
-where \(r=\dim N_z\mathcal M_\Lambda\) is the number of nonzero bosonic
-normal directions in the regulated slice,
-\(\det{}'_{\Lambda}(L_{\Lambda,z})\) is the determinant of the Hessian on
+with an absolute remainder bound
+\[
+  |R_K(\epsilon_{\rm sc})|\le C_K\epsilon_{\rm sc}.
+\]
+Here \(\det{}'_{\Lambda}(L_{\Lambda,z})\) is the determinant of the Hessian on
 \(N_z\mathcal M_\Lambda\) with respect to the regulator inner product, and
 \begin{equation}
   \dd\nu_{\Lambda,\mathcal M}(z)
@@ -2670,22 +2700,15 @@ normal directions in the regulated slice,
 \end{equation}
 The product
 \(\sqrt{\det G^{(\Lambda)}}\,\dd^mz\) is invariant under changes of
-collective-coordinate chart.  If the path integral is formulated directly on
-the local quotient rather than on a gauge slice, the factor
-\(\Delta_{\rm FP,\Lambda}/\operatorname{Vol}(\Gamma_z)\) is absent and
+collective-coordinate chart inside the fixed stratum.  If the path integral is
+formulated directly on the local quotient rather than on a gauge slice, the
+factor \(\Delta_{\rm FP,\Lambda}/\operatorname{Vol}(\Gamma_K)\) is absent and
 \(\dd\nu_{\Lambda,\mathcal M}\) is computed from the quotient metric.
 \end{theorem}
 
 \begin{proof}
-The proof is finite dimensional.  Choose a tubular-neighborhood map
-\[
-  (z,\eta)\longmapsto \varphi(z,\eta),
-  \qquad
-  z\in\mathcal M_\Lambda,\quad
-  \eta\in N_z\mathcal M_\Lambda,
-\]
-with \(\varphi(z,0)=\varphi_z\).  The density in these coordinates has the
-form
+The proof is finite dimensional on a compact chart.  The density in tubular
+coordinates has the form
 \[
   \mathrm D_\Lambda\varphi
   =
@@ -2704,20 +2727,33 @@ exactly the kernel of the Hessian,
   S_\Lambda(\varphi(z,\eta))
   =
   S_0+\frac12\langle \eta,L_{\Lambda,z}\eta\rangle_{\Lambda,z}
-  +O(\|\eta\|^3).
+  +R_3(z,\eta),
+  \qquad |R_3(z,\eta)|\le C_K\|\eta\|^3
 \]
-By nondegeneracy, \(L_{\Lambda,z}\) is positive on the normal space.  For an
-observable with support in a fixed tubular neighborhood, the part
-\(\|\eta\|\ge c\) is exponentially smaller than any power of
-\(\epsilon_{\rm sc}\), after possibly shrinking the neighborhood.  In the
-remaining region set \(\eta=\epsilon_{\rm sc}^{1/2}\xi\).  Taylor expand
+uniformly on a smaller tubular ball.  The action-gap hypothesis gives the
+complement estimate
 \[
+  \left|
+  \int_{\operatorname{supp}\chi,\ \|\eta\|\ge c_K}
+  \chi O\,e^{-S_\Lambda/\epsilon_{\rm sc}}
+  \Delta_{\rm FP,\Lambda}J_\Lambda\,\dd^mz\,\dd^r\eta
+  \right|
+  \le C'_K e^{-(S_0+\delta_K)/\epsilon_{\rm sc}},
+\]
+which is absorbed into the displayed remainder after factoring out
+\(e^{-S_0/\epsilon_{\rm sc}}\epsilon_{\rm sc}^{r/2}\).  On the remaining
+normal ball set \(\eta=\epsilon_{\rm sc}^{1/2}\xi\).  Taylor expand
+\[
+  \chi(\varphi(z,\epsilon_{\rm sc}^{1/2}\xi))\,
   O(\varphi(z,\epsilon_{\rm sc}^{1/2}\xi))\,
   \Delta_{\rm FP,\Lambda}(\varphi(z,\epsilon_{\rm sc}^{1/2}\xi))\,
   J_\Lambda(z,\epsilon_{\rm sc}^{1/2}\xi)
 \]
-and the cubic remainder in the action.  Odd Gaussian moments vanish and the
-leading normal integral is
+and the cubic remainder in the action.  The derivative bounds on the compact
+chart and the uniform lower bound \(\lambda_K\) give a Gaussian majorant
+\(\exp[-\lambda_K\|\xi\|^2/4]\) for all sufficiently small
+\(\epsilon_{\rm sc}\).  Odd Gaussian moments vanish, and the leading normal
+integral is
 \[
   \int_{N_z\mathcal M_\Lambda}
   \exp\!\left[-\frac12
@@ -2727,21 +2763,36 @@ leading normal integral is
 \]
 Multiplying by the Jacobian
 \(\epsilon_{\rm sc}^{r/2}\) from
-\(\dd^r\eta=\epsilon_{\rm sc}^{r/2}\dd^r\xi\) gives
+\(\dd^r\eta=\epsilon_{\rm sc}^{r/2}\dd^r\xi\), and bounding the remaining even
+Gaussian moments uniformly over \(K\), gives
 \eqref{eq:collective-coordinate-stationary-phase-formula}.  The factor
-\(\operatorname{Vol}(\Gamma_z)^{-1}\) removes the residual gauge copies left
-inside the slice.  Under a chart change \(z=z(z')\), the Gram matrix
+\(\operatorname{Vol}(\Gamma_K)^{-1}\) removes the residual gauge copies left
+inside this fixed orbit-type slice.  Under a chart change \(z=z(z')\), the Gram
+matrix
 transforms as \(G'=(\partial z/\partial z')^T G(\partial z/\partial z')\);
 hence \(\sqrt{\det G'}\,\dd^mz'=\sqrt{\det G}\,\dd^mz\).  The displayed
-measure is therefore intrinsic.
+measure is therefore intrinsic within the smooth stratum.
 \end{proof}
+
+\begin{controlledapproximation}[From a local chart to a moduli integral]
+\label{ca:collective-coordinate-local-to-global}
+The theorem above is a local finite-regulator statement.  A global
+collective-coordinate formula is assembled only after choosing a partition of
+unity on fixed-orbit-type strata and proving separate estimates for noncompact
+center or size ends, small-instanton or other boundary strata, reducible
+connections, determinant zeros, and negative modes.  Pointwise positivity of
+the normal Hessian supplies the Gaussian determinant at one saddle; a uniform
+lower bound and an action gap are the analytic inputs that make a family of
+saddles into one controlled asymptotic expansion.
+\end{controlledapproximation}
 
 For BPS monopoles, the moduli-space metric and the low-velocity geodesic
 Lagrangian obtained from this stationary-phase measure were derived in
 Subsection~\ref{subsec:framed-monopole-moduli-dynamics}.  The finite
-stationary-phase formula above supplies the accompanying quantum
-collective-coordinate density once the nonzero-mode determinant and the
-chosen regulator have been specified.
+stationary-phase formula above supplies the accompanying local quantum
+collective-coordinate density on compact fixed-orbit-type charts.  A full
+monopole or instanton sector then requires the nonzero-mode determinant, the
+chosen regulator, and the end estimates for the relevant moduli coordinates.
 
 \begin{construction}[Fermion zero modes and Berezin saturation]
 \label{con:fermion-zero-mode-berezin-saturation}

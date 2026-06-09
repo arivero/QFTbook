@@ -89,7 +89,12 @@ Source-File: monograph/tex/volumes/volume_ii/chapter20_chiral_axial_anomalies.te
   \(0.466\exp[-1.679N]/[(N-1)!(N-2)!]\) reduction, and the \(SU(3)\)
   value \(1.51\times10^{-3}\).  The 2026-06-03 Uhlenbeck-face continuation
   adds the higher-charge boundary-face codimension and product integrability
-  budget.
+  budget.  The 2026-06-09 issue #972 pass narrows the chapter's use of the
+  collective-coordinate theorem to compact positive-size fixed-orbit-type
+  charts; global integration over centers, sizes, orientation strata,
+  small-instanton faces, reducibles, and determinant-zero or negative-mode
+  regions is left to the chapter's separate boundary, source, and determinant
+  estimates rather than inherited from the local Gaussian calculation.
   The physics-amplitude continuation adds the finite Berezin zero-mode
   saturation check that turns the instanton measure into a correlator
   contribution, including the two-flavor 't Hooft determinant sign.  The
@@ -2159,3 +2164,12 @@ Source-File: monograph/tex/volumes/volume_ii/chapter20_chiral_axial_anomalies.te
   \(\mathsf G_{i;jk}=2\mathsf T_{ijk}\).  The companion now has a negative
   control rejecting the shortcut that equates raw trace and effective-action
   coefficient before applying this normalization.
+- 2026-06-09 issue #972 instanton-measure scope pass: re-audited the BPST
+  measure paragraph against the moduli-vs-physics concern.  The TeX now cites
+  the local fixed-stratum stationary-phase theorem only after adding a compact
+  partition-of-unity factor, compact center support, fixed orientation orbit
+  type, uniform Hessian lower bound, and normal action gap.  The paragraph now
+  states explicitly that the displayed bosonic density is local on the
+  positive-size smooth stratum and does not estimate the center end, large-size
+  end, small-instanton boundary, reducibles, stabilizer jumps, regulator limit,
+  or source-dependent \(\rho,a\) integration.

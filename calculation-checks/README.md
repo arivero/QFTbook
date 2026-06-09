@@ -1060,7 +1060,11 @@ Current checks:
   zero-mode wavefunction, chirality flip, normalization, paired-spectrum, and
   half-charge bookkeeping with integer-charge and unpaired-spectrum negative
   controls, the coordinate transformation of \(\sqrt{\det G_{ab}}\,d^mz\),
-  and the \(4N_c\) local dimension count of the embedded one-instanton moduli.
+  the \(4N_c\) local dimension count of the embedded one-instanton moduli,
+  and the local stationary-phase guards: pointwise nondegenerate but
+  non-uniform Hessian family, missing action gap, fixed finite stabilizer
+  versus stabilizer jump, and the common exponential saddle scale for the
+  \(O(\epsilon)\) remainder.
 - `soliton_quantization_channel_checks.py`: symbolic checks for the dedicated
   soliton collective-quantization chapter, including the dimensionless kink
   mass and translation-zero-mode norm \(4/3\), finite zero-mode projection and

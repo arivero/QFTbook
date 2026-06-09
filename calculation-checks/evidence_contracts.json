@@ -98,6 +98,17 @@
       ]
     },
     {
+      "path": "soliton_collective_coordinate_checks.py",
+      "risk_class": "collective-coordinate stationary phase",
+      "convention_tags": [
+        "Bogomolny and vortex square-completion signs",
+        "monopole theta relabelling and phase inertia",
+        "zero-mode density coordinate invariance",
+        "uniform Morse-Bott lower bound",
+        "fixed finite stabilizer orbit type"
+      ]
+    },
+    {
       "path": "soliton_quantization_channel_checks.py",
       "risk_class": "soliton collective quantization"
     },
