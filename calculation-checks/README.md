@@ -2705,6 +2705,13 @@ Current checks:
   large-\(N\) Fermi-surface collective-field Hamiltonian, \(SU(2)\) Gauss-law
   algebra and Hamiltonian invariance, and the finite two-matrix supercharge
   closure identity modulo the Gauss generator.
+- `time_slicing_trotter_checks.py`: exact symbolic and rational checks for
+  the Volume I time-slicing chapter.  It verifies that the harmonic-oscillator
+  Mehler kernel solves the Euclidean heat equation selected by the exact
+  Schr\"odinger Trotter product, that an order-\(\epsilon\) quantum term in a
+  one-step symbol accumulates to an order-\(T\) Hamiltonian shift, and that
+  variable-coefficient kinetic operators need their reference-measure linear
+  momentum term and Weyl scalar counterterm.
 - `spinor_grassmann_checks.py`: finite exact checks for the Volume I
   spinor-field and Grassmann path-integral chapter, including the phase signs
   in the free Dirac equations, the charge ledger for \(b,d\) oscillators, the

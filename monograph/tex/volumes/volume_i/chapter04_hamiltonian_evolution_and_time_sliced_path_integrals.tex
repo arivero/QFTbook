@@ -174,11 +174,13 @@ regulated expression.
 \label{par:finite-phase-space-time-sliced-kernel}
 Fix the data of Definition~\ref{def:position-momentum-rigging-kernel-notation}
 and an operator symbol \(h(q,p)\) for \(\widehat H\) in a specified ordering
-convention.  The finite-\(N\) phase-space expression \(K_N\) is the regulated
-oscillatory integral obtained by inserting position and momentum resolutions
-in the product formula for \(U(T)\).  The theorem-level analytic input enters
-later, through the operator convergence theorem for the limiting procedure.
-We record the construction explicitly.
+convention.  There are two different finite objects to keep separate.  The
+first is the exact resolution-of-identity formula built from the exact
+short-time kernel of \(\exp(-\ii\epsilon\widehat H/\hbar)\).  The second is a
+symbol-parametrix oscillatory integral obtained only after replacing that
+exact short-time kernel by a declared short-time symbol expansion.  The
+Trotter theorem below applies to exact operator products, not automatically to
+an arbitrary exponentiated symbol.  We record the exact construction first.
 Choose an integer \(N\ge1\), set \(\epsilon=T/N\), and define
 \[
   t_n=n\epsilon,\qquad n=0,\ldots,N,
@@ -212,6 +214,17 @@ Inserting \(N\) momentum resolutions gives
   \bra{p_n}\exp\left(-\frac{\ii}{\hbar}\epsilon\widehat H\right)\ket{q_n}.
 \end{aligned}
 \]
+This identity is exact at finite \(N\).  If one denotes the one-step mixed
+kernel by
+\[
+  M_\epsilon(q_{n+1},p_n;q_n)
+  =
+  \bra{q_{n+1}}p_n\rangle
+  \bra{p_n}\exp\left(-\frac{\ii}{\hbar}\epsilon\widehat H\right)\ket{q_n},
+\]
+then the exact finite product is the same integral with
+\(\prod_n M_\epsilon(q_{n+1},p_n;q_n)\).  No symbol replacement has yet been
+made.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth]
@@ -240,8 +253,8 @@ ordering convention, for example by
 \[
   \bra{p}\widehat H\ket{q}=h(q,p)\braket{p}{q}
 \]
-on the chosen domain.  Replacing each short-time matrix element by the first
-terms of its symbol expansion gives
+on the chosen domain.  A short-time symbol expansion may then give a
+parametrix of the form
 \[
   \bra{q_{n+1}}p_n\rangle
   \bra{p_n}\ee^{-\ii\epsilon\widehat H/\hbar}\ket{q_n}
@@ -255,12 +268,16 @@ terms of its symbol expansion gives
     \right)
   \right]
 \]
-for this convention, with the error understood in the regulated
-operator-symbol expansion rather than as a pointwise statement about an
-undefined continuum integral.  The associated finite-\(N\) phase-space
-approximant is
+for this convention, with the error understood in a specified regulated symbol
+topology.  This display is not a convergence theorem.  In particular, an
+\(O(\hbar\epsilon)\) term in the one-step exponent accumulates over
+\(N=T/\epsilon\) slices to an \(O(\hbar T)\) contribution; it is an ordering or
+measure counterterm unless the chosen construction proves that it cancels.
+After a symbol class, quantization convention, endpoint convention, one-step
+error estimate, and limiting topology have been supplied, the associated
+finite-\(N\) phase-space approximant is
 \[
-  K_N(q_f,T;q_i,0)
+  K_N^{\rm sym}(q_f,T;q_i,0)
   =
   \int
   \prod_{n=1}^{N-1}\dd^dq_n
@@ -286,8 +303,9 @@ The continuum notation
   \right]
 \]
 denotes this regulated construction together with the specified limiting
-procedure. In the present chapter, the finite-\(N\) expression is the defined
-object.
+procedure.  In the present chapter, the finite-\(N\) exact product is defined
+without approximation, while \(K_N^{\rm sym}\) is a symbol-parametrix
+approximant whose convergence requires its own estimate.
 
 \section{Trotter Limits, Wiener Measure, and Kernel Convergence}
 
@@ -439,6 +457,83 @@ generator is the closure of \(-\ii(A+B)/\hbar\), namely
 about self-adjoint generators; it should not be inferred by simply
 substituting \(t\mapsto\ii t\) into an uncontrolled kernel expression.
 \end{proof}
+
+\paragraph{Exact Trotter kernel for the standard Schr\"odinger split.}
+For the standard Hamiltonian
+\[
+  \widehat H=\widehat T+V(\widehat q),
+  \qquad
+  \widehat T=\frac{\widehat p^2}{2m},
+\]
+the finite approximant justified by
+Theorem~\ref{qthm:trotter-product-formula-qm} is not the arbitrary
+symbol-exponentiated expression above.  It is the exact operator product
+\[
+  U_N^{TV}(T)
+  =
+  \left[
+    \exp\left(-\frac{\ii\epsilon}{\hbar}\widehat T\right)
+    \exp\left(-\frac{\ii\epsilon}{\hbar}V(\widehat q)\right)
+  \right]^N,
+  \qquad \epsilon=\frac{T}{N}.
+\]
+Its position kernel is obtained from the exact free-particle kernel and the
+exact multiplication kernel of \(V(\widehat q)\):
+\[
+\begin{aligned}
+  K_N^{TV}(q_f,T;q_i,0)
+  &=
+  \int\prod_{n=1}^{N-1}\dd^dq_n
+  \prod_{n=0}^{N-1}
+  \left(\frac{m}{2\pi\ii\hbar\epsilon}\right)^{d/2}
+  \\
+  &\quad\times
+  \exp\left[
+    \frac{\ii}{\hbar}
+    \sum_{n=0}^{N-1}
+    \left(
+      \frac{m}{2\epsilon}|q_{n+1}-q_n|^2
+      -\epsilon V(q_n)
+    \right)
+  \right].
+\end{aligned}
+\]
+When the real-time hypotheses of the theorem hold, \(U_N^{TV}(T)\) converges
+strongly to \(\exp(-\ii T\widehat H/\hbar)\).  This is an operator statement.
+Pointwise kernel convergence requires additional hypotheses or smearing in a
+declared test-function topology.
+
+In Euclidean time the corresponding exact product is
+\[
+  \left[
+    \exp\left(-\frac{\delta}{\hbar}\widehat T\right)
+    \exp\left(-\frac{\delta}{\hbar}V(\widehat q)\right)
+  \right]^N,
+  \qquad \delta=\frac{\tau}{N},
+\]
+with heat-kernel factors
+\[
+  \left(\frac{m}{2\pi\hbar\delta}\right)^{d/2}
+  \exp\left[-\frac{m|q_{n+1}-q_n|^2}{2\hbar\delta}
+            -\frac{\delta}{\hbar}V(q_n)\right].
+\]
+Under the Kato hypotheses below this converges to the Feynman--Kac kernel.
+For the harmonic oscillator \(V(q)=m\omega^2q^2/2\) in one dimension the
+Gaussian product can be evaluated explicitly, and its limit is the Mehler
+kernel
+\[
+  K_\tau^{\rm osc}(x,y)
+  =
+  \left(\frac{m\omega}{2\pi\hbar\sinh\omega\tau}\right)^{1/2}
+  \exp\left[
+    -\frac{m\omega}{2\hbar\sinh\omega\tau}
+    \bigl((x^2+y^2)\cosh\omega\tau-2xy\bigr)
+  \right],
+\]
+the heat kernel of
+\(-\hbar^2\partial_x^2/(2m)+m\omega^2x^2/2\).  This example is the model for
+what has to be proved for a chosen approximant: exact finite products first,
+then the topology of the limiting kernel.
 
 \begin{definition}[Kato Schrodinger Euclidean datum]
 \label{def:kato-schrodinger-euclidean-datum}
@@ -910,15 +1005,43 @@ Conversely, if a classical Lagrangian in generalized coordinates has this
 metric form, as in the rigid-body configuration space example, then the
 corresponding quantum Hamiltonian symbol is
 \[
-  h(q,p)=\frac12G^{ab}(q)p_ap_b+V(q)+O(\hbar)
+h(q,p)=\frac12G^{ab}(q)p_ap_b+V(q)+O(\hbar)
 \]
 until an ordering convention and measure convention have been fixed.  The
 \(O(\hbar)\) term records the same local regulator dependence described
-above.
-The finite-\(N\) configuration-space expression is therefore
+above.  For example, on \(L^2(\mathbb R,\ee^{\sigma(q)}\dd q)\) the
+Laplace--Beltrami kinetic operator for the metric
+\(g(q)=\ee^{2\sigma(q)}\) is
+\[
+  -\frac{\hbar^2}{2}\Delta_g
+  =
+  -\frac{\hbar^2}{2}\ee^{-\sigma}\partial_q
+  \bigl(\ee^{-\sigma}\partial_q\bigr).
+\]
+In a right-ordered symbol on this reference measure it is represented by
+\[
+  h_{\rm right}(q,p)
+  =
+  \frac12\ee^{-2\sigma(q)}p^2
+  +
+  \frac{\ii\hbar}{2}\ee^{-2\sigma(q)}\sigma'(q)p .
+\]
+With the flat reference measure and the symmetric kinetic operator
+\(\frac12\,p\,a(q)\,p\), the Weyl symbol is instead
+\[
+  h_{\rm Weyl}(q,p)
+  =
+  \frac12a(q)p^2+\frac{\hbar^2}{8}a''(q).
+\]
+The linear momentum term and the scalar quantum potential are not optional
+decorations: omitting them changes the limiting Hamiltonian selected by the
+time-sliced construction.  Thus, for the declared quadratic symbol with no
+linear momentum term and for the left-endpoint density convention displayed in
+the Gaussian integral above, the induced finite-\(N\) configuration-space
+approximant is
 \[
 \begin{aligned}
-  K_N(q_f,T;q_i,0)
+  K_N^{\rm met}(q_f,T;q_i,0)
   &=
   \int\prod_{n=1}^{N-1}\dd^dq_n
   \prod_{n=0}^{N-1}
@@ -933,6 +1056,10 @@ The finite-\(N\) configuration-space expression is therefore
   \right].
 \end{aligned}
 \]
+For a target Laplace--Beltrami or Weyl-ordered Hamiltonian, the preceding
+reference-measure and ordering counterterms must first be built into the
+one-step symbol and density; the bare determinant formula is not by itself a
+coordinate-invariant definition of the quantum dynamics.
 For \(G_{ab}=m\delta_{ab}\), the Lagrangian in this finite-dimensional
 time-sliced kernel is
 \[
@@ -955,7 +1082,7 @@ The oscillatory Gaussian determinant gives
 \(\sqrt{\det G_{ab}}(2\pi\ii\hbar\epsilon)^{-d/2}\), and the remaining
 exponent is
 \(\epsilon G_{ab}v^av^b/2\).  Multiplying over slices and including
-\(-\epsilon V(q_n)\) gives the displayed configuration-space kernel.
+\(-\epsilon V(q_n)\) gives the displayed configuration-space approximant.
 
 \section{Time-Ordered Insertions and Sources}
 

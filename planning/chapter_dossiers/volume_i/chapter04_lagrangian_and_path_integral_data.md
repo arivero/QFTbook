@@ -89,6 +89,9 @@ Working framework:
 | \(h'(q,p)\) | alternative ordering symbol for the same operator | time slicing |
 | \(\epsilon\) | time step \(T/N\) | regulator |
 | \(K_N\) | finite-\(N\) regulated phase-space integral | path integral |
+| \(K_N^{\rm sym}\) | symbol-parametrix phase-space approximant, requiring its own one-step estimate and limiting topology | path integral |
+| \(K_N^{TV}\) | exact Lie-Trotter kernel for the standard \(\widehat p^2/(2m)+V(\widehat q)\) split | path integral |
+| \(K_N^{\rm met}\) | metric-symbol configuration-space approximant after a declared measure/order convention | path integral |
 | \(S_N\) | discrete phase-space action | regulator |
 | \(G_{ab}(q)\) | positive-definite configuration-space metric | Lagrangian form |
 | \(J(t)\) | external source | generating functional |
@@ -114,8 +117,9 @@ Working framework:
 - `def:position-momentum-rigging-kernel-notation`: weak position/momentum
   resolutions of identity with the \(\hbar\)-Fourier normalization.
 - Paragraph `par:finite-phase-space-time-sliced-kernel`: finite time-sliced
-  phase-space construction and discrete phase-space action, recorded as a
-  regulated insertion calculation rather than proposition-level content.
+  phase-space construction and discrete phase-space action, now separated
+  into the exact resolution-of-identity product and the
+  symbol-parametrix approximant \(K_N^{\rm sym}\).
 - `qthm:trotter-product-formula-qm`: local theorem-level operator Trotter
   formula used to interpret continuum limits, now with explicit real-time
   essential-self-adjoint-sum hypotheses, Euclidean closed-form-sum hypotheses,
@@ -131,7 +135,8 @@ Working framework:
 - `def:regulated-phase-space-path-integral-datum`: ordering-dependent symbols
   and local \(O(\hbar)\) counterterms.
 - Paragraph "Gaussian elimination of quadratic momenta": Lagrangian form after
-  Gaussian momentum integration.
+  Gaussian momentum integration, with the reference-measure/order dependence
+  of variable-metric Hamiltonians explicitly recorded.
 - `def:finite-slice-time-ordered-insertions-source`: source-dependent
   generating functional at finite cutoff.
 - `def:hermitian-one-matrix-qm`: matrix Hilbert space, global `U(N)` action,
@@ -157,10 +162,18 @@ Working framework:
   the relevant domain.
 - Position and momentum kets are distributional vectors in a Gelfand triple;
   their resolutions of identity are weak Fourier-inversion identities.
-- Paragraph `par:finite-phase-space-time-sliced-kernel` derives the
-  finite-dimensional phase-space expression for time evolution at fixed
-  partition; its status is a regulated construction, not an independent
-  theorem.
+- Paragraph `par:finite-phase-space-time-sliced-kernel` derives the exact
+  resolution-of-identity formula at fixed partition before any symbol
+  replacement.  The exponentiated-symbol object \(K_N^{\rm sym}\) is only a
+  parametrix approximant unless a symbol class, quantization convention,
+  endpoint convention, one-step error estimate, and limiting topology are
+  supplied.
+- For the standard Schrödinger split
+  \(\widehat H=\widehat p^2/(2m)+V(\widehat q)\), the exact Lie-Trotter kernel
+  \(K_N^{TV}\) is built from the exact free kernel and the exact
+  multiplication kernel of \(V\).  The Trotter theorem applies to this exact
+  product, while pointwise kernel convergence remains a separate hypothesis
+  or follows from the later Kato/Feynman--Kac theorem in Euclidean time.
 - The continuum path-integral notation is shorthand for a regulator and
   limiting procedure.
 - `thm:wiener-feynman-kac-qm` constructs the Wiener-measure/Feynman--Kac
@@ -181,8 +194,13 @@ Working framework:
   broader typed path-integral taxonomy.
 - Distinct time-lattice orderings define distinct symbols \(h\) and \(h'\),
   differing by local \(O(\hbar)\) terms.
-- Paragraph "Gaussian elimination of quadratic momenta" derives the Lagrangian form and
-  determinant measure for quadratic momentum dependence.
+- Paragraph "Gaussian elimination of quadratic momenta" derives the Lagrangian
+  form and determinant measure for a declared quadratic symbol, records the
+  resulting \(K_N^{\rm met}\) as a metric-symbol approximant rather than an
+  invariant exact kernel, and states that self-adjoint variable-metric
+  Hamiltonians require a reference measure, possible linear-in-momentum
+  ordering terms, and scalar quantum potentials such as the Weyl
+  \(\hbar^2 a''/8\) term.
 - `def:finite-slice-time-ordered-insertions-source` records how source
   derivatives generate time-ordered insertions.
 - Hermitian one-matrix quantum mechanics is an intrinsic finite-dimensional
@@ -229,6 +247,11 @@ prose because the argument is the spectral theorem plus a gap estimate.
   operator, collision antisymmetry, wrong-Vandermonde-power negative control,
   and collective-field Hamiltonian identity used in
   Section~`sec:hermitian-matrix-quantum-mechanics`.
+- `calculation-checks/time_slicing_trotter_checks.py` verifies the
+  harmonic-oscillator Mehler heat-kernel equation, the accumulation of an
+  order-\(\epsilon\) symbol term over \(T/\epsilon\) slices, and the
+  reference-measure/Weyl counterterms in variable-coefficient kinetic
+  operators.
 
 ## Audit Notes
 
@@ -262,6 +285,13 @@ prose because the argument is the spectral theorem plus a gap estimate.
   mechanics as merely contextual: the radial/Vandermonde, non-singlet, and
   collective-field mechanisms are now incorporated, while string
   interpretations remain boundary comparisons.
+- 2026-06-09 issue #967: separated the exact short-time kernel product from
+  the exponentiated-symbol phase-space approximant, added the exact
+  Lie-Trotter kernel \(K_N^{TV}\) for \(\widehat p^2/(2m)+V(\widehat q)\),
+  and made the variable-metric Gaussian elimination explicitly conditional on
+  reference measure and ordering data.  Added
+  `calculation-checks/time_slicing_trotter_checks.py` for the oscillator,
+  accumulated-order-\(\epsilon\), and variable-kinetic counterterm checks.
 
 ## Figure Ledger
 
