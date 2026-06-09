@@ -35,8 +35,10 @@ Source-File: monograph/tex/volumes/volume_i/chapter13_lsz_reduction_and_the_s_ma
   Fermionic external particles use the graded asymptotic Fock space with signs
   fixed by the Wightman spin-statistics theorem
   `thm:wightman-spin-statistics`.
-- Scattering operator \(S=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) on
-  the asymptotic Fock space when the incoming and outgoing ranges coincide.
+- In/out comparison operator
+  \(S_{\mathrm{sub}}=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) on the
+  asymptotic Fock space.  Range coincidence upgrades it to the unitary
+  closed-sector scattering operator \(S\).
 - Relativistically normalized generalized momentum states.
 - Scalar local field \(\widehat\phi\) with one-particle residue \(Z_\phi>0\).
 - Time-ordered Green functions as Lorentzian distributions.
@@ -50,7 +52,8 @@ Source-File: monograph/tex/volumes/volume_i/chapter13_lsz_reduction_and_the_s_ma
 | \(d\) | spatial dimension, \(D-1\) |
 | \(\mathcal F_s(\Hilb_1)\) | bosonic asymptotic Fock space over \(\Hilb_1\) |
 | \(\Omega_{\mathrm{in/out}}\) | Haag--Ruelle wave operators |
-| \(S\) | scattering operator \(\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) |
+| \(S_{\mathrm{sub}}\) | in/out comparison operator \(\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) |
+| \(S\) | unitary closed-sector scattering operator, equal to \(S_{\mathrm{sub}}\) only after incoming/outgoing ranges coincide |
 | \(\omega_{\vec p}\) | \(\sqrt{\vec p^{\,2}+m^2}\) |
 | \(\dd\mu_m\) | Lorentz-invariant mass-shell measure |
 | \(\Sigma_m^+\) | positive-energy mass shell |
@@ -73,8 +76,9 @@ Source-File: monograph/tex/volumes/volume_i/chapter13_lsz_reduction_and_the_s_ma
 ## Claims Established
 
 - The object computed by LSZ is the Hilbert-space matrix element
-  \(\langle F_{\rm out},S F_{\rm in}\rangle_{\mathcal F_s(\Hilb_1)}\), with
-  \(S\) supplied by Haag--Ruelle wave operators.
+  \(\langle F_{\rm out},S_{\mathrm{sub}}F_{\rm in}\rangle_{\mathcal F_s(\Hilb_1)}\),
+  with \(S_{\mathrm{sub}}\) supplied by Haag--Ruelle wave operators.  If the
+  selected channel is closed, this is the usual unitary \(S\)-matrix element.
 - The Haag--Ruelle wave operators are large-time asymptotic maps and do not
   identify the interacting local field algebra with a free field algebra at a
   fixed time; the opening paragraph now points to the Haag-theorem boundary.
@@ -145,7 +149,9 @@ Source-File: monograph/tex/volumes/volume_i/chapter13_lsz_reduction_and_the_s_ma
 - Definition `def:lsz-invariant-scalar-amplitude-convention` records the
   invariant-amplitude convention and its conversion to a
   \(\delta^{(d)}\)-normalized basis before cross-section conventions appear in
-  the next chapter.
+  the next chapter.  The convention identifies the connected in/out kernel; the
+  operator identity \(S=\mathbf 1+\ii T\) is invoked only after the
+  closed-sector range hypothesis is imposed.
 - The full scattering kernel decomposes into products of connected kernels
   over compatible partitions of incoming and outgoing labels.
 - Paragraph "Partition formula for connected scattering kernels" gives this
@@ -226,3 +232,8 @@ Source-File: monograph/tex/volumes/volume_i/chapter13_lsz_reduction_and_the_s_ma
 - 2026-06-04 issue #780 cross-reference pass: recorded the stable-pole
   boundary needed when the broken Yang--Mills chapter invokes LSZ-style
   external-pole extraction for longitudinal massive vectors.
+- 2026-06-09 issue #969 pass: relaxed the massive scalar LSZ datum from a
+  unitary closed-sector \(S\)-operator to the always-defined comparison
+  operator \(S_{\mathrm{sub}}\).  LSZ now computes in/out matrix elements first;
+  range coincidence is mentioned only when unitary \(S\)-matrix or
+  \(S=\mathbf 1+\ii T\) identities are used.

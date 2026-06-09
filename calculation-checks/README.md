@@ -2243,7 +2243,10 @@ Current checks:
 - `haag_ruelle_fock_inner_product_checks.py`: exact rational checks for the
   Haag--Ruelle Fock inner-product recursion, comparing the recursive
   contraction formula with the direct bosonic permanent and particle-number
-  orthogonality.
+  orthogonality.  It also checks the finite-dimensional in/out comparison
+  operator boundary: noncoincident isometric ranges give a well-defined
+  contraction \(S_{\rm sub}=\Omega_{\rm out}^*\Omega_{\rm in}\), with unitarity
+  restored only when the ranges coincide.
 - `haag_ruelle_velocity_checks.py`: finite checks for the Volume I
   Haag--Ruelle velocity-support chapter material, including positive-energy
   phase cancellation, massive group-velocity subluminality,

@@ -4,8 +4,8 @@ Source-File: monograph/tex/volumes/volume_i/chapter14_cross_sections_partial_wav
 ## Source Placement
 
 - Follows LSZ reduction.
-- Uses the invariant amplitude \(\mathcal M\) only after the S-operator and
-  LSZ have been constructed.
+- Uses the invariant amplitude \(\mathcal M\) only after the closed-sector
+  S-operator and LSZ in/out matrix elements have been constructed.
 - Source material used:
   - `transcription/tex/253a/foundations.tex`, lines 5608--6075 as an
     approximate source range;
@@ -22,6 +22,9 @@ Source-File: monograph/tex/volumes/volume_i/chapter14_cross_sections_partial_wav
   \]
 - Cross sections are derived from wave-packet transition probabilities and
   expressed through sharp-momentum kernels.
+- The chapter assumes the selected asymptotic sector is closed: the incoming
+  and outgoing Haag--Ruelle ranges coincide, so the comparison operator from
+  Chapters 12--13 is a unitary \(S\)-operator.
 
 ## Symbols
 
@@ -134,6 +137,13 @@ Source-File: monograph/tex/volumes/volume_i/chapter14_cross_sections_partial_wav
   a constant invariant amplitude contributes \(a_0=\mathcal M/(16\pi)\);
   `longitudinal_goldstone_equivalence_checks.py` rejects the common
   \(32\pi\) mismatch for that ordered normalization.
+- 2026-06-09 issue #969 downstream audit: the chapter's transition
+  probabilities, optical theorem, and partial-wave unitarity identities are
+  all inside the closed-sector hypothesis
+  \(\operatorname{Ran}\Omega_{\mathrm{in}}
+  =\operatorname{Ran}\Omega_{\mathrm{out}}\).  The monograph text now
+  cross-references the Chapter 12 range/completeness definition at the first
+  use of the unitary \(S\)-operator.
 
 ## Figure Requirements
 

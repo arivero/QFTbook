@@ -4,7 +4,10 @@
 The Haag--Ruelle proof reduces the limiting scalar products of outgoing or
 incoming scattering states to the bosonic Fock permanent.  This script checks
 the recursive contraction formula used in the manuscript against a direct
-permanent computation over rational Gram matrices.
+permanent computation over rational Gram matrices.  It also checks the
+finite-dimensional in/out comparison-operator boundary: two isometric wave
+operators define a contractive comparison operator even when their ranges do
+not coincide.
 """
 
 from __future__ import annotations
@@ -14,11 +17,28 @@ from itertools import permutations
 from typing import Sequence
 
 Matrix = Sequence[Sequence[Fraction]]
+Vector = Sequence[Fraction]
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def inner(left: Vector, right: Vector) -> Fraction:
+    return sum(a * b for a, b in zip(left, right))
+
+
+def rank_one_projection(unit_vector: Vector) -> list[list[Fraction]]:
+    return [[row * col for col in unit_vector] for row in unit_vector]
+
+
+def quadratic_form(vector: Vector, matrix: Matrix) -> Fraction:
+    return sum(
+        vector[i] * matrix[i][j] * vector[j]
+        for i in range(len(vector))
+        for j in range(len(vector))
+    )
 
 
 def permanent_direct(matrix: Matrix) -> Fraction:
@@ -91,11 +111,42 @@ def check_two_particle_formula() -> None:
     assert_equal("two-particle Fock inner product", fock_inner_product_from_gram(gram), expected)
 
 
+def check_comparison_operator_without_range_coincidence() -> None:
+    v_in = (Fraction(1), Fraction(0))
+    v_out = (Fraction(3, 5), Fraction(4, 5))
+
+    assert_equal("incoming isometry norm", inner(v_in, v_in), Fraction(1))
+    assert_equal("outgoing isometry norm", inner(v_out, v_out), Fraction(1))
+
+    s_sub = inner(v_out, v_in)
+    assert_equal("subchannel comparison amplitude", s_sub, Fraction(3, 5))
+    if s_sub * s_sub >= 1:
+        raise AssertionError("noncoincident one-dimensional ranges should not give a unitary")
+
+    p_in = rank_one_projection(v_in)
+    p_out = rank_one_projection(v_out)
+    assert_equal(
+        "S_sub^* S_sub projection identity",
+        quadratic_form(v_in, p_out),
+        s_sub * s_sub,
+    )
+    assert_equal(
+        "S_sub S_sub^* projection identity",
+        quadratic_form(v_out, p_in),
+        s_sub * s_sub,
+    )
+
+    v_same = v_in
+    s_closed = inner(v_same, v_in)
+    assert_equal("range-coincident comparison is unitary", s_closed * s_closed, Fraction(1))
+
+
 def main() -> None:
     check_zero_particle_base_case()
     check_two_particle_formula()
     check_permanent_recursion()
     check_particle_number_orthogonality()
+    check_comparison_operator_without_range_coincidence()
     print("All Haag-Ruelle Fock inner-product checks passed.")
 
 
