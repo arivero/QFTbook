@@ -477,7 +477,7 @@ connected kernels once the full kernel is known.  The physical cluster
 property is the large-separation theorem below.  Its hypotheses are additional
 Hilbert-space and locality hypotheses, not consequences of the recursion.
 
-\begin{theorem}[Cluster decomposition for scattering kernels]
+\begin{theorem}[Cluster decomposition with a joint Haag--Ruelle limit]
 \label{thm:scattering-cluster-decomposition}
 Assume a Haag--Ruelle scattering theory with a unique translation-invariant
 vacuum, a mass gap above the vacuum, local commutativity, and the following
@@ -501,42 +501,95 @@ Here \(\rho(a,T)\) is the spacelike separation of the two localization tubes
 after replacing the almost-local operators by local approximants; for
 velocity supports separated from the light cone of the relative translation,
 \(\rho(a,T)\ge c|a|-R_N(1+|T|)\) for some \(c>0\).  Let
-\(\Psi_A^{\mathrm{in/out}}\) and \(\Psi_B^{\mathrm{in/out}}\) be two groups of
-wave-packet scattering states whose velocity supports stay disjoint after a
-relative spacelike translation \(a\), with \(a^2>0\) and \(|a|\to\infty\).
-Then the full scattering matrix element factorizes:
+\(\psi_A^{\mathrm{in/out}}\) and \(\psi_B^{\mathrm{in/out}}\) be two finite
+asymptotic Fock vectors with compact velocity supports.  Write
+\[
+  \mathsf J_{A|B}:
+  \mathcal F_A\otimes\mathcal F_B\longrightarrow\mathcal F_s(\Hilb_1)
+\]
+for the symmetrized concatenation map on the fixed cluster-label
+decomposition, so that
+\(\mathsf J_{A|B}(\psi_A\otimes\psi_B)=\psi_A\odot\psi_B\).  Let \(U_F(a)\)
+be the free Fock translation.  The partial relative translation of the
+\(B\)-cluster is the typed vector
+\begin{equation}
+  \psi_{A|B}(a)
+  =
+  \mathsf J_{A|B}\bigl(\psi_A\otimes U_F(a)\psi_B\bigr),
+  \label{eq:partial-fock-cluster-translation}
+\end{equation}
+not a global physical translation of the already-combined scattering state.
+
+Assume, in addition, the following joint Haag--Ruelle approximation estimate
+for this family of partially translated cluster vectors.  Let
+\(W_{\sigma,T}\), \(\sigma=\mathrm{in},\mathrm{out}\), denote the finite-time
+Haag--Ruelle product map corresponding to the chosen wave packets.  There are
+diagonal times \(T=T(|a|)\to\infty\), with \(T(|a|)=o(|a|)\), and error
+functions \(E_\sigma(T,a)\) such that
+\begin{equation}
+  \left\|
+    W_{\sigma,T(a)}\psi_{A|B}^{\sigma}(a)
+    -
+    \Omega_\sigma\psi_{A|B}^{\sigma}(a)
+  \right\|
+  \le
+  E_\sigma(T(a),a)
+  \longrightarrow0 ,
+  \label{eq:joint-hr-cluster-approximation}
+\end{equation}
+the finite-time vectors are bounded on this diagonal, and
+\begin{equation}
+  \rho(a,T(a))\to\infty,\qquad
+  C_N(1+T(a))^{M_N}(1+\rho(a,T(a)))^{-N}\to0
+  \label{eq:cluster-diagonal-decay}
+\end{equation}
+for some \(N\) large enough for the chosen packets.  Then the full scattering
+matrix element factorizes:
 \[
   \left\langle
-    \Psi_A^{\mathrm{out}}\otimes U(a)\Psi_B^{\mathrm{out}},
+    \psi_{A|B}^{\mathrm{out}}(a),
     S\,
-    \Psi_A^{\mathrm{in}}\otimes U(a)\Psi_B^{\mathrm{in}}
+    \psi_{A|B}^{\mathrm{in}}(a)
   \right\rangle
   \longrightarrow
-  \left\langle\Psi_A^{\mathrm{out}},S\Psi_A^{\mathrm{in}}\right\rangle
-  \left\langle\Psi_B^{\mathrm{out}},S\Psi_B^{\mathrm{in}}\right\rangle .
+  \left\langle\psi_A^{\mathrm{out}},S\psi_A^{\mathrm{in}}\right\rangle
+  \left\langle\psi_B^{\mathrm{out}},S\psi_B^{\mathrm{in}}\right\rangle .
 \]
-Equivalently, the connected kernel
-\(S^{\mathrm c}(\beta|\alpha)\) has no distributional component carrying
-separate momentum conservation for a proper subprocess; it carries only the
-total conservation law of the connected process.
 \end{theorem}
 
 \begin{proof}
-Choose Haag--Ruelle approximants
+Use \(S=\Omega_{\rm out}^*\Omega_{\rm in}\) to write the exact matrix element
+as
 \[
-  \Psi_{A,T}^{\mathrm{out}}=A_T^{\mathrm{out}}\vac,\qquad
-  \Psi_{A,T}^{\mathrm{in}}=A_{-T}^{\mathrm{in}}\vac,\qquad
-  \Psi_{B,T}^{\mathrm{out}}=B_T^{\mathrm{out}}\vac,\qquad
-  \Psi_{B,T}^{\mathrm{in}}=B_{-T}^{\mathrm{in}}\vac
+  \mathcal M(a)
+  =
+  \left\langle
+    \Omega_{\rm out}\psi_{A|B}^{\rm out}(a),
+    \Omega_{\rm in}\psi_{A|B}^{\rm in}(a)
+  \right\rangle_{\Hilb}.
 \]
-for the four scattering states.  The Haag--Ruelle theorem gives norm
-convergence as \(T\to+\infty\) for the outgoing approximants and as
-\(T\to+\infty\) for the incoming approximants written at time \(-T\).
-Translation by \(U(a)\) is
-unitary, so these norm errors are independent of the relative translation
-\(a\).  Hence, for every \(\varepsilon>0\), there exists \(T_\varepsilon\)
-such that for \(T\ge T_\varepsilon\) the exact matrix element differs by at
-most \(\varepsilon\), uniformly in \(a\), from the finite-time expression
+The partial translation in
+\eqref{eq:partial-fock-cluster-translation} acts on only one tensor factor
+before symmetrized concatenation.  Therefore the required approximation is
+\eqref{eq:joint-hr-cluster-approximation}, an additional joint input beyond
+the physical unitary \(U(a)\) acting on a whole state.
+
+Along the diagonal \(T=T(a)\), define the finite-time matrix element
+\[
+  M_T(a)
+  =
+  \left\langle
+    W_{{\rm out},T}\psi_{A|B}^{\rm out}(a),
+    W_{{\rm in},T}\psi_{A|B}^{\rm in}(a)
+  \right\rangle_{\Hilb}.
+\]
+The assumed joint estimate and boundedness give
+\[
+  |\mathcal M(a)-M_{T(a)}(a)|
+  \longrightarrow0 .
+\]
+For this chosen \(T\), the finite-time expression has the vacuum expectation
+form
 \[
   M_T(a)
   =
@@ -549,10 +602,10 @@ most \(\varepsilon\), uniformly in \(a\), from the finite-time expression
 \]
 Almost-locality permits replacement of each approximant by a local operator
 localized in its Haag--Ruelle tube, with an error decreasing faster than any
-power of the tube size.  For the fixed \(T\) chosen above, large spacelike
-\(a\) makes the \(A\)-tube spacelike separated from the translated
-\(B\)-tube.  Local commutativity then orders the two groups, up to the
-almost-local tail estimate, into
+power of the tube size.  Along the diagonal, \(T(a)=o(|a|)\) and the lower
+bound on \(\rho(a,T(a))\) make the \(A\)-tube spacelike separated from the
+translated \(B\)-tube for large \(|a|\).  Local commutativity then orders the
+two groups, up to the almost-local tail estimate, into
 \[
   M_T(a)
   =
@@ -564,35 +617,62 @@ almost-local tail estimate, into
   \quad
   G_T=(B_T^{\mathrm{out}})^*B_{-T}^{\mathrm{in}} .
 \]
-Applying \eqref{eq:hr-quantitative-cluster-estimate} gives
+Applying \eqref{eq:hr-quantitative-cluster-estimate} along the same diagonal,
+together with \eqref{eq:cluster-diagonal-decay}, gives
 \[
-  \lim_{|a|\to\infty}M_T(a)
-  =
-  \bra{\vac}F_T\ket{\vac}\bra{\vac}G_T\ket{\vac}.
+  M_{T(a)}(a)
+  -
+  \bra{\vac}F_{T(a)}\ket{\vac}\bra{\vac}G_{T(a)}\ket{\vac}
+  \longrightarrow0 .
 \]
-Finally take \(T\to\infty\) in the two factors.  The same norm convergence
-gives
+Since \(T(a)\to\infty\), ordinary Haag--Ruelle convergence for each
+untranslated cluster gives
 \[
-  \bra{\vac}F_T\ket{\vac}
+  \bra{\vac}F_{T(a)}\ket{\vac}
   \longrightarrow
-  \left\langle\Psi_A^{\mathrm{out}},S\Psi_A^{\mathrm{in}}\right\rangle,
+  \left\langle\psi_A^{\mathrm{out}},S\psi_A^{\mathrm{in}}\right\rangle,
   \qquad
-  \bra{\vac}G_T\ket{\vac}
+  \bra{\vac}G_{T(a)}\ket{\vac}
   \longrightarrow
-  \left\langle\Psi_B^{\mathrm{out}},S\Psi_B^{\mathrm{in}}\right\rangle .
+  \left\langle\psi_B^{\mathrm{out}},S\psi_B^{\mathrm{in}}\right\rangle .
 \]
-Since \(\varepsilon\) was arbitrary, the scattering matrix element
-factorizes in the stated large-\(|a|\) limit.
-
-The kernel statement follows by testing the distributional kernel against
-wave packets whose velocity supports realize the two translated clusters.  If
-the connected kernel contained a component with separate momentum conservation
-inside a proper subprocess, its wave-packet pairing would survive the
-large-separation limit as a product contribution.  The recursion defining
-connected scattering kernels subtracts exactly those
-proper-subprocess products.  Therefore only the total momentum-conservation
-delta distribution remains in \(S^{\mathrm c}\).
+Combining the three estimates proves the factorization of the exact scattering
+matrix element.
 \end{proof}
+
+\paragraph{Kernel consequence and low-dimensional boundary.}
+The theorem is a wave-packet statement.  Its distributional consequence is
+that, in a regular massive kinematic region and in a topology obtained by
+testing against compactly supported mass-shell wave packets, the connected
+kernel has no component which is a product of proper subprocess kernels with
+separate conservation laws.  In dimensions and kinematic regions where the
+total momentum-conservation surface is a clean codimension-\(D\) constraint
+and no additional elastic graph degeneracy is present, the transition part of
+the connected kernel may then be written as one total
+\(\delta^{(D)}(P_{\rm out}-P_{\rm in})\) times a reduced distribution.  This
+last sentence is a regular-kernel corollary, not the content of the
+Haag--Ruelle cluster theorem itself.
+
+The qualification is essential in \(1+1\)-dimensional elastic scattering.  In
+rapidity variables, \(p^\pm=m\ee^{\pm\theta}\).  For a two-particle elastic
+process, total energy-momentum conservation gives
+\[
+  \ee^{\theta'_1}+\ee^{\theta'_2}
+  =
+  \ee^{\theta_1}+\ee^{\theta_2},
+  \qquad
+  \ee^{-\theta'_1}+\ee^{-\theta'_2}
+  =
+  \ee^{-\theta_1}+\ee^{-\theta_2}.
+\]
+Away from coincident rapidities this says that
+\(\{\ee^{\theta'_1},\ee^{\theta'_2}\}
+=\{\ee^{\theta_1},\ee^{\theta_2}\}\).  Thus the total conservation
+distribution itself pulls back to the union of the identity and exchange
+permutation graphs in rapidity space, the support structure used in
+Proposition~\ref{prop:higher-spin-factorization-kinematic}.  Cluster
+subtraction removes proper product blocks; it does not erase elastic
+permutation-graph support compatible with total conservation.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95,

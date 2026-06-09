@@ -63,9 +63,9 @@ Source-File: monograph/tex/volumes/volume_ii/chapter02_the_s_matrix_and_lsz_revi
   continuations, confining QCD factorization, and integrable factorized
   scattering are compared by their primary objects, inputs, outputs, and
   failure modes.
-- The physical cluster theorem is stated with the quantitative estimate needed
-  to pass from finite-time almost-local products to Haag--Ruelle scattering
-  states.
+- The physical cluster theorem is stated with the quantitative finite-time
+  cluster estimate and an explicit joint Haag--Ruelle/separation diagonal
+  \(T(a)=o(|a|)\) for independently translated asymptotic subclusters.
 
 ## Symbols
 
@@ -85,6 +85,9 @@ Source-File: monograph/tex/volumes/volume_ii/chapter02_the_s_matrix_and_lsz_revi
 | \(s,t,u\) | mostly-plus Mandelstam variables \(s=-(p_1+p_2)^2\), \(t=-(p_1-p_3)^2\), \(u=-(p_1-p_4)^2\) |
 | \(\Pi\) | partition of external labels into connected clusters |
 | \(\rho(a,T)\) | spacelike separation of the two Haag--Ruelle localization tubes after relative translation \(a\) at finite time parameter \(T\) |
+| \(\mathsf J_{A|B}\) | symmetrized Fock concatenation map for a fixed two-cluster label decomposition |
+| \(U_F(a)\) | free Fock translation used to translate one asymptotic subcluster before concatenation |
+| \(T(a)\) | diagonal Haag--Ruelle time used in the joint large-time/large-separation cluster limit |
 
 ## Claims Established
 
@@ -109,13 +112,20 @@ Source-File: monograph/tex/volumes/volume_ii/chapter02_the_s_matrix_and_lsz_revi
   connected kernels associated to partitions of the external process.
 - The algebraic moment-cumulant recursion defining connected kernels is
   separated from the physical cluster theorem: under uniqueness of the vacuum,
-  mass gap, local commutativity, and a quantitative clustering estimate for
-  finite-time Haag--Ruelle approximants, widely spacelike separated scattering
+  mass gap, local commutativity, a quantitative clustering estimate for
+  finite-time Haag--Ruelle approximants, and a joint approximation bound for
+  partially translated cluster vectors, widely spacelike separated scattering
   processes factorize.
-- The cluster theorem proof now displays the finite-time estimate, the
-  \(\varepsilon\)-argument with Haag--Ruelle norm convergence uniform under
-  translations, and the final moment-cumulant subtraction of proper-process
-  products.
+- The cluster theorem proof now types the independently translated
+  two-cluster state in asymptotic Fock space, replaces the earlier
+  unitarity-based uniformity assertion with an explicit diagonal
+  \(T(a)\to\infty\), \(T(a)=o(|a|)\), and separates the wave-packet theorem
+  from the regular-kernel corollary.
+- The kernel corollary is qualified by dimension and regular kinematics: in
+  \(1+1\)-dimensional elastic scattering total momentum conservation itself
+  pulls back to rapidity permutation graphs, so connected-kernel subtraction
+  removes proper product blocks but does not erase all graph-delta support
+  compatible with total conservation.
 - The connected amplitude is the object whose poles, cuts, and analytic
   continuation will be studied in subsequent chapters.
 - The physical equal-mass \(s\)-channel has \(s\ge4m^2\) and \(t,u\le0\);
@@ -146,6 +156,26 @@ Source-File: monograph/tex/volumes/volume_ii/chapter02_the_s_matrix_and_lsz_revi
   monograph now states that analytic hypotheses give the continuation,
   partial-wave, and dispersion framework, while pole existence/location
   requires additional channel-specific dynamical or spectral evidence.
+- 2026-06-09 issue #974 pass: replaced the cluster theorem's uniform-in-relative
+  translation passage with a typed partial Fock translation and an explicit
+  joint Haag--Ruelle/separation diagonal.  Added the \(1+1\)-dimensional
+  elastic rapidity boundary so permutation-graph support is no longer
+  confused with a failure of wave-packet cluster decomposition.
+
+## Calculation Checks
+
+- `calculation-checks/scattering_cluster_decomposition_checks.py` verifies the
+  exact finite arithmetic behind the issue #974 repair: diagonal exponents for
+  \(T(a)=o(|a|)\), negative controls for \(T\sim |a|\) and insufficient
+  inverse-separation decay, the \(1+1\)-dimensional lightcone reconstruction
+  of elastic permutation-graph support from total momentum conservation, and
+  the distinction between proper product subtraction and removal of all graph
+  delta support.
+- Related standing checks: `calculation-checks/haag_ruelle_velocity_checks.py`
+  for velocity-tube separation conventions,
+  `calculation-checks/haag_ruelle_fock_inner_product_checks.py` for symmetric
+  Fock contractions, and `calculation-checks/lsz_residue_checks.py` for the
+  LSZ kernel-normalization conventions used by this chapter.
 
 ## Figure Requirements
 

@@ -679,6 +679,17 @@
       ]
     },
     {
+      "path": "scattering_cluster_decomposition_checks.py",
+      "risk_class": "scattering cluster theorem uniform-limit and low-dimensional kernel support",
+      "convention_tags": [
+        "partial cluster translation acts before symmetrized Fock concatenation",
+        "Haag-Ruelle approximation uses a joint T(a)=o(|a|) diagonal",
+        "finite-time cluster decay must dominate polynomial T growth",
+        "1+1 total momentum conservation pulls back to elastic permutation graphs",
+        "proper product subtraction does not remove all total-conservation graph support"
+      ]
+    },
+    {
       "path": "weinberg_witten_helicity_checks.py",
       "risk_class": "Weinberg-Witten helicity obstruction"
     },

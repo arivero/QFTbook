@@ -2234,6 +2234,13 @@ Current checks:
   Haag--Ruelle velocity-support chapter material, including positive-energy
   phase cancellation, massive group-velocity subluminality,
   velocity-tube separation, and the nonstationary phase-gradient lower bound.
+- `scattering_cluster_decomposition_checks.py`: exact finite checks for the
+  Volume II scattering-kernel cluster theorem repair, including the
+  \(T(a)=o(|a|)\) diagonal exponent arithmetic, negative controls for
+  \(T\sim |a|\) and insufficient inverse-separation decay, the
+  \(1+1\)-dimensional lightcone reconstruction of elastic permutation-graph
+  support, and the fact that proper product subtraction does not remove the
+  elastic exchange graph.
 - `global_form_line_lattice_checks.py`: exact finite checks for the
   \(\mathfrak{su}(N)\) global-form and Wilson--'t Hooft line-lattice
   section, including the \(\mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m}\)
